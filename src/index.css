@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Custom base styles */
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -14,7 +13,6 @@
   }
 }
 
-/* Custom component styles */
 @layer components {
   .btn-primary {
     @apply inline-flex items-center justify-center px-6 py-3 
@@ -35,7 +33,7 @@
     @apply bg-white rounded-xl border border-horse-200
            hover:border-horse-400 hover:shadow-lg
            transition-all duration-300 ease-out
-           group cursor-pointer;
+           cursor-pointer;
   }
   
   .section-heading {
@@ -47,7 +45,6 @@
   }
 }
 
-/* Elegant gradient backgrounds */
 @layer utilities {
   .bg-gradient-warm {
     background: linear-gradient(135deg, #faf7f5 0%, #f3ede8 50%, #e5d8cd 100%);
@@ -62,7 +59,6 @@
   }
 }
 
-/* Subtle animations */
 @keyframes fade-up {
   from {
     opacity: 0;
