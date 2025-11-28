@@ -218,6 +218,7 @@ export default function Home() {
         <meta property="og:image" content="https://horsecost.co.uk/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/jpeg" />
         
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@horsecost" />
@@ -501,4 +502,5 @@ export default function Home() {
     </>
   )
 }
+
 
