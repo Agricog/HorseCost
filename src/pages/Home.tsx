@@ -119,7 +119,6 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-horse-50">
-      {/* Navigation */}
       <header className="bg-white/80 backdrop-blur-md border-b border-horse-200 sticky top-0 z-50">
         <nav className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -148,7 +147,6 @@ export default function Home() {
       </header>
 
       <main>
-        {/* Hero Section */}
         <section className="bg-gradient-hero pt-16 pb-24 px-4 sm:px-6 lg:px-8">
           <div className="max-w-6xl mx-auto text-center">
             <div className="animate-fade-up">
@@ -179,7 +177,6 @@ export default function Home() {
               </a>
             </div>
 
-            {/* Trust indicators */}
             <div className="mt-16 pt-8 border-t border-horse-200">
               <p className="text-sm text-horse-500 mb-4">Trusted by equestrians across the UK</p>
               <div className="flex items-center justify-center gap-8 text-horse-400">
@@ -200,7 +197,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Calculators Grid */}
         <section id="calculators" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
@@ -245,7 +241,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Features Section */}
         <section id="features" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-warm">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
@@ -276,7 +271,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
         <section id="testimonials" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-14">
@@ -298,7 +292,7 @@ export default function Home() {
                     ))}
                   </div>
                   <blockquote className="text-horse-700 leading-relaxed mb-6">
-                    "{testimonial.quote}"
+                    &quot;{testimonial.quote}&quot;
                   </blockquote>
                   <footer className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-horse-300 rounded-full flex items-center justify-center text-horse-700 font-bold">
@@ -317,7 +311,6 @@ export default function Home() {
           </div>
         </section>
 
-        {/* CTA Section */}
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-horse-900">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-6">
@@ -338,7 +331,6 @@ export default function Home() {
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="bg-horse-950 text-horse-400 py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-4 gap-8 mb-8">
@@ -376,10 +368,10 @@ export default function Home() {
           
           <div className="pt-8 border-t border-horse-800 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm">
-              © {new Date().getFullYear()} HorseCost. All rights reserved.
+              &copy; {new Date().getFullYear()} HorseCost. All rights reserved.
             </p>
             <p className="text-sm">
-              Made with care for UK equestrians 🐴
+              Made with care for UK equestrians
             </p>
           </div>
         </div>
@@ -387,27 +379,3 @@ export default function Home() {
     </div>
   )
 }
-```
-
----
-
-That's everything you need for the homepage! Your folder structure should now be:
-```
-horsecost/
-├── public/
-│   ├── robots.txt
-│   ├── sitemap.xml
-│   └── favicon.svg
-├── src/
-│   ├── pages/
-│   │   └── Home.tsx
-│   ├── App.tsx
-│   ├── main.tsx
-│   └── index.css
-├── index.html
-├── package.json
-├── vite.config.ts
-├── tsconfig.json
-├── tsconfig.node.json
-├── tailwind.config.js
-└── postcss.config.js
