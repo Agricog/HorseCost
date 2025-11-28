@@ -250,19 +250,11 @@ export default function Home() {
                 <span className="text-xl font-serif font-bold text-horse-900">HorseCost</span>
               </a>
               <div className="hidden md:flex items-center gap-8">
-                <a href="#calculators" className="text-horse-600 hover:text-horse-900 transition font-medium">
-                  Calculators
-                </a>
-                <a href="#features" className="text-horse-600 hover:text-horse-900 transition font-medium">
-                  Features
-                </a>
-                <a href="#testimonials" className="text-horse-600 hover:text-horse-900 transition font-medium">
-                  Reviews
-                </a>
+                <a href="#calculators" className="text-horse-600 hover:text-horse-900 transition font-medium">Calculators</a>
+                <a href="#features" className="text-horse-600 hover:text-horse-900 transition font-medium">Features</a>
+                <a href="#testimonials" className="text-horse-600 hover:text-horse-900 transition font-medium">Reviews</a>
               </div>
-              <a href="#calculators" className="btn-primary text-sm">
-                Get Started
-              </a>
+              <a href="#calculators" className="btn-primary text-sm">Get Started</a>
             </div>
           </nav>
         </header>
@@ -292,9 +284,7 @@ export default function Home() {
                   Explore Calculators
                   <ArrowRight className="w-5 h-5 ml-2" />
                 </a>
-                <a href="#features" className="btn-secondary text-base px-8 py-4">
-                  Why Choose Us
-                </a>
+                <a href="#features" className="btn-secondary text-base px-8 py-4">Why Choose Us</a>
               </div>
 
               <div className="mt-16 pt-8 border-t border-horse-200">
@@ -415,7 +405,6 @@ export default function Home() {
                     <blockquote className="text-horse-700 leading-relaxed mb-6 italic">
                       {`"${testimonial.quote}"`}
                     </blockquote>
-
                     <footer className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-horse-300 rounded-full flex items-center justify-center text-horse-700 font-bold">
                         {testimonial.author.charAt(0)}
@@ -490,7 +479,7 @@ export default function Home() {
             </div>
             
             <div className="pt-8 border-t border-horse-800 flex flex-col md:flex-row items-center justify-between gap-4">
-                            <p className="text-sm">
+              <p className="text-sm">
                 {`© ${new Date().getFullYear()} HorseCost. All rights reserved. UK Registered.`}
               </p>
               <p className="text-sm">
@@ -503,5 +492,6 @@ export default function Home() {
     </>
   )
 }
+
 
 
