@@ -415,6 +415,7 @@ export default function Home() {
                     <blockquote className="text-horse-700 leading-relaxed mb-6 italic">
                       {`"${testimonial.quote}"`}
                     </blockquote>
+
                     <footer className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-horse-300 rounded-full flex items-center justify-center text-horse-700 font-bold">
                         {testimonial.author.charAt(0)}
@@ -489,7 +490,7 @@ export default function Home() {
             </div>
             
             <div className="pt-8 border-t border-horse-800 flex flex-col md:flex-row items-center justify-between gap-4">
-              <p className="text-sm">
+                            <p className="text-sm">
                 {`© ${new Date().getFullYear()} HorseCost. All rights reserved. UK Registered.`}
               </p>
               <p className="text-sm">
