@@ -112,74 +112,73 @@ export default function Home() {
     }
   ]
 
-  // SEO Schema Data
   const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
-    'name': 'HorseCost',
-    'url': 'https://horsecost.co.uk',
-    'logo': 'https://horsecost.co.uk/logo.png',
-    'description': 'Professional horse business calculators for UK equestrians',
-    'sameAs': ['https://twitter.com/horsecost'],
-    'contactPoint': {
+    name: 'HorseCost',
+    url: 'https://horsecost.co.uk',
+    logo: 'https://horsecost.co.uk/logo.png',
+    description: 'Professional horse business calculators for UK equestrians',
+    sameAs: ['https://twitter.com/horsecost'],
+    contactPoint: {
       '@type': 'ContactPoint',
-      'contactType': 'Customer Support',
-      'url': 'https://horsecost.co.uk'
+      contactType: 'Customer Support',
+      url: 'https://horsecost.co.uk'
     },
-    'address': {
+    address: {
       '@type': 'PostalAddress',
-      'addressCountry': 'GB'
+      addressCountry: 'GB'
     }
   }
 
   const softwareAppSchema = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
-    'name': 'HorseCost - Horse Cost Calculators',
-    'description': 'Professional calculators for managing UK horse business finances including livery, farrier, feed, and competition costs',
-    'url': 'https://horsecost.co.uk',
-    'applicationCategory': 'FinanceApplication',
-    'operatingSystem': 'Web',
-    'offers': {
+    name: 'HorseCost - Horse Cost Calculators',
+    description: 'Professional calculators for managing UK horse business finances including livery, farrier, feed, and competition costs',
+    url: 'https://horsecost.co.uk',
+    applicationCategory: 'FinanceApplication',
+    operatingSystem: 'Web',
+    offers: {
       '@type': 'Offer',
-      'price': '0',
-      'priceCurrency': 'GBP'
+      price: '0',
+      priceCurrency: 'GBP'
     },
-    'aggregateRating': {
+    aggregateRating: {
       '@type': 'AggregateRating',
-      'ratingValue': '4.9',
-      'ratingCount': '127',
-      'bestRating': '5',
-      'worstRating': '1'
+      ratingValue: '4.9',
+      ratingCount: '127',
+      bestRating: '5',
+      worstRating: '1'
     }
   }
 
   const faqSchema = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    'mainEntity': [
+    mainEntity: [
       {
         '@type': 'Question',
-        'name': 'How much does it cost to own a horse in the UK?',
-        'acceptedAnswer': {
+        name: 'How much does it cost to own a horse in the UK?',
+        acceptedAnswer: {
           '@type': 'Answer',
-          'text': 'Horse ownership costs in the UK average £4,000-£8,000+ annually depending on livery type, location, and services. Use our Annual Cost Calculator for personalized estimates.'
+          text: 'Horse ownership costs in the UK average £4,000-£8,000+ annually depending on livery type, location, and services. Use our Annual Cost Calculator for personalized estimates.'
         }
       },
       {
         '@type': 'Question',
-        'name': 'How much does UK livery cost?',
-        'acceptedAnswer': {
+        name: 'How much does UK livery cost?',
+        acceptedAnswer: {
           '@type': 'Answer',
-          'text': 'UK livery costs range from £150-£500+ per month depending on type (DIY £150-£200, part £250-£350, full £350-£500+) and location. Our Livery Calculator provides detailed regional breakdowns.'
+          text: 'UK livery costs range from £150-£500+ per month depending on type (DIY £150-£200, part £250-£350, full £350-£500+) and location. Our Livery Calculator provides detailed regional breakdowns.'
         }
       },
       {
         '@type': 'Question',
-        'name': 'What are typical farrier costs in the UK?',
-        'acceptedAnswer': {
+        name: 'What are typical farrier costs in the UK?',
+        acceptedAnswer: {
           '@type': 'Answer',
-          'text': 'UK farrier costs typically range £40-£80 per visit, with routine shoeing at £100-£150 per hoof. Calculate your annual budget with our Farrier Cost Calculator.'
+          text: 'UK farrier costs typically range £40-£80 per visit, with routine shoeing at £100-£150 per hoof. Calculate your annual budget with our Farrier Cost Calculator.'
         }
       }
     ]
@@ -188,12 +187,12 @@ export default function Home() {
   const breadcrumbSchema = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
-    'itemListElement': [
+    itemListElement: [
       {
         '@type': 'ListItem',
-        'position': 1,
-        'name': 'Home',
-        'item': 'https://horsecost.co.uk'
+        position: 1,
+        name: 'Home',
+        item: 'https://horsecost.co.uk'
       }
     ]
   }
@@ -201,80 +200,42 @@ export default function Home() {
   return (
     <>
       <Helmet>
-        {/* Primary Meta Tags */}
         <title>HorseCost | Free Professional Horse Cost Calculators UK 2025</title>
-        <meta 
-          name="description" 
-          content="Free professional horse calculators for UK equestrians. Calculate livery, farrier, feed, competition & annual costs instantly. Plan your horse business finances with confidence. 6+ calculators, UK pricing, no sign-up required." 
-        />
-        <meta 
-          name="keywords" 
-          content="horse calculator, livery calculator, farrier calculator, horse costs UK, equestrian budget, horse expenses, feed budget calculator, competition budget planner"
-        />
+        <meta name="description" content="Free professional horse calculators for UK equestrians. Calculate livery, farrier, feed, competition & annual costs instantly. Plan your horse business finances with confidence. 6+ calculators, UK pricing, no sign-up required." />
+        <meta name="keywords" content="horse calculator, livery calculator, farrier calculator, horse costs UK, equestrian budget, horse expenses, feed budget calculator, competition budget planner" />
         <meta name="author" content="HorseCost Ltd" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
         <meta name="language" content="English" />
         <meta name="revisit-after" content="7 days" />
         
-        {/* OpenGraph Meta Tags */}
         <meta property="og:site_name" content="HorseCost" />
         <meta property="og:title" content="HorseCost - Professional Horse Cost Calculators UK" />
-        <meta 
-          property="og:description" 
-          content="Free calculators for livery costs, farrier expenses, feed budgets & more. Plan your equestrian finances with UK-specific pricing." 
-        />
+        <meta property="og:description" content="Free calculators for livery costs, farrier expenses, feed budgets & more. Plan your equestrian finances with UK-specific pricing." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://horsecost.co.uk" />
         <meta property="og:locale" content="en_GB" />
         <meta property="og:image" content="https://horsecost.co.uk/og-image.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:type" content="image/jpeg" />
         
-        {/* Twitter Card Tags */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@horsecost" />
         <meta name="twitter:title" content="HorseCost - Horse Cost Calculators UK" />
-        <meta 
-          name="twitter:description" 
-          content="Free professional calculators for UK horse owners. Calculate livery, farrier, feed & competition costs instantly." 
-        />
+        <meta name="twitter:description" content="Free professional calculators for UK horse owners. Calculate livery, farrier, feed & competition costs instantly." />
         <meta name="twitter:image" content="https://horsecost.co.uk/og-image.jpg" />
-        <meta name="twitter:creator" content="@horsecost" />
         
-        {/* Canonical & Alternate Tags */}
         <link rel="canonical" href="https://horsecost.co.uk" />
         <link rel="alternate" hrefLang="en-GB" href="https://horsecost.co.uk" />
         
-        {/* Schema Markup - Organization */}
-        <script type="application/ld+json">
-          {JSON.stringify(organizationSchema)}
-        </script>
+        <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(softwareAppSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
         
-        {/* Schema Markup - SoftwareApplication */}
-        <script type="application/ld+json">
-          {JSON.stringify(softwareAppSchema)}
-        </script>
-        
-        {/* Schema Markup - FAQ */}
-        <script type="application/ld+json">
-          {JSON.stringify(faqSchema)}
-        </script>
-        
-        {/* Schema Markup - BreadcrumbList */}
-        <script type="application/ld+json">
-          {JSON.stringify(breadcrumbSchema)}
-        </script>
-        
-        {/* Google Verification & Analytics */}
         <meta name="google-site-verification" content="YOUR_GOOGLE_VERIFICATION_CODE" />
-        
-        {/* Additional SEO Tags */}
         <meta name="format-detection" content="telephone=no" />
         <meta name="theme-color" content="#78350f" />
-        <link rel="icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </Helmet>
 
       <div className="min-h-screen bg-horse-50">
@@ -451,7 +412,7 @@ export default function Home() {
                       ))}
                     </div>
                     <blockquote className="text-horse-700 leading-relaxed mb-6 italic">
-                      &quot;{testimonial.quote}&quot;
+                      {`"${testimonial.quote}"`}
                     </blockquote>
                     <footer className="flex items-center gap-3">
                       <div className="w-10 h-10 bg-horse-300 rounded-full flex items-center justify-center text-horse-700 font-bold">
@@ -528,7 +489,7 @@ export default function Home() {
             
             <div className="pt-8 border-t border-horse-800 flex flex-col md:flex-row items-center justify-between gap-4">
               <p className="text-sm">
-                &copy; {new Date().getFullYear()} HorseCost. All rights reserved. UK Registered.
+                {`© ${new Date().getFullYear()} HorseCost. All rights reserved. UK Registered.`}
               </p>
               <p className="text-sm">
                 Professional horse calculators for UK equestrians
