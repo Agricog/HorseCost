@@ -238,7 +238,6 @@ export default function HorseLiveryCalculatorPage() {
     const diyPrice = baseCostPerStable * margin
     const partLiveryPrice = diyPrice + parseNumber(partLiveryAddOn)
     const fullLiveryPrice = diyPrice + parseNumber(fullLiveryAddOn)
-    const annualRevenueAtFull = fullLiveryPrice * stables * 12
     const breakEvenOccupancy = totalAnnualCosts / (diyPrice * 12)
 
     setResults({
