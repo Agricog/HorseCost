@@ -12,10 +12,11 @@ import {
   Star,
   Shield,
   Zap,
-  Users
+  Users,
+  Home
 } from 'lucide-react'
 
-export default function Home() {
+export default function HomePage() {
   useEffect(() => {
     document.title = 'HorseCost | Free Professional Horse Cost Calculators UK 2025'
     
@@ -29,11 +30,19 @@ export default function Home() {
 
   const calculators = [
     {
+      title: 'Horse Livery Cost Calculator',
+      description: 'Calculate sustainable DIY, Part, and Full livery pricing. Factor in variable costs (feed, labor, bedding) and fixed costs (rent, insurance, salaries).',
+      icon: Home,
+      href: '/calculators/horse-livery',
+      tag: 'Most Popular',
+      color: 'bg-emerald-600'
+    },
+    {
       title: 'Livery Cost Calculator',
       description: 'Compare DIY, part, and full livery costs. Find the right option for your budget and lifestyle.',
       icon: PoundSterling,
       href: '/calculators/livery-cost',
-      tag: 'Most Popular',
+      tag: 'Popular',
       color: 'bg-horse-700'
     },
     {
@@ -175,7 +184,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Calculator className="w-5 h-5" />
-                  <span className="font-medium">6 Professional Calculators</span>
+                  <span className="font-medium">7 Professional Calculators</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Star className="w-5 h-5 fill-current" />
@@ -191,7 +200,7 @@ export default function Home() {
             <div className="text-center mb-14">
               <h2 className="section-heading mb-4">Professional Horse Cost Calculators</h2>
               <p className="section-subheading mx-auto">
-                Six powerful, free calculators designed specifically for UK horse owners. 
+                Seven powerful, free calculators designed specifically for UK horse owners. 
                 Calculate livery, farrier, feed, competition costs and more with precision.
               </p>
             </div>
@@ -205,7 +214,7 @@ export default function Home() {
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className={`w-12 h-12 ${calc.color} rounded-xl flex items-center justify-center text-white shadow-lg`}>
-                      <calc.icon className="w-6 h-6" />
+                      alc.icon className="w-6 h-6" />
                     </div>
                     <span className="text-xs font-semibold text-horse-500 bg-horse-100 px-3 py-1 rounded-full">
                       {calc.tag}
@@ -288,7 +297,7 @@ export default function Home() {
                       {testimonial.author.charAt(0)}
                     </div>
                     <div>
-                      <cite className="font-semibold text-horse-900 not-italic">
+                      ite className="font-semibold text-horse-900 not-italic">
                         {testimonial.author}
                       </cite>
                       <p className="text-sm text-horse-500">{testimonial.location}</p>
@@ -339,6 +348,7 @@ export default function Home() {
             <nav>
               <h4 className="font-semibold text-white mb-4">Calculators</h4>
               <ul className="space-y-2 text-sm">
+                <li><a href="/calculators/horse-livery" className="hover:text-white transition">Horse Livery Calculator</a></li>
                 <li><a href="/calculators/livery-cost" className="hover:text-white transition">Livery Cost Calculator</a></li>
                 <li><a href="/calculators/annual-cost" className="hover:text-white transition">Annual Cost Calculator</a></li>
                 <li><a href="/calculators/feed-budget" className="hover:text-white transition">Feed Budget Planner</a></li>
@@ -369,6 +379,7 @@ export default function Home() {
     </div>
   )
 }
+
 
 
 
