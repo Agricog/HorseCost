@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import { ArrowLeft, Download, Share2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
-import jsPDF from 'jspdf'
 
 interface LiveryResults {
   diyPrice: string
@@ -125,102 +124,52 @@ export default function HorseLiveryCalculatorPage() {
     }).format(parseFloat(value))
   }
 
-  const downloadPDF = () => {
+  const downloadCSV = () => {
     if (!results) return
 
-    const doc = new jsPDF()
-    const pageWidth = doc.internal.pageSize.getWidth()
-    const pageHeight = doc.internal.pageSize.getHeight()
-    let yPosition = 20
-
-    // Header
-    doc.setFillColor(16, 185, 129) // Emerald green
-    doc.rect(0, 0, pageWidth, 40, 'F')
-    doc.setTextColor(255, 255, 255)
-    doc.setFontSize(24)
-    doc.text('Horse Livery Cost Calculator', pageWidth / 2, 15, { align: 'center' })
-    doc.setFontSize(10)
-    doc.text(`Generated: ${new Date().toLocaleDateString('en-GB')}`, pageWidth / 2, 30, { align: 'center' })
-
-    yPosition = 50
-    doc.setTextColor(0, 0, 0)
-
-    // Summary Results Section
-    doc.setFontSize(14)
-    doc.setTextColor(16, 185, 129)
-    doc.text('Livery Pricing Summary', 20, yPosition)
-    yPosition += 12
-
-    doc.setFontSize(11)
-    doc.setTextColor(0, 0, 0)
-    doc.text(`DIY Livery Price: ${formatCurrency(results.diyPrice)}/month`, 20, yPosition)
-    yPosition += 8
-    doc.text(`Part Livery Price: ${formatCurrency(results.partLiveryPrice)}/month`, 20, yPosition)
-    yPosition += 8
-    doc.text(`Full Livery Price: ${formatCurrency(results.fullLiveryPrice)}/month`, 20, yPosition)
-    yPosition += 12
-
-    // Financial Overview
-    doc.setFontSize(14)
-    doc.setTextColor(16, 185, 129)
-    doc.text('Financial Overview', 20, yPosition)
-    yPosition += 12
-
-    doc.setFontSize(11)
-    doc.setTextColor(0, 0, 0)
-    doc.text(`Monthly Operating Costs: ${formatCurrency(results.monthlyAverageCosts)}`, 20, yPosition)
-    yPosition += 8
-    doc.text(`Annual Operating Costs: ${formatCurrency(results.totalAnnualCosts)}`, 20, yPosition)
-    yPosition += 8
-    doc.text(`Break-Even Occupancy: ${results.breakEvenOccupancy} stables`, 20, yPosition)
-    yPosition += 12
-    doc.text(`Profit Margin: ${profitMargin}%`, 20, yPosition)
-    yPosition += 8
-    doc.text(`Number of Stables: ${numberOfStables}`, 20, yPosition)
-
-    // Input Parameters Table
-    yPosition += 15
-    doc.setFontSize(14)
-    doc.setTextColor(16, 185, 129)
-    doc.text('Your Calculation Inputs', 20, yPosition)
-    yPosition += 10
-
-    const tableData = [
+    const csvContent = [
+      ['Horse Livery Cost Calculator Results', new Date().toLocaleDateString('en-GB')],
+      [],
+      ['LIVERY PRICING SUMMARY'],
+      ['DIY Livery Price', formatCurrency(results.diyPrice)],
+      ['Part Livery Price', formatCurrency(results.partLiveryPrice)],
+      ['Full Livery Price', formatCurrency(results.fullLiveryPrice)],
+      [],
+      ['FINANCIAL OVERVIEW'],
+      ['Monthly Operating Costs', formatCurrency(results.monthlyAverageCosts)],
+      ['Annual Operating Costs', formatCurrency(results.totalAnnualCosts)],
+      ['Break-Even Occupancy', results.breakEvenOccupancy + ' stables'],
+      ['Profit Margin', profitMargin + '%'],
+      ['Number of Stables', numberOfStables],
+      [],
+      ['CALCULATION INPUTS'],
       ['Parameter', 'Value'],
-      ['Feed Cost (per horse/month)', `£${feedCostPerHorse.toFixed(2)}`],
-      ['Hay Cost (per horse/month)', `£${hayCostPerHorse.toFixed(2)}`],
-      ['Bedding Cost (per horse/month)', `£${beddingCostPerHorse.toFixed(2)}`],
-      ['Labour Hours (per week)', `${labourHoursPerWeek}`],
-      ['Labour Hourly Rate', `£${labourHourlyRate.toFixed(2)}`],
-      ['Variable Utilities (monthly)', `£${variableUtilities.toFixed(2)}`],
-      ['Supplies (monthly)', `£${suppliesCost.toFixed(2)}`],
-      ['Rent/Mortgage (monthly)', `£${rentMortgage.toFixed(2)}`],
-      ['Business Rates (monthly)', `£${businessRates.toFixed(2)}`],
-      ['Insurance (annual)', `£${insurance.toFixed(2)}`],
-      ['Machinery/Vehicles (monthly)', `£${machineryVehicles.toFixed(2)}`],
-      ['Field Maintenance (monthly)', `£${fieldMaintenance.toFixed(2)}`],
-      ['Admin Costs (monthly)', `£${adminCosts.toFixed(2)}`],
-      ['Part Livery Add-on', `£${partLiveryAddOn.toFixed(2)}`],
-      ['Full Livery Add-on', `£${fullLiveryAddOn.toFixed(2)}`]
+      ['Feed Cost (per horse/month)', '£' + feedCostPerHorse.toFixed(2)],
+      ['Hay Cost (per horse/month)', '£' + hayCostPerHorse.toFixed(2)],
+      ['Bedding Cost (per horse/month)', '£' + beddingCostPerHorse.toFixed(2)],
+      ['Labour Hours (per week)', labourHoursPerWeek],
+      ['Labour Hourly Rate', '£' + labourHourlyRate.toFixed(2)],
+      ['Variable Utilities (monthly)', '£' + variableUtilities.toFixed(2)],
+      ['Supplies (monthly)', '£' + suppliesCost.toFixed(2)],
+      ['Rent/Mortgage (monthly)', '£' + rentMortgage.toFixed(2)],
+      ['Business Rates (monthly)', '£' + businessRates.toFixed(2)],
+      ['Insurance (annual)', '£' + insurance.toFixed(2)],
+      ['Machinery/Vehicles (monthly)', '£' + machineryVehicles.toFixed(2)],
+      ['Field Maintenance (monthly)', '£' + fieldMaintenance.toFixed(2)],
+      ['Admin Costs (monthly)', '£' + adminCosts.toFixed(2)],
+      ['Part Livery Add-on', '£' + partLiveryAddOn.toFixed(2)],
+      ['Full Livery Add-on', '£' + fullLiveryAddOn.toFixed(2)]
     ]
+      .map(row => row.map(cell => `"${cell}"`).join(','))
+      .join('\n')
 
-    doc.autoTable({
-      head: [tableData[0]],
-      body: tableData.slice(1),
-      startY: yPosition,
-      margin: { left: 20, right: 20 },
-      headStyles: { fillColor: [16, 185, 129], textColor: [255, 255, 255], fontSize: 10 },
-      bodyStyles: { fontSize: 9, textColor: [0, 0, 0] },
-      alternateRowStyles: { fillColor: [240, 253, 250] },
-      columnStyles: { 0: { cellWidth: 120 }, 1: { cellWidth: 50 } }
-    })
-
-    // Footer
-    doc.setFontSize(9)
-    doc.setTextColor(128, 128, 128)
-    doc.text('HorseCost - Free Professional Horse Calculators for UK Equestrians', pageWidth / 2, pageHeight - 10, { align: 'center' })
-
-    doc.save('horse-livery-calculator.pdf')
+    const blob = new Blob([csvContent], { type: 'text/csv' })
+    const url = window.URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = 'horse-livery-calculator.csv'
+    a.click()
+    window.URL.revokeObjectURL(url)
   }
 
   const shareResults = () => {
@@ -320,7 +269,7 @@ Check it out: https://horsecost.co.uk/calculators/horse-livery`
 
                   <div className="flex gap-3 pt-4">
                     <button onClick={shareResults} className="flex-1 flex items-center justify-center gap-2 bg-white hover:bg-emerald-50 text-emerald-700 font-semibold py-2 rounded-lg transition border border-emerald-200"><Share2 className="w-4 h-4" />Share</button>
-                    <button onClick={downloadPDF} className="flex-1 flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded-lg transition"><Download className="w-4 h-4" />PDF</button>
+                    <button onClick={downloadCSV} className="flex-1 flex items-center justify-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white font-semibold py-2 rounded-lg transition"><Download className="w-4 h-4" />Export</button>
                   </div>
                 </div>
               ) : (
@@ -335,5 +284,6 @@ Check it out: https://horsecost.co.uk/calculators/horse-livery`
     </div>
   )
 }
+
 
 
