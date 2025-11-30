@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
-  ArrowLeft,
-  Home, 
+  ArrowLeft, 
   Wheat, 
   Users, 
   Zap, 
