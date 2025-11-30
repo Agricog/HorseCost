@@ -107,21 +107,21 @@ export default function HomePage() {
 
   const testimonials = [
     {
-      quote: "Finally, a calculator that understands UK livery costs! Helped me budget properly for my first horse.",
-      author: "Sarah M.",
-      location: "Yorkshire",
+      quote: 'Finally, a calculator that understands UK livery costs! Helped me budget properly for my first horse.',
+      author: 'Sarah M.',
+      location: 'Yorkshire',
       rating: 5
     },
     {
-      quote: "The annual cost breakdown was eye-opening. Now I know exactly what to budget each month.",
-      author: "James T.",
-      location: "Surrey",
+      quote: 'The annual cost breakdown was eye-opening. Now I know exactly what to budget each month.',
+      author: 'James T.',
+      location: 'Surrey',
       rating: 5
     },
     {
-      quote: "Simple, accurate, and actually useful. Bookmarked for when I'm planning my competition season.",
-      author: "Emma R.",
-      location: "Cheshire",
+      quote: 'Simple, accurate, and actually useful. Bookmarked for when I\'m planning my competition season.',
+      author: 'Emma R.',
+      location: 'Cheshire',
       rating: 5
     }
   ]
@@ -290,7 +290,7 @@ export default function HomePage() {
                     ))}
                   </div>
                   <blockquote className="text-horse-700 leading-relaxed mb-6 italic">
-                    &quot;{testimonial.quote}&quot;
+                    {`"${testimonial.quote}"`}
                   </blockquote>
                   <footer className="flex items-center gap-3">
                     <div className="w-10 h-10 bg-horse-300 rounded-full flex items-center justify-center text-horse-700 font-bold">
@@ -368,7 +368,7 @@ export default function HomePage() {
           
           <div className="pt-8 border-t border-horse-800 flex flex-col md:flex-row items-center justify-between gap-4">
             <p className="text-sm">
-              &copy; {new Date().getFullYear()} HorseCost. All rights reserved. UK Registered.
+              {`© ${new Date().getFullYear()} HorseCost. All rights reserved. UK Registered.`}
             </p>
             <p className="text-sm">
               Professional horse calculators for UK equestrians
@@ -379,6 +379,7 @@ export default function HomePage() {
     </div>
   )
 }
+
 
 
 
