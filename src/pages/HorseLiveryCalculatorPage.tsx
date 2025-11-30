@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react'
 import { ArrowLeft, Download, Share2 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
+// DEPENDENCIES: NONE (uses only built-in browser APIs)
+// NO jspdf, NO external libraries required
+
 interface LiveryResults {
   diyPrice: string
   partLiveryPrice: string
@@ -504,6 +507,7 @@ export default function HorseLiveryCalculatorPage() {
     </div>
   )
 }
+
 
 
 
