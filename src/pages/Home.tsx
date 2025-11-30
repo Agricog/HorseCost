@@ -214,7 +214,7 @@ export default function HomePage() {
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className={`w-12 h-12 ${calc.color} rounded-xl flex items-center justify-center text-white shadow-lg`}>
-                      alc.icon className="w-6 h-6" />
+                      <calc.icon className="w-6 h-6" />
                     </div>
                     <span className="text-xs font-semibold text-horse-500 bg-horse-100 px-3 py-1 rounded-full">
                       {calc.tag}
@@ -297,7 +297,7 @@ export default function HomePage() {
                       {testimonial.author.charAt(0)}
                     </div>
                     <div>
-                      ite className="font-semibold text-horse-900 not-italic">
+                      <cite className="font-semibold text-horse-900 not-italic">
                         {testimonial.author}
                       </cite>
                       <p className="text-sm text-horse-500">{testimonial.location}</p>
