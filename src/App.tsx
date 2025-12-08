@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import HorseLiveryCalculatorPage from './pages/HorseLiveryCalculatorPage'
+import AnnualHorseCostCalculatorPage from './pages/AnnualHorseCostCalculatorPage'
 
 function App() {
   return (
