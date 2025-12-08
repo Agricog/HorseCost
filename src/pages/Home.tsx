@@ -21,6 +21,15 @@ import {
 export default function HomePage() {
   const calculators = [
     {
+      title: 'Annual Horse Cost Calculator',
+      description: 'The complete UK horse ownership budget calculator. Calculate livery, feed, farrier, vet bills, insurance, tack & equipment costs. Know exactly what your horse costs per year.',
+      icon: Calendar,
+      href: '/annual-horse-cost-calculator',
+      tag: 'Most Popular',
+      color: 'from-amber-500 to-orange-600',
+      available: true
+    },
+    {
       title: 'Horse Livery Cost Calculator',
       description: 'Calculate sustainable DIY, Part, and Full livery pricing for yard owners.',
       icon: Home,
@@ -115,6 +124,33 @@ export default function HomePage() {
     }
   ]
 
+  const faqs = [
+    {
+      q: 'What is included in the horse cost calculator?',
+      a: 'Our calculator includes livery costs, feed and bedding, farrier services, veterinary care, insurance, worming, dental care, tack and equipment, and optional extras like lessons and competition costs.'
+    },
+    {
+      q: 'Are the UK prices accurate for 2025?',
+      a: 'Yes, all pricing is based on current 2025 UK market rates and averages collected from yards, farriers, and vets across the UK.'
+    },
+    {
+      q: 'Can I save my calculations?',
+      a: 'Our calculators work in your browser and provide instant results. You can take screenshots or note your figures for future reference.'
+    },
+    {
+      q: 'What livery types are covered?',
+      a: 'We cover Full Livery, Part Livery, DIY Livery, Grass Livery, and Home Kept. Each has different typical costs which you can customise.'
+    },
+    {
+      q: 'Is the Horse Care Challenge game free?',
+      a: 'Yes! The Horse Care Challenge is completely free to play. It\'s designed for horse lovers of all ages to test their knowledge.'
+    },
+    {
+      q: 'How often is the calculator updated?',
+      a: 'We update pricing information regularly to reflect changes in the UK equestrian market. Last major update was January 2025.'
+    }
+  ]
+
   return (
     <>
       <Helmet>
@@ -123,11 +159,12 @@ export default function HomePage() {
           name="description" 
           content="Free professional horse cost calculators for UK owners. Calculate annual ownership costs, livery, feed, farrier & vet expenses. Plus fun horse quiz game for kids!" 
         />
-        <meta name="keywords" content="horse cost calculator UK, annual horse costs, livery calculator, horse ownership costs, equestrian budget, horse care quiz game" />
+        <meta name="keywords" content="horse cost calculator UK, annual horse costs, livery calculator, horse ownership costs, equestrian budget, horse care quiz game, UK horse expenses" />
         <meta name="author" content="HorseCost" />
         <meta name="robots" content="index, follow" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="theme-color" content="#b45309" />
+        <meta name="language" content="English" />
         
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="HorseCost" />
@@ -135,25 +172,84 @@ export default function HomePage() {
         <meta property="og:description" content="Free professional horse cost calculators for UK owners. Calculate annual costs, livery, feed & more." />
         <meta property="og:url" content="https://horsecost.co.uk" />
         <meta property="og:image" content="https://horsecost.co.uk/images/horsecost-og.jpg" />
+        <meta property="og:image:alt" content="HorseCost - Horse Cost Calculator" />
         
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="HorseCost | Free Horse Cost Calculators UK" />
         <meta name="twitter:description" content="Calculate your horse ownership costs with free UK calculators." />
+        <meta name="twitter:image" content="https://horsecost.co.uk/images/horsecost-og.jpg" />
         
         <link rel="canonical" href="https://horsecost.co.uk" />
+        <link rel="alternate" hrefLang="en-GB" href="https://horsecost.co.uk" />
 
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'WebSite',
-            'name': 'HorseCost',
-            'url': 'https://horsecost.co.uk',
-            'description': 'Free professional horse cost calculators for UK equestrians',
-            'potentialAction': {
-              '@type': 'SearchAction',
-              'target': 'https://horsecost.co.uk/search?q={search_term_string}',
-              'query-input': 'required name=search_term_string'
-            }
+            '@graph': [
+              {
+                '@type': 'WebSite',
+                'name': 'HorseCost',
+                'url': 'https://horsecost.co.uk',
+                'description': 'Free professional horse cost calculators for UK equestrians',
+                'potentialAction': {
+                  '@type': 'SearchAction',
+                  'target': 'https://horsecost.co.uk/search?q={search_term_string}',
+                  'query-input': 'required name=search_term_string'
+                }
+              },
+              {
+                '@type': 'Organization',
+                'name': 'HorseCost',
+                'url': 'https://horsecost.co.uk',
+                'logo': 'https://horsecost.co.uk/logo.png',
+                'description': 'Free professional horse cost calculators for UK equestrians',
+                'contactPoint': {
+                  '@type': 'ContactPoint',
+                  'contactType': 'Customer Support'
+                },
+                'sameAs': [
+                  'https://www.linkedin.com/company/horsecost',
+                  'https://twitter.com/horsecost'
+                ]
+              },
+              {
+                '@type': 'BreadcrumbList',
+                'itemListElement': [
+                  {
+                    '@type': 'ListItem',
+                    'position': 1,
+                    'name': 'Home',
+                    'item': 'https://horsecost.co.uk'
+                  },
+                  {
+                    '@type': 'ListItem',
+                    'position': 2,
+                    'name': 'Calculators',
+                    'item': 'https://horsecost.co.uk/#calculators'
+                  }
+                ]
+              },
+              {
+                '@type': 'FAQPage',
+                'mainEntity': faqs.map((faq, index) => ({
+                  '@type': 'Question',
+                  'position': index + 1,
+                  'name': faq.q,
+                  'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': faq.a
+                  }
+                }))
+              },
+              {
+                '@type': 'LocalBusiness',
+                'name': 'HorseCost',
+                'description': 'Free horse cost calculators for UK owners',
+                'image': 'https://horsecost.co.uk/images/horsecost-og.jpg',
+                'url': 'https://horsecost.co.uk',
+                'areaServed': 'GB'
+              }
+            ]
           })}
         </script>
       </Helmet>
@@ -240,63 +336,6 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* Featured: Annual Cost Calculator */}
-          <section className="py-16 px-4 bg-white">
-            <div className="max-w-6xl mx-auto">
-              <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-                {/* Decorative elements */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2"></div>
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2"></div>
-                
-                <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8">
-                  <div className="flex-1 text-white">
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
-                        ⭐ MOST POPULAR
-                      </span>
-                      <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
-                        2025 PRICING
-                      </span>
-                    </div>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Annual Horse Cost Calculator</h2>
-                    <p className="text-amber-100 text-lg mb-6 max-w-xl">
-                      The complete UK horse ownership budget calculator. Calculate livery, feed, farrier, 
-                      vet bills, insurance, tack & equipment costs. Know exactly what your horse costs per year.
-                    </p>
-                    <ul className="space-y-2 mb-8">
-                      <li className="flex items-center gap-2 text-amber-100">
-                        <CheckCircle2 className="w-5 h-5 text-white" />
-                        5 livery types: Full, Part, DIY, Grass, Home-kept
-                      </li>
-                      <li className="flex items-center gap-2 text-amber-100">
-                        <CheckCircle2 className="w-5 h-5 text-white" />
-                        All professional services included
-                      </li>
-                      <li className="flex items-center gap-2 text-amber-100">
-                        <CheckCircle2 className="w-5 h-5 text-white" />
-                        UK average comparisons
-                      </li>
-                    </ul>
-                    <a 
-                      href="/annual-horse-cost-calculator"
-                      className="inline-flex items-center gap-2 bg-white text-amber-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-50 transition shadow-lg"
-                    >
-                      Calculate Your Costs
-                      <ArrowRight className="w-5 h-5" />
-                    </a>
-                  </div>
-                  <div className="w-48 h-48 md:w-64 md:h-64 bg-white/20 rounded-3xl flex items-center justify-center">
-                    <div className="text-center text-white">
-                      <Calendar className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2" />
-                      <p className="font-bold text-lg">Annual</p>
-                      <p className="text-amber-200">Calculator</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
           {/* Horse Care Challenge Game */}
           <section className="py-16 px-4 bg-gradient-to-br from-purple-50 via-indigo-50 to-violet-50">
             <div className="max-w-6xl mx-auto">
@@ -354,13 +393,13 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* Other Calculators */}
+          {/* Horse Calculators Grid */}
           <section id="calculators" className="py-16 px-4 bg-white">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">More Horse Calculators</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Horse Cost Calculators</h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">
-                  Specialist calculators for every aspect of horse ownership. More coming soon!
+                  Professional calculators for every aspect of UK horse ownership. Free, fast, and accurate.
                 </p>
               </div>
 
@@ -464,6 +503,28 @@ export default function HomePage() {
             </div>
           </section>
 
+          {/* FAQ Section */}
+          <section className="py-16 px-4 bg-gray-50">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+                <p className="text-gray-600">Find answers to common questions about our calculators.</p>
+              </div>
+
+              <div className="grid gap-6">
+                {faqs.map((faq, index) => (
+                  <details key={index} className="bg-white rounded-xl p-6 border border-gray-200 cursor-pointer">
+                    <summary className="font-bold text-gray-900 flex items-center justify-between">
+                      {faq.q}
+                      <span className="ml-4 text-amber-600">+</span>
+                    </summary>
+                    <p className="text-gray-600 mt-4 leading-relaxed">{faq.a}</p>
+                  </details>
+                ))}
+              </div>
+            </div>
+          </section>
+
           {/* CTA Section */}
           <section className="py-20 px-4 bg-gradient-to-r from-amber-600 to-orange-500">
             <div className="max-w-4xl mx-auto text-center text-white">
@@ -471,7 +532,7 @@ export default function HomePage() {
                 Ready to Know Your Horse Costs?
               </h2>
               <p className="text-amber-100 text-lg mb-10 max-w-2xl mx-auto">
-                Start planning your equestrian budget today. Free, instant, accurate results.
+                Start planning your equestrian budget today. Free, instant, accurate results for UK horse owners.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a 
@@ -536,6 +597,7 @@ export default function HomePage() {
     </>
   )
 }
+
 
 
 
