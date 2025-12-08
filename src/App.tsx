@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import HorseLiveryCalculatorPage from './pages/HorseLiveryCalculatorPage'
 import AnnualHorseCostCalculatorPage from './pages/AnnualHorseCostCalculatorPage'
 import GamePage from './pages/GamePage'
+
 function App() {
   return (
     <HelmetProvider>
@@ -19,12 +20,16 @@ function App() {
           <Route path="/annual-horse-cost-calculator" element={<AnnualHorseCostCalculatorPage />} />
           <Route path="/horse-cost-calculator" element={<AnnualHorseCostCalculatorPage />} />
           <Route path="/yearly-horse-cost-calculator" element={<AnnualHorseCostCalculatorPage />} />
+          
           {/* Horse Care Challenge Game */}
           <Route path="/horse-care-challenge" element={<GamePage />} />
+          <Route path="/quiz" element={<GamePage />} />
+          <Route path="/game" element={<GamePage />} />
         </Routes>
       </Router>
     </HelmetProvider>
   )
 }
+
 export default App
 
