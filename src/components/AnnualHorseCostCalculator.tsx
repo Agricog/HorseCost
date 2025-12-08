@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { 
   PoundSterling, 
-  CheckCircle2, 
   AlertCircle, 
   Calculator,
   Home,
@@ -13,7 +12,6 @@ import {
   Syringe,
   ChevronDown,
   ChevronUp,
-  Info,
   TrendingUp,
   PieChart
 } from 'lucide-react'
@@ -52,7 +50,7 @@ export default function AnnualHorseCostCalculator() {
     grassLivery: { monthly: 80, annual: 960 },
     feed: { monthly: 120, annual: 1440 },
     bedding: { monthly: 60, annual: 720 },
-    farrier: { annual: 960 }, // Every 6 weeks @ £80
+    farrier: { annual: 960 },
     vetRoutine: { annual: 350 },
     vetEmergency: { annual: 500 },
     dental: { annual: 120 },
@@ -69,7 +67,7 @@ export default function AnnualHorseCostCalculator() {
 
   // Livery presets
   const liveryPresets: Record<string, { livery: number, feed: number, bedding: number }> = {
-    'full-livery': { livery: 500, feed: 0, bedding: 0 }, // Feed included
+    'full-livery': { livery: 500, feed: 0, bedding: 0 },
     'part-livery': { livery: 300, feed: 80, bedding: 40 },
     'diy-livery': { livery: 150, feed: 120, bedding: 60 },
     'grass-livery': { livery: 80, feed: 100, bedding: 0 },
@@ -87,7 +85,6 @@ export default function AnnualHorseCostCalculator() {
   }
 
   const calculate = () => {
-    // Parse all values (default to 0 if empty)
     const livery = parseFloat(monthlyLivery) || 0
     const feed = parseFloat(monthlyFeed) || 0
     const bedding = parseFloat(monthlyBedding) || 0
@@ -103,7 +100,6 @@ export default function AnnualHorseCostCalculator() {
     const competition = parseFloat(annualCompetition) || 0
     const misc = parseFloat(annualMisc) || 200
 
-    // Calculate annual costs
     const annualLivery = livery * 12
     const annualFeed = feed * 12
     const annualBedding = bedding * 12
@@ -112,7 +108,6 @@ export default function AnnualHorseCostCalculator() {
     const annualInsurance = insurance * 12
     const annualVetTotal = vetRoutine + vetEmergency
 
-    // Category totals
     const essentialCosts = annualLivery + annualFeed + annualBedding
     const professionalCosts = annualFarrier + annualVetTotal + dental + worming
     const protectionCosts = annualInsurance
@@ -123,7 +118,6 @@ export default function AnnualHorseCostCalculator() {
     const totalWeekly = totalAnnual / 52
     const totalDaily = totalAnnual / 365
 
-    // Comparison to UK averages
     let costLevel = 'average'
     if (totalAnnual < 6000) costLevel = 'budget'
     else if (totalAnnual < 10000) costLevel = 'average'
@@ -238,7 +232,6 @@ export default function AnnualHorseCostCalculator() {
   return (
     <>
       <Helmet>
-        {/* PRIMARY META TAGS */}
         <title>Annual Horse Cost Calculator UK 2025 | Total Ownership Costs | HorseCost</title>
         <meta 
           name="description" 
@@ -255,7 +248,6 @@ export default function AnnualHorseCostCalculator() {
         <meta name="theme-color" content="#b45309" />
         <meta name="apple-mobile-web-app-capable" content="yes" />
 
-        {/* OPEN GRAPH */}
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="HorseCost" />
         <meta property="og:locale" content="en_GB" />
@@ -267,7 +259,6 @@ export default function AnnualHorseCostCalculator() {
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Annual Horse Cost Calculator - Calculate UK Horse Ownership Costs" />
 
-        {/* TWITTER */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@HorseCost" />
         <meta name="twitter:title" content="Annual Horse Cost Calculator UK | HorseCost" />
@@ -275,10 +266,8 @@ export default function AnnualHorseCostCalculator() {
         <meta name="twitter:image" content="https://horsecost.co.uk/images/annual-horse-cost-calculator-twitter.jpg" />
         <meta name="twitter:image:alt" content="Annual Horse Cost Calculator" />
 
-        {/* CANONICAL */}
         <link rel="canonical" href="https://horsecost.co.uk/annual-horse-cost-calculator" />
 
-        {/* JSON-LD STRUCTURED DATA */}
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
@@ -1009,15 +998,15 @@ export default function AnnualHorseCostCalculator() {
           <div className="mt-12 pt-8 border-t border-gray-200">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Related Horse Calculators</h2>
             <div className="grid md:grid-cols-3 gap-4">
-              <a href="/livery-cost-calculator" className="bg-white border-2 border-gray-200 rounded-lg p-4 hover:border-amber-400 hover:shadow-md transition">
+              <a href="/calculators/horse-livery" className="bg-white border-2 border-gray-200 rounded-lg p-4 hover:border-amber-400 hover:shadow-md transition">
                 <h3 className="font-bold text-gray-900">Livery Cost Calculator</h3>
                 <p className="text-gray-600 text-sm mt-1">Compare full, part and DIY livery costs</p>
               </a>
-              <a href="/horse-feed-calculator" className="bg-white border-2 border-gray-200 rounded-lg p-4 hover:border-amber-400 hover:shadow-md transition">
+              <a href="/calculators/feed-budget" className="bg-white border-2 border-gray-200 rounded-lg p-4 hover:border-amber-400 hover:shadow-md transition">
                 <h3 className="font-bold text-gray-900">Horse Feed Calculator</h3>
                 <p className="text-gray-600 text-sm mt-1">Calculate daily and monthly feed costs</p>
               </a>
-              <a href="/farrier-cost-calculator" className="bg-white border-2 border-gray-200 rounded-lg p-4 hover:border-amber-400 hover:shadow-md transition">
+              <a href="/calculators/farrier-cost" className="bg-white border-2 border-gray-200 rounded-lg p-4 hover:border-amber-400 hover:shadow-md transition">
                 <h3 className="font-bold text-gray-900">Farrier Cost Calculator</h3>
                 <p className="text-gray-600 text-sm mt-1">Annual shoeing vs barefoot costs</p>
               </a>
