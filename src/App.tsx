@@ -1,9 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import Home from './pages/Home'
 import HorseLiveryCalculatorPage from './pages/HorseLiveryCalculatorPage'
 import AnnualHorseCostCalculatorPage from './pages/AnnualHorseCostCalculatorPage'
-
+import GamePage from './pages/GamePage' // Import the new game page
 function App() {
   return (
     <HelmetProvider>
@@ -19,11 +18,12 @@ function App() {
           <Route path="/annual-horse-cost-calculator" element={<AnnualHorseCostCalculatorPage />} />
           <Route path="/horse-cost-calculator" element={<AnnualHorseCostCalculatorPage />} />
           <Route path="/yearly-horse-cost-calculator" element={<AnnualHorseCostCalculatorPage />} />
+          {/* Horse Care Challenge Game */}
+          <Route path="/horse-care-challenge" element={<GamePage />} />
         </Routes>
       </Router>
     </HelmetProvider>
   )
 }
-
 export default App
 
