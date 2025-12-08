@@ -32,10 +32,33 @@ export default {
           800: '#2a4e30',
           900: '#244029',
           950: '#102314',
+        },
+        // Game-specific colors
+        primary: {
+          DEFAULT: '#FF4081', // Pink rosette
+          dark: '#C60055',
+        },
+        secondary: '#00E676', // Grassy green
+        accent: '#651FFF', // Deep purple/blue
+        background: '#F3E5F5', // Light lavender
+        surface: '#FFFFFF',
+        text: {
+          DEFAULT: '#3E2723', // Dark earthy brown
+          light: '#5D4037',
         }
       },
       fontFamily: {
         serif: ['Georgia', 'Cambria', 'Times New Roman', 'serif'],
+        heading: ['Outfit', 'sans-serif'],
+      },
+      animation: {
+        'pop': 'popIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards',
+      },
+      keyframes: {
+        popIn: {
+          '0%': { transform: 'scale(0.8)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
+        }
       }
     },
   },
