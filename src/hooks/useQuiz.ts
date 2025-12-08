@@ -1,13 +1,17 @@
 import { useState, useEffect, useCallback } from 'react';
 import { questions as questionsData, Question } from '../data/questions';
+
 const QUESTIONS_PER_ROUND = 10;
 const TIME_PER_QUESTION = 15; // seconds
+
 export type GameState = 'start' | 'playing' | 'results';
+
 export interface AnswerRecord {
   questionId: number;
   isCorrect: boolean;
   selectedOption: string | null;
 }
+
 export function useQuiz() {
   const [gameState, setGameState] = useState<GameState>('start');
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
@@ -15,6 +19,7 @@ export function useQuiz() {
   const [timeLeft, setTimeLeft] = useState(TIME_PER_QUESTION);
   const [shuffledQuestions, setShuffledQuestions] = useState<Question[]>([]);
   const [answers, setAnswers] = useState<AnswerRecord[]>([]);
+
   // Initialize game
   const startGame = useCallback(() => {
     // Shuffle questions and pick 10
@@ -26,6 +31,7 @@ export function useQuiz() {
     setGameState('playing');
     setTimeLeft(TIME_PER_QUESTION);
   }, []);
+
   // Handle answer
   const handleAnswer = (selectedOption: string | null) => {
     const currentQuestion = shuffledQuestions[currentQuestionIndex];
@@ -37,6 +43,7 @@ export function useQuiz() {
     
     setScore((prev) => prev + points);
     setAnswers((prev) => [...prev, { questionId: currentQuestion.id, isCorrect, selectedOption }]);
+
     // Move to next question or end game
     if (currentQuestionIndex < shuffledQuestions.length - 1) {
       setTimeout(() => {
@@ -47,9 +54,11 @@ export function useQuiz() {
       setGameState('results');
     }
   };
+
   // Timer logic
   useEffect(() => {
-    let timer: NodeJS.Timeout;
+    let timer: ReturnType<typeof setInterval>;
+    
     if (gameState === 'playing' && timeLeft > 0) {
       timer = setInterval(() => {
         setTimeLeft((prev) => prev - 1);
@@ -57,11 +66,14 @@ export function useQuiz() {
     } else if (timeLeft === 0 && gameState === 'playing') {
       handleAnswer(null); // Timeout counts as incorrect/null answer
     }
+
     return () => clearInterval(timer);
   }, [gameState, timeLeft]); 
+
   const restartGame = () => {
     setGameState('start');
   };
+
   return {
     gameState,
     currentQuestion: shuffledQuestions[currentQuestionIndex],
