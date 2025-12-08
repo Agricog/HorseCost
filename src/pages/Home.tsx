@@ -13,7 +13,8 @@ import {
   Shield,
   Zap,
   Users,
-  Home
+  Home,
+  Gamepad2
 } from 'lucide-react'
 
 export default function HomePage() {
@@ -30,60 +31,76 @@ export default function HomePage() {
 
   const calculators = [
     {
+      title: 'Annual Horse Cost Calculator',
+      description: 'Calculate your complete yearly horse ownership costs. Includes livery, feed, farrier, vet bills, insurance & more with UK 2025 pricing.',
+      icon: Calendar,
+      href: '/annual-horse-cost-calculator',
+      tag: 'Most Popular',
+      color: 'bg-amber-600',
+      featured: true
+    },
+    {
       title: 'Horse Livery Cost Calculator',
       description: 'Calculate sustainable DIY, Part, and Full livery pricing. Factor in variable costs (feed, labor, bedding) and fixed costs (rent, insurance, salaries).',
       icon: Home,
       href: '/calculators/horse-livery',
-      tag: 'Most Popular',
-      color: 'bg-emerald-600'
+      tag: 'For Yards',
+      color: 'bg-emerald-600',
+      featured: false
     },
     {
       title: 'Livery Cost Calculator',
       description: 'Compare DIY, part, and full livery costs. Find the right option for your budget and lifestyle.',
       icon: PoundSterling,
       href: '/calculators/livery-cost',
-      tag: 'Popular',
-      color: 'bg-horse-700'
-    },
-    {
-      title: 'Annual Cost Calculator',
-      description: 'Get a complete breakdown of yearly horse ownership costs including insurance, vets, and equipment.',
-      icon: Calendar,
-      href: '/calculators/annual-cost',
-      tag: 'Essential',
-      color: 'bg-forest-700'
+      tag: 'Coming Soon',
+      color: 'bg-horse-700',
+      featured: false
     },
     {
       title: 'Feed Budget Planner',
       description: 'Calculate hay, hard feed, and supplement costs based on your horse\'s weight and workload.',
       icon: Wheat,
       href: '/calculators/feed-budget',
-      tag: 'Nutrition',
-      color: 'bg-amber-700'
+      tag: 'Coming Soon',
+      color: 'bg-amber-700',
+      featured: false
     },
     {
       title: 'Farrier Cost Calculator',
       description: 'Plan your annual farrier budget for shoes, trims, and remedial work with UK pricing.',
       icon: Scissors,
       href: '/calculators/farrier-cost',
-      tag: 'Hoof Care',
-      color: 'bg-stone-700'
+      tag: 'Coming Soon',
+      color: 'bg-stone-700',
+      featured: false
     },
     {
       title: 'Competition Budget',
       description: 'Calculate entry fees, travel costs, and show expenses for your competition season.',
       icon: Trophy,
       href: '/calculators/competition-budget',
-      tag: 'Competing',
-      color: 'bg-rose-700'
+      tag: 'Coming Soon',
+      color: 'bg-rose-700',
+      featured: false
     },
     {
       title: 'Weight Calculator',
       description: 'Estimate your horse\'s weight using the weigh tape method for accurate feeding and medication.',
       icon: Scale,
       href: '/calculators/weight-calculator',
-      tag: 'Health',
-      color: 'bg-sky-700'
+      tag: 'Coming Soon',
+      color: 'bg-sky-700',
+      featured: false
+    },
+    {
+      title: 'Horse Care Challenge',
+      description: 'Test your horse knowledge! Fun quiz game for kids and adults. Compete with friends and earn badges.',
+      icon: Gamepad2,
+      href: '/horse-care-challenge',
+      tag: 'Game - Coming Soon',
+      color: 'bg-purple-600',
+      featured: false
     }
   ]
 
@@ -158,7 +175,7 @@ export default function HomePage() {
             </div>
             
             <h1 className="animate-fade-up-delay-1 text-4xl sm:text-5xl lg:text-6xl font-serif font-bold text-horse-950 leading-tight mb-6">
-              Plan Your Horse Business Costs
+              Plan Your Horse Costs
               <br />
               <span className="text-gradient">With Professional Precision</span>
             </h1>
@@ -168,11 +185,11 @@ export default function HomePage() {
             </p>
             
             <div className="animate-fade-up-delay-3 flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="#calculators" className="btn-primary text-base px-8 py-4">
-                Explore Calculators
+              <a href="/annual-horse-cost-calculator" className="btn-primary text-base px-8 py-4">
+                Calculate Annual Costs
                 <ArrowRight className="w-5 h-5 ml-2" />
               </a>
-              <a href="#features" className="btn-secondary text-base px-8 py-4">Why Choose Us</a>
+              <a href="#calculators" className="btn-secondary text-base px-8 py-4">View All Calculators</a>
             </div>
 
             <div className="mt-16 pt-8 border-t border-horse-200">
@@ -184,7 +201,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-2">
                   <Calculator className="w-5 h-5" />
-                  <span className="font-medium">7 Professional Calculators</span>
+                  <span className="font-medium">8 Professional Tools</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Star className="w-5 h-5 fill-current" />
@@ -200,23 +217,61 @@ export default function HomePage() {
             <div className="text-center mb-14">
               <h2 className="section-heading mb-4">Professional Horse Cost Calculators</h2>
               <p className="section-subheading mx-auto">
-                Seven powerful, free calculators designed specifically for UK horse owners. 
+                Powerful, free calculators designed specifically for UK horse owners. 
                 Calculate livery, farrier, feed, competition costs and more with precision.
               </p>
             </div>
 
+            {/* Featured Calculator - Annual Horse Cost */}
+            <div className="mb-8">
+              <a 
+                href="/annual-horse-cost-calculator"
+                className="block bg-gradient-to-r from-amber-500 to-orange-500 rounded-2xl p-8 text-white hover:from-amber-600 hover:to-orange-600 transition-all duration-300 shadow-lg hover:shadow-xl"
+              >
+                <div className="flex flex-col md:flex-row md:items-center gap-6">
+                  <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <Calendar className="w-8 h-8" />
+                  </div>
+                  <div className="flex-grow">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        ⭐ MOST POPULAR
+                      </span>
+                      <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        COMPLETE BUDGET
+                      </span>
+                    </div>
+                    <h3 className="text-2xl md:text-3xl font-bold mb-2">Annual Horse Cost Calculator</h3>
+                    <p className="text-amber-100 text-lg max-w-2xl">
+                      Calculate your complete yearly horse ownership costs. Includes livery, feed, farrier, 
+                      vet bills, insurance, tack & equipment with UK 2025 pricing. The only calculator you need.
+                    </p>
+                  </div>
+                  <div className="flex items-center gap-2 text-lg font-semibold whitespace-nowrap">
+                    Try Now
+                    <ArrowRight className="w-6 h-6" />
+                  </div>
+                </div>
+              </a>
+            </div>
+
+            {/* Other Calculators Grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {calculators.map((calc) => (
+              {calculators.filter(calc => !calc.featured).map((calc) => (
                 <a 
                   key={calc.title}
                   href={calc.href}
-                  className="calculator-card p-6 flex flex-col group"
+                  className={`calculator-card p-6 flex flex-col group ${calc.tag.includes('Coming Soon') ? 'opacity-75' : ''}`}
                 >
                   <div className="flex items-start justify-between mb-4">
                     <div className={`w-12 h-12 ${calc.color} rounded-xl flex items-center justify-center text-white shadow-lg`}>
                       <calc.icon className="w-6 h-6" />
                     </div>
-                    <span className="text-xs font-semibold text-horse-500 bg-horse-100 px-3 py-1 rounded-full">
+                    <span className={`text-xs font-semibold px-3 py-1 rounded-full ${
+                      calc.tag.includes('Coming Soon') 
+                        ? 'text-gray-500 bg-gray-100' 
+                        : 'text-horse-500 bg-horse-100'
+                    }`}>
                       {calc.tag}
                     </span>
                   </div>
@@ -230,7 +285,7 @@ export default function HomePage() {
                   </p>
                   
                   <div className="flex items-center text-horse-700 font-semibold text-sm group-hover:text-horse-900 transition">
-                    Try Now
+                    {calc.tag.includes('Coming Soon') ? 'Coming Soon' : 'Try Now'}
                     <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                   </div>
                 </a>
@@ -312,17 +367,17 @@ export default function HomePage() {
         <section className="py-20 px-4 sm:px-6 lg:px-8 bg-horse-900">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-6">
-              Ready to Take Control of Your Horse Business Finances?
+              Ready to Take Control of Your Horse Costs?
             </h2>
             <p className="text-lg text-horse-300 mb-10 max-w-2xl mx-auto">
               Start planning your equestrian budget today with our free, professional calculators. 
               No credit card, no sign-up required. Just instant, accurate results.
             </p>
             <a 
-              href="#calculators" 
+              href="/annual-horse-cost-calculator" 
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-horse-900 font-semibold rounded-lg hover:bg-horse-100 transition-all duration-200"
             >
-              Get Started Now
+              Calculate Your Annual Costs
               <ArrowRight className="w-5 h-5 ml-2" />
             </a>
           </div>
@@ -348,9 +403,9 @@ export default function HomePage() {
             <nav>
               <h4 className="font-semibold text-white mb-4">Calculators</h4>
               <ul className="space-y-2 text-sm">
+                <li><a href="/annual-horse-cost-calculator" className="hover:text-white transition">Annual Cost Calculator</a></li>
                 <li><a href="/calculators/horse-livery" className="hover:text-white transition">Horse Livery Calculator</a></li>
                 <li><a href="/calculators/livery-cost" className="hover:text-white transition">Livery Cost Calculator</a></li>
-                <li><a href="/calculators/annual-cost" className="hover:text-white transition">Annual Cost Calculator</a></li>
                 <li><a href="/calculators/feed-budget" className="hover:text-white transition">Feed Budget Planner</a></li>
                 <li><a href="/calculators/farrier-cost" className="hover:text-white transition">Farrier Cost Calculator</a></li>
               </ul>
