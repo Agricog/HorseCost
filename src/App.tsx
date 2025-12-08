@@ -1,8 +1,9 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import { HelmetProvider } from 'react-helmet-async'
 import Home from './pages/Home'
 import HorseLiveryCalculatorPage from './pages/HorseLiveryCalculatorPage'
 import AnnualHorseCostCalculatorPage from './pages/AnnualHorseCostCalculatorPage'
-import GamePage from './pages/GamePage' // Import the new game page
+import GamePage from './pages/GamePage'
 function App() {
   return (
     <HelmetProvider>
