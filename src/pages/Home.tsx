@@ -1,5 +1,4 @@
 import { Helmet } from 'react-helmet-async'
-import { Shield, Stethoscope } from 'lucide-react'
 import { 
   Calculator, 
   PoundSterling, 
@@ -16,7 +15,8 @@ import {
   Users,
   Home,
   Gamepad2,
-  Sparkles
+  Sparkles,
+  Stethoscope
 } from 'lucide-react'
 
 export default function HomePage() {
