@@ -8,6 +8,8 @@ import FarrierCostCalculatorPage from './pages/FarrierCostCalculatorPage'
 import HorseWeightCalculatorPage from './pages/HorseWeightCalculatorPage'
 import CompetitionBudgetCalculatorPage from './pages/CompetitionBudgetCalculatorPage'
 import GamePage from './pages/GamePage'
+import HorseInsuranceCalculatorPage from './pages/HorseInsuranceCalculatorPage'
+import VetCostEstimatorPage from './pages/VetCostEstimatorPage'
 
 function App() {
   return (
@@ -15,6 +17,16 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+          
+          {/* Horse Insurance Calculator */}
+          <Route path="/horse-insurance-calculator" element={<HorseInsuranceCalculatorPage />} />
+          <Route path="/insurance-calculator" element={<HorseInsuranceCalculatorPage />} />
+          <Route path="/calculators/insurance" element={<HorseInsuranceCalculatorPage />} />
+
+          {/* Vet Cost Estimator */}
+          <Route path="/vet-cost-estimator" element={<VetCostEstimatorPage />} />
+          <Route path="/vet-calculator" element={<VetCostEstimatorPage />} />
+          <Route path="/calculators/vet-costs" element={<VetCostEstimatorPage />} />
           
           {/* Horse Livery Calculator */}
           <Route path="/calculators/horse-livery" element={<HorseLiveryCalculatorPage />} />
