@@ -7,9 +7,7 @@ import {
   ChevronDown,
   ChevronUp,
   PoundSterling,
-  CheckCircle2,
   Calendar,
-  Star,
   Leaf,
   Truck
 } from 'lucide-react'
