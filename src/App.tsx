@@ -10,6 +10,9 @@ import CompetitionBudgetCalculatorPage from './pages/CompetitionBudgetCalculator
 import GamePage from './pages/GamePage'
 import HorseInsuranceCalculatorPage from './pages/HorseInsuranceCalculatorPage'
 import VetCostEstimatorPage from './pages/VetCostEstimatorPage'
+import TrailerCostCalculatorPage from './pages/TrailerCostCalculatorPage'
+import RidingLessonCalculatorPage from './pages/RidingLessonCalculatorPage'
+import FirstHorseCalculatorPage from './pages/FirstHorseCalculatorPage'
 
 function App() {
   return (
@@ -61,6 +64,21 @@ function App() {
           <Route path="/horse-care-challenge" element={<GamePage />} />
           <Route path="/quiz" element={<GamePage />} />
           <Route path="/game" element={<GamePage />} />
+
+          {/* Trailer Running Cost Calculator */}
+<Route path="/trailer-cost-calculator" element={<TrailerCostCalculatorPage />} />
+<Route path="/horsebox-cost-calculator" element={<TrailerCostCalculatorPage />} />
+<Route path="/calculators/trailer-costs" element={<TrailerCostCalculatorPage />} />
+
+{/* Riding Lesson Calculator */}
+<Route path="/riding-lesson-calculator" element={<RidingLessonCalculatorPage />} />
+<Route path="/lesson-cost-calculator" element={<RidingLessonCalculatorPage />} />
+<Route path="/calculators/lessons" element={<RidingLessonCalculatorPage />} />
+
+{/* First Horse Calculator */}
+<Route path="/first-horse-calculator" element={<FirstHorseCalculatorPage />} />
+<Route path="/buying-first-horse" element={<FirstHorseCalculatorPage />} />
+<Route path="/calculators/first-horse" element={<FirstHorseCalculatorPage />} />
         </Routes>
       </Router>
     </HelmetProvider>
