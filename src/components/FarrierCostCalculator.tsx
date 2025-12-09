@@ -10,7 +10,6 @@ import {
   PieChart,
   Calendar,
   CheckCircle2,
-  XCircle
 } from 'lucide-react'
 
 export default function FarrierCostCalculator() {
