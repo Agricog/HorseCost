@@ -8,7 +8,6 @@ import {
   ChevronUp,
   PoundSterling,
   CheckCircle2,
-  Clock,
   Calendar,
   Star,
   Target
