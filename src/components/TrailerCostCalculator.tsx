@@ -5,9 +5,7 @@ import {
   Calculator,
   AlertCircle,
   ChevronDown,
-  ChevronUp,
   PoundSterling,
-  CheckCircle2,
   Fuel,
   Shield,
   Wrench,
@@ -20,14 +18,12 @@ export default function TrailerCostCalculator() {
   const [trailerValue, setTrailerValue] = useState('')
   const [tripsPerMonth, setTripsPerMonth] = useState('4')
   const [avgDistance, setAvgDistance] = useState('30')
-  const [fuelCostPerMile, setFuelCostPerMile] = useState('0.25')
   const [towingMpg, setTowingMpg] = useState('20')
   const [includeInsurance, setIncludeInsurance] = useState(true)
   const [includeMOT, setIncludeMOT] = useState(true)
   const [includeServicing, setIncludeServicing] = useState(true)
   const [storageType, setStorageType] = useState('home')
   const [storageCost, setStorageCost] = useState('')
-  const [showAdvanced, setShowAdvanced] = useState(false)
   const [result, setResult] = useState<any>(null)
 
   const vehicleTypes = [
