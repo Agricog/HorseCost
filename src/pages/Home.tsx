@@ -48,6 +48,24 @@ export default function HomePage() {
       available: true
     },
     {
+      title: 'Horse Weight Calculator',
+      description: 'Estimate your horse\'s weight from measurements for accurate feeding and wormer dosing.',
+      icon: Scale,
+      href: '/horse-weight-calculator',
+      tag: 'Health',
+      color: 'from-sky-500 to-blue-600',
+      available: true
+    },
+    {
+      title: 'Competition Budget',
+      description: 'Calculate entry fees, transport, membership and show expenses for your season.',
+      icon: Trophy,
+      href: '/competition-budget-calculator',
+      tag: 'Competing',
+      color: 'from-rose-500 to-red-600',
+      available: true
+    },
+    {
       title: 'Horse Livery Calculator',
       description: 'Calculate sustainable DIY, Part, and Full livery pricing for yard owners.',
       icon: Home,
@@ -55,24 +73,6 @@ export default function HomePage() {
       tag: 'For Yards',
       color: 'from-emerald-500 to-green-600',
       available: true
-    },
-    {
-      title: 'Competition Budget',
-      description: 'Calculate entry fees, travel costs, and show expenses for the season.',
-      icon: Trophy,
-      href: '/calculators/competition-budget',
-      tag: 'Coming Soon',
-      color: 'from-rose-500 to-red-600',
-      available: false
-    },
-    {
-      title: 'Weight Calculator',
-      description: 'Estimate your horse\'s weight for accurate feeding and medication.',
-      icon: Scale,
-      href: '/calculators/weight-calculator',
-      tag: 'Coming Soon',
-      color: 'from-sky-500 to-blue-600',
-      available: false
     },
     {
       title: 'Livery Comparison',
@@ -326,7 +326,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-2 text-gray-600">
                   <Calculator className="w-5 h-5 text-amber-600" />
-                  <span className="font-semibold">4 Calculators</span>
+                  <span className="font-semibold">6 Calculators</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-600">
                   <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
@@ -629,7 +629,8 @@ export default function HomePage() {
                   <li><a href="/annual-horse-cost-calculator" className="hover:text-white transition">Annual Cost Calculator</a></li>
                   <li><a href="/horse-feed-calculator" className="hover:text-white transition">Feed Calculator</a></li>
                   <li><a href="/farrier-cost-calculator" className="hover:text-white transition">Farrier Calculator</a></li>
-                  <li><a href="/calculators/horse-livery" className="hover:text-white transition">Livery Calculator</a></li>
+                  <li><a href="/horse-weight-calculator" className="hover:text-white transition">Weight Calculator</a></li>
+                  <li><a href="/competition-budget-calculator" className="hover:text-white transition">Competition Budget</a></li>
                   <li><a href="/horse-care-challenge" className="hover:text-white transition">Horse Quiz Game</a></li>
                 </ul>
               </div>
