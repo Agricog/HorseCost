@@ -437,19 +437,6 @@ export default function RidingLessonCalculator() {
                 </div>
 
                 {/* Advanced Options */}
-                <div className="border-t pt-4">
-                  <button
-                    onClick={() => setShowAdvanced(!showAdvanced)}
-                    className="flex items-center gap-2 text-violet-600 font-medium"
-                  >
-                    {showAdvanced ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-                    Additional Costs
-                  </button>
-
-                  {showAdvanced && (
-                    <div className="mt-4 space-y-4">
-                      {/* Rider Level */}
-                      <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Your Level</label>
                         <select
                           value={riderLevel}
