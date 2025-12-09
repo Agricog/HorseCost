@@ -22,7 +22,7 @@ export default function HomePage() {
   const calculators = [
     {
       title: 'Annual Horse Cost Calculator',
-      description: 'The complete UK horse ownership budget calculator. Calculate livery, feed, farrier, vet bills, insurance, tack & equipment costs. Know exactly what your horse costs per year.',
+      description: 'The complete UK horse ownership budget calculator. Calculate livery, feed, farrier, vet bills, insurance, tack & equipment costs.',
       icon: Calendar,
       href: '/annual-horse-cost-calculator',
       tag: 'Most Popular',
@@ -30,31 +30,31 @@ export default function HomePage() {
       available: true
     },
     {
-      title: 'Horse Livery Cost Calculator',
+      title: 'Horse Feed Calculator',
+      description: 'Calculate daily hay requirements and monthly feed costs based on your horse\'s weight and workload.',
+      icon: Wheat,
+      href: '/horse-feed-calculator',
+      tag: 'Nutrition',
+      color: 'from-green-500 to-emerald-600',
+      available: true
+    },
+    {
+      title: 'Farrier Cost Calculator',
+      description: 'Plan your annual farrier budget. Compare barefoot vs shod costs with UK 2025 pricing.',
+      icon: Scissors,
+      href: '/farrier-cost-calculator',
+      tag: 'Hoof Care',
+      color: 'from-stone-500 to-stone-600',
+      available: true
+    },
+    {
+      title: 'Horse Livery Calculator',
       description: 'Calculate sustainable DIY, Part, and Full livery pricing for yard owners.',
       icon: Home,
       href: '/calculators/horse-livery',
       tag: 'For Yards',
       color: 'from-emerald-500 to-green-600',
       available: true
-    },
-    {
-      title: 'Feed Budget Planner',
-      description: 'Calculate hay, hard feed, and supplement costs based on weight and workload.',
-      icon: Wheat,
-      href: '/calculators/feed-budget',
-      tag: 'Coming Soon',
-      color: 'from-amber-500 to-yellow-600',
-      available: false
-    },
-    {
-      title: 'Farrier Cost Calculator',
-      description: 'Plan your annual farrier budget for shoes, trims, and remedial work.',
-      icon: Scissors,
-      href: '/calculators/farrier-cost',
-      tag: 'Coming Soon',
-      color: 'from-stone-500 to-stone-600',
-      available: false
     },
     {
       title: 'Competition Budget',
@@ -326,7 +326,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-2 text-gray-600">
                   <Calculator className="w-5 h-5 text-amber-600" />
-                  <span className="font-semibold">7 Calculators</span>
+                  <span className="font-semibold">4 Calculators</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-600">
                   <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
@@ -336,8 +336,61 @@ export default function HomePage() {
             </div>
           </section>
 
+          {/* Featured: Annual Cost Calculator */}
+          <section className="py-12 px-4 bg-white">
+            <div className="max-w-6xl mx-auto">
+              <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
+                {/* Decorative circles */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+                
+                <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8">
+                  <div className="flex-1 text-white">
+                    <div className="flex items-center gap-2 mb-4">
+                      <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        ⭐ MOST POPULAR
+                      </span>
+                      <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        2025 PRICING
+                      </span>
+                    </div>
+                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Annual Horse Cost Calculator</h2>
+                    <p className="text-amber-100 text-lg mb-6 max-w-xl">
+                      The complete UK horse ownership calculator. Get a full breakdown of livery, feed, 
+                      farrier, vet bills, insurance and more. Know exactly what owning a horse costs per year.
+                    </p>
+                    <ul className="space-y-2 mb-8">
+                      <li className="flex items-center gap-2 text-amber-100">
+                        <CheckCircle2 className="w-5 h-5 text-white" />
+                        5 livery type presets with UK averages
+                      </li>
+                      <li className="flex items-center gap-2 text-amber-100">
+                        <CheckCircle2 className="w-5 h-5 text-white" />
+                        All professional services included
+                      </li>
+                      <li className="flex items-center gap-2 text-amber-100">
+                        <CheckCircle2 className="w-5 h-5 text-white" />
+                        Compare your costs to UK averages
+                      </li>
+                    </ul>
+                    <a 
+                      href="/annual-horse-cost-calculator"
+                      className="inline-flex items-center gap-2 bg-white text-amber-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-50 transition shadow-lg"
+                    >
+                      Calculate Your Costs
+                      <ArrowRight className="w-5 h-5" />
+                    </a>
+                  </div>
+                  <div className="w-48 h-48 md:w-64 md:h-64 bg-white/20 rounded-3xl flex items-center justify-center">
+                    <Calendar className="w-20 h-20 md:w-28 md:h-28 text-white" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
           {/* Horse Care Challenge Game */}
-          <section className="py-16 px-4 bg-gradient-to-br from-purple-50 via-indigo-50 to-violet-50">
+          <section className="py-12 px-4 bg-gradient-to-br from-purple-50 via-indigo-50 to-violet-50">
             <div className="max-w-6xl mx-auto">
               <div className="bg-gradient-to-r from-purple-600 via-indigo-600 to-violet-600 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
                 {/* Decorative sparkles */}
@@ -397,7 +450,7 @@ export default function HomePage() {
           <section id="calculators" className="py-16 px-4 bg-white">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">Horse Cost Calculators</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">All Horse Cost Calculators</h2>
                 <p className="text-gray-600 max-w-2xl mx-auto">
                   Professional calculators for every aspect of UK horse ownership. Free, fast, and accurate.
                 </p>
@@ -413,6 +466,7 @@ export default function HomePage() {
                         ? 'border-gray-200 hover:border-amber-400 hover:shadow-lg cursor-pointer' 
                         : 'border-gray-100 opacity-60 cursor-not-allowed'
                     }`}
+                    onClick={(e) => !calc.available && e.preventDefault()}
                   >
                     <div className="flex items-start justify-between mb-4">
                       <div className={`w-12 h-12 bg-gradient-to-br ${calc.color} rounded-xl flex items-center justify-center text-white shadow-lg`}>
@@ -513,10 +567,10 @@ export default function HomePage() {
 
               <div className="grid gap-6">
                 {faqs.map((faq, index) => (
-                  <details key={index} className="bg-white rounded-xl p-6 border border-gray-200 cursor-pointer">
-                    <summary className="font-bold text-gray-900 flex items-center justify-between">
+                  <details key={index} className="bg-white rounded-xl p-6 border border-gray-200 cursor-pointer group">
+                    <summary className="font-bold text-gray-900 flex items-center justify-between list-none">
                       {faq.q}
-                      <span className="ml-4 text-amber-600">+</span>
+                      <span className="ml-4 text-amber-600 group-open:rotate-45 transition-transform">+</span>
                     </summary>
                     <p className="text-gray-600 mt-4 leading-relaxed">{faq.a}</p>
                   </details>
@@ -573,6 +627,8 @@ export default function HomePage() {
                 <h4 className="font-semibold text-white mb-4">Calculators</h4>
                 <ul className="space-y-2 text-sm">
                   <li><a href="/annual-horse-cost-calculator" className="hover:text-white transition">Annual Cost Calculator</a></li>
+                  <li><a href="/horse-feed-calculator" className="hover:text-white transition">Feed Calculator</a></li>
+                  <li><a href="/farrier-cost-calculator" className="hover:text-white transition">Farrier Calculator</a></li>
                   <li><a href="/calculators/horse-livery" className="hover:text-white transition">Livery Calculator</a></li>
                   <li><a href="/horse-care-challenge" className="hover:text-white transition">Horse Quiz Game</a></li>
                 </ul>
