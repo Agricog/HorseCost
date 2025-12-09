@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import { Truck, GraduationCap, Heart } from 'lucide-react'
-import { ShoppingBag, Users, Layers } from 'lucide-react'
+import { ShoppingBag, Money, Layers } from 'lucide-react'
 import { 
   Calculator, 
   PoundSterling, 
@@ -36,7 +36,7 @@ export default function HomePage() {
   title: 'Horse Loan Calculator',
   description: 'Compare loaning vs buying costs',
   href: '/horse-loan-calculator',
-  icon: Users,
+  icon: Money,
   color: 'emerald',
   tag: 'Options',
   available: true
