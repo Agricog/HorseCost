@@ -8,10 +8,9 @@ import {
   ChevronUp,
   PoundSterling,
   CheckCircle2,
-  Info,
   Heart,
   Activity,
-  Award
+  Calendar
 } from 'lucide-react'
 
 export default function HorseInsuranceCalculator() {
