@@ -8,6 +8,7 @@ import {
   ChevronUp,
   PoundSterling,
   CheckCircle2,
+  Clock,
   Calendar,
   Star,
   Target
@@ -24,6 +25,7 @@ export default function RidingLessonCalculator() {
   const [includeGear, setIncludeGear] = useState(false)
   const [riderLevel, setRiderLevel] = useState('beginner')
   const [region, setRegion] = useState('average')
+  const [showAdvanced, setShowAdvanced] = useState(false)
   const [result, setResult] = useState<any>(null)
 
   const lessonTypes = [
@@ -38,8 +40,8 @@ export default function RidingLessonCalculator() {
     { id: 'stage1', name: 'BHS Stage 1', cost: 120, prepLessons: 4 },
     { id: 'stage2', name: 'BHS Stage 2', cost: 140, prepLessons: 6 },
     { id: 'stage3', name: 'BHS Stage 3', cost: 180, prepLessons: 8 },
-    { id: 'galop1-4', name: 'Pony Club Tests (1-4)', cost: 25, prepLessons: 2 },
-    { id: 'galop5-7', name: 'Pony Club Tests (5-7)', cost: 35, prepLessons: 4 }
+    { id: 'galop1-4', name: 'Pony Club Tests 1-4', cost: 25, prepLessons: 2 },
+    { id: 'galop5-7', name: 'Pony Club Tests 5-7', cost: 35, prepLessons: 4 }
   ]
 
   const regionMultipliers: Record<string, number> = {
@@ -62,24 +64,20 @@ export default function RidingLessonCalculator() {
     const lessonsWeek = parseFloat(lessonsPerWeek)
     const weeks = parseInt(weeksPerYear)
 
-    // Get base lesson cost
     const lesson = lessonTypes.find(l => l.id === lessonType)
     if (!lesson) return
 
     let lessonCost = duration === 30 ? lesson.baseCost30 : lesson.baseCost60
     
-    // Apply custom cost if provided
     if (customCost && parseFloat(customCost) > 0) {
       lessonCost = parseFloat(customCost)
     } else {
       lessonCost *= regionFactor
     }
 
-    // Calculate annual lessons
     const annualLessons = lessonsWeek * weeks
     const annualLessonCost = annualLessons * lessonCost
 
-    // Exam costs
     let examCost = 0
     let examPrepCost = 0
     if (includeExams) {
@@ -90,23 +88,19 @@ export default function RidingLessonCalculator() {
       }
     }
 
-    // Gear costs (first year only)
     let gearCost = 0
     if (includeGear) {
       const gear = gearCosts[riderLevel as keyof typeof gearCosts]
       gearCost = gear.hat + gear.boots + gear.jodhpurs + gear.bodyProtector
     }
 
-    // Totals
     const totalFirstYear = annualLessonCost + examCost + examPrepCost + gearCost
     const totalOngoing = annualLessonCost + examCost + examPrepCost
     const monthlyAverage = totalOngoing / 12
     const costPerLesson = annualLessonCost / annualLessons
 
-    // UK averages
-    const ukAverageAnnual = 2400 // Based on weekly group lessons
+    const ukAverageAnnual = 2400
 
-    // Progress estimate
     const hoursPerYear = annualLessons * (duration / 60)
 
     setResult({
@@ -171,14 +165,14 @@ export default function RidingLessonCalculator() {
     },
     {
       q: 'What are BHS exams and are they worth doing?',
-      a: 'BHS (British Horse Society) exams assess riding and horse care skills at progressive stages. They\'re valuable for career riders, demonstrate competence to insurers, and provide structured learning goals. Stage 1-3 are achievable for recreational riders.'
+      a: 'BHS (British Horse Society) exams assess riding and horse care skills at progressive stages. They are valuable for career riders, demonstrate competence to insurers, and provide structured learning goals. Stage 1-3 are achievable for recreational riders.'
     },
     {
       q: 'Can adults learn to ride from scratch?',
       a: 'Absolutely! Many adults learn to ride successfully. You may progress differently to children (more cautious but more analytical), but adult learners often become excellent riders. Look for schools experienced with adult beginners and consider private lessons initially.'
     },
     {
-      q: 'What\'s the difference between a riding school and freelance instructor?',
+      q: 'What is the difference between a riding school and freelance instructor?',
       a: 'Riding schools provide horses, facilities, and multiple instructors. Freelance instructors come to your yard if you have access to a horse. Schools suit beginners; freelancers suit horse owners wanting tuition on their own horse.'
     },
     {
@@ -257,7 +251,6 @@ export default function RidingLessonCalculator() {
       </Helmet>
 
       <div className="min-h-screen bg-gray-50">
-        {/* Back Link */}
         <div className="bg-white border-b">
           <div className="max-w-5xl mx-auto px-4 py-3">
             <a href="/" className="text-violet-600 hover:text-violet-700 font-medium flex items-center gap-2">
@@ -266,7 +259,6 @@ export default function RidingLessonCalculator() {
           </div>
         </div>
 
-        {/* Header */}
         <div className="bg-gradient-to-r from-violet-600 to-purple-600 text-white py-12">
           <div className="max-w-5xl mx-auto px-4">
             <div className="flex items-center gap-4 mb-4">
@@ -287,12 +279,9 @@ export default function RidingLessonCalculator() {
         </div>
 
         <div className="max-w-5xl mx-auto px-4 py-8">
-          {/* Calculator Card */}
           <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
             <div className="grid md:grid-cols-2 gap-8">
-              {/* Left Column - Inputs */}
               <div className="space-y-6">
-                {/* Lesson Type */}
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-violet-100 rounded-full flex items-center justify-center text-violet-600 font-bold text-sm">1</span>
@@ -325,7 +314,6 @@ export default function RidingLessonCalculator() {
                   </div>
                 </div>
 
-                {/* Lesson Duration */}
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-violet-100 rounded-full flex items-center justify-center text-violet-600 font-bold text-sm">2</span>
@@ -351,7 +339,6 @@ export default function RidingLessonCalculator() {
                   </div>
                 </div>
 
-                {/* Frequency */}
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-violet-100 rounded-full flex items-center justify-center text-violet-600 font-bold text-sm">3</span>
@@ -374,7 +361,6 @@ export default function RidingLessonCalculator() {
                   </div>
                 </div>
 
-                {/* Weeks per Year */}
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-violet-100 rounded-full flex items-center justify-center text-violet-600 font-bold text-sm">4</span>
@@ -400,7 +386,6 @@ export default function RidingLessonCalculator() {
                   </p>
                 </div>
 
-                {/* Region */}
                 <div>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-violet-100 rounded-full flex items-center justify-center text-violet-600 font-bold text-sm">5</span>
@@ -419,7 +404,6 @@ export default function RidingLessonCalculator() {
                   </select>
                 </div>
 
-                {/* Custom Cost */}
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
                     Or enter your actual lesson cost (£)
@@ -436,7 +420,18 @@ export default function RidingLessonCalculator() {
                   </div>
                 </div>
 
-                {/* Advanced Options */}
+                <div className="border-t pt-4">
+                  <button
+                    onClick={() => setShowAdvanced(!showAdvanced)}
+                    className="flex items-center gap-2 text-violet-600 font-medium"
+                  >
+                    {showAdvanced ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
+                    Additional Costs
+                  </button>
+
+                  {showAdvanced && (
+                    <div className="mt-4 space-y-4">
+                      <div>
                         <label className="block text-sm font-medium text-gray-700 mb-2">Your Level</label>
                         <select
                           value={riderLevel}
@@ -449,7 +444,6 @@ export default function RidingLessonCalculator() {
                         </select>
                       </div>
 
-                      {/* Exams */}
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input
                           type="checkbox"
@@ -477,7 +471,6 @@ export default function RidingLessonCalculator() {
                         </div>
                       )}
 
-                      {/* Gear */}
                       <label className="flex items-center gap-3 cursor-pointer">
                         <input
                           type="checkbox"
@@ -495,7 +488,6 @@ export default function RidingLessonCalculator() {
                 </div>
               </div>
 
-              {/* Right Column - Results */}
               <div>
                 <button
                   onClick={calculate}
@@ -507,7 +499,6 @@ export default function RidingLessonCalculator() {
 
                 {result && (
                   <div className="space-y-4">
-                    {/* Main Result */}
                     <div className="bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl p-6 text-white">
                       <p className="text-violet-100 text-sm mb-1">Annual Lesson Budget</p>
                       <p className="text-4xl font-bold">£{result.totalOngoing}</p>
@@ -524,7 +515,6 @@ export default function RidingLessonCalculator() {
                       </div>
                     </div>
 
-                    {/* Lessons Summary */}
                     <div className="bg-violet-50 rounded-xl p-4">
                       <div className="grid grid-cols-2 gap-4">
                         <div className="text-center">
@@ -538,7 +528,6 @@ export default function RidingLessonCalculator() {
                       </div>
                     </div>
 
-                    {/* Breakdown */}
                     <div className="bg-gray-50 rounded-xl p-4">
                       <h3 className="font-semibold text-gray-900 mb-3">Cost Breakdown</h3>
                       <div className="space-y-2 text-sm">
@@ -577,7 +566,6 @@ export default function RidingLessonCalculator() {
                       </div>
                     </div>
 
-                    {/* Progress Estimate */}
                     <div className="bg-green-50 border border-green-200 rounded-xl p-4">
                       <h3 className="font-semibold text-green-900 mb-2 flex items-center gap-2">
                         <Target className="w-5 h-5" />
@@ -588,7 +576,6 @@ export default function RidingLessonCalculator() {
                       </p>
                     </div>
 
-                    {/* UK Comparison */}
                     <div className="bg-white border-2 border-gray-200 rounded-xl p-4">
                       <h3 className="font-semibold text-gray-900 mb-2">UK Average Comparison</h3>
                       <div className="flex items-center justify-between text-sm">
@@ -617,7 +604,6 @@ export default function RidingLessonCalculator() {
             </div>
           </div>
 
-          {/* Info Box */}
           <div className="bg-violet-50 border-l-4 border-violet-500 rounded-r-xl p-6 mb-8">
             <div className="flex gap-4">
               <AlertCircle className="w-6 h-6 text-violet-600 flex-shrink-0 mt-1" />
@@ -634,7 +620,6 @@ export default function RidingLessonCalculator() {
             </div>
           </div>
 
-          {/* UK Pricing Table */}
           <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">UK Riding Lesson Prices 2025</h2>
             <div className="overflow-x-auto">
@@ -686,7 +671,6 @@ export default function RidingLessonCalculator() {
             </p>
           </div>
 
-          {/* FAQ Section */}
           <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
             <div className="space-y-4">
@@ -704,7 +688,6 @@ export default function RidingLessonCalculator() {
             </div>
           </div>
 
-          {/* Related Calculators */}
           <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Calculators</h2>
             <div className="grid md:grid-cols-3 gap-4">
@@ -726,7 +709,6 @@ export default function RidingLessonCalculator() {
             </div>
           </div>
 
-          {/* CTA */}
           <div className="bg-gradient-to-r from-violet-600 to-purple-600 rounded-2xl p-8 text-center text-white">
             <h2 className="text-2xl font-bold mb-4">Ready to Own Your Own Horse?</h2>
             <p className="text-violet-100 mb-6 max-w-xl mx-auto">
