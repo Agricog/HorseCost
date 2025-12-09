@@ -18,7 +18,8 @@ import {
   Home,
   Gamepad2,
   Sparkles,
-  Stethoscope
+  Stethoscope,
+  Money
 } from 'lucide-react'
 
 export default function HomePage() {
