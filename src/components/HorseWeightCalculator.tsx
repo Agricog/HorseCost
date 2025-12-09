@@ -6,7 +6,6 @@ import {
   AlertCircle,
   ChevronDown,
   ChevronUp,
-  TrendingUp,
   Ruler,
   Heart,
   Activity,
