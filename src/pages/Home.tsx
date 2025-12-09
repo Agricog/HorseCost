@@ -336,55 +336,57 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* Featured: Annual Cost Calculator */}
-          <section className="py-12 px-4 bg-white">
+          {/* Horse Calculators Grid */}
+          <section id="calculators" className="py-16 px-4 bg-white">
             <div className="max-w-6xl mx-auto">
-              <div className="bg-gradient-to-r from-amber-500 via-orange-500 to-amber-600 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-                {/* Decorative circles */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full translate-y-1/2 -translate-x-1/2" />
-                
-                <div className="relative z-10 flex flex-col lg:flex-row items-center gap-8">
-                  <div className="flex-1 text-white">
-                    <div className="flex items-center gap-2 mb-4">
-                      <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
-                        ⭐ MOST POPULAR
-                      </span>
-                      <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
-                        2025 PRICING
+              <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Horse Cost Calculators</h2>
+                <p className="text-gray-600 max-w-2xl mx-auto">
+                  Professional calculators for every aspect of UK horse ownership. Free, fast, and accurate.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {calculators.map((calc) => (
+                  <a 
+                    key={calc.title}
+                    href={calc.available ? calc.href : '#'}
+                    className={`bg-white border-2 rounded-2xl p-6 transition group ${
+                      calc.available 
+                        ? 'border-gray-200 hover:border-amber-400 hover:shadow-lg cursor-pointer' 
+                        : 'border-gray-100 opacity-60 cursor-not-allowed'
+                    }`}
+                    onClick={(e) => !calc.available && e.preventDefault()}
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <div className={`w-12 h-12 bg-gradient-to-br ${calc.color} rounded-xl flex items-center justify-center text-white shadow-lg`}>
+                        <calc.icon className="w-6 h-6" />
+                      </div>
+                      <span className={`text-xs font-bold px-3 py-1 rounded-full ${
+                        calc.available 
+                          ? 'bg-green-100 text-green-700' 
+                          : 'bg-gray-100 text-gray-500'
+                      }`}>
+                        {calc.tag}
                       </span>
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4">Annual Horse Cost Calculator</h2>
-                    <p className="text-amber-100 text-lg mb-6 max-w-xl">
-                      The complete UK horse ownership calculator. Get a full breakdown of livery, feed, 
-                      farrier, vet bills, insurance and more. Know exactly what owning a horse costs per year.
+                    
+                    <h3 className={`text-lg font-bold mb-2 ${calc.available ? 'text-gray-900 group-hover:text-amber-600' : 'text-gray-500'}`}>
+                      {calc.title}
+                    </h3>
+                    
+                    <p className="text-gray-600 text-sm mb-4">
+                      {calc.description}
                     </p>
-                    <ul className="space-y-2 mb-8">
-                      <li className="flex items-center gap-2 text-amber-100">
-                        <CheckCircle2 className="w-5 h-5 text-white" />
-                        5 livery type presets with UK averages
-                      </li>
-                      <li className="flex items-center gap-2 text-amber-100">
-                        <CheckCircle2 className="w-5 h-5 text-white" />
-                        All professional services included
-                      </li>
-                      <li className="flex items-center gap-2 text-amber-100">
-                        <CheckCircle2 className="w-5 h-5 text-white" />
-                        Compare your costs to UK averages
-                      </li>
-                    </ul>
-                    <a 
-                      href="/annual-horse-cost-calculator"
-                      className="inline-flex items-center gap-2 bg-white text-amber-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-50 transition shadow-lg"
-                    >
-                      Calculate Your Costs
-                      <ArrowRight className="w-5 h-5" />
-                    </a>
-                  </div>
-                  <div className="w-48 h-48 md:w-64 md:h-64 bg-white/20 rounded-3xl flex items-center justify-center">
-                    <Calendar className="w-20 h-20 md:w-28 md:h-28 text-white" />
-                  </div>
-                </div>
+                    
+                    {calc.available && (
+                      <div className="flex items-center text-amber-600 font-semibold text-sm">
+                        Try Now
+                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    )}
+                  </a>
+                ))}
               </div>
             </div>
           </section>
@@ -446,63 +448,8 @@ export default function HomePage() {
             </div>
           </section>
 
-          {/* Horse Calculators Grid */}
-          <section id="calculators" className="py-16 px-4 bg-white">
-            <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">All Horse Cost Calculators</h2>
-                <p className="text-gray-600 max-w-2xl mx-auto">
-                  Professional calculators for every aspect of UK horse ownership. Free, fast, and accurate.
-                </p>
-              </div>
-
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {calculators.map((calc) => (
-                  <a 
-                    key={calc.title}
-                    href={calc.available ? calc.href : '#'}
-                    className={`bg-white border-2 rounded-2xl p-6 transition group ${
-                      calc.available 
-                        ? 'border-gray-200 hover:border-amber-400 hover:shadow-lg cursor-pointer' 
-                        : 'border-gray-100 opacity-60 cursor-not-allowed'
-                    }`}
-                    onClick={(e) => !calc.available && e.preventDefault()}
-                  >
-                    <div className="flex items-start justify-between mb-4">
-                      <div className={`w-12 h-12 bg-gradient-to-br ${calc.color} rounded-xl flex items-center justify-center text-white shadow-lg`}>
-                        <calc.icon className="w-6 h-6" />
-                      </div>
-                      <span className={`text-xs font-bold px-3 py-1 rounded-full ${
-                        calc.available 
-                          ? 'bg-green-100 text-green-700' 
-                          : 'bg-gray-100 text-gray-500'
-                      }`}>
-                        {calc.tag}
-                      </span>
-                    </div>
-                    
-                    <h3 className={`text-lg font-bold mb-2 ${calc.available ? 'text-gray-900 group-hover:text-amber-600' : 'text-gray-500'}`}>
-                      {calc.title}
-                    </h3>
-                    
-                    <p className="text-gray-600 text-sm mb-4">
-                      {calc.description}
-                    </p>
-                    
-                    {calc.available && (
-                      <div className="flex items-center text-amber-600 font-semibold text-sm">
-                        Try Now
-                        <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
-                      </div>
-                    )}
-                  </a>
-                ))}
-              </div>
-            </div>
-          </section>
-
           {/* Features */}
-          <section className="py-16 px-4 bg-gray-50">
+          <section className="py-16 px-4 bg-white">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Horse Owners Trust Us</h2>
@@ -511,7 +458,7 @@ export default function HomePage() {
 
               <div className="grid md:grid-cols-3 gap-8">
                 {features.map((feature) => (
-                  <div key={feature.title} className="bg-white rounded-2xl p-8 shadow-sm border border-gray-100 text-center">
+                  <div key={feature.title} className="bg-gray-50 rounded-2xl p-8 shadow-sm border border-gray-100 text-center">
                     <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
                       <feature.icon className="w-8 h-8 text-amber-600" />
                     </div>
@@ -524,7 +471,7 @@ export default function HomePage() {
           </section>
 
           {/* Testimonials */}
-          <section id="reviews" className="py-16 px-4 bg-white">
+          <section id="reviews" className="py-16 px-4 bg-gray-50">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">What Horse Owners Say</h2>
@@ -533,7 +480,7 @@ export default function HomePage() {
 
               <div className="grid md:grid-cols-3 gap-8">
                 {testimonials.map((testimonial, index) => (
-                  <div key={index} className="bg-gray-50 rounded-2xl p-8 border border-gray-100">
+                  <div key={index} className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
                     <div className="flex gap-1 mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Star key={i} className="w-5 h-5 text-amber-500 fill-amber-500" />
@@ -558,7 +505,7 @@ export default function HomePage() {
           </section>
 
           {/* FAQ Section */}
-          <section className="py-16 px-4 bg-gray-50">
+          <section className="py-16 px-4 bg-white">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
@@ -567,7 +514,7 @@ export default function HomePage() {
 
               <div className="grid gap-6">
                 {faqs.map((faq, index) => (
-                  <details key={index} className="bg-white rounded-xl p-6 border border-gray-200 cursor-pointer group">
+                  <details key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-200 cursor-pointer group">
                     <summary className="font-bold text-gray-900 flex items-center justify-between list-none">
                       {faq.q}
                       <span className="ml-4 text-amber-600 group-open:rotate-45 transition-transform">+</span>
