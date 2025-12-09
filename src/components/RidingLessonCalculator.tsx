@@ -8,8 +8,6 @@ import {
   ChevronUp,
   PoundSterling,
   CheckCircle2,
-  Users,
-  Clock,
   Calendar,
   Star,
   Target
@@ -26,7 +24,6 @@ export default function RidingLessonCalculator() {
   const [includeGear, setIncludeGear] = useState(false)
   const [riderLevel, setRiderLevel] = useState('beginner')
   const [region, setRegion] = useState('average')
-  const [showAdvanced, setShowAdvanced] = useState(false)
   const [result, setResult] = useState<any>(null)
 
   const lessonTypes = [
