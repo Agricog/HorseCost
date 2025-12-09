@@ -3,6 +3,8 @@ import { HelmetProvider } from 'react-helmet-async'
 import Home from './pages/Home'
 import HorseLiveryCalculatorPage from './pages/HorseLiveryCalculatorPage'
 import AnnualHorseCostCalculatorPage from './pages/AnnualHorseCostCalculatorPage'
+import HorseFeedCalculatorPage from './pages/HorseFeedCalculatorPage'
+import FarrierCostCalculatorPage from './pages/FarrierCostCalculatorPage'
 import GamePage from './pages/GamePage'
 
 function App() {
@@ -21,6 +23,16 @@ function App() {
           <Route path="/horse-cost-calculator" element={<AnnualHorseCostCalculatorPage />} />
           <Route path="/yearly-horse-cost-calculator" element={<AnnualHorseCostCalculatorPage />} />
           
+          {/* Horse Feed Calculator */}
+          <Route path="/horse-feed-calculator" element={<HorseFeedCalculatorPage />} />
+          <Route path="/feed-calculator" element={<HorseFeedCalculatorPage />} />
+          <Route path="/calculators/feed-budget" element={<HorseFeedCalculatorPage />} />
+          
+          {/* Farrier Cost Calculator */}
+          <Route path="/farrier-cost-calculator" element={<FarrierCostCalculatorPage />} />
+          <Route path="/farrier-calculator" element={<FarrierCostCalculatorPage />} />
+          <Route path="/calculators/farrier-cost" element={<FarrierCostCalculatorPage />} />
+          
           {/* Horse Care Challenge Game */}
           <Route path="/horse-care-challenge" element={<GamePage />} />
           <Route path="/quiz" element={<GamePage />} />
@@ -32,4 +44,3 @@ function App() {
 }
 
 export default App
-
