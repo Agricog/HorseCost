@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async'
+import { Shield, Stethoscope } from 'lucide-react'
 import { 
   Calculator, 
   PoundSterling, 
@@ -82,7 +83,25 @@ export default function HomePage() {
       tag: 'Coming Soon',
       color: 'from-violet-500 to-purple-600',
       available: false
-    }
+    },
+    {
+  title: 'Horse Insurance Calculator',
+  description: 'Estimate insurance premiums for mortality, vet fees, and comprehensive cover with UK 2025 pricing.',
+  icon: Shield,
+  href: '/horse-insurance-calculator',
+  tag: 'Protection',
+  color: 'from-violet-500 to-purple-600',
+  available: true
+},
+{
+  title: 'Vet Cost Estimator',
+  description: 'Plan your annual veterinary budget including vaccinations, dental, worming, and emergency fund.',
+  icon: Stethoscope,
+  href: '/vet-cost-estimator',
+  tag: 'Healthcare',
+  color: 'from-red-500 to-rose-600',
+  available: true
+}
   ]
 
   const features = [
