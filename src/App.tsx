@@ -13,6 +13,9 @@ import VetCostEstimatorPage from './pages/VetCostEstimatorPage'
 import TrailerCostCalculatorPage from './pages/TrailerCostCalculatorPage'
 import RidingLessonCalculatorPage from './pages/RidingLessonCalculatorPage'
 import FirstHorseCalculatorPage from './pages/FirstHorseCalculatorPage'
+import TackEquipmentCalculatorPage from './pages/TackEquipmentCalculatorPage'
+import HorseLoanCalculatorPage from './pages/HorseLoanCalculatorPage'
+import BeddingCostCalculatorPage from './pages/BeddingCostCalculatorPage'
 
 function App() {
   return (
@@ -20,6 +23,21 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+
+          {/* Tack & Equipment Calculator */}
+<Route path="/tack-equipment-calculator" element={<TackEquipmentCalculatorPage />} />
+<Route path="/tack-calculator" element={<TackEquipmentCalculatorPage />} />
+<Route path="/equipment-calculator" element={<TackEquipmentCalculatorPage />} />
+
+{/* Horse Loan Calculator */}
+<Route path="/horse-loan-calculator" element={<HorseLoanCalculatorPage />} />
+<Route path="/loan-calculator" element={<HorseLoanCalculatorPage />} />
+<Route path="/loan-vs-buy" element={<HorseLoanCalculatorPage />} />
+
+{/* Bedding Cost Calculator */}
+<Route path="/bedding-cost-calculator" element={<BeddingCostCalculatorPage />} />
+<Route path="/bedding-calculator" element={<BeddingCostCalculatorPage />} />
+<Route path="/stable-bedding-calculator" element={<BeddingCostCalculatorPage />} />
           
           {/* Horse Insurance Calculator */}
           <Route path="/horse-insurance-calculator" element={<HorseInsuranceCalculatorPage />} />
