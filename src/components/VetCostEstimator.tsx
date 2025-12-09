@@ -6,7 +6,6 @@ import {
   AlertCircle,
   ChevronDown,
   ChevronUp,
-  PoundSterling,
   CheckCircle2,
   Heart,
   Syringe,
