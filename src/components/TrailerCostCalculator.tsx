@@ -49,7 +49,7 @@ export default function TrailerCostCalculator() {
     const value = parseFloat(trailerValue)
     const trips = parseFloat(tripsPerMonth) || 0
     const distance = parseFloat(avgDistance) || 0
-    const fuelPerMile = parseFloat(fuelCostPerMile) || 0.25
+    const fuelPerMile = 0.25
 
     const vehicle = vehicleTypes.find(v => v.id === vehicleType)
     if (!vehicle) return
