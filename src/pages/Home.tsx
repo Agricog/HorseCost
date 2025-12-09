@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async'
 import { Truck, GraduationCap, Heart } from 'lucide-react'
+import { ShoppingBag, Handshake, Layers } from 'lucide-react'
 import { 
   Calculator, 
   PoundSterling, 
@@ -22,6 +23,33 @@ import {
 
 export default function HomePage() {
   const calculators = [
+    {
+  title: 'Tack & Equipment',
+  description: 'Calculate saddle, bridle, rugs, and boots costs',
+  href: '/tack-equipment-calculator',
+  icon: ShoppingBag,
+  color: 'cyan',
+  tag: 'Gear',
+  available: true
+},
+{
+  title: 'Horse Loan Calculator',
+  description: 'Compare loaning vs buying costs',
+  href: '/horse-loan-calculator',
+  icon: Handshake,
+  color: 'emerald',
+  tag: 'Options',
+  available: true
+},
+{
+  title: 'Bedding Calculator',
+  description: 'Compare shavings, straw, hemp & more',
+  href: '/bedding-cost-calculator',
+  icon: Layers,
+  color: 'yellow',
+  tag: 'Stabling',
+  available: true
+},
     {
   title: 'Trailer Running Costs',
   description: 'Calculate annual trailer or horsebox running costs including fuel, insurance, MOT, and servicing.',
