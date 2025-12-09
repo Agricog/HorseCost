@@ -1,4 +1,5 @@
 import { Helmet } from 'react-helmet-async'
+import { Truck, GraduationCap, Heart } from 'lucide-react'
 import { 
   Calculator, 
   PoundSterling, 
@@ -21,6 +22,33 @@ import {
 
 export default function HomePage() {
   const calculators = [
+    {
+  title: 'Trailer Running Costs',
+  description: 'Calculate annual trailer or horsebox running costs including fuel, insurance, MOT, and servicing.',
+  icon: Truck,
+  href: '/trailer-cost-calculator',
+  tag: 'Transport',
+  color: 'from-sky-500 to-blue-600',
+  available: true
+},
+{
+  title: 'Riding Lesson Calculator',
+  description: 'Plan your riding education budget. Compare group, private, and semi-private lesson costs.',
+  icon: GraduationCap,
+  href: '/riding-lesson-calculator',
+  tag: 'Learning',
+  color: 'from-violet-500 to-purple-600',
+  available: true
+},
+{
+  title: 'First Horse Calculator',
+  description: 'Calculate your complete first year costs including purchase, tack, livery, and all running expenses.',
+  icon: Heart,
+  href: '/first-horse-calculator',
+  tag: 'New Owners',
+  color: 'from-pink-500 to-rose-600',
+  available: true
+},
     {
       title: 'Annual Horse Cost Calculator',
       description: 'The complete UK horse ownership budget calculator. Calculate livery, feed, farrier, vet bills, insurance, tack & equipment costs.',
