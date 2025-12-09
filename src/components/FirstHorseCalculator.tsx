@@ -5,14 +5,12 @@ import {
   Calculator,
   AlertCircle,
   ChevronDown,
-  ChevronUp,
   PoundSterling,
   CheckCircle2,
   Star,
   ShoppingBag,
   Calendar,
   Shield,
-  Stethoscope,
   Home
 } from 'lucide-react'
 
@@ -26,7 +24,6 @@ export default function FirstHorseCalculator() {
   const [includeInsurance, setIncludeInsurance] = useState(true)
   const [includeFirstAidKit, setIncludeFirstAidKit] = useState(true)
   const [tackOwned, setTackOwned] = useState('none')
-  const [showAdvanced, setShowAdvanced] = useState(false)
   const [result, setResult] = useState<any>(null)
 
   const horseTypes = [
