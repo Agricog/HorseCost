@@ -20,6 +20,9 @@ import ClippingCostCalculatorPage from './pages/ClippingCostCalculatorPage'
 import WormingCostCalculatorPage from './pages/WormingCostCalculatorPage'
 import HorseTransportCalculatorPage from './pages/HorseTransportCalculatorPage'
 import FieldRentCalculatorPage from './pages/FieldRentCalculatorPage'
+import DentalCostCalculatorPage from './pages/DentalCostCalculatorPage'
+import RugCostCalculatorPage from './pages/RugCostCalculatorPage'
+import RetirementCostCalculatorPage from './pages/RetirementCostCalculatorPage'
 
 function App() {
   return (
@@ -27,6 +30,21 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+
+          {/* Dental Calculator */}
+<Route path="/dental-cost-calculator" element={<DentalCostCalculatorPage />} />
+<Route path="/horse-dental-calculator" element={<DentalCostCalculatorPage />} />
+<Route path="/teeth-cost-calculator" element={<DentalCostCalculatorPage />} />
+
+{/* Rug Calculator */}
+<Route path="/rug-cost-calculator" element={<RugCostCalculatorPage />} />
+<Route path="/horse-rug-calculator" element={<RugCostCalculatorPage />} />
+<Route path="/blanket-calculator" element={<RugCostCalculatorPage />} />
+
+{/* Retirement Calculator */}
+<Route path="/retirement-cost-calculator" element={<RetirementCostCalculatorPage />} />
+<Route path="/veteran-horse-calculator" element={<RetirementCostCalculatorPage />} />
+<Route path="/retired-horse-calculator" element={<RetirementCostCalculatorPage />} />
 
           {/* Clipping Calculator */}
 <Route path="/clipping-cost-calculator" element={<ClippingCostCalculatorPage />} />
