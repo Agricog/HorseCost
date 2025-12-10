@@ -199,69 +199,286 @@ export default function HorseTransportCalculator() {
   ]
 
   return (
-    <>
-      <Helmet>
-        <title>Horse Transport Cost Calculator UK 2025 | Moving & Travel | HorseCost</title>
-        <meta 
-          name="description" 
-          content="Free horse transport cost calculator for UK. Calculate professional transport, DIY moving costs, and compare options. Get accurate 2025 quotes for horse journeys." 
-        />
-        <meta name="keywords" content="horse transport cost UK, horse transporter prices, moving horse cost, horse travel calculator, horsebox hire cost" />
-        <meta name="author" content="HorseCost" />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#0369a1" />
+    <><Helmet>
+  {/* ========== 1. PRIMARY META TAGS (4) ========== */}
+  <title>Horse Transport Cost Calculator UK 2025 | Moving & Travel Prices | HorseCost</title>
+  <meta 
+    name="description" 
+    content="Free horse transport cost calculator for UK owners. Calculate professional transporter prices, DIY moving costs, and compare options for shows, moves, and vet visits. 2025 UK prices." 
+  />
+  <meta 
+    name="keywords" 
+    content="horse transport cost UK, horse transporter prices, moving horse cost, horse travel calculator, horsebox hire cost, equine transport quotes, horse taxi prices" 
+  />
+  <meta name="author" content="HorseCost" />
 
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="HorseCost" />
-        <meta property="og:title" content="Horse Transport Cost Calculator UK 2025 | HorseCost" />
-        <meta property="og:description" content="Calculate horse transport costs for moves, shows, and vet visits." />
-        <meta property="og:url" content="https://horsecost.co.uk/horse-transport-calculator" />
+  {/* ========== 2. ROBOTS & CRAWLING (2) ========== */}
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Horse Transport Calculator UK | HorseCost" />
+  {/* ========== 3. VIEWPORT & MOBILE (3) ========== */}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-        <link rel="canonical" href="https://horsecost.co.uk/horse-transport-calculator" />
+  {/* ========== 4. THEME & APPEARANCE (1) ========== */}
+  <meta name="theme-color" content="#0369a1" />
 
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@graph': [
-              {
-                '@type': 'BreadcrumbList',
-                'itemListElement': [
-                  { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://horsecost.co.uk' },
-                  { '@type': 'ListItem', 'position': 2, 'name': 'Calculators', 'item': 'https://horsecost.co.uk/#calculators' },
-                  { '@type': 'ListItem', 'position': 3, 'name': 'Horse Transport Calculator', 'item': 'https://horsecost.co.uk/horse-transport-calculator' }
-                ]
-              },
-              {
-                '@type': 'SoftwareApplication',
-                'name': 'Horse Transport Cost Calculator UK',
-                'description': 'Calculate horse transport and moving costs in the UK.',
-                'url': 'https://horsecost.co.uk/horse-transport-calculator',
-                'applicationCategory': 'FinanceApplication',
-                'operatingSystem': 'Web',
-                'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'GBP' },
-                'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.7', 'ratingCount': '178' }
-              },
-              {
-                '@type': 'FAQPage',
-                'mainEntity': faqs.map(faq => ({
-                  '@type': 'Question',
-                  'name': faq.q,
-                  'acceptedAnswer': { '@type': 'Answer', 'text': faq.a }
-                }))
-              },
-              {
-                '@type': 'Organization',
-                'name': 'HorseCost',
-                'url': 'https://horsecost.co.uk'
+  {/* ========== 5. OPEN GRAPH / FACEBOOK (8) ========== */}
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="HorseCost" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Horse Transport Cost Calculator UK 2025 | Moving Prices | HorseCost" />
+  <meta property="og:description" content="Calculate horse transport costs for moves, shows, and vet visits. Compare professional transporters with DIY options." />
+  <meta property="og:url" content="https://horsecost.co.uk/horse-transport-calculator" />
+  <meta property="og:image" content="https://horsecost.co.uk/images/transport-calculator-og-1200x630.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Horse Transport Cost Calculator showing UK transporter prices by distance" />
+
+  {/* ========== 6. TWITTER CARD (6) ========== */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@HorseCost" />
+  <meta name="twitter:title" content="Horse Transport Cost Calculator UK 2025 | HorseCost" />
+  <meta name="twitter:description" content="Calculate horse moving costs. Compare professional transport, local taxi, and DIY options." />
+  <meta name="twitter:image" content="https://horsecost.co.uk/images/transport-calculator-twitter-1200x675.jpg" />
+  <meta name="twitter:image:alt" content="Horse Transport Cost Calculator UK" />
+
+  {/* ========== 7. CANONICAL & ALTERNATE (2) ========== */}
+  <link rel="canonical" href="https://horsecost.co.uk/horse-transport-calculator" />
+  <link rel="alternate" hrefLang="en-GB" href="https://horsecost.co.uk/horse-transport-calculator" />
+
+  {/* ========== 8. PRECONNECT & PERFORMANCE (2) ========== */}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+  {/* ========== 9. JSON-LD STRUCTURED DATA (6 Schemas) ========== */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'BreadcrumbList',
+          'itemListElement': [
+            { 
+              '@type': 'ListItem', 
+              'position': 1, 
+              'name': 'Home', 
+              'item': 'https://horsecost.co.uk'
+            },
+            { 
+              '@type': 'ListItem', 
+              'position': 2, 
+              'name': 'Calculators', 
+              'item': 'https://horsecost.co.uk/#calculators'
+            },
+            { 
+              '@type': 'ListItem', 
+              'position': 3, 
+              'name': 'Horse Transport Calculator', 
+              'item': 'https://horsecost.co.uk/horse-transport-calculator'
+            }
+          ]
+        },
+        {
+          '@type': 'SoftwareApplication',
+          'name': 'Horse Transport Cost Calculator UK',
+          'description': 'Calculate horse transport and moving costs in the UK. Compare professional transporters, local horse taxis, and DIY options with 2025 prices.',
+          'url': 'https://horsecost.co.uk/horse-transport-calculator',
+          'applicationCategory': 'FinanceApplication',
+          'operatingSystem': 'Web',
+          'offers': { 
+            '@type': 'Offer', 
+            'price': '0', 
+            'priceCurrency': 'GBP',
+            'availability': 'https://schema.org/InStock'
+          },
+          'aggregateRating': { 
+            '@type': 'AggregateRating', 
+            'ratingValue': '4.7', 
+            'ratingCount': '178',
+            'bestRating': '5',
+            'worstRating': '1'
+          },
+          'author': {
+            '@type': 'Organization',
+            'name': 'HorseCost'
+          }
+        },
+        {
+          '@type': 'FAQPage',
+          'mainEntity': [
+            {
+              '@type': 'Question',
+              'name': 'How much does horse transport cost UK?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Professional horse transport in the UK costs £2-3 per mile with minimum charges of £50-100. A typical 50-mile journey costs £100-150, while 100 miles costs £200-300. Prices vary by region, urgency, and number of horses. DIY transport costs around £0.60-0.80 per mile in fuel and wear.'
               }
-            ]
-          })}
-        </script>
-      </Helmet>
+            },
+            {
+              '@type': 'Question',
+              'name': 'How do I find a horse transporter?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Options include: asking your yard for recommendations, Facebook horse transport groups, British Grooms Association lists, your vet clinic contacts, or transport directories. Always check insurance, reviews, and inspect vehicles if possible. Word of mouth recommendations are often best.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'What should I check before booking transport?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Verify: valid insurance (goods in transit + public liability), DEFRA authorization if required, clean well-maintained vehicle, driver experience with horses, breakdown cover, and references. Ask about their loading approach for difficult loaders.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'How far can a horse travel in one day?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Horses should rest every 4 hours and drink every 6 hours. Most experts recommend maximum 8-10 hours travel per day (300-400 miles). For longer journeys, overnight stops are advisable. Young, old, or unfit horses may need shorter travel times.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'Do I need to travel with my horse?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Professional transporters typically travel alone unless you arrange to accompany. For valuable competition horses or nervous travellers, you may want to follow in your car. Some transporters charge extra if you travel with them.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'What paperwork do I need for horse transport?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Required: horse\'s passport (legally required at all times). Recommended: vaccination records, ownership documents, destination livery agreement. For international transport, you\'ll need export health certificates and TRACES documentation.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'Should I sedate my horse for travel?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Sedation is generally not recommended as it affects balance and stress response. Horses are safer travelling alert. If your horse is extremely difficult, discuss with your vet - they may recommend alternative calming approaches. Address loading training instead.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'How do I prepare my horse for transport?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Fit travel boots or bandages (all four legs plus hock and knee boots), tail guard, light rug if needed. Provide hay net for longer journeys. Ensure horse is calm before loading. Remove shoes if travelling long distance (some choose to).'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'Is it cheaper to hire a trailer or use a transporter?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'For occasional journeys, professional transport is usually cheaper and easier. Trailer hire costs £50-80/day plus fuel (£0.60-0.80/mile), and you need a suitable towing vehicle. If you transport 10+ times yearly, owning makes more sense.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'What insurance do I need for horse transport?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'If using professionals, they should have goods in transit insurance. Your horse insurance should cover transport incidents. If self-transporting, check your trailer/horsebox insurance covers the horse\'s value. Always verify cover before travel.'
+              }
+            }
+          ]
+        },
+        {
+          '@type': 'HowTo',
+          'name': 'How to Use the Horse Transport Cost Calculator',
+          'description': 'Step-by-step guide to calculating your horse transport and moving costs',
+          'step': [
+            {
+              '@type': 'HowToStep',
+              'position': 1,
+              'name': 'Select Journey Type',
+              'text': 'Choose the purpose of your journey: one-off move (buying/relocating), competition/show, vet/clinic visit, or holiday/training. This helps tailor the estimate.'
+            },
+            {
+              '@type': 'HowToStep',
+              'position': 2,
+              'name': 'Enter Distance',
+              'text': 'Input the one-way journey distance in miles. Use Google Maps to calculate if unsure. Common distances are provided as quick-select buttons.'
+            },
+            {
+              '@type': 'HowToStep',
+              'position': 3,
+              'name': 'Select Number of Horses',
+              'text': 'Choose how many horses are travelling. Multiple horses often get discounted rates as they share the journey.'
+            },
+            {
+              '@type': 'HowToStep',
+              'position': 4,
+              'name': 'Choose Transport Method',
+              'text': 'Select your preferred option: professional transporter, local horse taxi, friend/yard help, or self-transport with your own vehicle.'
+            },
+            {
+              '@type': 'HowToStep',
+              'position': 5,
+              'name': 'Calculate and Compare',
+              'text': 'Click Calculate to see your estimated transport cost, estimated journey time, and comparison between different transport options.'
+            }
+          ]
+        },
+        {
+          '@type': 'Article',
+          'headline': 'Horse Transport Cost Calculator UK 2025 - Moving & Travel Prices',
+          'description': 'Free calculator for UK horse transport costs. Compare professional transporters, horse taxis, and DIY options for moves, shows, and vet visits.',
+          'datePublished': '2025-01-01',
+          'dateModified': '2025-01-15',
+          'author': {
+            '@type': 'Organization',
+            'name': 'HorseCost',
+            'url': 'https://horsecost.co.uk'
+          },
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'HorseCost',
+            'logo': {
+              '@type': 'ImageObject',
+              'url': 'https://horsecost.co.uk/logo.png',
+              'width': 200,
+              'height': 200
+            }
+          },
+          'image': 'https://horsecost.co.uk/images/transport-calculator-og-1200x630.jpg',
+          'mainEntityOfPage': {
+            '@type': 'WebPage',
+            '@id': 'https://horsecost.co.uk/horse-transport-calculator'
+          }
+        },
+        {
+          '@type': 'Organization',
+          'name': 'HorseCost',
+          'url': 'https://horsecost.co.uk',
+          'logo': 'https://horsecost.co.uk/logo.png',
+          'description': 'Free professional horse cost calculators for UK equestrians',
+          'sameAs': [
+            'https://www.facebook.com/HorseCost',
+            'https://twitter.com/HorseCost',
+            'https://www.instagram.com/HorseCost'
+          ],
+          'contactPoint': {
+            '@type': 'ContactPoint',
+            'contactType': 'Customer Support',
+            'email': 'hello@horsecost.co.uk'
+          },
+          'address': {
+            '@type': 'PostalAddress',
+            'addressCountry': 'GB'
+          }
+        }
+      ]
+    })}
+  </script>
+</Helmet>
 
       <div className="min-h-screen bg-gray-50">
         <div className="bg-white border-b">
