@@ -22,11 +22,40 @@ import {
   ShoppingBag,
   Layers,
   Bug,
-  TreePine
+  TreePine,
+  Smile,
+  Shirt
 } from 'lucide-react'
 
 export default function HomePage() {
   const calculators = [
+    {
+  title: 'Dental Calculator',
+  description: 'EDT vs vet dentist costs',
+  href: '/dental-cost-calculator',
+  icon: Smile,
+  color: 'from-teal-500 to-cyan-600',
+  tag: 'Healthcare',
+  available: true
+},
+{
+  title: 'Rug Calculator',
+  description: 'How many rugs does your horse need?',
+  href: '/rug-cost-calculator',
+  icon: Shirt,
+  color: 'from-violet-500 to-purple-600',
+  tag: 'Equipment',
+  available: true
+},
+{
+  title: 'Retirement Calculator',
+  description: 'Veteran & retired horse costs',
+  href: '/retirement-cost-calculator',
+  icon: Heart,
+  color: 'from-pink-500 to-rose-600',
+  tag: 'Senior Care',
+  available: true
+}
     {
       title: 'Annual Horse Cost Calculator',
       description: 'The complete UK horse ownership budget calculator. Calculate livery, feed, farrier, vet bills, insurance, tack & equipment costs.',
