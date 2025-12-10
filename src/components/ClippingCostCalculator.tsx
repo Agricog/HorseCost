@@ -6,8 +6,6 @@ import {
   AlertCircle,
   ChevronDown,
   ChevronUp,
-  PoundSterling,
-  CheckCircle2,
   Calendar,
   Star,
   Zap
