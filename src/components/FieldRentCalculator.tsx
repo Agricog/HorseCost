@@ -6,12 +6,10 @@ import {
   AlertCircle,
   ChevronDown,
   ChevronUp,
-  PoundSterling,
   CheckCircle2,
   Calendar,
   Star,
-  Fence,
-  Droplets
+  Fence
 } from 'lucide-react'
 
 export default function FieldRentCalculator() {
