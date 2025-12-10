@@ -191,68 +191,286 @@ export default function ClippingCostCalculator() {
 
   return (
     <>
-      <Helmet>
-        <title>Horse Clipping Cost Calculator UK 2025 | DIY vs Professional | HorseCost</title>
-        <meta 
-          name="description" 
-          content="Free horse clipping cost calculator for UK. Compare DIY vs professional clipping costs, calculate clipper investment, and plan your clipping budget. 2025 prices." 
-        />
-        <meta name="keywords" content="horse clipping cost UK, DIY clipping, professional horse clipper, hunter clip price, clipping equipment cost" />
-        <meta name="author" content="HorseCost" />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#4f46e5" />
+<Helmet>
+  {/* ========== 1. PRIMARY META TAGS (4) ========== */}
+  <title>Horse Clipping Cost Calculator UK 2025 | DIY vs Professional Prices | HorseCost</title>
+  <meta 
+    name="description" 
+    content="Free horse clipping cost calculator for UK owners. Compare DIY vs professional clipping costs, calculate clipper investment payback, and plan your winter clipping budget. 2025 prices." 
+  />
+  <meta 
+    name="keywords" 
+    content="horse clipping cost UK, professional horse clipper price, DIY clipping costs, hunter clip price, trace clip cost, horse grooming budget, clipper investment calculator" 
+  />
+  <meta name="author" content="HorseCost" />
 
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="HorseCost" />
-        <meta property="og:title" content="Horse Clipping Cost Calculator UK 2025 | HorseCost" />
-        <meta property="og:description" content="Compare DIY vs professional clipping costs. Calculate clipper investment and annual savings." />
-        <meta property="og:url" content="https://horsecost.co.uk/clipping-cost-calculator" />
+  {/* ========== 2. ROBOTS & CRAWLING (2) ========== */}
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Clipping Cost Calculator UK | HorseCost" />
+  {/* ========== 3. VIEWPORT & MOBILE (3) ========== */}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-        <link rel="canonical" href="https://horsecost.co.uk/clipping-cost-calculator" />
+  {/* ========== 4. THEME & APPEARANCE (1) ========== */}
+  <meta name="theme-color" content="#4f46e5" />
 
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@graph': [
-              {
-                '@type': 'BreadcrumbList',
-                'itemListElement': [
-                  { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://horsecost.co.uk' },
-                  { '@type': 'ListItem', 'position': 2, 'name': 'Calculators', 'item': 'https://horsecost.co.uk/#calculators' },
-                  { '@type': 'ListItem', 'position': 3, 'name': 'Clipping Cost Calculator', 'item': 'https://horsecost.co.uk/clipping-cost-calculator' }
-                ]
-              },
-              {
-                '@type': 'SoftwareApplication',
-                'name': 'Horse Clipping Cost Calculator UK',
-                'description': 'Calculate and compare horse clipping costs - DIY vs professional.',
-                'url': 'https://horsecost.co.uk/clipping-cost-calculator',
-                'applicationCategory': 'FinanceApplication',
-                'operatingSystem': 'Web',
-                'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'GBP' },
-                'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.7', 'ratingCount': '156' }
-              },
-              {
-                '@type': 'FAQPage',
-                'mainEntity': faqs.map(faq => ({
-                  '@type': 'Question',
-                  'name': faq.q,
-                  'acceptedAnswer': { '@type': 'Answer', 'text': faq.a }
-                }))
-              },
-              {
-                '@type': 'Organization',
-                'name': 'HorseCost',
-                'url': 'https://horsecost.co.uk'
+  {/* ========== 5. OPEN GRAPH / FACEBOOK (8) ========== */}
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="HorseCost" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Horse Clipping Cost Calculator UK 2025 | DIY vs Professional | HorseCost" />
+  <meta property="og:description" content="Compare DIY vs professional horse clipping costs. Calculate clipper investment and annual savings with UK 2025 prices." />
+  <meta property="og:url" content="https://horsecost.co.uk/clipping-cost-calculator" />
+  <meta property="og:image" content="https://horsecost.co.uk/images/clipping-calculator-og-1200x630.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Horse Clipping Cost Calculator showing DIY vs professional price comparison" />
+
+  {/* ========== 6. TWITTER CARD (6) ========== */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@HorseCost" />
+  <meta name="twitter:title" content="Horse Clipping Cost Calculator UK 2025 | HorseCost" />
+  <meta name="twitter:description" content="Compare DIY vs professional clipping costs. Calculate clipper investment payback period." />
+  <meta name="twitter:image" content="https://horsecost.co.uk/images/clipping-calculator-twitter-1200x675.jpg" />
+  <meta name="twitter:image:alt" content="Horse Clipping Cost Calculator UK" />
+
+  {/* ========== 7. CANONICAL & ALTERNATE (2) ========== */}
+  <link rel="canonical" href="https://horsecost.co.uk/clipping-cost-calculator" />
+  <link rel="alternate" hrefLang="en-GB" href="https://horsecost.co.uk/clipping-cost-calculator" />
+
+  {/* ========== 8. PRECONNECT & PERFORMANCE (2) ========== */}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+  {/* ========== 9. JSON-LD STRUCTURED DATA (6 Schemas) ========== */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'BreadcrumbList',
+          'itemListElement': [
+            { 
+              '@type': 'ListItem', 
+              'position': 1, 
+              'name': 'Home', 
+              'item': 'https://horsecost.co.uk'
+            },
+            { 
+              '@type': 'ListItem', 
+              'position': 2, 
+              'name': 'Calculators', 
+              'item': 'https://horsecost.co.uk/#calculators'
+            },
+            { 
+              '@type': 'ListItem', 
+              'position': 3, 
+              'name': 'Clipping Cost Calculator', 
+              'item': 'https://horsecost.co.uk/clipping-cost-calculator'
+            }
+          ]
+        },
+        {
+          '@type': 'SoftwareApplication',
+          'name': 'Horse Clipping Cost Calculator UK',
+          'description': 'Calculate and compare horse clipping costs - DIY vs professional. Work out clipper investment payback and annual grooming budget.',
+          'url': 'https://horsecost.co.uk/clipping-cost-calculator',
+          'applicationCategory': 'FinanceApplication',
+          'operatingSystem': 'Web',
+          'offers': { 
+            '@type': 'Offer', 
+            'price': '0', 
+            'priceCurrency': 'GBP',
+            'availability': 'https://schema.org/InStock'
+          },
+          'aggregateRating': { 
+            '@type': 'AggregateRating', 
+            'ratingValue': '4.7', 
+            'ratingCount': '156',
+            'bestRating': '5',
+            'worstRating': '1'
+          },
+          'author': {
+            '@type': 'Organization',
+            'name': 'HorseCost'
+          }
+        },
+        {
+          '@type': 'FAQPage',
+          'mainEntity': [
+            {
+              '@type': 'Question',
+              'name': 'How much does horse clipping cost UK?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Professional horse clipping in the UK costs £30-£80 depending on clip type. Bib clips cost £25-35, trace clips £35-45, hunter clips £50-65, and full clips £60-80. Prices vary by region (London 30% higher) and horse temperament. Difficult horses or those requiring sedation cost significantly more.'
               }
-            ]
-          })}
-        </script>
-      </Helmet>
+            },
+            {
+              '@type': 'Question',
+              'name': 'How many times should you clip a horse per year?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Most horses need 2-4 clips per season (October to February). Heavy workers may need clipping every 4-6 weeks. Light work horses often need just 2-3 clips. The clip grows back in 6-8 weeks. Stop clipping by late January to allow coat regrowth for spring.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'Is it cheaper to clip your own horse?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'DIY clipping saves money long-term but requires upfront investment. Quality clippers cost £150-500, plus £50-100/year for blades and servicing. If you pay £55 for a hunter clip 3x yearly (£165), DIY breaks even in 2-3 years. DIY is most economical with multiple horses.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'What equipment do I need to clip my own horse?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Essential equipment: quality clippers (£150-500), spare blade set (£30-60), clipper oil, blade wash, extension lead, circuit breaker, rug for clipped areas. Nice to have: cordless clippers for head, trimming clippers for legs, blade sharpening service contact.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'Which clip is best for my horse?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Clip choice depends on workload: Light work (hacking 2-3x weekly) = bib or trace clip. Medium work (schooling, light competing) = blanket or chaser clip. Hard work (hunting, heavy competing) = hunter or full clip. More clip = more rugs needed. Start with less and re-clip if needed.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'Can you clip a horse yourself as a beginner?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Yes, with preparation. Start with a simple trace or bib clip. Practice on a quiet horse, watch tutorials, have an experienced person supervise first time. Use quality clippers (cheap ones pull coat). Allow 2-3 hours first time. Many find it easier than expected.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'How long does it take to clip a horse?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Professional clippers take 45 mins to 2 hours depending on clip type. DIY takes longer - allow 1.5-3 hours for a full hunter clip. Bib clips take 30-45 minutes. Time increases with nervous horses, blunt blades, or inexperience. Take breaks if horse gets stressed.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'What clippers should I buy for horse clipping?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'For occasional DIY: Liveryman Kare Pro or Lister Liberty (£150-200). Regular use: Lister Star or Heiniger Xplorer (£250-350). Professional/multiple horses: Lister Stablemate or Heiniger Opal (£400-500). Avoid very cheap clippers - they pull, overheat, and frustrate.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'When should I clip my horse for the first time?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Clip when your horse\'s winter coat has fully grown in (usually October) and they\'re sweating during work. Don\'t clip too early or the coat isn\'t long enough. Last clip should be late January - this allows coat to regrow before spring. Some horses manage with just one clip.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'My horse is difficult to clip - what can I do?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Options include: desensitization training (takes weeks), sedation from vet (£60-100 per clip), using quieter cordless clippers, clipping in stages over several days, or professional clippers experienced with difficult horses. Some horses improve over time with patient handling.'
+              }
+            }
+          ]
+        },
+        {
+          '@type': 'HowTo',
+          'name': 'How to Use the Horse Clipping Cost Calculator',
+          'description': 'Step-by-step guide to calculating your horse clipping costs and comparing DIY vs professional options',
+          'step': [
+            {
+              '@type': 'HowToStep',
+              'position': 1,
+              'name': 'Select Clip Type',
+              'text': 'Choose the type of clip your horse needs: bib, trace, blanket, chaser, hunter, or full clip. Each has different time and cost requirements.'
+            },
+            {
+              '@type': 'HowToStep',
+              'position': 2,
+              'name': 'Enter Clips Per Season',
+              'text': 'Select how many times you expect to clip during the winter season (October to February). Most horses need 2-4 clips.'
+            },
+            {
+              '@type': 'HowToStep',
+              'position': 3,
+              'name': 'Choose Method',
+              'text': 'Select whether you want to use a professional clipper or do it yourself (DIY). This affects the cost calculation significantly.'
+            },
+            {
+              '@type': 'HowToStep',
+              'position': 4,
+              'name': 'Set Horse Temperament',
+              'text': 'Indicate how your horse behaves during clipping. Difficult horses cost more with professionals and may need sedation.'
+            },
+            {
+              '@type': 'HowToStep',
+              'position': 5,
+              'name': 'Calculate and Compare',
+              'text': 'Click Calculate to see your annual clipping costs, 5-year comparison between DIY and professional, and break-even point for clipper investment.'
+            }
+          ]
+        },
+        {
+          '@type': 'Article',
+          'headline': 'Horse Clipping Cost Calculator UK 2025 - DIY vs Professional Comparison',
+          'description': 'Free calculator for UK horse clipping costs. Compare professional clipper prices with DIY investment and work out the most economical option for your situation.',
+          'datePublished': '2025-01-01',
+          'dateModified': '2025-01-15',
+          'author': {
+            '@type': 'Organization',
+            'name': 'HorseCost',
+            'url': 'https://horsecost.co.uk'
+          },
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'HorseCost',
+            'logo': {
+              '@type': 'ImageObject',
+              'url': 'https://horsecost.co.uk/logo.png',
+              'width': 200,
+              'height': 200
+            }
+          },
+          'image': 'https://horsecost.co.uk/images/clipping-calculator-og-1200x630.jpg',
+          'mainEntityOfPage': {
+            '@type': 'WebPage',
+            '@id': 'https://horsecost.co.uk/clipping-cost-calculator'
+          }
+        },
+        {
+          '@type': 'Organization',
+          'name': 'HorseCost',
+          'url': 'https://horsecost.co.uk',
+          'logo': 'https://horsecost.co.uk/logo.png',
+          'description': 'Free professional horse cost calculators for UK equestrians',
+          'sameAs': [
+            'https://www.facebook.com/HorseCost',
+            'https://twitter.com/HorseCost',
+            'https://www.instagram.com/HorseCost'
+          ],
+          'contactPoint': {
+            '@type': 'ContactPoint',
+            'contactType': 'Customer Support',
+            'email': 'hello@horsecost.co.uk'
+          },
+          'address': {
+            '@type': 'PostalAddress',
+            'addressCountry': 'GB'
+          }
+        }
+      ]
+    })}
+  </script>
+</Helmet>
 
       <div className="min-h-screen bg-gray-50">
         <div className="bg-white border-b">
