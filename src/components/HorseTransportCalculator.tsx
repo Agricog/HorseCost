@@ -6,12 +6,9 @@ import {
   AlertCircle,
   ChevronDown,
   ChevronUp,
-  PoundSterling,
-  CheckCircle2,
   Calendar,
   Star,
-  MapPin,
-  Clock
+  MapPin
 } from 'lucide-react'
 
 export default function HorseTransportCalculator() {
