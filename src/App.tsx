@@ -16,6 +16,10 @@ import FirstHorseCalculatorPage from './pages/FirstHorseCalculatorPage'
 import TackEquipmentCalculatorPage from './pages/TackEquipmentCalculatorPage'
 import HorseLoanCalculatorPage from './pages/HorseLoanCalculatorPage'
 import BeddingCostCalculatorPage from './pages/BeddingCostCalculatorPage'
+import ClippingCostCalculatorPage from './pages/ClippingCostCalculatorPage'
+import WormingCostCalculatorPage from './pages/WormingCostCalculatorPage'
+import HorseTransportCalculatorPage from './pages/HorseTransportCalculatorPage'
+import FieldRentCalculatorPage from './pages/FieldRentCalculatorPage'
 
 function App() {
   return (
@@ -23,6 +27,26 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
+
+          {/* Clipping Calculator */}
+<Route path="/clipping-cost-calculator" element={<ClippingCostCalculatorPage />} />
+<Route path="/clipping-calculator" element={<ClippingCostCalculatorPage />} />
+<Route path="/horse-clipping-calculator" element={<ClippingCostCalculatorPage />} />
+
+{/* Worming Calculator */}
+<Route path="/worming-cost-calculator" element={<WormingCostCalculatorPage />} />
+<Route path="/worming-calculator" element={<WormingCostCalculatorPage />} />
+<Route path="/horse-worming-calculator" element={<WormingCostCalculatorPage />} />
+
+{/* Transport Calculator */}
+<Route path="/horse-transport-calculator" element={<HorseTransportCalculatorPage />} />
+<Route path="/transport-calculator" element={<HorseTransportCalculatorPage />} />
+<Route path="/horse-moving-calculator" element={<HorseTransportCalculatorPage />} />
+
+{/* Field Rent Calculator */}
+<Route path="/field-rent-calculator" element={<FieldRentCalculatorPage />} />
+<Route path="/grazing-calculator" element={<FieldRentCalculatorPage />} />
+<Route path="/paddock-rent-calculator" element={<FieldRentCalculatorPage />} />
 
           {/* Tack & Equipment Calculator */}
 <Route path="/tack-equipment-calculator" element={<TackEquipmentCalculatorPage />} />
