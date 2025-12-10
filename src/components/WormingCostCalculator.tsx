@@ -240,68 +240,285 @@ export default function WormingCostCalculator() {
   return (
     <>
       <Helmet>
-        <title>Horse Worming Cost Calculator UK 2025 | Compare Programs | HorseCost</title>
-        <meta 
-          name="description" 
-          content="Free horse worming cost calculator for UK. Compare targeted vs traditional worming, calculate FEC testing costs, and plan your annual parasite control budget. 2025 prices." 
-        />
-        <meta name="keywords" content="horse worming cost UK, FEC testing price, targeted worming, equine parasite control, wormer prices UK, horse worm count test" />
-        <meta name="author" content="HorseCost" />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="theme-color" content="#059669" />
+  {/* ========== 1. PRIMARY META TAGS (4) ========== */}
+  <title>Horse Worming Cost Calculator UK 2025 | FEC Testing & Program Comparison | HorseCost</title>
+  <meta 
+    name="description" 
+    content="Free horse worming cost calculator for UK owners. Compare targeted vs traditional worming programs, calculate FEC testing costs, and plan your annual parasite control budget. 2025 prices." 
+  />
+  <meta 
+    name="keywords" 
+    content="horse worming cost UK, FEC testing price, targeted worming program, equine parasite control, wormer prices UK 2025, horse worm count test, faecal egg count cost" 
+  />
+  <meta name="author" content="HorseCost" />
 
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="HorseCost" />
-        <meta property="og:title" content="Horse Worming Cost Calculator UK 2025 | HorseCost" />
-        <meta property="og:description" content="Compare worming programs and calculate annual parasite control costs." />
-        <meta property="og:url" content="https://horsecost.co.uk/worming-cost-calculator" />
+  {/* ========== 2. ROBOTS & CRAWLING (2) ========== */}
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Worming Cost Calculator UK | HorseCost" />
+  {/* ========== 3. VIEWPORT & MOBILE (3) ========== */}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-        <link rel="canonical" href="https://horsecost.co.uk/worming-cost-calculator" />
+  {/* ========== 4. THEME & APPEARANCE (1) ========== */}
+  <meta name="theme-color" content="#059669" />
 
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@graph': [
-              {
-                '@type': 'BreadcrumbList',
-                'itemListElement': [
-                  { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://horsecost.co.uk' },
-                  { '@type': 'ListItem', 'position': 2, 'name': 'Calculators', 'item': 'https://horsecost.co.uk/#calculators' },
-                  { '@type': 'ListItem', 'position': 3, 'name': 'Worming Cost Calculator', 'item': 'https://horsecost.co.uk/worming-cost-calculator' }
-                ]
-              },
-              {
-                '@type': 'SoftwareApplication',
-                'name': 'Horse Worming Cost Calculator UK',
-                'description': 'Calculate and compare horse worming program costs.',
-                'url': 'https://horsecost.co.uk/worming-cost-calculator',
-                'applicationCategory': 'FinanceApplication',
-                'operatingSystem': 'Web',
-                'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'GBP' },
-                'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.8', 'ratingCount': '203' }
-              },
-              {
-                '@type': 'FAQPage',
-                'mainEntity': faqs.map(faq => ({
-                  '@type': 'Question',
-                  'name': faq.q,
-                  'acceptedAnswer': { '@type': 'Answer', 'text': faq.a }
-                }))
-              },
-              {
-                '@type': 'Organization',
-                'name': 'HorseCost',
-                'url': 'https://horsecost.co.uk'
+  {/* ========== 5. OPEN GRAPH / FACEBOOK (8) ========== */}
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="HorseCost" />
+  <meta property="og:locale" content="en_GB" />
+  <meta property="og:title" content="Horse Worming Cost Calculator UK 2025 | FEC Testing Prices | HorseCost" />
+  <meta property="og:description" content="Compare targeted vs traditional worming programs. Calculate FEC testing and annual parasite control costs with UK 2025 prices." />
+  <meta property="og:url" content="https://horsecost.co.uk/worming-cost-calculator" />
+  <meta property="og:image" content="https://horsecost.co.uk/images/worming-calculator-og-1200x630.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Horse Worming Cost Calculator showing FEC testing and program comparison" />
+
+  {/* ========== 6. TWITTER CARD (6) ========== */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@HorseCost" />
+  <meta name="twitter:title" content="Horse Worming Cost Calculator UK 2025 | HorseCost" />
+  <meta name="twitter:description" content="Compare worming programs and calculate FEC testing costs. Targeted vs traditional approach." />
+  <meta name="twitter:image" content="https://horsecost.co.uk/images/worming-calculator-twitter-1200x675.jpg" />
+  <meta name="twitter:image:alt" content="Horse Worming Cost Calculator UK" />
+
+  {/* ========== 7. CANONICAL & ALTERNATE (2) ========== */}
+  <link rel="canonical" href="https://horsecost.co.uk/worming-cost-calculator" />
+  <link rel="alternate" hrefLang="en-GB" href="https://horsecost.co.uk/worming-cost-calculator" />
+
+  {/* ========== 8. PRECONNECT & PERFORMANCE (2) ========== */}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+  {/* ========== 9. JSON-LD STRUCTURED DATA (6 Schemas) ========== */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@graph': [
+        {
+          '@type': 'BreadcrumbList',
+          'itemListElement': [
+            { 
+              '@type': 'ListItem', 
+              'position': 1, 
+              'name': 'Home', 
+              'item': 'https://horsecost.co.uk'
+            },
+            { 
+              '@type': 'ListItem', 
+              'position': 2, 
+              'name': 'Calculators', 
+              'item': 'https://horsecost.co.uk/#calculators'
+            },
+            { 
+              '@type': 'ListItem', 
+              'position': 3, 
+              'name': 'Worming Cost Calculator', 
+              'item': 'https://horsecost.co.uk/worming-cost-calculator'
+            }
+          ]
+        },
+        {
+          '@type': 'SoftwareApplication',
+          'name': 'Horse Worming Cost Calculator UK',
+          'description': 'Calculate and compare horse worming program costs including FEC testing, targeted worming, and traditional approaches with UK 2025 prices.',
+          'url': 'https://horsecost.co.uk/worming-cost-calculator',
+          'applicationCategory': 'FinanceApplication',
+          'operatingSystem': 'Web',
+          'offers': { 
+            '@type': 'Offer', 
+            'price': '0', 
+            'priceCurrency': 'GBP',
+            'availability': 'https://schema.org/InStock'
+          },
+          'aggregateRating': { 
+            '@type': 'AggregateRating', 
+            'ratingValue': '4.8', 
+            'ratingCount': '203',
+            'bestRating': '5',
+            'worstRating': '1'
+          },
+          'author': {
+            '@type': 'Organization',
+            'name': 'HorseCost'
+          }
+        },
+        {
+          '@type': 'FAQPage',
+          'mainEntity': [
+            {
+              '@type': 'Question',
+              'name': 'How much does horse worming cost UK?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Horse worming costs £100-£200 per year in the UK depending on your approach. Traditional 4x yearly worming costs £80-120 in wormers alone. Targeted worming with FEC testing costs £100-150 (tests + fewer wormers). Add £30-50 for tapeworm testing/treatment.'
               }
-            ]
-          })}
-        </script>
-      </Helmet>
-
+            },
+            {
+              '@type': 'Question',
+              'name': 'What is targeted worming and is it better?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Targeted worming uses faecal egg count (FEC) tests to determine if your horse actually needs worming. Only horses with counts over 200 EPG are treated. It\'s recommended by vets as it reduces drug resistance, saves money long-term, and is healthier for horses that don\'t need treatment.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'How often should I worm my horse?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'With targeted worming: test every 8-12 weeks during grazing season, worm only when needed, plus annual moxidectin for encysted redworm. Traditional approach: 4x yearly (spring, summer, autumn, winter). Most horses on good programs only need 1-3 actual wormer doses per year.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'What is a FEC test and how much does it cost?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'A Faecal Egg Count (FEC) test examines a dung sample under a microscope to count parasite eggs. It costs £15-30 per test through vets, labs, or yard programs. Many yards offer group testing discounts. Results show eggs per gram (EPG) - treat if over 200 EPG.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'Do I need to test for tapeworm separately?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Yes, FEC tests don\'t detect tapeworm reliably. Use an EquiSal saliva test (£15-20) or blood test twice yearly. Only treat if positive - about 30-50% of horses carry tapeworm. Praziquantel-based wormers or double-dose pyrantel treat tapeworm.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'What is encysted redworm and why does it matter?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Encysted small redworm larvae burrow into the gut wall and can emerge en masse, causing severe colic or death. They\'re not detected by FEC tests. All horses need annual treatment with moxidectin (Equest) or 5-day fenbendazole course in late autumn/winter.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'Can I worm my horse myself or do I need a vet?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'You can buy and administer most wormers yourself from feed merchants, saddleries, or online (POM-VPS medicines need a signed declaration). FEC tests can be done through labs without vet involvement. Some wormers (like injectable ivermectin) require a vet.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'What is wormer resistance and why should I care?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Worm populations are developing resistance to available drugs, meaning treatments become less effective. Overworming accelerates this. Using targeted worming, rotating drug classes, and only treating when necessary helps preserve drug effectiveness for the future.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'How do I reduce worming costs?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Switch to targeted worming (test first, treat if needed), join yard group testing programs, buy wormers in bulk or during offers, practice good pasture management (poo-picking reduces worm burden), and don\'t treat unnecessarily. Many horses need only 1-2 wormers yearly.'
+              }
+            },
+            {
+              '@type': 'Question',
+              'name': 'Should new horses be wormed before turning out?',
+              'acceptedAnswer': {
+                '@type': 'Answer',
+                'text': 'Yes - quarantine new horses for 48-72 hours after worming with moxidectin (Equest) before turning out with others. This kills any resistant worms they may carry. Also do a FEC test before and after to check efficacy.'
+              }
+            }
+          ]
+        },
+        {
+          '@type': 'HowTo',
+          'name': 'How to Use the Horse Worming Cost Calculator',
+          'description': 'Step-by-step guide to calculating your annual horse worming and parasite control costs',
+          'step': [
+            {
+              '@type': 'HowToStep',
+              'position': 1,
+              'name': 'Select Worming Program',
+              'text': 'Choose your preferred approach: targeted (FEC-based), traditional (routine), minimal (low risk), or comprehensive. Each has different testing and treatment schedules.'
+            },
+            {
+              '@type': 'HowToStep',
+              'position': 2,
+              'name': 'Enter Number of Horses',
+              'text': 'Select how many horses you need to worm. Multi-horse owners often benefit from group testing discounts.'
+            },
+            {
+              '@type': 'HowToStep',
+              'position': 3,
+              'name': 'Set Horse Weight',
+              'text': 'Enter average horse weight as this affects wormer dosage costs. Larger horses need more paste per treatment.'
+            },
+            {
+              '@type': 'HowToStep',
+              'position': 4,
+              'name': 'Select Grazing Risk',
+              'text': 'Indicate your grazing situation - low (private), medium (shared), or high (busy yard). Higher risk may need more frequent testing.'
+            },
+            {
+              '@type': 'HowToStep',
+              'position': 5,
+              'name': 'Calculate Annual Costs',
+              'text': 'Click Calculate to see your total annual worming costs, recommended schedule, and comparison between different programs.'
+            }
+          ]
+        },
+        {
+          '@type': 'Article',
+          'headline': 'Horse Worming Cost Calculator UK 2025 - FEC Testing & Program Comparison',
+          'description': 'Free calculator for UK horse worming costs. Compare targeted vs traditional worming, FEC testing prices, and annual parasite control budgets.',
+          'datePublished': '2025-01-01',
+          'dateModified': '2025-01-15',
+          'author': {
+            '@type': 'Organization',
+            'name': 'HorseCost',
+            'url': 'https://horsecost.co.uk'
+          },
+          'publisher': {
+            '@type': 'Organization',
+            'name': 'HorseCost',
+            'logo': {
+              '@type': 'ImageObject',
+              'url': 'https://horsecost.co.uk/logo.png',
+              'width': 200,
+              'height': 200
+            }
+          },
+          'image': 'https://horsecost.co.uk/images/worming-calculator-og-1200x630.jpg',
+          'mainEntityOfPage': {
+            '@type': 'WebPage',
+            '@id': 'https://horsecost.co.uk/worming-cost-calculator'
+          }
+        },
+        {
+          '@type': 'Organization',
+          'name': 'HorseCost',
+          'url': 'https://horsecost.co.uk',
+          'logo': 'https://horsecost.co.uk/logo.png',
+          'description': 'Free professional horse cost calculators for UK equestrians',
+          'sameAs': [
+            'https://www.facebook.com/HorseCost',
+            'https://twitter.com/HorseCost',
+            'https://www.instagram.com/HorseCost'
+          ],
+          'contactPoint': {
+            '@type': 'ContactPoint',
+            'contactType': 'Customer Support',
+            'email': 'hello@horsecost.co.uk'
+          },
+          'address': {
+            '@type': 'PostalAddress',
+            'addressCountry': 'GB'
+          }
+        }
+      ]
+    })}
+  </script>
+</Helmet>
       <div className="min-h-screen bg-gray-50">
         <div className="bg-white border-b">
           <div className="max-w-5xl mx-auto px-4 py-3">
