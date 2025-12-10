@@ -1,6 +1,4 @@
 import { Helmet } from 'react-helmet-async'
-import { Truck, GraduationCap, Heart } from 'lucide-react'
-import { ShoppingBag, Layers } from 'lucide-react'
 import { 
   Calculator, 
   PoundSterling, 
@@ -18,105 +16,18 @@ import {
   Home,
   Gamepad2,
   Sparkles,
-  Stethoscope
-  Scissors,
-  Bug,
+  Stethoscope,
   Truck,
+  GraduationCap,
+  Heart,
+  ShoppingBag,
+  Layers,
+  Bug,
   TreePine
 } from 'lucide-react'
 
 export default function HomePage() {
   const calculators = [
-    {
-  title: 'Clipping Calculator',
-  description: 'DIY vs professional clipping costs',
-  href: '/clipping-cost-calculator',
-  icon: Scissors,
-  color: 'indigo',
-  tag: 'Grooming',
-  available: true
-},
-{
-  title: 'Worming Calculator',
-  description: 'Compare worming programs & FEC testing',
-  href: '/worming-cost-calculator',
-  icon: Bug,
-  color: 'emerald',
-  tag: 'Healthcare',
-  available: true
-},
-{
-  title: 'Transport Calculator',
-  description: 'Moving and travel costs',
-  href: '/horse-transport-calculator',
-  icon: Truck,
-  color: 'sky',
-  tag: 'Travel',
-  available: true
-},
-{
-  title: 'Field Rent Calculator',
-  description: 'Grazing land & paddock costs',
-  href: '/field-rent-calculator',
-  icon: TreePine,
-  color: 'green',
-  tag: 'Land',
-  available: true
-}
-    {
-  title: 'Tack & Equipment',
-  description: 'Calculate saddle, bridle, rugs, and boots costs',
-  href: '/tack-equipment-calculator',
-  icon: ShoppingBag,
-  color: 'cyan',
-  tag: 'Gear',
-  available: true
-},
-{
-  title: 'Horse Loan Calculator',
-  description: 'Compare loaning vs buying costs',
-  href: '/horse-loan-calculator',
-  icon: Heart,
-  color: 'emerald',
-  tag: 'Options',
-  available: true
-},
-{
-  title: 'Bedding Calculator',
-  description: 'Compare shavings, straw, hemp & more',
-  href: '/bedding-cost-calculator',
-  icon: Layers,
-  color: 'yellow',
-  tag: 'Stabling',
-  available: true
-},
-    {
-  title: 'Trailer Running Costs',
-  description: 'Calculate annual trailer or horsebox running costs including fuel, insurance, MOT, and servicing.',
-  icon: Truck,
-  href: '/trailer-cost-calculator',
-  tag: 'Transport',
-  color: 'from-sky-500 to-blue-600',
-  available: true
-},
-{
-  title: 'Riding Lesson Calculator',
-  description: 'Plan your riding education budget. Compare group, private, and semi-private lesson costs.',
-  icon: GraduationCap,
-  href: '/riding-lesson-calculator',
-  tag: 'Learning',
-  color: 'from-violet-500 to-purple-600',
-  available: true
-},
-{
-  title: 'First Horse Calculator',
-  description: 'Calculate your complete first year costs including purchase, tack, livery, and all running expenses.',
-  icon: Heart,
-  href: '/first-horse-calculator',
-  tag: 'New Owners',
-  color: 'from-pink-500 to-rose-600',
-  available: true
-},
     {
       title: 'Annual Horse Cost Calculator',
       description: 'The complete UK horse ownership budget calculator. Calculate livery, feed, farrier, vet bills, insurance, tack & equipment costs.',
@@ -172,32 +83,113 @@ export default function HomePage() {
       available: true
     },
     {
-      title: 'Livery Comparison',
-      description: 'Compare DIY, part, and full livery costs side by side.',
-      icon: PoundSterling,
-      href: '/calculators/livery-cost',
-      tag: 'Coming Soon',
+      title: 'Horse Insurance Calculator',
+      description: 'Estimate insurance premiums for mortality, vet fees, and comprehensive cover with UK 2025 pricing.',
+      icon: Shield,
+      href: '/horse-insurance-calculator',
+      tag: 'Protection',
       color: 'from-violet-500 to-purple-600',
-      available: false
+      available: true
     },
     {
-  title: 'Horse Insurance Calculator',
-  description: 'Estimate insurance premiums for mortality, vet fees, and comprehensive cover with UK 2025 pricing.',
-  icon: Shield,
-  href: '/horse-insurance-calculator',
-  tag: 'Protection',
-  color: 'from-violet-500 to-purple-600',
-  available: true
-},
-{
-  title: 'Vet Cost Estimator',
-  description: 'Plan your annual veterinary budget including vaccinations, dental, worming, and emergency fund.',
-  icon: Stethoscope,
-  href: '/vet-cost-estimator',
-  tag: 'Healthcare',
-  color: 'from-red-500 to-rose-600',
-  available: true
-}
+      title: 'Vet Cost Estimator',
+      description: 'Plan your annual veterinary budget including vaccinations, dental, worming, and emergency fund.',
+      icon: Stethoscope,
+      href: '/vet-cost-estimator',
+      tag: 'Healthcare',
+      color: 'from-red-500 to-rose-600',
+      available: true
+    },
+    {
+      title: 'Trailer Running Costs',
+      description: 'Calculate annual trailer or horsebox running costs including fuel, insurance, MOT, and servicing.',
+      icon: Truck,
+      href: '/trailer-cost-calculator',
+      tag: 'Transport',
+      color: 'from-sky-500 to-blue-600',
+      available: true
+    },
+    {
+      title: 'Riding Lesson Calculator',
+      description: 'Plan your riding education budget. Compare group, private, and semi-private lesson costs.',
+      icon: GraduationCap,
+      href: '/riding-lesson-calculator',
+      tag: 'Learning',
+      color: 'from-violet-500 to-purple-600',
+      available: true
+    },
+    {
+      title: 'First Horse Calculator',
+      description: 'Calculate your complete first year costs including purchase, tack, livery, and all running expenses.',
+      icon: Heart,
+      href: '/first-horse-calculator',
+      tag: 'New Owners',
+      color: 'from-pink-500 to-rose-600',
+      available: true
+    },
+    {
+      title: 'Tack & Equipment',
+      description: 'Calculate saddle, bridle, rugs, and boots costs',
+      href: '/tack-equipment-calculator',
+      icon: ShoppingBag,
+      color: 'from-cyan-500 to-teal-600',
+      tag: 'Gear',
+      available: true
+    },
+    {
+      title: 'Horse Loan Calculator',
+      description: 'Compare loaning vs buying costs',
+      href: '/horse-loan-calculator',
+      icon: Users,
+      color: 'from-emerald-500 to-green-600',
+      tag: 'Options',
+      available: true
+    },
+    {
+      title: 'Bedding Calculator',
+      description: 'Compare shavings, straw, hemp & more',
+      href: '/bedding-cost-calculator',
+      icon: Layers,
+      color: 'from-yellow-500 to-amber-600',
+      tag: 'Stabling',
+      available: true
+    },
+    {
+      title: 'Clipping Calculator',
+      description: 'DIY vs professional clipping costs',
+      href: '/clipping-cost-calculator',
+      icon: Sparkles,
+      color: 'from-indigo-500 to-violet-600',
+      tag: 'Grooming',
+      available: true
+    },
+    {
+      title: 'Worming Calculator',
+      description: 'Compare worming programs & FEC testing',
+      href: '/worming-cost-calculator',
+      icon: Bug,
+      color: 'from-emerald-500 to-teal-600',
+      tag: 'Healthcare',
+      available: true
+    },
+    {
+      title: 'Transport Calculator',
+      description: 'Moving and travel costs',
+      href: '/horse-transport-calculator',
+      icon: Truck,
+      color: 'from-sky-500 to-blue-600',
+      tag: 'Travel',
+      available: true
+    },
+    {
+      title: 'Field Rent Calculator',
+      description: 'Grazing land & paddock costs',
+      href: '/field-rent-calculator',
+      icon: TreePine,
+      color: 'from-green-600 to-emerald-600',
+      tag: 'Land',
+      available: true
+    }
   ]
 
   const features = [
@@ -441,7 +433,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-2 text-gray-600">
                   <Calculator className="w-5 h-5 text-amber-600" />
-                  <span className="font-semibold">6 Calculators</span>
+                  <span className="font-semibold">18 Calculators</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-600">
                   <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
@@ -522,6 +514,7 @@ export default function HomePage() {
                       <p className="text-purple-200">Game</p>
                     </div>
                   </div>
+
                   <div className="flex-1 text-white order-1 lg:order-2">
                     <div className="flex items-center gap-2 mb-4">
                       <span className="bg-white/20 text-white text-xs font-bold px-3 py-1 rounded-full">
@@ -531,11 +524,14 @@ export default function HomePage() {
                         KIDS & ADULTS
                       </span>
                     </div>
+
                     <h2 className="text-3xl md:text-4xl font-bold mb-4">Horse Care Challenge</h2>
+                    
                     <p className="text-purple-100 text-lg mb-6 max-w-xl">
                       Test your horse knowledge with our fun quiz game! Perfect for young equestrians 
                       learning about horse care. Compete with friends, earn badges, and build your virtual stable.
                     </p>
+
                     <ul className="space-y-2 mb-8">
                       <li className="flex items-center gap-2 text-purple-100">
                         <CheckCircle2 className="w-5 h-5 text-white" />
@@ -550,6 +546,7 @@ export default function HomePage() {
                         Share scores with friends
                       </li>
                     </ul>
+
                     <a 
                       href="/horse-care-challenge"
                       className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-50 transition shadow-lg"
