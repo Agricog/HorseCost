@@ -30,32 +30,32 @@ import {
 export default function HomePage() {
   const calculators = [
     {
-  title: 'Dental Calculator',
-  description: 'EDT vs vet dentist costs',
-  href: '/dental-cost-calculator',
-  icon: Smile,
-  color: 'from-teal-500 to-cyan-600',
-  tag: 'Healthcare',
-  available: true
-},
-{
-  title: 'Rug Calculator',
-  description: 'How many rugs does your horse need?',
-  href: '/rug-cost-calculator',
-  icon: Shirt,
-  color: 'from-violet-500 to-purple-600',
-  tag: 'Equipment',
-  available: true
-},
-{
-  title: 'Retirement Calculator',
-  description: 'Veteran & retired horse costs',
-  href: '/retirement-cost-calculator',
-  icon: Heart,
-  color: 'from-pink-500 to-rose-600',
-  tag: 'Senior Care',
-  available: true
-}
+      title: 'Dental Calculator',
+      description: 'EDT vs vet dentist costs',
+      href: '/dental-cost-calculator',
+      icon: Smile,
+      color: 'from-teal-500 to-cyan-600',
+      tag: 'Healthcare',
+      available: true
+    },
+    {
+      title: 'Rug Calculator',
+      description: 'How many rugs does your horse need?',
+      href: '/rug-cost-calculator',
+      icon: Shirt,
+      color: 'from-violet-500 to-purple-600',
+      tag: 'Equipment',
+      available: true
+    },
+    {
+      title: 'Retirement Calculator',
+      description: 'Veteran & retired horse costs',
+      href: '/retirement-cost-calculator',
+      icon: Heart,
+      color: 'from-pink-500 to-rose-600',
+      tag: 'Senior Care',
+      available: true
+    },
     {
       title: 'Annual Horse Cost Calculator',
       description: 'The complete UK horse ownership budget calculator. Calculate livery, feed, farrier, vet bills, insurance, tack & equipment costs.',
@@ -461,7 +461,7 @@ export default function HomePage() {
                 </div>
                 <div className="flex items-center gap-2 text-gray-600">
                   <Calculator className="w-5 h-5 text-amber-600" />
-                  <span className="font-semibold">18 Calculators</span>
+                  <span className="font-semibold">21 Calculators</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-600">
                   <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
