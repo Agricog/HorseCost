@@ -72,8 +72,6 @@ export default function RugCostCalculator() {
     
     if (!horse || !climateData || !stablingData || !budget) return
 
-    const combinedMultiplier = horse.multiplier * climateData.multiplier * stablingData.multiplier * budget.multiplier
-
     // Calculate which rugs are needed
     const rugsNeeded: any[] = []
     let totalInitial = 0
