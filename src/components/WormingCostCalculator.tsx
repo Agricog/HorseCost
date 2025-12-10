@@ -3,11 +3,8 @@ import { Helmet } from 'react-helmet-async'
 import { 
   Bug,
   Calculator,
-  AlertCircle,
   ChevronDown,
   ChevronUp,
-  PoundSterling,
-  CheckCircle2,
   Calendar,
   Star,
   Shield,
@@ -19,7 +16,6 @@ export default function WormingCostCalculator() {
   const [horseWeight, setHorseWeight] = useState('500')
   const [numHorses, setNumHorses] = useState('1')
   const [region, setRegion] = useState('average')
-  const [includeEggsanine, setIncludeEggsanine] = useState(true)
   const [includeTapeworm, setIncludeTapeworm] = useState(true)
   const [grazingRisk, setGrazingRisk] = useState('medium')
   const [showAdvanced, setShowAdvanced] = useState(false)
