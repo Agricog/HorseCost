@@ -19,10 +19,50 @@ import {
   Gamepad2,
   Sparkles,
   Stethoscope
+  Scissors,
+  Bug,
+  Truck,
+  TreePine
 } from 'lucide-react'
 
 export default function HomePage() {
   const calculators = [
+    {
+  title: 'Clipping Calculator',
+  description: 'DIY vs professional clipping costs',
+  href: '/clipping-cost-calculator',
+  icon: Scissors,
+  color: 'indigo',
+  tag: 'Grooming',
+  available: true
+},
+{
+  title: 'Worming Calculator',
+  description: 'Compare worming programs & FEC testing',
+  href: '/worming-cost-calculator',
+  icon: Bug,
+  color: 'emerald',
+  tag: 'Healthcare',
+  available: true
+},
+{
+  title: 'Transport Calculator',
+  description: 'Moving and travel costs',
+  href: '/horse-transport-calculator',
+  icon: Truck,
+  color: 'sky',
+  tag: 'Travel',
+  available: true
+},
+{
+  title: 'Field Rent Calculator',
+  description: 'Grazing land & paddock costs',
+  href: '/field-rent-calculator',
+  icon: TreePine,
+  color: 'green',
+  tag: 'Land',
+  available: true
+}
     {
   title: 'Tack & Equipment',
   description: 'Calculate saddle, bridle, rugs, and boots costs',
