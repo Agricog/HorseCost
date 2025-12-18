@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://horsecost.co.uk/sitemap.xml
+
+# Crawl-delay (optional, be nice to servers)
+Crawl-delay: 1
+
+# Block common non-content paths
+Disallow: /api/
+Disallow: /*.json$
+Disallow: /assets/*.map
