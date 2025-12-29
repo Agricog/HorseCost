@@ -105,7 +105,7 @@ export default function HomePage() {
       title: 'Horse Livery Calculator',
       description: 'Calculate sustainable DIY, Part, and Full livery pricing for yard owners.',
       icon: Home,
-      href: '/calculators/horse-livery',
+      href: '/horse-livery-calculator',
       tag: 'For Yards',
       color: 'from-emerald-500 to-green-600',
       available: true
