@@ -24,7 +24,8 @@ import {
   Bug,
   TreePine,
   Smile,
-  Shirt
+  Shirt,
+  HelpCircle
 } from 'lucide-react'
 
 export default function HomePage() {
@@ -261,12 +262,16 @@ export default function HomePage() {
 
   const faqs = [
     {
+      q: 'How much does it cost to keep a horse per year in the UK?',
+      a: 'The average annual cost of keeping a horse in the UK is £8,500. Costs range from £5,000 for DIY livery with basic care to £15,000+ for full livery with competition. Our Annual Horse Cost Calculator helps you get an accurate figure for your specific situation.'
+    },
+    {
       q: 'What is included in the horse cost calculator?',
       a: 'Our calculator includes livery costs, feed and bedding, farrier services, veterinary care, insurance, worming, dental care, tack and equipment, and optional extras like lessons and competition costs.'
     },
     {
       q: 'Are the UK prices accurate for 2025?',
-      a: 'Yes, all pricing is based on current 2025 UK market rates and averages collected from yards, farriers, and vets across the UK.'
+      a: 'Yes, all pricing is based on current 2025 UK market rates and averages collected from yards, farriers, and vets across the UK. We update pricing regularly.'
     },
     {
       q: 'Can I save my calculations?',
@@ -274,7 +279,7 @@ export default function HomePage() {
     },
     {
       q: 'What livery types are covered?',
-      a: 'We cover Full Livery, Part Livery, DIY Livery, Grass Livery, and Home Kept. Each has different typical costs which you can customise.'
+      a: 'We cover Full Livery (£400-700/month), Part Livery (£250-400/month), DIY Livery (£100-200/month), Grass Livery (£60-120/month), and Home Kept options. Each has different typical costs which you can customise.'
     },
     {
       q: 'Is the Horse Care Challenge game free?',
@@ -283,163 +288,173 @@ export default function HomePage() {
     {
       q: 'How often is the calculator updated?',
       a: 'We update pricing information regularly to reflect changes in the UK equestrian market. Last major update was January 2025.'
+    },
+    {
+      q: 'What are the main costs of horse ownership?',
+      a: 'The main costs are livery/stabling (£1,200-8,400/year), feed and forage (£1,000-2,400/year), farrier (£400-1,500/year), veterinary care (£300-1,500/year), and insurance (£360-1,200/year). Our calculators help you budget for each category.'
     }
   ]
 
   return (
     <>
       <Helmet>
-  {/* 1. Title Tag */}
-  <title>HorseCost | Free Horse Cost Calculators UK 2025 | Annual Costs, Livery & More</title>
-  
-  {/* 2. Meta Description */}
-  <meta 
-    name="description" 
-    content="Free professional horse cost calculators for UK owners. Calculate annual ownership costs, livery, feed, farrier & vet expenses. 21 calculators with accurate 2025 UK pricing." 
-  />
-  
-  {/* 3. Keywords */}
-  <meta name="keywords" content="horse cost calculator UK, annual horse costs, livery calculator, horse ownership costs, equestrian budget, farrier costs UK, horse feed calculator, vet costs horses UK" />
-  
-  {/* 4. Author */}
-  <meta name="author" content="HorseCost" />
-  
-  {/* 5. Robots */}
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  
-  {/* 6. Googlebot */}
-  <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  
-  {/* 7. Viewport */}
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  
-  {/* 8. Theme Color */}
-  <meta name="theme-color" content="#b45309" />
-  
-  {/* 9. Apple Mobile */}
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        {/* 1. Title Tag */}
+        <title>HorseCost | Free Horse Cost Calculators UK 2025 | Annual Costs, Livery & More</title>
+        
+        {/* 2. Meta Description */}
+        <meta 
+          name="description" 
+          content="Free professional horse cost calculators for UK owners. Calculate annual ownership costs, livery, feed, farrier & vet expenses. 21 calculators with accurate 2025 UK pricing." 
+        />
+        
+        {/* 3. Keywords */}
+        <meta name="keywords" content="horse cost calculator UK, annual horse costs, livery calculator, horse ownership costs, equestrian budget, farrier costs UK, horse feed calculator, vet costs horses UK, how much does a horse cost" />
+        
+        {/* 4. Author */}
+        <meta name="author" content="HorseCost" />
+        
+        {/* 5. Robots */}
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        
+        {/* 6. Googlebot */}
+        <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        
+        {/* 7. Viewport */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        
+        {/* 8. Theme Color */}
+        <meta name="theme-color" content="#b45309" />
+        
+        {/* 9. Apple Mobile */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-  {/* 10. OG Type */}
-  <meta property="og:type" content="website" />
-  
-  {/* 11. OG Site Name */}
-  <meta property="og:site_name" content="HorseCost" />
-  
-  {/* 12. OG Locale */}
-  <meta property="og:locale" content="en_GB" />
-  
-  {/* 13. OG Complete */}
-  <meta property="og:title" content="HorseCost | Free Horse Cost Calculators UK 2025" />
-  <meta property="og:description" content="Free professional horse cost calculators for UK owners. Calculate annual costs, livery, feed & more. 21 calculators with 2025 pricing." />
-  <meta property="og:url" content="https://horsecost.co.uk" />
-  <meta property="og:image" content="https://horsecost.co.uk/images/horsecost-og.jpg" />
-  <meta property="og:image:width" content="1200" />
-  <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="HorseCost - Free UK Horse Cost Calculators" />
+        {/* 10. OG Type */}
+        <meta property="og:type" content="website" />
+        
+        {/* 11. OG Site Name */}
+        <meta property="og:site_name" content="HorseCost" />
+        
+        {/* 12. OG Locale */}
+        <meta property="og:locale" content="en_GB" />
+        
+        {/* 13. OG Complete */}
+        <meta property="og:title" content="HorseCost | Free Horse Cost Calculators UK 2025" />
+        <meta property="og:description" content="Free professional horse cost calculators for UK owners. Calculate annual costs, livery, feed & more. 21 calculators with 2025 pricing." />
+        <meta property="og:url" content="https://horsecost.co.uk" />
+        <meta property="og:image" content="https://horsecost.co.uk/images/horsecost-og.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="HorseCost - Free UK Horse Cost Calculators" />
 
-  {/* 14. Twitter Card */}
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@HorseCost" />
-  <meta name="twitter:title" content="HorseCost | Free Horse Cost Calculators UK 2025" />
-  <meta name="twitter:description" content="Calculate your horse ownership costs with 21 free UK calculators. Accurate 2025 pricing." />
-  <meta name="twitter:image" content="https://horsecost.co.uk/images/horsecost-og.jpg" />
-  <meta name="twitter:image:alt" content="HorseCost UK Horse Calculators" />
+        {/* 14. Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@HorseCost" />
+        <meta name="twitter:title" content="HorseCost | Free Horse Cost Calculators UK 2025" />
+        <meta name="twitter:description" content="Calculate your horse ownership costs with 21 free UK calculators. Accurate 2025 pricing." />
+        <meta name="twitter:image" content="https://horsecost.co.uk/images/horsecost-og.jpg" />
+        <meta name="twitter:image:alt" content="HorseCost UK Horse Calculators" />
 
-  {/* 15. Canonical */}
-  <link rel="canonical" href="https://horsecost.co.uk" />
-  
-  {/* Hreflang */}
-  <link rel="alternate" hrefLang="en-GB" href="https://horsecost.co.uk" />
+        {/* 15. Canonical */}
+        <link rel="canonical" href="https://horsecost.co.uk" />
+        
+        {/* Hreflang */}
+        <link rel="alternate" hrefLang="en-GB" href="https://horsecost.co.uk" />
 
-  {/* Preconnect */}
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        {/* Preconnect */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-  {/* JSON-LD Schemas */}
-  <script type="application/ld+json">
-    {JSON.stringify({
-      '@context': 'https://schema.org',
-      '@graph': [
-        // Schema 1: WebSite (without fake SearchAction)
-        {
-          '@type': 'WebSite',
-          'name': 'HorseCost',
-          'url': 'https://horsecost.co.uk',
-          'description': 'Free professional horse cost calculators for UK equestrians. 21 calculators with accurate 2025 UK pricing.'
-        },
-        // Schema 2: Organization
-        {
-          '@type': 'Organization',
-          'name': 'HorseCost',
-          'url': 'https://horsecost.co.uk',
-          'logo': 'https://horsecost.co.uk/logo.png',
-          'description': 'Free professional horse cost calculators for UK equestrians',
-          'foundingDate': '2024',
-          'areaServed': 'GB',
-          'contactPoint': {
-            '@type': 'ContactPoint',
-            'contactType': 'Customer Support',
-            'email': 'hello@horsecost.co.uk'
-          },
-          'sameAs': [
-            'https://twitter.com/HorseCost',
-            'https://www.facebook.com/HorseCost'
-          ]
-        },
-        // Schema 3: BreadcrumbList
-        {
-          '@type': 'BreadcrumbList',
-          'itemListElement': [
-            {
-              '@type': 'ListItem',
-              'position': 1,
-              'name': 'Home',
-              'item': 'https://horsecost.co.uk'
-            }
-          ]
-        },
-        // Schema 4: FAQPage
-        {
-          '@type': 'FAQPage',
-          'mainEntity': faqs.map(faq => ({
-            '@type': 'Question',
-            'name': faq.q,
-            'acceptedAnswer': {
-              '@type': 'Answer',
-              'text': faq.a
-            }
-          }))
-        },
-        // Schema 5: ItemList (Calculator Collection)
-        {
-          '@type': 'ItemList',
-          'name': 'Horse Cost Calculators',
-          'description': 'Free UK horse cost calculators',
-          'numberOfItems': 21,
-          'itemListElement': [
-            { '@type': 'ListItem', 'position': 1, 'name': 'Annual Horse Cost Calculator', 'url': 'https://horsecost.co.uk/annual-horse-cost-calculator' },
-            { '@type': 'ListItem', 'position': 2, 'name': 'Horse Feed Calculator', 'url': 'https://horsecost.co.uk/horse-feed-calculator' },
-            { '@type': 'ListItem', 'position': 3, 'name': 'Farrier Cost Calculator', 'url': 'https://horsecost.co.uk/farrier-cost-calculator' },
-            { '@type': 'ListItem', 'position': 4, 'name': 'Horse Livery Calculator', 'url': 'https://horsecost.co.uk/horse-livery-calculator' },
-            { '@type': 'ListItem', 'position': 5, 'name': 'Vet Cost Estimator', 'url': 'https://horsecost.co.uk/vet-cost-estimator' }
-          ]
-        },
-        // Schema 6: WebPage with Speakable
-        {
-          '@type': 'WebPage',
-          'name': 'HorseCost - Free UK Horse Cost Calculators',
-          'description': 'Calculate horse ownership costs with 21 free UK calculators',
-          'speakable': {
-            '@type': 'SpeakableSpecification',
-            'cssSelector': ['h1', '.quick-answer']
-          },
-          'url': 'https://horsecost.co.uk'
-        }
-      ]
-    })}
-  </script>
-</Helmet>
+        {/* JSON-LD Schemas (6) */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            '@context': 'https://schema.org',
+            '@graph': [
+              // Schema 1: WebSite
+              {
+                '@type': 'WebSite',
+                'name': 'HorseCost',
+                'url': 'https://horsecost.co.uk',
+                'description': 'Free professional horse cost calculators for UK equestrians. 21 calculators with accurate 2025 UK pricing.'
+              },
+              // Schema 2: Organization
+              {
+                '@type': 'Organization',
+                'name': 'HorseCost',
+                'url': 'https://horsecost.co.uk',
+                'logo': 'https://horsecost.co.uk/logo.png',
+                'description': 'Free professional horse cost calculators for UK equestrians',
+                'foundingDate': '2024',
+                'areaServed': 'GB',
+                'contactPoint': {
+                  '@type': 'ContactPoint',
+                  'contactType': 'Customer Support',
+                  'email': 'hello@horsecost.co.uk'
+                },
+                'sameAs': [
+                  'https://twitter.com/HorseCost',
+                  'https://www.facebook.com/HorseCost'
+                ]
+              },
+              // Schema 3: BreadcrumbList
+              {
+                '@type': 'BreadcrumbList',
+                'itemListElement': [
+                  {
+                    '@type': 'ListItem',
+                    'position': 1,
+                    'name': 'Home',
+                    'item': 'https://horsecost.co.uk'
+                  }
+                ]
+              },
+              // Schema 4: FAQPage
+              {
+                '@type': 'FAQPage',
+                'mainEntity': faqs.map(faq => ({
+                  '@type': 'Question',
+                  'name': faq.q,
+                  'acceptedAnswer': {
+                    '@type': 'Answer',
+                    'text': faq.a
+                  }
+                }))
+              },
+              // Schema 5: ItemList (Calculator Collection)
+              {
+                '@type': 'ItemList',
+                'name': 'Horse Cost Calculators',
+                'description': 'Free UK horse cost calculators',
+                'numberOfItems': 21,
+                'itemListElement': [
+                  { '@type': 'ListItem', 'position': 1, 'name': 'Annual Horse Cost Calculator', 'url': 'https://horsecost.co.uk/annual-horse-cost-calculator' },
+                  { '@type': 'ListItem', 'position': 2, 'name': 'Horse Feed Calculator', 'url': 'https://horsecost.co.uk/horse-feed-calculator' },
+                  { '@type': 'ListItem', 'position': 3, 'name': 'Farrier Cost Calculator', 'url': 'https://horsecost.co.uk/farrier-cost-calculator' },
+                  { '@type': 'ListItem', 'position': 4, 'name': 'Horse Livery Calculator', 'url': 'https://horsecost.co.uk/horse-livery-calculator' },
+                  { '@type': 'ListItem', 'position': 5, 'name': 'Vet Cost Estimator', 'url': 'https://horsecost.co.uk/vet-cost-estimator' },
+                  { '@type': 'ListItem', 'position': 6, 'name': 'Horse Insurance Calculator', 'url': 'https://horsecost.co.uk/horse-insurance-calculator' },
+                  { '@type': 'ListItem', 'position': 7, 'name': 'Horse Weight Calculator', 'url': 'https://horsecost.co.uk/horse-weight-calculator' },
+                  { '@type': 'ListItem', 'position': 8, 'name': 'Competition Budget Calculator', 'url': 'https://horsecost.co.uk/competition-budget-calculator' },
+                  { '@type': 'ListItem', 'position': 9, 'name': 'First Horse Calculator', 'url': 'https://horsecost.co.uk/first-horse-calculator' },
+                  { '@type': 'ListItem', 'position': 10, 'name': 'Bedding Cost Calculator', 'url': 'https://horsecost.co.uk/bedding-cost-calculator' }
+                ]
+              },
+              // Schema 6: WebPage with Speakable
+              {
+                '@type': 'WebPage',
+                'name': 'HorseCost - Free UK Horse Cost Calculators',
+                'description': 'Calculate horse ownership costs with 21 free UK calculators',
+                'speakable': {
+                  '@type': 'SpeakableSpecification',
+                  'cssSelector': ['h1', '.quick-answer']
+                },
+                'url': 'https://horsecost.co.uk',
+                'lastReviewed': '2025-01-01'
+              }
+            ]
+          })}
+        </script>
+      </Helmet>
 
       <div className="min-h-screen bg-gray-50">
         {/* Header */}
@@ -518,6 +533,39 @@ export default function HomePage() {
                 <div className="flex items-center gap-2 text-gray-600">
                   <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
                   <span className="font-semibold">4.9/5 Rating</span>
+                </div>
+              </div>
+
+              {/* Quick Answer Box - AI Search Optimized */}
+              <div className="max-w-4xl mx-auto mt-8 bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+                <h2 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
+                  <HelpCircle className="w-5 h-5 text-amber-600" />
+                  How Much Does a Horse Cost Per Year UK?
+                </h2>
+                <p className="text-gray-700 quick-answer">
+                  <strong>The average annual cost of keeping a horse in the UK is £8,500.</strong> Costs range from £5,000 for DIY livery with basic care to £15,000+ for full livery with competition. The main expenses are livery (£1,800-£7,200/year), feed (£1,000-£2,400/year), farrier (£400-£1,500/year), and veterinary care (£400-£1,500/year). Use our free calculators below to get an accurate budget for your specific situation.
+                </p>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                  <div className="bg-green-50 p-3 rounded-lg text-center">
+                    <div className="text-xs text-green-600 font-medium">Budget</div>
+                    <div className="text-xl font-bold text-green-700">£5,000</div>
+                    <div className="text-xs text-gray-500">DIY Livery</div>
+                  </div>
+                  <div className="bg-blue-50 p-3 rounded-lg text-center">
+                    <div className="text-xs text-blue-600 font-medium">Average</div>
+                    <div className="text-xl font-bold text-blue-700">£8,500</div>
+                    <div className="text-xs text-gray-500">Part Livery</div>
+                  </div>
+                  <div className="bg-amber-50 p-3 rounded-lg text-center">
+                    <div className="text-xs text-amber-600 font-medium">Premium</div>
+                    <div className="text-xl font-bold text-amber-700">£12,000</div>
+                    <div className="text-xs text-gray-500">Full Livery</div>
+                  </div>
+                  <div className="bg-purple-50 p-3 rounded-lg text-center">
+                    <div className="text-xs text-purple-600 font-medium">Competition</div>
+                    <div className="text-xl font-bold text-purple-700">£15,000+</div>
+                    <div className="text-xs text-gray-500">Full + Shows</div>
+                  </div>
                 </div>
               </div>
             </div>
