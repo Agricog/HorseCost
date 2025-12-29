@@ -1,0 +1,35 @@
+# HorseCost.co.uk
+
+> Free professional horse cost calculators for UK equestrians
+
+## About
+HorseCost provides accurate, UK-specific calculators to help horse owners budget for ownership costs. All pricing data is verified against current UK market rates and updated regularly.
+
+## Main Calculators
+- Annual Horse Cost Calculator: Comprehensive yearly ownership costs (£5,000-15,000+)
+- Livery Cost Calculator: Compare full, part, DIY, grass livery options
+- Horse Feed Calculator: Daily hay and hard feed requirements and costs
+- Farrier Cost Calculator: Shoeing vs barefoot annual costs
+- Vet Cost Estimator: Routine and emergency veterinary budgets
+- Horse Insurance Calculator: Compare cover levels and premiums
+
+## Key UK Horse Ownership Facts (2025)
+- Average annual cost: £8,500
+- Full livery: £400-700/month (all care included)
+- Part livery: £250-400/month (shared care)
+- DIY livery: £100-200/month (owner does all care)
+- Grass livery: £60-120/month (field only)
+- Farrier: £80-150 per visit, every 6-8 weeks
+- Routine vet care: £300-500/year
+- Insurance: £30-100/month depending on cover
+
+## Livery Types Explained
+- Full Livery: Complete care including feeding, turnout, mucking out
+- Part Livery: Shared responsibilities between owner and yard
+- DIY Livery: Owner provides all daily care, yard provides facilities
+- Grass Livery: Field only, no stabling included
+
+## Contact
+- Website: https://horsecost.co.uk
+- Email: hello@horsecost.co.uk
+- Location: United Kingdom
