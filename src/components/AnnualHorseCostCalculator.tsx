@@ -18,7 +18,8 @@ import {
   ArrowRight,
   MapPin,
   Clock,
-  Users
+  Users,
+  HelpCircle
 } from 'lucide-react'
 
 export default function AnnualHorseCostCalculator() {
@@ -198,7 +199,7 @@ export default function AnnualHorseCostCalculator() {
   const faqs = [
     {
       q: "How much does it cost to keep a horse per year in the UK?",
-      a: "The annual cost of keeping a horse in the UK ranges from £5,000 to £15,000+ depending on livery type, location, and level of care. Budget owners on DIY livery might spend £5,000-7,000, while full livery with competition can exceed £15,000 annually. Our calculator helps you estimate your specific costs based on your situation."
+      a: "The average annual cost of keeping a horse in the UK is £8,500. Costs range from £5,000 for DIY livery with basic care to £15,000+ for full livery with competition. The main expenses are livery (£1,800-£7,200/year), feed (£1,000-£2,400/year), farrier (£400-£1,500/year), and veterinary care (£400-£1,500/year). Our calculator helps you estimate your specific costs."
     },
     {
       q: "What is included in full livery costs?",
@@ -377,7 +378,7 @@ export default function AnnualHorseCostCalculator() {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-        {/* JSON-LD Structured Data - 6 Schemas */}
+        {/* JSON-LD Structured Data - 8 Schemas for AI Search */}
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
@@ -386,24 +387,9 @@ export default function AnnualHorseCostCalculator() {
               {
                 '@type': 'BreadcrumbList',
                 'itemListElement': [
-                  { 
-                    '@type': 'ListItem', 
-                    'position': 1, 
-                    'name': 'Home', 
-                    'item': 'https://horsecost.co.uk' 
-                  },
-                  { 
-                    '@type': 'ListItem', 
-                    'position': 2, 
-                    'name': 'Calculators', 
-                    'item': 'https://horsecost.co.uk/#calculators' 
-                  },
-                  { 
-                    '@type': 'ListItem', 
-                    'position': 3, 
-                    'name': 'Annual Horse Cost Calculator', 
-                    'item': 'https://horsecost.co.uk/annual-horse-cost-calculator' 
-                  }
+                  { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://horsecost.co.uk' },
+                  { '@type': 'ListItem', 'position': 2, 'name': 'Calculators', 'item': 'https://horsecost.co.uk/#calculators' },
+                  { '@type': 'ListItem', 'position': 3, 'name': 'Annual Horse Cost Calculator', 'item': 'https://horsecost.co.uk/annual-horse-cost-calculator' }
                 ]
               },
               // Schema 2: SoftwareApplication with AggregateRating
@@ -414,23 +400,9 @@ export default function AnnualHorseCostCalculator() {
                 'description': 'Comprehensive calculator to estimate total annual horse ownership costs in the UK including livery, feed, farrier, veterinary, insurance and more. Updated for 2025 with accurate UK pricing.',
                 'applicationCategory': 'FinanceApplication',
                 'operatingSystem': 'Web',
-                'offers': { 
-                  '@type': 'Offer', 
-                  'price': '0', 
-                  'priceCurrency': 'GBP',
-                  'availability': 'https://schema.org/InStock'
-                },
-                'aggregateRating': { 
-                  '@type': 'AggregateRating', 
-                  'ratingValue': '4.9', 
-                  'ratingCount': '487', 
-                  'bestRating': '5', 
-                  'worstRating': '1' 
-                },
-                'author': { 
-                  '@type': 'Organization', 
-                  'name': 'HorseCost' 
-                }
+                'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'GBP', 'availability': 'https://schema.org/InStock' },
+                'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.9', 'ratingCount': '487', 'bestRating': '5', 'worstRating': '1' },
+                'author': { '@type': 'Organization', 'name': 'HorseCost' }
               },
               // Schema 3: FAQPage
               {
@@ -438,10 +410,7 @@ export default function AnnualHorseCostCalculator() {
                 'mainEntity': faqs.map(faq => ({
                   '@type': 'Question',
                   'name': faq.q,
-                  'acceptedAnswer': { 
-                    '@type': 'Answer', 
-                    'text': faq.a 
-                  }
+                  'acceptedAnswer': { '@type': 'Answer', 'text': faq.a }
                 }))
               },
               // Schema 4: HowTo
@@ -451,54 +420,23 @@ export default function AnnualHorseCostCalculator() {
                 'description': 'Step-by-step guide to calculating your total annual horse ownership costs using our free calculator',
                 'totalTime': 'PT5M',
                 'step': [
-                  { 
-                    '@type': 'HowToStep', 
-                    'name': 'Select Livery Type', 
-                    'text': 'Choose your livery arrangement (full, part, DIY, grass, or home-kept) to auto-fill typical UK costs for your situation.' 
-                  },
-                  { 
-                    '@type': 'HowToStep', 
-                    'name': 'Enter Monthly Costs', 
-                    'text': 'Input your monthly livery, feed, and bedding costs. Adjust the pre-filled amounts to match your actual spending.' 
-                  },
-                  { 
-                    '@type': 'HowToStep', 
-                    'name': 'Add Professional Services', 
-                    'text': 'Enter farrier costs and visit frequency, plus annual vet, dental and worming expenses for complete professional care budgeting.' 
-                  },
-                  { 
-                    '@type': 'HowToStep', 
-                    'name': 'Include Insurance & Extras', 
-                    'text': 'Add your insurance premium and optional extras like lessons, competition costs and miscellaneous expenses.' 
-                  },
-                  { 
-                    '@type': 'HowToStep', 
-                    'name': 'View Your Results', 
-                    'text': 'Click calculate to see your total annual, monthly, weekly and daily costs with a full breakdown by category and comparison to UK averages.' 
-                  }
+                  { '@type': 'HowToStep', 'name': 'Select Livery Type', 'text': 'Choose your livery arrangement (full, part, DIY, grass, or home-kept) to auto-fill typical UK costs.' },
+                  { '@type': 'HowToStep', 'name': 'Enter Monthly Costs', 'text': 'Input your monthly livery, feed, and bedding costs. Adjust pre-filled amounts to match your spending.' },
+                  { '@type': 'HowToStep', 'name': 'Add Professional Services', 'text': 'Enter farrier costs and visit frequency, plus annual vet, dental and worming expenses.' },
+                  { '@type': 'HowToStep', 'name': 'Include Insurance & Extras', 'text': 'Add your insurance premium and optional extras like lessons and competition costs.' },
+                  { '@type': 'HowToStep', 'name': 'View Results', 'text': 'Click calculate to see total annual, monthly, weekly and daily costs with full breakdown.' }
                 ]
               },
               // Schema 5: Article
               {
                 '@type': 'Article',
                 'headline': 'Annual Horse Cost Calculator - UK Horse Ownership Budgets 2025',
-                'description': 'Free calculator for UK horse owners to estimate total annual ownership costs with current 2025 pricing for livery, feed, farrier, vet and more.',
+                'description': 'Free calculator for UK horse owners to estimate total annual ownership costs with current 2025 pricing.',
                 'datePublished': '2025-01-01',
                 'dateModified': '2025-01-01',
-                'author': { 
-                  '@type': 'Organization', 
-                  'name': 'HorseCost',
-                  'url': 'https://horsecost.co.uk'
-                },
+                'author': { '@type': 'Organization', 'name': 'HorseCost', 'url': 'https://horsecost.co.uk' },
                 'image': 'https://horsecost.co.uk/images/annual-horse-cost-calculator-og.jpg',
-                'publisher': { 
-                  '@type': 'Organization', 
-                  'name': 'HorseCost', 
-                  'logo': { 
-                    '@type': 'ImageObject', 
-                    'url': 'https://horsecost.co.uk/logo.png' 
-                  } 
-                }
+                'publisher': { '@type': 'Organization', 'name': 'HorseCost', 'logo': { '@type': 'ImageObject', 'url': 'https://horsecost.co.uk/logo.png' } }
               },
               // Schema 6: Organization
               {
@@ -507,19 +445,48 @@ export default function AnnualHorseCostCalculator() {
                 'url': 'https://horsecost.co.uk',
                 'logo': 'https://horsecost.co.uk/logo.png',
                 'description': 'Free professional horse cost calculators for UK equestrians',
-                'sameAs': [
-                  'https://twitter.com/HorseCost',
-                  'https://www.facebook.com/HorseCost'
-                ],
-                'contactPoint': { 
-                  '@type': 'ContactPoint', 
-                  'contactType': 'Customer Support', 
-                  'email': 'hello@horsecost.co.uk' 
+                'sameAs': ['https://twitter.com/HorseCost', 'https://www.facebook.com/HorseCost'],
+                'contactPoint': { '@type': 'ContactPoint', 'contactType': 'Customer Support', 'email': 'hello@horsecost.co.uk' },
+                'address': { '@type': 'PostalAddress', 'addressCountry': 'GB' }
+              },
+              // Schema 7: WebPage with Speakable (Voice Search / AI)
+              {
+                '@type': 'WebPage',
+                'name': 'Annual Horse Cost Calculator UK 2025',
+                'description': 'Calculate total annual horse ownership costs in the UK',
+                'speakable': {
+                  '@type': 'SpeakableSpecification',
+                  'cssSelector': ['h1', '.quick-answer']
                 },
-                'address': {
-                  '@type': 'PostalAddress',
-                  'addressCountry': 'GB'
-                }
+                'url': 'https://horsecost.co.uk/annual-horse-cost-calculator',
+                'lastReviewed': '2025-01-01'
+              },
+              // Schema 8: DefinedTermSet (AI understands terminology)
+              {
+                '@type': 'DefinedTermSet',
+                'name': 'UK Horse Ownership Cost Terms',
+                'hasDefinedTerm': [
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Full Livery',
+                    'description': 'Complete horse care service including stabling, feeding, turnout, and daily management. Costs £400-700 per month in the UK.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'DIY Livery',
+                    'description': 'Self-care arrangement where owner provides all daily horse care. Only stable/field rental included. Costs £100-200 per month in the UK.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Part Livery',
+                    'description': 'Shared care arrangement between owner and yard staff. Some services included. Costs £250-400 per month in the UK.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Farrier',
+                    'description': 'Professional who trims and shoes horses hooves. UK costs range from £30-50 for trim to £80-150 for full set of shoes, every 6-8 weeks.'
+                  }
+                ]
               }
             ]
           })}
@@ -567,9 +534,45 @@ export default function AnnualHorseCostCalculator() {
           </div>
         </header>
 
+        {/* AI Search Optimized Quick Answer Section */}
+        <div className="max-w-5xl mx-auto px-4 mt-8">
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <HelpCircle className="w-5 h-5 text-amber-600" />
+              Quick Answer: How Much Does a Horse Cost Per Year UK?
+            </h2>
+            <p className="text-gray-700 mb-4 quick-answer">
+              <strong>The average annual cost of keeping a horse in the UK is £8,500.</strong> Costs range from £5,000 for DIY livery with basic care to £15,000+ for full livery with competition. The main cost factors are livery type (£1,800-£7,200/year), feed (£1,000-£2,400/year), farrier (£400-£1,500/year), and veterinary care (£400-£1,500/year).
+            </p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+              <div className="bg-green-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-green-600 font-medium">Budget</div>
+                <div className="text-xl font-bold text-green-700">£5,000</div>
+                <div className="text-xs text-gray-500">DIY Livery</div>
+              </div>
+              <div className="bg-blue-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-blue-600 font-medium">Average</div>
+                <div className="text-xl font-bold text-blue-700">£8,500</div>
+                <div className="text-xs text-gray-500">Part Livery</div>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-amber-600 font-medium">Premium</div>
+                <div className="text-xl font-bold text-amber-700">£12,000</div>
+                <div className="text-xs text-gray-500">Full Livery</div>
+              </div>
+              <div className="bg-purple-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-purple-600 font-medium">Competition</div>
+                <div className="text-xl font-bold text-purple-700">£15,000+</div>
+                <div className="text-xs text-gray-500">Full + Shows</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="max-w-5xl mx-auto px-4 py-8">
           {/* Main Calculator Card */}
-          <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+          <div className="bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden calculator-card">
             <div className="p-6 md:p-8">
               
               {/* Section 1: Livery Type */}
@@ -1129,78 +1132,112 @@ export default function AnnualHorseCostCalculator() {
               </div>
             </section>
 
-            {/* UK Averages Table */}
-            <section>
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">UK Horse Cost Averages 2025</h2>
-              <div className="overflow-x-auto">
-                <table className="w-full border-collapse">
-                  <thead>
-                    <tr className="bg-amber-600 text-white">
-                      <th className="p-3 text-left">Expense Category</th>
-                      <th className="p-3 text-right">Low Estimate</th>
-                      <th className="p-3 text-right">Average</th>
-                      <th className="p-3 text-right">High Estimate</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-b">
-                      <td className="p-3 font-medium">Livery (Full)</td>
-                      <td className="p-3 text-right">£4,800/year</td>
-                      <td className="p-3 text-right">£6,000/year</td>
-                      <td className="p-3 text-right">£8,400/year</td>
-                    </tr>
-                    <tr className="border-b bg-gray-50">
-                      <td className="p-3 font-medium">Livery (DIY)</td>
-                      <td className="p-3 text-right">£1,200/year</td>
-                      <td className="p-3 text-right">£1,800/year</td>
-                      <td className="p-3 text-right">£2,400/year</td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="p-3 font-medium">Feed & Forage</td>
-                      <td className="p-3 text-right">£960/year</td>
-                      <td className="p-3 text-right">£1,440/year</td>
-                      <td className="p-3 text-right">£2,400/year</td>
-                    </tr>
-                    <tr className="border-b bg-gray-50">
-                      <td className="p-3 font-medium">Farrier</td>
-                      <td className="p-3 text-right">£400/year</td>
-                      <td className="p-3 text-right">£800/year</td>
-                      <td className="p-3 text-right">£1,500/year</td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="p-3 font-medium">Veterinary (routine)</td>
-                      <td className="p-3 text-right">£250/year</td>
-                      <td className="p-3 text-right">£400/year</td>
-                      <td className="p-3 text-right">£800/year</td>
-                    </tr>
-                    <tr className="border-b bg-gray-50">
-                      <td className="p-3 font-medium">Insurance</td>
-                      <td className="p-3 text-right">£360/year</td>
-                      <td className="p-3 text-right">£540/year</td>
-                      <td className="p-3 text-right">£1,200/year</td>
-                    </tr>
-                    <tr className="border-b">
-                      <td className="p-3 font-medium">Dental</td>
-                      <td className="p-3 text-right">£80/year</td>
-                      <td className="p-3 text-right">£120/year</td>
-                      <td className="p-3 text-right">£200/year</td>
-                    </tr>
-                    <tr className="bg-amber-50">
-                      <td className="p-3 font-bold">Total (DIY)</td>
-                      <td className="p-3 text-right font-bold">~£4,500</td>
-                      <td className="p-3 text-right font-bold">~£6,000</td>
-                      <td className="p-3 text-right font-bold">~£9,000</td>
-                    </tr>
-                    <tr className="bg-amber-100">
-                      <td className="p-3 font-bold">Total (Full Livery)</td>
-                      <td className="p-3 text-right font-bold">~£7,500</td>
-                      <td className="p-3 text-right font-bold">~£10,000</td>
-                      <td className="p-3 text-right font-bold">~£15,000+</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+            {/* UK Averages Table - AI Optimized */}
+            <section className="overflow-x-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">UK Horse Cost Comparison by Livery Type 2025</h2>
+              <table className="w-full border-collapse">
+                <caption className="sr-only">Annual horse ownership costs in the UK by livery type</caption>
+                <thead>
+                  <tr className="bg-amber-600 text-white">
+                    <th scope="col" className="p-3 text-left">Livery Type</th>
+                    <th scope="col" className="p-3 text-right">Monthly Cost</th>
+                    <th scope="col" className="p-3 text-right">Annual Cost</th>
+                    <th scope="col" className="p-3 text-left hidden md:table-cell">What's Included</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b">
+                    <th scope="row" className="p-3 font-medium text-left">Full Livery</th>
+                    <td className="p-3 text-right">£400-700</td>
+                    <td className="p-3 text-right">£4,800-8,400</td>
+                    <td className="p-3 text-sm hidden md:table-cell">All care, feed, turnout, mucking out</td>
+                  </tr>
+                  <tr className="border-b bg-gray-50">
+                    <th scope="row" className="p-3 font-medium text-left">Part Livery</th>
+                    <td className="p-3 text-right">£250-400</td>
+                    <td className="p-3 text-right">£3,000-4,800</td>
+                    <td className="p-3 text-sm hidden md:table-cell">Shared care, some feeds included</td>
+                  </tr>
+                  <tr className="border-b">
+                    <th scope="row" className="p-3 font-medium text-left">DIY Livery</th>
+                    <td className="p-3 text-right">£100-200</td>
+                    <td className="p-3 text-right">£1,200-2,400</td>
+                    <td className="p-3 text-sm hidden md:table-cell">Stable/field only, owner does all care</td>
+                  </tr>
+                  <tr className="border-b bg-gray-50">
+                    <th scope="row" className="p-3 font-medium text-left">Grass Livery</th>
+                    <td className="p-3 text-right">£60-120</td>
+                    <td className="p-3 text-right">£720-1,440</td>
+                    <td className="p-3 text-sm hidden md:table-cell">Field only, no stabling</td>
+                  </tr>
+                </tbody>
+              </table>
               <p className="text-sm text-gray-500 mt-2">* Prices based on 2024/2025 UK market data. Regional variations apply.</p>
+            </section>
+
+            {/* Additional Cost Table */}
+            <section className="overflow-x-auto">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Additional Annual Horse Expenses UK 2025</h2>
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="bg-amber-600 text-white">
+                    <th scope="col" className="p-3 text-left">Expense Category</th>
+                    <th scope="col" className="p-3 text-right">Low Estimate</th>
+                    <th scope="col" className="p-3 text-right">Average</th>
+                    <th scope="col" className="p-3 text-right">High Estimate</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b">
+                    <th scope="row" className="p-3 font-medium text-left">Feed & Forage</th>
+                    <td className="p-3 text-right">£960/year</td>
+                    <td className="p-3 text-right">£1,440/year</td>
+                    <td className="p-3 text-right">£2,400/year</td>
+                  </tr>
+                  <tr className="border-b bg-gray-50">
+                    <th scope="row" className="p-3 font-medium text-left">Farrier</th>
+                    <td className="p-3 text-right">£400/year</td>
+                    <td className="p-3 text-right">£800/year</td>
+                    <td className="p-3 text-right">£1,500/year</td>
+                  </tr>
+                  <tr className="border-b">
+                    <th scope="row" className="p-3 font-medium text-left">Veterinary (routine)</th>
+                    <td className="p-3 text-right">£250/year</td>
+                    <td className="p-3 text-right">£400/year</td>
+                    <td className="p-3 text-right">£800/year</td>
+                  </tr>
+                  <tr className="border-b bg-gray-50">
+                    <th scope="row" className="p-3 font-medium text-left">Insurance</th>
+                    <td className="p-3 text-right">£360/year</td>
+                    <td className="p-3 text-right">£540/year</td>
+                    <td className="p-3 text-right">£1,200/year</td>
+                  </tr>
+                  <tr className="border-b">
+                    <th scope="row" className="p-3 font-medium text-left">Dental</th>
+                    <td className="p-3 text-right">£80/year</td>
+                    <td className="p-3 text-right">£120/year</td>
+                    <td className="p-3 text-right">£200/year</td>
+                  </tr>
+                  <tr className="border-b bg-gray-50">
+                    <th scope="row" className="p-3 font-medium text-left">Worming</th>
+                    <td className="p-3 text-right">£80/year</td>
+                    <td className="p-3 text-right">£100/year</td>
+                    <td className="p-3 text-right">£150/year</td>
+                  </tr>
+                  <tr className="bg-amber-50">
+                    <th scope="row" className="p-3 font-bold text-left">Total (DIY Livery)</th>
+                    <td className="p-3 text-right font-bold">~£4,500</td>
+                    <td className="p-3 text-right font-bold">~£6,000</td>
+                    <td className="p-3 text-right font-bold">~£9,000</td>
+                  </tr>
+                  <tr className="bg-amber-100">
+                    <th scope="row" className="p-3 font-bold text-left">Total (Full Livery)</th>
+                    <td className="p-3 text-right font-bold">~£7,500</td>
+                    <td className="p-3 text-right font-bold">~£10,000</td>
+                    <td className="p-3 text-right font-bold">~£15,000+</td>
+                  </tr>
+                </tbody>
+              </table>
             </section>
 
             {/* Cost Saving Tips */}
@@ -1238,7 +1275,7 @@ export default function AnnualHorseCostCalculator() {
                 {faqs.map((faq, index) => (
                   <div key={index} className="bg-white border border-gray-200 rounded-lg p-6">
                     <h3 className="font-bold text-gray-900 mb-2">{faq.q}</h3>
-                    <p className="text-gray-700">{faq.a}</p>
+                    <p className="text-gray-700 faq-answer">{faq.a}</p>
                   </div>
                 ))}
               </div>
