@@ -6,7 +6,6 @@ import {
   AlertCircle,
   ChevronDown,
   ChevronUp,
-  Calendar,
   Star,
   Thermometer,
   Bell,
@@ -17,7 +16,6 @@ import {
   HelpCircle,
   CheckCircle2,
   Home,
-  Shield,
   Scissors,
   Heart,
   Wheat
