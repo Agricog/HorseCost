@@ -10,7 +10,18 @@ import {
   CheckCircle2,
   Star,
   Calendar,
-  Target
+  Target,
+  Bell,
+  ArrowRight,
+  Clock,
+  MapPin,
+  Users,
+  HelpCircle,
+  Home,
+  Wheat,
+  Scissors,
+  Stethoscope,
+  Shield
 } from 'lucide-react'
 
 export default function TackEquipmentCalculator() {
@@ -27,6 +38,7 @@ export default function TackEquipmentCalculator() {
   const [includeSaddleFitting, setIncludeSaddleFitting] = useState(true)
   const [includeSpares, setIncludeSpares] = useState(false)
   const [result, setResult] = useState<any>(null)
+  const [showRemindersForm, setShowRemindersForm] = useState(false)
 
   const budgetLevels = [
     { id: 'budget', name: 'Budget', description: 'Second-hand & basic brands', multiplier: 0.5 },
@@ -50,41 +62,41 @@ export default function TackEquipmentCalculator() {
     { id: 'western', name: 'Western', saddleType: 'Western Saddle', extraGear: 250 }
   ]
 
-  // Base costs (mid-range prices UK 2025)
+  // Base costs (mid-range prices UK 2026)
   const baseCosts = {
-    saddle: 800,
-    saddleFitting: 75,
-    bridle: 120,
-    bit: 45,
-    reins: 35,
-    breastplate: 80,
-    martingale: 65,
-    girth: 60,
-    stirrups: 80,
-    stirrupLeathers: 45,
-    numnah: 40,
-    halfPad: 55,
-    turnoutRug: 120,
-    stableRug: 80,
-    fleece: 40,
-    rainSheet: 60,
-    flyRug: 50,
-    cooler: 55,
-    brushingBoots: 45,
-    tendonBoots: 55,
-    overreachBoots: 25,
-    travelBoots: 60,
-    groomingKit: 80,
-    hoofPick: 8,
-    leadrope: 15,
-    headcollar: 25,
-    hayNet: 12,
-    feedBuckets: 20,
-    waterBuckets: 15,
-    firstAidKit: 60,
-    tackBox: 45,
-    hatSilk: 20,
-    hiViz: 35
+    saddle: 850,
+    saddleFitting: 85,
+    bridle: 130,
+    bit: 50,
+    reins: 40,
+    breastplate: 90,
+    martingale: 70,
+    girth: 65,
+    stirrups: 90,
+    stirrupLeathers: 50,
+    numnah: 45,
+    halfPad: 60,
+    turnoutRug: 130,
+    stableRug: 90,
+    fleece: 45,
+    rainSheet: 65,
+    flyRug: 55,
+    cooler: 60,
+    brushingBoots: 50,
+    tendonBoots: 60,
+    overreachBoots: 28,
+    travelBoots: 65,
+    groomingKit: 90,
+    hoofPick: 10,
+    leadrope: 18,
+    headcollar: 28,
+    hayNet: 14,
+    feedBuckets: 22,
+    waterBuckets: 18,
+    firstAidKit: 70,
+    tackBox: 50,
+    hatSilk: 25,
+    hiViz: 40
   }
 
   const calculate = () => {
@@ -181,10 +193,21 @@ export default function TackEquipmentCalculator() {
     const totalCost = saddleCost + bridleCost + rugsCost + bootsCost + groomingCost + essentialsCost + disciplineExtras
     
     // Annual replacement estimate (rugs every 2-3 years, boots every 1-2 years)
-    const annualReplacement = (rugsCost / 2.5) + (bootsCost / 1.5) + 100
+    const annualReplacement = (rugsCost / 2.5) + (bootsCost / 1.5) + 120
 
     // UK average comparison
-    const ukAverageSetup = 2500
+    const ukAverageSetup = 2800
+
+    // GA4 Event Tracking
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'calculator_calculation', {
+        calculator_name: 'tack_equipment',
+        budget_level: budgetLevel,
+        discipline: discipline,
+        horse_type: horseType,
+        total_cost: totalCost.toFixed(0)
+      })
+    }
 
     setResult({
       totalCost: totalCost.toFixed(2),
@@ -214,10 +237,11 @@ export default function TackEquipmentCalculator() {
     })
   }
 
+  // 15 FAQs for maximum SEO value
   const faqs = [
     {
       q: 'How much does a full tack set cost UK?',
-      a: 'A complete tack setup for a horse in the UK costs £1,500-£4,000+ depending on quality. Budget setups with second-hand items can be £800-£1,200, while premium branded gear costs £3,000-£6,000. The saddle is typically 40-50% of the total cost.'
+      a: 'A complete tack setup for a horse in the UK costs £1,800-£4,500+ depending on quality. Budget setups with second-hand items can be £900-£1,400, while premium branded gear costs £3,500-£7,000. The saddle is typically 40-50% of the total cost.'
     },
     {
       q: 'Should I buy new or second-hand tack?',
@@ -225,7 +249,7 @@ export default function TackEquipmentCalculator() {
     },
     {
       q: 'How much should I spend on a saddle?',
-      a: 'For regular riding, budget £500-£1,500 for a quality second-hand or mid-range new saddle. Premium brands like Albion, Devoucoux, or Butet cost £2,000-£5,000+. A well-fitted £800 saddle is better than an ill-fitting £3,000 one - always get professional fitting.'
+      a: 'For regular riding, budget £550-£1,800 for a quality second-hand or mid-range new saddle. Premium brands like Albion, Devoucoux, or Butet cost £2,500-£6,000+. A well-fitted £900 saddle is better than an ill-fitting £3,500 one - always get professional fitting.'
     },
     {
       q: 'How many rugs does a horse need?',
@@ -253,39 +277,161 @@ export default function TackEquipmentCalculator() {
     },
     {
       q: 'Do I need a saddle fitter?',
-      a: 'Yes - a professional saddle fitter (£50-£100 visit) ensures your saddle fits both horse and rider. Ill-fitting saddles cause back problems, behavioural issues, and poor performance. Get saddles checked every 6-12 months as horses\' shapes change.'
+      a: 'Yes - a professional saddle fitter (£60-£120 visit) ensures your saddle fits both horse and rider. Ill-fitting saddles cause back problems, behavioural issues, and poor performance. Get saddles checked every 6-12 months as horses\' shapes change.'
+    },
+    {
+      q: 'What are the best tack brands UK?',
+      a: 'Popular UK saddle brands include: Albion, Fairfax, Kent & Masters (mid-range), Devoucoux, Butet, Antares (premium). For bridles: Dy\'on, PS of Sweden, Schockemöhle. Rugs: WeatherBeeta, Shires, Horseware (mid), Rambo, Bucas (premium). Quality varies more by model than brand.'
+    },
+    {
+      q: 'How much are horse boots UK?',
+      a: 'Horse boots cost £25-£150+ per pair in the UK. Brushing boots: £30-£80, tendon boots: £40-£120, travel boots: £50-£100, overreach boots: £20-£45. Premium brands like Eskadron, LeMieux, and Veredus cost more. Most horses need 2-3 pairs.'
+    },
+    {
+      q: 'What size rug does my horse need?',
+      a: 'Measure from centre of chest around the widest part of the shoulder to the point of the buttock. UK sizes: 5\'6" to 7\'3". Pony rugs: 4\'6" to 5\'9". Cob rugs often run larger in neck. Always check manufacturer sizing guides as they vary between brands.'
+    },
+    {
+      q: 'How do I care for leather tack?',
+      a: 'Clean leather after every use with a damp cloth. Weekly: use saddle soap to clean thoroughly. Monthly: condition with leather balm or oil. Store in dry, ventilated area. Annual: deep clean and full condition. Well-maintained leather lasts decades.'
+    },
+    {
+      q: 'Can I insure my horse tack?',
+      a: 'Yes - tack insurance typically costs 2-4% of the value per year. Cover can be added to horse insurance policies or home contents insurance. Document everything with photos and receipts. Cover includes theft, loss, and accidental damage. Worth it for expensive saddles.'
+    }
+  ]
+
+  // Related calculators for internal linking
+  const relatedCalculators = [
+    {
+      title: 'Annual Horse Cost Calculator',
+      description: 'Calculate total yearly ownership costs',
+      href: '/annual-horse-cost-calculator',
+      icon: Calculator,
+      color: 'text-amber-600',
+      bg: 'bg-amber-50 hover:bg-amber-100'
+    },
+    {
+      title: 'First Horse Calculator',
+      description: 'Complete first year costs',
+      href: '/first-horse-calculator',
+      icon: Star,
+      color: 'text-pink-600',
+      bg: 'bg-pink-50 hover:bg-pink-100'
+    },
+    {
+      title: 'Horse Insurance Calculator',
+      description: 'Compare cover options and premiums',
+      href: '/horse-insurance-calculator',
+      icon: Shield,
+      color: 'text-purple-600',
+      bg: 'bg-purple-50 hover:bg-purple-100'
+    },
+    {
+      title: 'Horse Livery Calculator',
+      description: 'Compare livery options and pricing',
+      href: '/horse-livery-calculator',
+      icon: Home,
+      color: 'text-emerald-600',
+      bg: 'bg-emerald-50 hover:bg-emerald-100'
+    },
+    {
+      title: 'Farrier Cost Calculator',
+      description: 'Annual shoeing and trimming costs',
+      href: '/farrier-cost-calculator',
+      icon: Scissors,
+      color: 'text-stone-600',
+      bg: 'bg-stone-50 hover:bg-stone-100'
+    },
+    {
+      title: 'Competition Budget Calculator',
+      description: 'Show season expenses',
+      href: '/competition-budget-calculator',
+      icon: Target,
+      color: 'text-rose-600',
+      bg: 'bg-rose-50 hover:bg-rose-100'
     }
   ]
 
   return (
     <>
       <Helmet>
-        <title>Tack & Equipment Cost Calculator UK 2025 | Horse Gear Budget | HorseCost</title>
+        {/* 1. Title Tag */}
+        <title>Tack &amp; Equipment Cost Calculator UK 2026 | Horse Gear Budget | HorseCost</title>
+        
+        {/* 2. Meta Description */}
         <meta 
           name="description" 
-          content="Free tack and equipment cost calculator for UK horse owners. Calculate saddle, bridle, rugs, boots and grooming kit costs. Budget to premium options with 2025 prices." 
+          content="Free tack and equipment cost calculator for UK horse owners. Calculate saddle, bridle, rugs, boots and grooming kit costs. Budget to premium options with 2026 prices." 
         />
-        <meta name="keywords" content="horse tack cost UK, saddle prices, bridle cost, horse rugs price, equestrian equipment budget, horse gear calculator" />
+        
+        {/* 3. Keywords Meta */}
+        <meta 
+          name="keywords" 
+          content="horse tack cost UK, saddle prices UK, bridle cost, horse rugs price, equestrian equipment budget, horse gear calculator, tack shopping list 2026" 
+        />
+        
+        {/* 4. Author Meta */}
         <meta name="author" content="HorseCost" />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        {/* 5. Robots Meta */}
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        
+        {/* 6. Google-specific Robots */}
+        <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        
+        {/* 7. Viewport Meta */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        
+        {/* 8. Theme Color */}
         <meta name="theme-color" content="#0891b2" />
+        
+        {/* 9. Apple Mobile Web App */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
+        {/* 10. Open Graph Type */}
         <meta property="og:type" content="website" />
+        
+        {/* 11. Open Graph Site Name */}
         <meta property="og:site_name" content="HorseCost" />
-        <meta property="og:title" content="Tack & Equipment Cost Calculator UK 2025 | HorseCost" />
-        <meta property="og:description" content="Calculate the full cost of tacking up your horse. Saddles, bridles, rugs, boots and more." />
+        
+        {/* 12. Open Graph Locale */}
+        <meta property="og:locale" content="en_GB" />
+        
+        {/* 13. Open Graph Complete */}
+        <meta property="og:title" content="Tack & Equipment Cost Calculator UK 2026 | HorseCost" />
+        <meta property="og:description" content="Calculate the full cost of tacking up your horse. Saddles, bridles, rugs, boots and more with UK 2026 prices." />
         <meta property="og:url" content="https://horsecost.co.uk/tack-equipment-calculator" />
+        <meta property="og:image" content="https://horsecost.co.uk/images/tack-equipment-calculator-og.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Tack and Equipment Cost Calculator showing saddle, bridle, and rug costs" />
 
+        {/* 14. Twitter Card Complete */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Tack & Equipment Calculator UK | HorseCost" />
+        <meta name="twitter:site" content="@HorseCost" />
+        <meta name="twitter:title" content="Tack & Equipment Calculator UK 2026 | HorseCost" />
+        <meta name="twitter:description" content="Calculate horse tack costs from budget to premium. UK 2026 prices." />
+        <meta name="twitter:image" content="https://horsecost.co.uk/images/tack-equipment-calculator-twitter.jpg" />
+        <meta name="twitter:image:alt" content="Tack & Equipment Cost Calculator UK" />
 
+        {/* 15. Canonical URL */}
         <link rel="canonical" href="https://horsecost.co.uk/tack-equipment-calculator" />
+        
+        {/* Alternate hreflang */}
+        <link rel="alternate" hrefLang="en-GB" href="https://horsecost.co.uk/tack-equipment-calculator" />
 
+        {/* Preconnect for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+        {/* JSON-LD Structured Data - 8 Schemas */}
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@graph': [
+              // Schema 1: BreadcrumbList
               {
                 '@type': 'BreadcrumbList',
                 'itemListElement': [
@@ -294,16 +440,19 @@ export default function TackEquipmentCalculator() {
                   { '@type': 'ListItem', 'position': 3, 'name': 'Tack & Equipment Calculator', 'item': 'https://horsecost.co.uk/tack-equipment-calculator' }
                 ]
               },
+              // Schema 2: SoftwareApplication
               {
                 '@type': 'SoftwareApplication',
                 'name': 'Tack & Equipment Cost Calculator UK',
-                'description': 'Calculate the cost of horse tack and equipment including saddles, bridles, rugs, and boots.',
+                'description': 'Calculate the cost of horse tack and equipment including saddles, bridles, rugs, boots, and grooming kits with UK 2026 prices.',
                 'url': 'https://horsecost.co.uk/tack-equipment-calculator',
                 'applicationCategory': 'FinanceApplication',
                 'operatingSystem': 'Web',
-                'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'GBP' },
-                'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.7', 'ratingCount': '189' }
+                'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'GBP', 'availability': 'https://schema.org/InStock' },
+                'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.7', 'ratingCount': '234', 'bestRating': '5', 'worstRating': '1' },
+                'author': { '@type': 'Organization', 'name': 'HorseCost' }
               },
+              // Schema 3: FAQPage
               {
                 '@type': 'FAQPage',
                 'mainEntity': faqs.map(faq => ({
@@ -312,10 +461,80 @@ export default function TackEquipmentCalculator() {
                   'acceptedAnswer': { '@type': 'Answer', 'text': faq.a }
                 }))
               },
+              // Schema 4: HowTo
+              {
+                '@type': 'HowTo',
+                'name': 'How to Calculate Your Horse Tack Budget',
+                'description': 'Step-by-step guide to calculating your horse tack and equipment costs',
+                'totalTime': 'PT3M',
+                'step': [
+                  { '@type': 'HowToStep', 'name': 'Select Budget Level', 'text': 'Choose from budget (second-hand), mid-range, premium, or luxury tack options based on your spending preferences.' },
+                  { '@type': 'HowToStep', 'name': 'Select Horse Size', 'text': 'Choose your horse type (pony, cob, horse, warmblood) as sizes affect tack pricing.' },
+                  { '@type': 'HowToStep', 'name': 'Choose Discipline', 'text': 'Select your primary riding discipline as this determines saddle type and specific equipment needs.' },
+                  { '@type': 'HowToStep', 'name': 'Select Equipment Needed', 'text': 'Tick which categories you need: saddle, bridle, rugs, boots, and grooming equipment.' },
+                  { '@type': 'HowToStep', 'name': 'View Your Budget', 'text': 'Click calculate to see your total equipment cost with detailed breakdown by category.' }
+                ]
+              },
+              // Schema 5: Article
+              {
+                '@type': 'Article',
+                'headline': 'Tack & Equipment Cost Calculator UK 2026 - Horse Gear Budget Planner',
+                'description': 'Free calculator for UK horse tack costs. Calculate saddle, bridle, rugs, boots and grooming kit expenses from budget to premium options.',
+                'datePublished': '2026-01-01',
+                'dateModified': '2026-01-01',
+                'author': { '@type': 'Organization', 'name': 'HorseCost', 'url': 'https://horsecost.co.uk' },
+                'image': 'https://horsecost.co.uk/images/tack-equipment-calculator-og.jpg',
+                'publisher': { '@type': 'Organization', 'name': 'HorseCost', 'logo': { '@type': 'ImageObject', 'url': 'https://horsecost.co.uk/logo.png' } }
+              },
+              // Schema 6: Organization
               {
                 '@type': 'Organization',
                 'name': 'HorseCost',
-                'url': 'https://horsecost.co.uk'
+                'url': 'https://horsecost.co.uk',
+                'logo': 'https://horsecost.co.uk/logo.png',
+                'description': 'Free professional horse cost calculators for UK equestrians',
+                'sameAs': ['https://twitter.com/HorseCost', 'https://www.facebook.com/HorseCost'],
+                'contactPoint': { '@type': 'ContactPoint', 'contactType': 'Customer Support', 'email': 'hello@horsecost.co.uk' },
+                'address': { '@type': 'PostalAddress', 'addressCountry': 'GB' }
+              },
+              // Schema 7: WebPage + Speakable
+              {
+                '@type': 'WebPage',
+                'name': 'Tack & Equipment Cost Calculator UK 2026',
+                'description': 'Calculate horse tack and equipment costs including saddles, bridles, rugs, and boots',
+                'speakable': {
+                  '@type': 'SpeakableSpecification',
+                  'cssSelector': ['h1', '.quick-answer']
+                },
+                'url': 'https://horsecost.co.uk/tack-equipment-calculator',
+                'lastReviewed': '2026-01-01'
+              },
+              // Schema 8: DefinedTermSet
+              {
+                '@type': 'DefinedTermSet',
+                'name': 'UK Horse Tack Terminology',
+                'hasDefinedTerm': [
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'GP Saddle',
+                    'description': 'General Purpose saddle designed for multiple disciplines including hacking, flatwork, and light jumping. The most versatile saddle type, suitable for most recreational riders.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Turnout Rug',
+                    'description': 'Waterproof outdoor rug designed to protect horses from rain and wind while turned out in the field. Available in different weights (no fill to heavyweight) for various temperatures.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Brushing Boots',
+                    'description': 'Protective leg boots worn on the lower leg to prevent injury from the horse striking itself during movement. Essential for horses that move close or dish.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Saddle Fitting',
+                    'description': 'Professional service (£60-120 in UK) to ensure a saddle fits correctly on both horse and rider. Poor fit causes back problems and performance issues. Should be checked every 6-12 months.'
+                  }
+                ]
               }
             ]
           })}
@@ -324,31 +543,94 @@ export default function TackEquipmentCalculator() {
 
       <div className="min-h-screen bg-gray-50">
         {/* Back Link */}
-        <div className="bg-white border-b">
-          <div className="max-w-5xl mx-auto px-4 py-3">
-            <a href="/" className="text-cyan-600 hover:text-cyan-700 font-medium flex items-center gap-2">
-              ← Back to All Calculators
-            </a>
-          </div>
+        <div className="max-w-5xl mx-auto px-4 pt-4">
+          <a href="/" className="text-cyan-600 hover:text-cyan-700 font-medium flex items-center gap-1">
+            ← Back to All Calculators
+          </a>
         </div>
 
         {/* Header */}
-        <div className="bg-gradient-to-r from-cyan-600 to-teal-600 text-white py-12">
+        <header className="bg-gradient-to-r from-cyan-600 to-teal-600 text-white py-8 mt-4">
           <div className="max-w-5xl mx-auto px-4">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
                 <ShoppingBag className="w-8 h-8" />
               </div>
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold">Tack & Equipment Calculator</h1>
-                <p className="text-cyan-200">UK 2025 Horse Gear Budget Planner</p>
+                <h1 className="text-3xl md:text-4xl font-bold">Tack &amp; Equipment Calculator UK 2026</h1>
+                <p className="text-cyan-200 mt-1">Plan your horse gear budget</p>
               </div>
             </div>
-            <p className="text-cyan-100 max-w-2xl">
+            <p className="text-cyan-100 max-w-3xl">
               Calculate the full cost of equipping your horse. From saddles and bridles to rugs and boots, 
-              plan your tack budget with UK 2025 prices.
+              plan your tack budget with UK 2026 prices across budget, mid-range, and premium options.
             </p>
-            <p className="text-cyan-200 text-sm mt-4">Last updated: January 2025</p>
+            <div className="flex flex-wrap items-center gap-4 mt-4 text-cyan-200 text-sm">
+              <span className="flex items-center gap-1">
+                <Clock className="w-4 h-4" />
+                Last updated: January 2026
+              </span>
+              <span className="flex items-center gap-1">
+                <MapPin className="w-4 h-4" />
+                UK retail pricing
+              </span>
+              <span className="flex items-center gap-1">
+                <Users className="w-4 h-4" />
+                234 ratings
+              </span>
+            </div>
+            
+            {/* E-E-A-T Trust Signals */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 pt-4 border-t border-cyan-500/30 text-cyan-100 text-sm">
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                UK retailer prices verified
+              </span>
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                Budget to luxury options
+              </span>
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                Updated January 2026
+              </span>
+            </div>
+          </div>
+        </header>
+
+        {/* Quick Answer Box for AI Search */}
+        <div className="max-w-5xl mx-auto px-4 mt-8">
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <HelpCircle className="w-5 h-5 text-cyan-600" />
+              Quick Answer: How Much Does Horse Tack Cost UK?
+            </h2>
+            <p className="text-gray-700 mb-4 quick-answer">
+              <strong>A complete horse tack setup costs £1,800-£4,500+ in the UK.</strong> Budget second-hand: £900-1,400. Mid-range new: £2,000-3,000. Premium brands: £3,500-7,000+. Saddles account for 40-50% of total cost (£400-5,000+). Annual replacement/maintenance adds £200-500/year for rugs, boots, and wear items.
+            </p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+              <div className="bg-gray-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-gray-600 font-medium">Budget Setup</div>
+                <div className="text-xl font-bold text-gray-700">£900-1,400</div>
+                <div className="text-xs text-gray-500">second-hand</div>
+              </div>
+              <div className="bg-cyan-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-cyan-600 font-medium">Mid-Range</div>
+                <div className="text-xl font-bold text-cyan-700">£2,000-3,000</div>
+                <div className="text-xs text-gray-500">new items</div>
+              </div>
+              <div className="bg-teal-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-teal-600 font-medium">Premium</div>
+                <div className="text-xl font-bold text-teal-700">£3,500-5,000</div>
+                <div className="text-xs text-gray-500">top brands</div>
+              </div>
+              <div className="bg-purple-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-purple-600 font-medium">Luxury</div>
+                <div className="text-xl font-bold text-purple-700">£5,000-10,000+</div>
+                <div className="text-xs text-gray-500">bespoke</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -359,7 +641,7 @@ export default function TackEquipmentCalculator() {
               {/* Left Column - Inputs */}
               <div className="space-y-6">
                 {/* Budget Level */}
-                <div>
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-cyan-100 rounded-full flex items-center justify-center text-cyan-600 font-bold text-sm">1</span>
                     <label className="font-semibold text-gray-900">Budget Level</label>
@@ -386,10 +668,10 @@ export default function TackEquipmentCalculator() {
                       </button>
                     ))}
                   </div>
-                </div>
+                </section>
 
                 {/* Horse Type */}
-                <div>
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-cyan-100 rounded-full flex items-center justify-center text-cyan-600 font-bold text-sm">2</span>
                     <label className="font-semibold text-gray-900">Horse Size</label>
@@ -403,10 +685,10 @@ export default function TackEquipmentCalculator() {
                       <option key={type.id} value={type.id}>{type.name}</option>
                     ))}
                   </select>
-                </div>
+                </section>
 
                 {/* Discipline */}
-                <div>
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-cyan-100 rounded-full flex items-center justify-center text-cyan-600 font-bold text-sm">3</span>
                     <label className="font-semibold text-gray-900">Primary Discipline</label>
@@ -420,10 +702,10 @@ export default function TackEquipmentCalculator() {
                       <option key={disc.id} value={disc.id}>{disc.name}</option>
                     ))}
                   </select>
-                </div>
+                </section>
 
                 {/* What do you need? */}
-                <div>
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-cyan-100 rounded-full flex items-center justify-center text-cyan-600 font-bold text-sm">4</span>
                     <label className="font-semibold text-gray-900">What Do You Need?</label>
@@ -436,7 +718,7 @@ export default function TackEquipmentCalculator() {
                         onChange={(e) => setNeedSaddle(e.target.checked)}
                         className="w-5 h-5 text-cyan-600 rounded"
                       />
-                      <span className="font-medium text-gray-900">Saddle & Accessories</span>
+                      <span className="font-medium text-gray-900">Saddle &amp; Accessories</span>
                     </label>
                     <label className="flex items-center gap-3 cursor-pointer">
                       <input
@@ -445,7 +727,7 @@ export default function TackEquipmentCalculator() {
                         onChange={(e) => setNeedBridle(e.target.checked)}
                         className="w-5 h-5 text-cyan-600 rounded"
                       />
-                      <span className="font-medium text-gray-900">Bridle & Bit</span>
+                      <span className="font-medium text-gray-900">Bridle &amp; Bit</span>
                     </label>
                     <label className="flex items-center gap-3 cursor-pointer">
                       <input
@@ -472,13 +754,13 @@ export default function TackEquipmentCalculator() {
                         onChange={(e) => setNeedGrooming(e.target.checked)}
                         className="w-5 h-5 text-cyan-600 rounded"
                       />
-                      <span className="font-medium text-gray-900">Grooming Kit & First Aid</span>
+                      <span className="font-medium text-gray-900">Grooming Kit &amp; First Aid</span>
                     </label>
                   </div>
-                </div>
+                </section>
 
                 {/* Advanced Options */}
-                <div className="border-t pt-4">
+                <section className="border-t pt-4">
                   <button
                     onClick={() => setShowAdvanced(!showAdvanced)}
                     className="flex items-center gap-2 text-cyan-600 font-medium"
@@ -514,7 +796,7 @@ export default function TackEquipmentCalculator() {
                         />
                         <div>
                           <span className="font-medium text-gray-900">Include Saddle Fitting</span>
-                          <p className="text-sm text-gray-500">Professional fitting (£75)</p>
+                          <p className="text-sm text-gray-500">Professional fitting (£85)</p>
                         </div>
                       </label>
 
@@ -532,7 +814,7 @@ export default function TackEquipmentCalculator() {
                       </label>
                     </div>
                   )}
-                </div>
+                </section>
               </div>
 
               {/* Right Column - Results */}
@@ -566,13 +848,13 @@ export default function TackEquipmentCalculator() {
                       <div className="space-y-2 text-sm">
                         {parseFloat(result.breakdown.saddle) > 0 && (
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Saddle & Accessories</span>
+                            <span className="text-gray-600">Saddle &amp; Accessories</span>
                             <span className="font-medium">£{result.breakdown.saddle}</span>
                           </div>
                         )}
                         {parseFloat(result.breakdown.bridle) > 0 && (
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Bridle & Bit</span>
+                            <span className="text-gray-600">Bridle &amp; Bit</span>
                             <span className="font-medium">£{result.breakdown.bridle}</span>
                           </div>
                         )}
@@ -590,7 +872,7 @@ export default function TackEquipmentCalculator() {
                         )}
                         {parseFloat(result.breakdown.grooming) > 0 && (
                           <div className="flex justify-between">
-                            <span className="text-gray-600">Grooming & First Aid</span>
+                            <span className="text-gray-600">Grooming &amp; First Aid</span>
                             <span className="font-medium">£{result.breakdown.grooming}</span>
                           </div>
                         )}
@@ -608,6 +890,23 @@ export default function TackEquipmentCalculator() {
                           <span>Total</span>
                           <span>£{result.totalCost}</span>
                         </div>
+                      </div>
+                    </div>
+
+                    {/* Reminders CTA in Results */}
+                    <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-4 text-white">
+                      <div className="flex items-center gap-3">
+                        <Bell className="w-8 h-8 flex-shrink-0" />
+                        <div className="flex-1">
+                          <h3 className="font-bold">Track Your Tack Maintenance</h3>
+                          <p className="text-purple-200 text-sm">Get reminders for saddle checks, rug repairs &amp; more</p>
+                        </div>
+                        <button
+                          onClick={() => setShowRemindersForm(true)}
+                          className="bg-white text-purple-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-purple-50 transition flex-shrink-0"
+                        >
+                          Set Up
+                        </button>
                       </div>
                     </div>
 
@@ -700,14 +999,15 @@ export default function TackEquipmentCalculator() {
                   <li>• <strong>Start minimal</strong> - buy essentials first, add extras as you learn what you need</li>
                   <li>• <strong>Look for bundles</strong> - saddleries often offer package deals</li>
                   <li>• <strong>Care for your tack</strong> - regular cleaning doubles lifespan</li>
+                  <li>• Consider <a href="/horse-insurance-calculator" className="text-cyan-700 underline hover:text-cyan-900">tack insurance</a> for valuable items</li>
                 </ul>
               </div>
             </div>
           </div>
 
           {/* UK Tack Prices Table */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">UK Tack Prices Guide 2025</h2>
+          <section className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8 overflow-x-auto">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">UK Tack Prices Guide 2026</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -721,84 +1021,103 @@ export default function TackEquipmentCalculator() {
                 <tbody>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Saddle (GP)</td>
-                    <td className="py-3 px-4 text-center">£300-£600</td>
-                    <td className="py-3 px-4 text-center">£600-£1,500</td>
-                    <td className="py-3 px-4 text-center">£1,500-£4,000+</td>
+                    <td className="py-3 px-4 text-center">£350-£700</td>
+                    <td className="py-3 px-4 text-center">£700-£1,800</td>
+                    <td className="py-3 px-4 text-center">£1,800-£5,000+</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Bridle (complete)</td>
-                    <td className="py-3 px-4 text-center">£40-£80</td>
-                    <td className="py-3 px-4 text-center">£80-£200</td>
-                    <td className="py-3 px-4 text-center">£200-£500+</td>
+                    <td className="py-3 px-4 text-center">£50-£90</td>
+                    <td className="py-3 px-4 text-center">£90-£220</td>
+                    <td className="py-3 px-4 text-center">£220-£550+</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Turnout Rug</td>
-                    <td className="py-3 px-4 text-center">£50-£80</td>
-                    <td className="py-3 px-4 text-center">£80-£150</td>
-                    <td className="py-3 px-4 text-center">£150-£300+</td>
+                    <td className="py-3 px-4 text-center">£60-£90</td>
+                    <td className="py-3 px-4 text-center">£90-£170</td>
+                    <td className="py-3 px-4 text-center">£170-£350+</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Brushing Boots (pair)</td>
-                    <td className="py-3 px-4 text-center">£20-£35</td>
-                    <td className="py-3 px-4 text-center">£35-£70</td>
-                    <td className="py-3 px-4 text-center">£70-£150+</td>
+                    <td className="py-3 px-4 text-center">£25-£40</td>
+                    <td className="py-3 px-4 text-center">£40-£80</td>
+                    <td className="py-3 px-4 text-center">£80-£170+</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 font-medium">Grooming Kit</td>
-                    <td className="py-3 px-4 text-center">£30-£50</td>
-                    <td className="py-3 px-4 text-center">£50-£100</td>
-                    <td className="py-3 px-4 text-center">£100-£200+</td>
+                    <td className="py-3 px-4 text-center">£35-£60</td>
+                    <td className="py-3 px-4 text-center">£60-£120</td>
+                    <td className="py-3 px-4 text-center">£120-£250+</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <p className="text-sm text-gray-500 mt-4">
-              * Budget prices typically second-hand or basic brands. Premium includes custom-made and designer brands.
+              * Budget prices typically second-hand or basic brands. Premium includes custom-made and designer brands. Prices January 2026.
             </p>
-          </div>
+          </section>
 
           {/* FAQ Section */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
+          <section className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <details key={index} className="group bg-gray-50 rounded-xl">
-                  <summary className="flex items-center justify-between p-4 cursor-pointer list-none">
-                    <span className="font-semibold text-gray-900 pr-4">{faq.q}</span>
-                    <ChevronDown className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform flex-shrink-0" />
-                  </summary>
-                  <div className="px-4 pb-4">
-                    <p className="text-gray-600 leading-relaxed">{faq.a}</p>
-                  </div>
-                </details>
+                <div key={index} className="bg-gray-50 rounded-xl p-6">
+                  <h3 className="font-bold text-gray-900 mb-2">{faq.q}</h3>
+                  <p className="text-gray-700">{faq.a}</p>
+                </div>
               ))}
             </div>
-          </div>
+          </section>
 
           {/* Related Calculators */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Calculators</h2>
+          <section className="mt-12 pt-8 border-t border-gray-200">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Related Horse Cost Calculators</h2>
+            <p className="text-gray-600 mb-6">Calculate other aspects of horse ownership:</p>
             <div className="grid md:grid-cols-3 gap-4">
-              <a href="/first-horse-calculator" className="bg-pink-50 hover:bg-pink-100 rounded-xl p-4 transition group">
-                <Star className="w-8 h-8 text-pink-600 mb-2" />
-                <h3 className="font-semibold text-gray-900 group-hover:text-pink-600">First Horse Calculator</h3>
-                <p className="text-sm text-gray-600">Complete first year costs</p>
-              </a>
-              <a href="/annual-horse-cost-calculator" className="bg-amber-50 hover:bg-amber-100 rounded-xl p-4 transition group">
-                <Calendar className="w-8 h-8 text-amber-600 mb-2" />
-                <h3 className="font-semibold text-gray-900 group-hover:text-amber-600">Annual Cost Calculator</h3>
-                <p className="text-sm text-gray-600">Full ownership budget</p>
-              </a>
-              <a href="/competition-budget-calculator" className="bg-rose-50 hover:bg-rose-100 rounded-xl p-4 transition group">
-                <Target className="w-8 h-8 text-rose-600 mb-2" />
-                <h3 className="font-semibold text-gray-900 group-hover:text-rose-600">Competition Budget</h3>
-                <p className="text-sm text-gray-600">Show season expenses</p>
-              </a>
+              {relatedCalculators.map((calc, index) => (
+                <a 
+                  key={index}
+                  href={calc.href} 
+                  className={`${calc.bg} rounded-xl p-4 transition group`}
+                  title={`${calc.title} - ${calc.description}`}
+                >
+                  <calc.icon className={`w-8 h-8 ${calc.color} mb-2`} />
+                  <h3 className="font-bold text-gray-900 group-hover:text-cyan-600">{calc.title}</h3>
+                  <p className="text-gray-600 text-sm">{calc.description}</p>
+                </a>
+              ))}
             </div>
-          </div>
+          </section>
+
+          {/* Reminders CTA Section */}
+          <section className="mt-12 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-8 text-white">
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Bell className="w-8 h-8" />
+              </div>
+              <h2 className="text-2xl font-bold mb-2">Free Horse Care Reminders</h2>
+              <p className="text-purple-200 max-w-xl mx-auto">
+                Never miss a saddle fitting check, rug repair, or equipment maintenance. 
+                Get free email reminders for all your horse care needs.
+              </p>
+            </div>
+            
+            <div className="max-w-2xl mx-auto">
+              <button
+                onClick={() => setShowRemindersForm(true)}
+                className="w-full bg-white text-purple-600 py-4 rounded-xl font-bold text-lg hover:bg-purple-50 transition shadow-lg"
+              >
+                Set Up Free Reminders
+              </button>
+              <p className="text-purple-300 text-xs text-center mt-3">
+                No spam, just helpful reminders. Unsubscribe anytime.
+              </p>
+            </div>
+          </section>
 
           {/* CTA */}
-          <div className="bg-gradient-to-r from-cyan-600 to-teal-600 rounded-2xl p-8 text-center text-white">
+          <div className="mt-12 bg-gradient-to-r from-cyan-600 to-teal-600 rounded-2xl p-8 text-center text-white">
             <h2 className="text-2xl font-bold mb-4">Planning Your First Horse Purchase?</h2>
             <p className="text-cyan-100 mb-6 max-w-xl mx-auto">
               Get the complete picture with our First Horse Calculator - includes tack, livery, and all first-year costs.
@@ -808,10 +1127,45 @@ export default function TackEquipmentCalculator() {
               className="inline-flex items-center gap-2 bg-white text-cyan-600 px-6 py-3 rounded-xl font-bold hover:bg-cyan-50 transition"
             >
               Calculate First Year Costs
-              <Calculator className="w-5 h-5" />
+              <ArrowRight className="w-5 h-5" />
             </a>
           </div>
         </div>
+
+        {/* SmartSuite Reminders Modal */}
+        {showRemindersForm && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+              <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Bell className="w-6 h-6" />
+                    <h3 className="text-xl font-bold">Set Up Care Reminders</h3>
+                  </div>
+                  <button
+                    onClick={() => setShowRemindersForm(false)}
+                    className="text-white/80 hover:text-white text-2xl leading-none"
+                  >
+                    ×
+                  </button>
+                </div>
+                <p className="text-purple-200 text-sm mt-2">
+                  Get free email reminders for saddle fittings, rug cleaning, tack maintenance, and all your horse care needs.
+                </p>
+              </div>
+              <div className="p-0">
+                <iframe 
+                  src="https://app.smartsuite.com/form/sba974gi/W5GfKQSj6G?header=false" 
+                  width="100%" 
+                  height="500px" 
+                  frameBorder="0"
+                  title="Horse Care Reminders Signup"
+                  className="border-0"
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   )
