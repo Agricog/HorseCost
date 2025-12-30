@@ -6,8 +6,6 @@ import {
   AlertCircle,
   ChevronDown,
   ChevronUp,
-  Calendar,
-  Star,
   Zap,
   Bell,
   ArrowRight,
