@@ -49,7 +49,7 @@ export default function AnnualHorseCostCalculator() {
   const [activeCategory, setActiveCategory] = useState<string | null>(null)
   const [showRemindersForm, setShowRemindersForm] = useState(false)
 
-  // UK Average costs for comparison (2025 data)
+  // UK Average costs for comparison (2026 data)
   const ukAverages = {
     fullLivery: { monthly: 500, annual: 6000 },
     partLivery: { monthly: 300, annual: 3600 },
@@ -309,18 +309,18 @@ export default function AnnualHorseCostCalculator() {
     <>
       <Helmet>
         {/* 1. Title Tag (55-60 chars) */}
-        <title>Annual Horse Cost Calculator UK 2025 | Total Ownership Costs | HorseCost</title>
+        <title>Annual Horse Cost Calculator UK 2026 | Total Ownership Costs | HorseCost</title>
         
         {/* 2. Meta Description (150-160 chars) */}
         <meta 
           name="description" 
-          content="Free annual horse cost calculator for UK owners. Calculate total yearly costs including livery, feed, farrier, vet bills, insurance & more. Accurate 2025 UK pricing." 
+          content="Free annual horse cost calculator for UK owners. Calculate total yearly costs including livery, feed, farrier, vet bills, insurance & more. Accurate 2026 UK pricing." 
         />
         
         {/* 3. Keywords Meta */}
         <meta 
           name="keywords" 
-          content="annual horse cost calculator, horse ownership costs UK, yearly horse expenses, cost of keeping a horse UK, horse budget calculator, equestrian costs 2025, horse livery costs, horse care expenses, how much does a horse cost per year" 
+          content="annual horse cost calculator, horse ownership costs UK, yearly horse expenses, cost of keeping a horse UK, horse budget calculator, equestrian costs 2026, horse livery costs, horse care expenses, how much does a horse cost per year" 
         />
         
         {/* 4. Author Meta */}
@@ -352,7 +352,7 @@ export default function AnnualHorseCostCalculator() {
         <meta property="og:locale" content="en_GB" />
         
         {/* 13. Open Graph Complete */}
-        <meta property="og:title" content="Annual Horse Cost Calculator UK 2025 | HorseCost" />
+        <meta property="og:title" content="Annual Horse Cost Calculator UK 2026 | HorseCost" />
         <meta property="og:description" content="Calculate your total annual horse ownership costs. Free UK calculator for livery, feed, farrier, vet bills & more." />
         <meta property="og:url" content="https://horsecost.co.uk/annual-horse-cost-calculator" />
         <meta property="og:image" content="https://horsecost.co.uk/images/annual-horse-cost-calculator-og.jpg" />
@@ -363,7 +363,7 @@ export default function AnnualHorseCostCalculator() {
         {/* 14. Twitter Card Complete */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@HorseCost" />
-        <meta name="twitter:title" content="Annual Horse Cost Calculator UK 2025 | HorseCost" />
+        <meta name="twitter:title" content="Annual Horse Cost Calculator UK 2026 | HorseCost" />
         <meta name="twitter:description" content="Calculate your total annual horse ownership costs with our free UK calculator." />
         <meta name="twitter:image" content="https://horsecost.co.uk/images/annual-horse-cost-calculator-twitter.jpg" />
         <meta name="twitter:image:alt" content="Annual Horse Cost Calculator" />
@@ -397,7 +397,7 @@ export default function AnnualHorseCostCalculator() {
                 '@type': 'SoftwareApplication',
                 'name': 'Annual Horse Cost Calculator UK',
                 'url': 'https://horsecost.co.uk/annual-horse-cost-calculator',
-                'description': 'Comprehensive calculator to estimate total annual horse ownership costs in the UK including livery, feed, farrier, veterinary, insurance and more. Updated for 2025 with accurate UK pricing.',
+                'description': 'Comprehensive calculator to estimate total annual horse ownership costs in the UK including livery, feed, farrier, veterinary, insurance and more. Updated for 2026 with accurate UK pricing.',
                 'applicationCategory': 'FinanceApplication',
                 'operatingSystem': 'Web',
                 'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'GBP', 'availability': 'https://schema.org/InStock' },
@@ -430,10 +430,10 @@ export default function AnnualHorseCostCalculator() {
               // Schema 5: Article
               {
                 '@type': 'Article',
-                'headline': 'Annual Horse Cost Calculator - UK Horse Ownership Budgets 2025',
-                'description': 'Free calculator for UK horse owners to estimate total annual ownership costs with current 2025 pricing.',
-                'datePublished': '2025-01-01',
-                'dateModified': '2025-01-01',
+                'headline': 'Annual Horse Cost Calculator - UK Horse Ownership Budgets 2026',
+                'description': 'Free calculator for UK horse owners to estimate total annual ownership costs with current 2026 pricing.',
+                'datePublished': '2026-01-01',
+                'dateModified': '2026-01-01',
                 'author': { '@type': 'Organization', 'name': 'HorseCost', 'url': 'https://horsecost.co.uk' },
                 'image': 'https://horsecost.co.uk/images/annual-horse-cost-calculator-og.jpg',
                 'publisher': { '@type': 'Organization', 'name': 'HorseCost', 'logo': { '@type': 'ImageObject', 'url': 'https://horsecost.co.uk/logo.png' } }
@@ -452,14 +452,14 @@ export default function AnnualHorseCostCalculator() {
               // Schema 7: WebPage with Speakable (Voice Search / AI)
               {
                 '@type': 'WebPage',
-                'name': 'Annual Horse Cost Calculator UK 2025',
+                'name': 'Annual Horse Cost Calculator UK 2026',
                 'description': 'Calculate total annual horse ownership costs in the UK',
                 'speakable': {
                   '@type': 'SpeakableSpecification',
                   'cssSelector': ['h1', '.quick-answer']
                 },
                 'url': 'https://horsecost.co.uk/annual-horse-cost-calculator',
-                'lastReviewed': '2025-01-01'
+                'lastReviewed': '2026-01-01'
               },
               // Schema 8: DefinedTermSet (AI understands terminology)
               {
@@ -509,18 +509,18 @@ export default function AnnualHorseCostCalculator() {
                 <Calculator className="w-8 h-8" />
               </div>
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold">Annual Horse Cost Calculator UK 2025</h1>
+                <h1 className="text-3xl md:text-4xl font-bold">Annual Horse Cost Calculator UK 2026</h1>
                 <p className="text-amber-100 mt-1">Calculate your total yearly horse ownership costs</p>
               </div>
             </div>
             <p className="text-amber-50 max-w-3xl">
               Work out exactly how much your horse costs per year with our comprehensive UK calculator. 
-              Includes livery, feed, farrier, vet bills, insurance and all other expenses with accurate 2025 pricing.
+              Includes livery, feed, farrier, vet bills, insurance and all other expenses with accurate 2026 pricing.
             </p>
             <div className="flex flex-wrap items-center gap-4 mt-4 text-amber-200 text-sm">
               <span className="flex items-center gap-1">
                 <Clock className="w-4 h-4" />
-                Last updated: January 2025
+                Last updated: January 2026
               </span>
               <span className="flex items-center gap-1">
                 <MapPin className="w-4 h-4" />
@@ -533,20 +533,22 @@ export default function AnnualHorseCostCalculator() {
             </div>
           </div>
           {/* E-E-A-T Trust Signals */}
-<div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 pt-4 border-t border-amber-500/30 text-amber-100 text-sm">
-  <span className="flex items-center gap-1">
-    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-    Verified UK pricing data
-  </span>
-  <span className="flex items-center gap-1">
-    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-    Sources: BHS, BETA, UK livery yards
-  </span>
-  <span className="flex items-center gap-1">
-    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
-    Updated January 2025
-  </span>
-</div>
+          <div className="max-w-5xl mx-auto px-4">
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 pt-4 border-t border-amber-500/30 text-amber-100 text-sm">
+              <span className="flex items-center gap-1">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                Verified UK pricing data
+              </span>
+              <span className="flex items-center gap-1">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                Sources: BHS, BETA, UK livery yards
+              </span>
+              <span className="flex items-center gap-1">
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" /></svg>
+                Updated January 2026
+              </span>
+            </div>
+          </div>
         </header>
 
         {/* AI Search Optimized Quick Answer Section */}
@@ -1149,7 +1151,7 @@ export default function AnnualHorseCostCalculator() {
 
             {/* UK Averages Table - AI Optimized */}
             <section className="overflow-x-auto">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">UK Horse Cost Comparison by Livery Type 2025</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">UK Horse Cost Comparison by Livery Type 2026</h2>
               <table className="w-full border-collapse">
                 <caption className="sr-only">Annual horse ownership costs in the UK by livery type</caption>
                 <thead>
@@ -1187,12 +1189,12 @@ export default function AnnualHorseCostCalculator() {
                   </tr>
                 </tbody>
               </table>
-              <p className="text-sm text-gray-500 mt-2">* Prices based on 2024/2025 UK market data. Regional variations apply.</p>
+              <p className="text-sm text-gray-500 mt-2">* Prices based on 2025/2026 UK market data. Regional variations apply.</p>
             </section>
 
             {/* Additional Cost Table */}
             <section className="overflow-x-auto">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Additional Annual Horse Expenses UK 2025</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">Additional Annual Horse Expenses UK 2026</h2>
               <table className="w-full border-collapse">
                 <thead>
                   <tr className="bg-amber-600 text-white">
