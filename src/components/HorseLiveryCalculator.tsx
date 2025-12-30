@@ -469,7 +469,7 @@ Calculate yours: https://horsecost.co.uk/horse-livery-calculator`
               // Schema 5: Article
               {
                 '@type': 'Article',
-                'headline': 'Horse Livery Calculator - UK Yard Pricing Guide 2025',
+                'headline': 'Horse Livery Calculator - UK Yard Pricing Guide 2026',
                 'description': 'Calculate sustainable livery prices for UK yards with our free calculator.',
                 'datePublished': '2026-01-01',
                 'dateModified': '2026-01-01',
@@ -548,7 +548,7 @@ Calculate yours: https://horsecost.co.uk/horse-livery-calculator`
                 <Building className="w-8 h-8" />
               </div>
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold">Horse Livery Calculator UK 2025</h1>
+                <h1 className="text-3xl md:text-4xl font-bold">Horse Livery Calculator UK 2026</h1>
                 <p className="text-emerald-100 mt-1">Calculate sustainable livery prices for your yard</p>
               </div>
             </div>
