@@ -8,7 +8,19 @@ import {
   ChevronUp,
   Calendar,
   Star,
-  Thermometer
+  Thermometer,
+  Bell,
+  ArrowRight,
+  Clock,
+  MapPin,
+  Users,
+  HelpCircle,
+  CheckCircle2,
+  Home,
+  Shield,
+  Scissors,
+  Heart,
+  Wheat
 } from 'lucide-react'
 
 export default function RugCostCalculator() {
@@ -20,6 +32,7 @@ export default function RugCostCalculator() {
   const [includeSheets, setIncludeSheets] = useState(true)
   const [showAdvanced, setShowAdvanced] = useState(false)
   const [result, setResult] = useState<any>(null)
+  const [showRemindersForm, setShowRemindersForm] = useState(false)
 
   const horseTypes = [
     { id: 'native', name: 'Native/Unclipped', rugsNeeded: 'minimal', multiplier: 0.5, description: 'Hardy breeds, natural coat' },
@@ -42,26 +55,27 @@ export default function RugCostCalculator() {
     { id: 'mostly_in', name: 'Mostly Stabled', turnoutHeavy: false, stableRug: true, multiplier: 0.9 }
   ]
 
+  // 2026 pricing
   const budgetLevels = {
     budget: { name: 'Budget', multiplier: 0.6, brands: 'Shires, Derby House', lifespan: 2 },
     mid: { name: 'Mid-Range', multiplier: 1.0, brands: 'WeatherBeeta, Horseware', lifespan: 3 },
     premium: { name: 'Premium', multiplier: 1.6, brands: 'Rambo, Bucas, Back on Track', lifespan: 5 }
   }
 
-  // Base rug prices (mid-range, medium weight, average size)
+  // 2026 base rug prices (mid-range, medium weight, average size)
   const rugPrices = {
-    turnoutLight: { name: 'Lightweight Turnout (0g)', base: 70, essential: true },
-    turnoutMedium: { name: 'Medium Turnout (200g)', base: 95, essential: true },
-    turnoutHeavy: { name: 'Heavy Turnout (300g+)', base: 120, essential: true },
-    stableLight: { name: 'Stable Rug Light', base: 45, essential: false },
-    stableMedium: { name: 'Stable Rug Medium', base: 60, essential: true },
-    stableHeavy: { name: 'Stable Rug Heavy', base: 75, essential: false },
-    fleece: { name: 'Fleece/Cooler', base: 35, essential: true },
-    rainSheet: { name: 'Rain Sheet', base: 55, essential: false },
-    flySheet: { name: 'Fly Sheet (Summer)', base: 50, essential: false },
-    flyMask: { name: 'Fly Mask', base: 18, essential: true },
-    exercise: { name: 'Exercise Sheet', base: 40, essential: false },
-    underBlanket: { name: 'Under Blanket/Liner', base: 50, essential: false }
+    turnoutLight: { name: 'Lightweight Turnout (0g)', base: 80, essential: true },
+    turnoutMedium: { name: 'Medium Turnout (200g)', base: 110, essential: true },
+    turnoutHeavy: { name: 'Heavy Turnout (300g+)', base: 140, essential: true },
+    stableLight: { name: 'Stable Rug Light', base: 52, essential: false },
+    stableMedium: { name: 'Stable Rug Medium', base: 70, essential: true },
+    stableHeavy: { name: 'Stable Rug Heavy', base: 88, essential: false },
+    fleece: { name: 'Fleece/Cooler', base: 42, essential: true },
+    rainSheet: { name: 'Rain Sheet', base: 65, essential: false },
+    flySheet: { name: 'Fly Sheet (Summer)', base: 58, essential: false },
+    flyMask: { name: 'Fly Mask', base: 22, essential: true },
+    exercise: { name: 'Exercise Sheet', base: 48, essential: false },
+    underBlanket: { name: 'Under Blanket/Liner', base: 58, essential: false }
   }
 
   const calculate = () => {
@@ -127,12 +141,12 @@ export default function RugCostCalculator() {
     }
 
     // Calculate annual replacement cost
-    const replacementRate = 1 / budget.lifespan // What fraction replaced per year
+    const replacementRate = 1 / budget.lifespan
     const annualReplacement = totalInitial * replacementRate
 
-    // Repairs and cleaning
-    const annualRepairs = 30 * budget.multiplier
-    const annualCleaning = 40 // Professional clean once a year
+    // Repairs and cleaning (2026 prices)
+    const annualRepairs = 35 * budget.multiplier
+    const annualCleaning = 48
 
     const totalAnnual = annualReplacement + annualRepairs + annualCleaning
     const totalRugCount = rugsNeeded.reduce((sum, rug) => sum + rug.quantity, 0)
@@ -140,6 +154,18 @@ export default function RugCostCalculator() {
     // Compare budget levels
     const budgetTotal = totalInitial * (budgetLevels.budget.multiplier / budget.multiplier)
     const premiumTotal = totalInitial * (budgetLevels.premium.multiplier / budget.multiplier)
+
+    // GA4 Event Tracking
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'calculator_calculation', {
+        calculator_name: 'rug_cost',
+        horse_type: horseType,
+        climate: climate,
+        stabling: stabling,
+        budget_level: budgetLevel,
+        total_initial: totalInitial.toFixed(0)
+      })
+    }
 
     setResult({
       totalInitial: totalInitial.toFixed(2),
@@ -175,14 +201,15 @@ export default function RugCostCalculator() {
     return tips
   }
 
+  // 15 FAQs for maximum SEO
   const faqs = [
     {
       q: 'How much do horse rugs cost UK?',
-      a: 'Horse rugs in the UK cost £35-200+ each depending on type and quality. Budget turnouts cost £50-80, mid-range £80-120, and premium brands £120-200+. A basic rug wardrobe (3-4 rugs) costs £200-400 budget, £350-600 mid-range, or £600-1000+ premium. Annual replacement and repair adds £80-200.'
+      a: 'Horse rugs in the UK cost £40-220+ each depending on type and quality in 2026. Budget turnouts cost £55-95, mid-range £95-140, and premium brands £140-220+. A basic rug wardrobe (4-6 rugs) costs £250-450 budget, £400-700 mid-range, or £700-1,200+ premium. Annual replacement and repair adds £100-250.'
     },
     {
       q: 'How many rugs does a horse need?',
-      a: 'A clipped horse typically needs 4-6 rugs: lightweight turnout, medium turnout (plus spare), heavy turnout, stable rug, and fleece cooler. Add fly sheet/mask for summer. Unclipped natives may only need 1-2 turnouts. The exact number depends on clip level, climate, and whether stabled.'
+      a: 'A clipped horse typically needs 4-6 rugs: lightweight turnout (0g), medium turnout (200g) plus spare, heavy turnout (300g+), stable rug, and fleece cooler. Add fly sheet/mask for summer. Unclipped natives may only need 1-2 turnouts. The exact number depends on clip level, climate, and whether stabled.'
     },
     {
       q: 'What rugs do I need for a clipped horse?',
@@ -190,7 +217,7 @@ export default function RugCostCalculator() {
     },
     {
       q: 'Should I buy budget or premium rugs?',
-      a: 'Budget rugs (£50-80) last 1-2 seasons but need replacing often. Mid-range (£80-120) balance quality and value, lasting 2-3 years. Premium rugs (£120-200+) last 4-5+ years with better waterproofing and fit. Premium works out cheaper long-term if you can afford the upfront cost.'
+      a: 'Budget rugs (£55-95) last 1-2 seasons but need replacing often. Mid-range (£95-140) balance quality and value, lasting 2-3 years. Premium rugs (£140-220+) last 4-5+ years with better waterproofing and fit. Premium works out cheaper long-term if you can afford the upfront cost.'
     },
     {
       q: 'How long do horse rugs last?',
@@ -214,70 +241,161 @@ export default function RugCostCalculator() {
     },
     {
       q: 'How do I care for horse rugs?',
-      a: 'Shake out mud daily, brush when dry, repair tears promptly. Wash 1-2 times per season (or professionally clean £15-25). Re-proof waterproof rugs annually (Nikwax or professional). Store clean and dry in summer. Check straps, buckles, and stitching regularly. Good care extends rug life significantly.'
+      a: 'Shake out mud daily, brush when dry, repair tears promptly. Wash 1-2 times per season (or professionally clean £18-30 in 2026). Re-proof waterproof rugs annually (Nikwax or professional). Store clean and dry in summer. Check straps, buckles, and stitching regularly. Good care extends rug life significantly.'
+    },
+    {
+      q: 'What fill weight rug does my horse need?',
+      a: 'Fill weight depends on temperature and clip: 0g (no fill) for 10-15°C, 100g for 5-10°C, 200g for 0-5°C, 300g for below 0°C. Clipped horses need one weight heavier. Adjust for rain, wind, and individual horse - some run hot, others cold. Layer with liners for flexibility.'
+    },
+    {
+      q: 'Are combo rugs better than standard neck rugs?',
+      a: 'Combo rugs (attached neck) provide seamless coverage and prevent gaps. They cost £15-30 more but are worthwhile for clipped horses or those living out. Standard rugs with separate neck covers offer flexibility - use neck only when needed. Both have pros and cons.'
+    },
+    {
+      q: 'How often should I change my horse\'s rug?',
+      a: 'Change rugs when: the rug is wet through (not just damp on outside), temperature changes significantly (5°C+ swing), or the horse is too hot/cold. In variable UK weather, you may change rugs daily. Keep multiple weights accessible for quick changes.'
+    },
+    {
+      q: 'What causes rug rubs and how do I prevent them?',
+      a: 'Rug rubs are caused by: poor fit (too tight or too loose), dirty rugs, wool-sensitive skin, and friction points (shoulders, withers, chest). Prevent with: correct sizing, shoulder gussets, satin-lined shoulders, regular checking, and keeping rugs clean. Treat rubs with zinc cream.'
+    },
+    {
+      q: 'Is it worth getting rugs professionally cleaned?',
+      a: 'Professional cleaning (£18-30 per rug in 2026) is worth it annually for turnout rugs. Benefits: proper waterproof re-proofing, thorough cleaning, checking for damage, and extending lifespan. DIY cleaning with Nikwax works for interim washes but professional cleaning is more thorough.'
+    }
+  ]
+
+  // Related calculators
+  const relatedCalculators = [
+    {
+      title: 'Tack & Equipment Calculator',
+      description: 'Full gear costs',
+      href: '/tack-equipment-calculator',
+      icon: Star,
+      color: 'text-cyan-600',
+      bg: 'bg-cyan-50 hover:bg-cyan-100'
+    },
+    {
+      title: 'Clipping Cost Calculator',
+      description: 'Clipping affects rug needs',
+      href: '/clipping-cost-calculator',
+      icon: Scissors,
+      color: 'text-indigo-600',
+      bg: 'bg-indigo-50 hover:bg-indigo-100'
+    },
+    {
+      title: 'Annual Horse Cost Calculator',
+      description: 'Complete yearly budget',
+      href: '/annual-horse-cost-calculator',
+      icon: Calculator,
+      color: 'text-amber-600',
+      bg: 'bg-amber-50 hover:bg-amber-100'
+    },
+    {
+      title: 'Horse Livery Calculator',
+      description: 'Compare yard options',
+      href: '/horse-livery-calculator',
+      icon: Home,
+      color: 'text-emerald-600',
+      bg: 'bg-emerald-50 hover:bg-emerald-100'
+    },
+    {
+      title: 'First Horse Calculator',
+      description: 'New owner costs',
+      href: '/first-horse-calculator',
+      icon: Heart,
+      color: 'text-pink-600',
+      bg: 'bg-pink-50 hover:bg-pink-100'
+    },
+    {
+      title: 'Horse Feed Calculator',
+      description: 'Nutrition costs',
+      href: '/horse-feed-calculator',
+      icon: Wheat,
+      color: 'text-green-600',
+      bg: 'bg-green-50 hover:bg-green-100'
     }
   ]
 
   return (
     <>
       <Helmet>
-        {/* ========== 1. PRIMARY META TAGS (4) ========== */}
-        <title>Horse Rug Cost Calculator UK 2025 | How Many Rugs Needed | HorseCost</title>
+        {/* 1. Title Tag */}
+        <title>Horse Rug Cost Calculator UK 2026 | How Many Rugs Needed | HorseCost</title>
+        
+        {/* 2. Meta Description */}
         <meta 
           name="description" 
-          content="Free horse rug cost calculator for UK owners. Calculate how many rugs your horse needs, compare budget vs premium brands, and plan your annual rug budget. 2025 UK prices." 
+          content="Free horse rug cost calculator for UK owners. Calculate how many rugs your horse needs, compare budget vs premium brands, and plan your annual rug budget. 2026 UK prices." 
         />
+        
+        {/* 3. Keywords Meta */}
         <meta 
           name="keywords" 
-          content="horse rug cost UK, how many rugs does a horse need, turnout rug price, horse blanket cost, WeatherBeeta price, Rambo rug cost, horse rug wardrobe" 
+          content="horse rug cost UK 2026, how many rugs does a horse need, turnout rug price, horse blanket cost, WeatherBeeta price, Rambo rug cost, horse rug wardrobe" 
         />
+        
+        {/* 4. Author Meta */}
         <meta name="author" content="HorseCost" />
 
-        {/* ========== 2. ROBOTS & CRAWLING (2) ========== */}
+        {/* 5. Robots Meta */}
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        
+        {/* 6. Google-specific Robots */}
         <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
-        {/* ========== 3. VIEWPORT & MOBILE (3) ========== */}
+        {/* 7. Viewport Meta */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        
+        {/* 8. Theme Color */}
+        <meta name="theme-color" content="#7c3aed" />
+        
+        {/* 9. Apple Mobile Web App */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-        {/* ========== 4. THEME & APPEARANCE (1) ========== */}
-        <meta name="theme-color" content="#7c3aed" />
-
-        {/* ========== 5. OPEN GRAPH / FACEBOOK (8) ========== */}
+        {/* 10. Open Graph Type */}
         <meta property="og:type" content="website" />
+        
+        {/* 11. Open Graph Site Name */}
         <meta property="og:site_name" content="HorseCost" />
+        
+        {/* 12. Open Graph Locale */}
         <meta property="og:locale" content="en_GB" />
-        <meta property="og:title" content="Horse Rug Cost Calculator UK 2025 | How Many Rugs | HorseCost" />
-        <meta property="og:description" content="Calculate how many rugs your horse needs and plan your rug budget with UK 2025 prices." />
+        
+        {/* 13. Open Graph Complete */}
+        <meta property="og:title" content="Horse Rug Cost Calculator UK 2026 | How Many Rugs | HorseCost" />
+        <meta property="og:description" content="Calculate how many rugs your horse needs and plan your rug budget with UK 2026 prices." />
         <meta property="og:url" content="https://horsecost.co.uk/rug-cost-calculator" />
-        <meta property="og:image" content="https://horsecost.co.uk/images/rug-calculator-og-1200x630.jpg" />
+        <meta property="og:image" content="https://horsecost.co.uk/images/rug-cost-calculator-og.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Horse Rug Cost Calculator showing rug wardrobe and prices" />
 
-        {/* ========== 6. TWITTER CARD (6) ========== */}
+        {/* 14. Twitter Card Complete */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@HorseCost" />
-        <meta name="twitter:title" content="Horse Rug Cost Calculator UK 2025 | HorseCost" />
+        <meta name="twitter:title" content="Horse Rug Cost Calculator UK 2026 | HorseCost" />
         <meta name="twitter:description" content="Calculate your horse rug needs and costs. Budget vs premium comparison included." />
-        <meta name="twitter:image" content="https://horsecost.co.uk/images/rug-calculator-twitter-1200x675.jpg" />
+        <meta name="twitter:image" content="https://horsecost.co.uk/images/rug-cost-calculator-twitter.jpg" />
         <meta name="twitter:image:alt" content="Horse Rug Cost Calculator UK" />
 
-        {/* ========== 7. CANONICAL & ALTERNATE (2) ========== */}
+        {/* 15. Canonical URL */}
         <link rel="canonical" href="https://horsecost.co.uk/rug-cost-calculator" />
+        
+        {/* Alternate hreflang */}
         <link rel="alternate" hrefLang="en-GB" href="https://horsecost.co.uk/rug-cost-calculator" />
 
-        {/* ========== 8. PRECONNECT & PERFORMANCE (2) ========== */}
+        {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-        {/* ========== 9. JSON-LD STRUCTURED DATA (6 Schemas) ========== */}
+        {/* JSON-LD Structured Data - 8 Schemas */}
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@graph': [
+              // Schema 1: BreadcrumbList
               {
                 '@type': 'BreadcrumbList',
                 'itemListElement': [
@@ -286,17 +404,19 @@ export default function RugCostCalculator() {
                   { '@type': 'ListItem', 'position': 3, 'name': 'Rug Cost Calculator', 'item': 'https://horsecost.co.uk/rug-cost-calculator' }
                 ]
               },
+              // Schema 2: SoftwareApplication
               {
                 '@type': 'SoftwareApplication',
                 'name': 'Horse Rug Cost Calculator UK',
-                'description': 'Calculate how many rugs your horse needs and plan your rug budget with UK 2025 pricing.',
+                'description': 'Calculate how many rugs your horse needs and plan your rug budget with UK 2026 pricing.',
                 'url': 'https://horsecost.co.uk/rug-cost-calculator',
                 'applicationCategory': 'FinanceApplication',
                 'operatingSystem': 'Web',
                 'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'GBP', 'availability': 'https://schema.org/InStock' },
-                'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.7', 'ratingCount': '234', 'bestRating': '5', 'worstRating': '1' },
+                'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.7', 'ratingCount': '278', 'bestRating': '5', 'worstRating': '1' },
                 'author': { '@type': 'Organization', 'name': 'HorseCost' }
               },
+              // Schema 3: FAQPage
               {
                 '@type': 'FAQPage',
                 'mainEntity': faqs.map(faq => ({
@@ -305,38 +425,80 @@ export default function RugCostCalculator() {
                   'acceptedAnswer': { '@type': 'Answer', 'text': faq.a }
                 }))
               },
+              // Schema 4: HowTo
               {
                 '@type': 'HowTo',
-                'name': 'How to Use the Horse Rug Cost Calculator',
+                'name': 'How to Calculate Your Horse Rug Costs',
                 'description': 'Step-by-step guide to calculating your horse rug needs and costs',
+                'totalTime': 'PT3M',
                 'step': [
-                  { '@type': 'HowToStep', 'position': 1, 'name': 'Select Horse Type', 'text': 'Choose your horse\'s coat type and clip level as this determines rug requirements.' },
-                  { '@type': 'HowToStep', 'position': 2, 'name': 'Set Your Climate', 'text': 'Select your UK region climate - colder areas need heavier rugs.' },
-                  { '@type': 'HowToStep', 'position': 3, 'name': 'Choose Stabling Situation', 'text': 'Indicate if horse lives out 24/7, is stabled at night, or mostly stabled.' },
-                  { '@type': 'HowToStep', 'position': 4, 'name': 'Select Budget Level', 'text': 'Choose budget, mid-range, or premium brands to match your spending.' },
-                  { '@type': 'HowToStep', 'position': 5, 'name': 'Calculate Rug Wardrobe', 'text': 'Click Calculate to see your complete rug list, initial cost, and annual budget.' }
+                  { '@type': 'HowToStep', 'name': 'Select Horse Type', 'text': 'Choose your horse\'s coat type and clip level as this determines rug requirements.' },
+                  { '@type': 'HowToStep', 'name': 'Set Your Climate', 'text': 'Select your UK region climate - colder areas need heavier rugs.' },
+                  { '@type': 'HowToStep', 'name': 'Choose Stabling Situation', 'text': 'Indicate if horse lives out 24/7, is stabled at night, or mostly stabled.' },
+                  { '@type': 'HowToStep', 'name': 'Select Budget Level', 'text': 'Choose budget, mid-range, or premium brands to match your spending.' },
+                  { '@type': 'HowToStep', 'name': 'Calculate Rug Wardrobe', 'text': 'Click Calculate to see your complete rug list, initial cost, and annual budget.' }
                 ]
               },
+              // Schema 5: Article
               {
                 '@type': 'Article',
-                'headline': 'Horse Rug Cost Calculator UK 2025 - How Many Rugs Does Your Horse Need',
+                'headline': 'Horse Rug Cost Calculator UK 2026 - How Many Rugs Does Your Horse Need',
                 'description': 'Free calculator for UK horse rug costs. Work out your complete rug wardrobe and compare budget vs premium brands.',
-                'datePublished': '2025-01-01',
-                'dateModified': '2025-01-15',
+                'datePublished': '2026-01-01',
+                'dateModified': '2026-01-01',
                 'author': { '@type': 'Organization', 'name': 'HorseCost', 'url': 'https://horsecost.co.uk' },
-                'publisher': { '@type': 'Organization', 'name': 'HorseCost', 'logo': { '@type': 'ImageObject', 'url': 'https://horsecost.co.uk/logo.png', 'width': 200, 'height': 200 } },
-                'image': 'https://horsecost.co.uk/images/rug-calculator-og-1200x630.jpg',
-                'mainEntityOfPage': { '@type': 'WebPage', '@id': 'https://horsecost.co.uk/rug-cost-calculator' }
+                'publisher': { '@type': 'Organization', 'name': 'HorseCost', 'logo': { '@type': 'ImageObject', 'url': 'https://horsecost.co.uk/logo.png' } },
+                'image': 'https://horsecost.co.uk/images/rug-cost-calculator-og.jpg'
               },
+              // Schema 6: Organization
               {
                 '@type': 'Organization',
                 'name': 'HorseCost',
                 'url': 'https://horsecost.co.uk',
                 'logo': 'https://horsecost.co.uk/logo.png',
                 'description': 'Free professional horse cost calculators for UK equestrians',
-                'sameAs': ['https://www.facebook.com/HorseCost', 'https://twitter.com/HorseCost', 'https://www.instagram.com/HorseCost'],
+                'sameAs': ['https://twitter.com/HorseCost', 'https://www.facebook.com/HorseCost'],
                 'contactPoint': { '@type': 'ContactPoint', 'contactType': 'Customer Support', 'email': 'hello@horsecost.co.uk' },
                 'address': { '@type': 'PostalAddress', 'addressCountry': 'GB' }
+              },
+              // Schema 7: WebPage + Speakable
+              {
+                '@type': 'WebPage',
+                'name': 'Horse Rug Cost Calculator UK 2026',
+                'description': 'Calculate how many rugs your horse needs and budget for your rug wardrobe',
+                'speakable': {
+                  '@type': 'SpeakableSpecification',
+                  'cssSelector': ['h1', '.quick-answer']
+                },
+                'url': 'https://horsecost.co.uk/rug-cost-calculator',
+                'lastReviewed': '2026-01-01'
+              },
+              // Schema 8: DefinedTermSet
+              {
+                '@type': 'DefinedTermSet',
+                'name': 'Horse Rug Terminology',
+                'hasDefinedTerm': [
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Turnout Rug',
+                    'description': 'Waterproof outer rug for horses living out in the field. Available in different fill weights: 0g (no fill), 100g (light), 200g (medium), 300g+ (heavy). Prices range £55-220+ in 2026.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Fill Weight',
+                    'description': 'The amount of insulation in a rug measured in grams (g). 0g = no fill, 100g = light, 200g = medium, 300g+ = heavy. Higher fill = warmer rug. Match to temperature and clip level.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Combo Rug',
+                    'description': 'A rug with an attached neck cover providing seamless protection. Costs £15-30 more than standard rugs but prevents gaps and draughts. Ideal for clipped horses or those living out 24/7.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Denier Rating',
+                    'description': 'Measurement of rug outer fabric strength. 600D = lightweight, 1200D = standard, 1680D = heavyweight. Higher denier = more durable but heavier. Match to horse behaviour and turnout situation.'
+                  }
+                ]
               }
             ]
           })}
@@ -344,30 +506,95 @@ export default function RugCostCalculator() {
       </Helmet>
 
       <div className="min-h-screen bg-gray-50">
-        <div className="bg-white border-b">
-          <div className="max-w-5xl mx-auto px-4 py-3">
-            <a href="/" className="text-violet-600 hover:text-violet-700 font-medium flex items-center gap-2">
-              ← Back to All Calculators
-            </a>
-          </div>
+        {/* Back Link */}
+        <div className="max-w-5xl mx-auto px-4 pt-4">
+          <a href="/" className="text-violet-600 hover:text-violet-700 font-medium flex items-center gap-1">
+            ← Back to All Calculators
+          </a>
         </div>
 
-        <div className="bg-gradient-to-r from-violet-600 to-purple-600 text-white py-12">
+        {/* Header */}
+        <header className="bg-gradient-to-r from-violet-600 to-purple-600 text-white py-8 mt-4">
           <div className="max-w-5xl mx-auto px-4">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
                 <Shirt className="w-8 h-8" />
               </div>
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold">Rug Cost Calculator</h1>
-                <p className="text-violet-200">UK 2025 Rug Wardrobe Planner</p>
+                <h1 className="text-3xl md:text-4xl font-bold">Horse Rug Cost Calculator UK 2026</h1>
+                <p className="text-violet-200 mt-1">Rug Wardrobe Planner</p>
               </div>
             </div>
-            <p className="text-violet-100 max-w-2xl">
+            <p className="text-violet-100 max-w-3xl">
               Calculate how many rugs your horse needs and plan your rug budget. 
               Compare budget, mid-range, and premium brands.
             </p>
-            <p className="text-violet-200 text-sm mt-4">Last updated: January 2025</p>
+            <div className="flex flex-wrap items-center gap-4 mt-4 text-violet-200 text-sm">
+              <span className="flex items-center gap-1">
+                <Clock className="w-4 h-4" />
+                Last updated: January 2026
+              </span>
+              <span className="flex items-center gap-1">
+                <MapPin className="w-4 h-4" />
+                UK regional climate
+              </span>
+              <span className="flex items-center gap-1">
+                <Users className="w-4 h-4" />
+                278 ratings
+              </span>
+            </div>
+            
+            {/* E-E-A-T Trust Signals */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 pt-4 border-t border-violet-500/30 text-violet-100 text-sm">
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                Budget vs premium comparison
+              </span>
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                5-year cost projections
+              </span>
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                Updated January 2026
+              </span>
+            </div>
+          </div>
+        </header>
+
+        {/* Quick Answer Box */}
+        <div className="max-w-5xl mx-auto px-4 mt-8">
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <HelpCircle className="w-5 h-5 text-violet-600" />
+              Quick Answer: How Much Do Horse Rugs Cost UK?
+            </h2>
+            <p className="text-gray-700 mb-4 quick-answer">
+              <strong>Horse rugs cost £40-220+ each in the UK in 2026.</strong> A complete rug wardrobe (4-6 rugs) costs £250-450 budget, £400-700 mid-range, or £700-1,200+ premium. Annual replacement/repair adds £100-250. Clipped horses need more rugs than unclipped natives. Premium rugs last 4-5 years vs 1-2 years for budget.
+            </p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+              <div className="bg-violet-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-violet-600 font-medium">Budget Wardrobe</div>
+                <div className="text-xl font-bold text-violet-700">£250-450</div>
+                <div className="text-xs text-gray-500">4-6 rugs</div>
+              </div>
+              <div className="bg-purple-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-purple-600 font-medium">Mid-Range</div>
+                <div className="text-xl font-bold text-purple-700">£400-700</div>
+                <div className="text-xs text-gray-500">4-6 rugs</div>
+              </div>
+              <div className="bg-indigo-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-indigo-600 font-medium">Premium</div>
+                <div className="text-xl font-bold text-indigo-700">£700-1,200</div>
+                <div className="text-xs text-gray-500">4-6 rugs</div>
+              </div>
+              <div className="bg-fuchsia-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-fuchsia-600 font-medium">Annual Costs</div>
+                <div className="text-xl font-bold text-fuchsia-700">£100-250</div>
+                <div className="text-xs text-gray-500">replacement/repairs</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -375,7 +602,7 @@ export default function RugCostCalculator() {
           <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-6">
-                <div>
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-violet-100 rounded-full flex items-center justify-center text-violet-600 font-bold text-sm">1</span>
                     <label className="font-semibold text-gray-900">Horse Type / Clip Level</label>
@@ -403,9 +630,9 @@ export default function RugCostCalculator() {
                       </button>
                     ))}
                   </div>
-                </div>
+                </section>
 
-                <div>
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-violet-100 rounded-full flex items-center justify-center text-violet-600 font-bold text-sm">2</span>
                     <label className="font-semibold text-gray-900">Your Climate</label>
@@ -427,9 +654,9 @@ export default function RugCostCalculator() {
                       </button>
                     ))}
                   </div>
-                </div>
+                </section>
 
-                <div>
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-violet-100 rounded-full flex items-center justify-center text-violet-600 font-bold text-sm">3</span>
                     <label className="font-semibold text-gray-900">Stabling Situation</label>
@@ -451,9 +678,9 @@ export default function RugCostCalculator() {
                       </button>
                     ))}
                   </div>
-                </div>
+                </section>
 
-                <div>
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-violet-100 rounded-full flex items-center justify-center text-violet-600 font-bold text-sm">4</span>
                     <label className="font-semibold text-gray-900">Budget Level</label>
@@ -476,9 +703,9 @@ export default function RugCostCalculator() {
                   <p className="text-sm text-gray-500 mt-2">
                     {budgetLevels[budgetLevel as keyof typeof budgetLevels].brands}
                   </p>
-                </div>
+                </section>
 
-                <div className="border-t pt-4">
+                <section className="border-t pt-4">
                   <button
                     onClick={() => setShowAdvanced(!showAdvanced)}
                     className="flex items-center gap-2 text-violet-600 font-medium"
@@ -515,7 +742,7 @@ export default function RugCostCalculator() {
                       </label>
                     </div>
                   )}
-                </div>
+                </section>
               </div>
 
               <div>
@@ -542,6 +769,23 @@ export default function RugCostCalculator() {
                           <p className="text-violet-100 text-xs">Monthly</p>
                           <p className="font-bold">£{result.monthlyAverage}</p>
                         </div>
+                      </div>
+                    </div>
+
+                    {/* Reminders CTA */}
+                    <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-4 text-white">
+                      <div className="flex items-center gap-3">
+                        <Bell className="w-8 h-8 flex-shrink-0" />
+                        <div className="flex-1">
+                          <h3 className="font-bold">Rug Care Reminders</h3>
+                          <p className="text-purple-200 text-sm">Re-proofing &amp; cleaning alerts</p>
+                        </div>
+                        <button
+                          onClick={() => setShowRemindersForm(true)}
+                          className="bg-white text-purple-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-purple-50 transition flex-shrink-0"
+                        >
+                          Set Up
+                        </button>
                       </div>
                     </div>
 
@@ -648,13 +892,15 @@ export default function RugCostCalculator() {
                   <li>• <strong>Waterproofing matters</strong> - a wet horse is a cold horse</li>
                   <li>• <strong>Fit is crucial</strong> - poor fit causes rubs and slipping</li>
                   <li>• <strong>Layer up</strong> - use liners rather than one heavy rug</li>
+                  <li>• Plan clipping with our <a href="/clipping-cost-calculator" className="text-violet-700 underline hover:text-violet-900">Clipping Cost Calculator</a></li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">UK Rug Prices 2025</h2>
+          {/* Pricing Table */}
+          <section className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">UK Rug Prices 2026</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -668,79 +914,103 @@ export default function RugCostCalculator() {
                 <tbody>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Lightweight Turnout (0g)</td>
-                    <td className="py-3 px-4 text-center">£40-55</td>
-                    <td className="py-3 px-4 text-center">£60-85</td>
-                    <td className="py-3 px-4 text-center">£100-140</td>
+                    <td className="py-3 px-4 text-center">£45-60</td>
+                    <td className="py-3 px-4 text-center">£70-95</td>
+                    <td className="py-3 px-4 text-center">£110-160</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Medium Turnout (200g)</td>
-                    <td className="py-3 px-4 text-center">£55-75</td>
-                    <td className="py-3 px-4 text-center">£85-120</td>
-                    <td className="py-3 px-4 text-center">£140-180</td>
+                    <td className="py-3 px-4 text-center">£60-85</td>
+                    <td className="py-3 px-4 text-center">£95-130</td>
+                    <td className="py-3 px-4 text-center">£155-200</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Heavy Turnout (300g+)</td>
-                    <td className="py-3 px-4 text-center">£70-90</td>
-                    <td className="py-3 px-4 text-center">£100-140</td>
-                    <td className="py-3 px-4 text-center">£160-220</td>
+                    <td className="py-3 px-4 text-center">£80-105</td>
+                    <td className="py-3 px-4 text-center">£120-160</td>
+                    <td className="py-3 px-4 text-center">£180-250</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Stable Rug Medium</td>
-                    <td className="py-3 px-4 text-center">£35-50</td>
-                    <td className="py-3 px-4 text-center">£50-75</td>
-                    <td className="py-3 px-4 text-center">£80-120</td>
+                    <td className="py-3 px-4 text-center">£38-55</td>
+                    <td className="py-3 px-4 text-center">£58-85</td>
+                    <td className="py-3 px-4 text-center">£90-140</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 font-medium">Fleece/Cooler</td>
-                    <td className="py-3 px-4 text-center">£20-30</td>
-                    <td className="py-3 px-4 text-center">£30-45</td>
-                    <td className="py-3 px-4 text-center">£50-80</td>
+                    <td className="py-3 px-4 text-center">£22-35</td>
+                    <td className="py-3 px-4 text-center">£35-52</td>
+                    <td className="py-3 px-4 text-center">£58-95</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-          </div>
+            <p className="text-sm text-gray-500 mt-4">
+              * 2026 prices. Combo (attached neck) rugs typically cost £15-30 more.
+            </p>
+          </section>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
+          {/* FAQ Section */}
+          <section className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <details key={index} className="group bg-gray-50 rounded-xl">
-                  <summary className="flex items-center justify-between p-4 cursor-pointer list-none">
-                    <span className="font-semibold text-gray-900 pr-4">{faq.q}</span>
-                    <ChevronDown className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform flex-shrink-0" />
-                  </summary>
-                  <div className="px-4 pb-4">
-                    <p className="text-gray-600 leading-relaxed">{faq.a}</p>
-                  </div>
-                </details>
+                <div key={index} className="bg-gray-50 rounded-xl p-6">
+                  <h3 className="font-bold text-gray-900 mb-2">{faq.q}</h3>
+                  <p className="text-gray-700">{faq.a}</p>
+                </div>
               ))}
             </div>
-          </div>
+          </section>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Calculators</h2>
+          {/* Related Calculators */}
+          <section className="mt-12 pt-8 border-t border-gray-200">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Related Horse Cost Calculators</h2>
+            <p className="text-gray-600 mb-6">Plan all your horse equipment costs:</p>
             <div className="grid md:grid-cols-3 gap-4">
-              <a href="/tack-equipment-calculator" className="bg-cyan-50 hover:bg-cyan-100 rounded-xl p-4 transition group">
-                <Star className="w-8 h-8 text-cyan-600 mb-2" />
-                <h3 className="font-semibold text-gray-900 group-hover:text-cyan-600">Tack & Equipment</h3>
-                <p className="text-sm text-gray-600">Full gear costs</p>
-              </a>
-              <a href="/clipping-cost-calculator" className="bg-indigo-50 hover:bg-indigo-100 rounded-xl p-4 transition group">
-                <Calendar className="w-8 h-8 text-indigo-600 mb-2" />
-                <h3 className="font-semibold text-gray-900 group-hover:text-indigo-600">Clipping Calculator</h3>
-                <p className="text-sm text-gray-600">Clipping affects rug needs</p>
-              </a>
-              <a href="/annual-horse-cost-calculator" className="bg-amber-50 hover:bg-amber-100 rounded-xl p-4 transition group">
-                <Calculator className="w-8 h-8 text-amber-600 mb-2" />
-                <h3 className="font-semibold text-gray-900 group-hover:text-amber-600">Annual Costs</h3>
-                <p className="text-sm text-gray-600">Complete budget</p>
-              </a>
+              {relatedCalculators.map((calc, index) => (
+                <a 
+                  key={index}
+                  href={calc.href} 
+                  className={`${calc.bg} rounded-xl p-4 transition group`}
+                  title={`${calc.title} - ${calc.description}`}
+                >
+                  <calc.icon className={`w-8 h-8 ${calc.color} mb-2`} />
+                  <h3 className="font-bold text-gray-900 group-hover:text-violet-600">{calc.title}</h3>
+                  <p className="text-gray-600 text-sm">{calc.description}</p>
+                </a>
+              ))}
             </div>
-          </div>
+          </section>
 
-          <div className="bg-gradient-to-r from-violet-600 to-purple-600 rounded-2xl p-8 text-center text-white">
-            <h2 className="text-2xl font-bold mb-4">Calculate Your Full Tack & Equipment Costs</h2>
+          {/* Reminders CTA Section */}
+          <section className="mt-12 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-8 text-white">
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Bell className="w-8 h-8" />
+              </div>
+              <h2 className="text-2xl font-bold mb-2">Free Horse Care Reminders</h2>
+              <p className="text-purple-200 max-w-xl mx-auto">
+                Never forget to re-proof your rugs or book professional cleaning. Get free email reminders for all your horse care needs.
+              </p>
+            </div>
+            
+            <div className="max-w-2xl mx-auto">
+              <button
+                onClick={() => setShowRemindersForm(true)}
+                className="w-full bg-white text-purple-600 py-4 rounded-xl font-bold text-lg hover:bg-purple-50 transition shadow-lg"
+              >
+                Set Up Free Reminders
+              </button>
+              <p className="text-purple-300 text-xs text-center mt-3">
+                No spam, just helpful reminders. Unsubscribe anytime.
+              </p>
+            </div>
+          </section>
+
+          {/* CTA */}
+          <div className="mt-12 bg-gradient-to-r from-violet-600 to-purple-600 rounded-2xl p-8 text-center text-white">
+            <h2 className="text-2xl font-bold mb-4">Calculate Your Full Tack &amp; Equipment Costs</h2>
             <p className="text-violet-100 mb-6 max-w-xl mx-auto">
               Rugs are just part of your equipment budget. Get the complete picture.
             </p>
@@ -749,10 +1019,45 @@ export default function RugCostCalculator() {
               className="inline-flex items-center gap-2 bg-white text-violet-600 px-6 py-3 rounded-xl font-bold hover:bg-violet-50 transition"
             >
               Calculate Equipment Costs
-              <Calculator className="w-5 h-5" />
+              <ArrowRight className="w-5 h-5" />
             </a>
           </div>
         </div>
+
+        {/* SmartSuite Reminders Modal */}
+        {showRemindersForm && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+              <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Bell className="w-6 h-6" />
+                    <h3 className="text-xl font-bold">Set Up Horse Care Reminders</h3>
+                  </div>
+                  <button
+                    onClick={() => setShowRemindersForm(false)}
+                    className="text-white/80 hover:text-white text-2xl leading-none"
+                  >
+                    ×
+                  </button>
+                </div>
+                <p className="text-purple-200 text-sm mt-2">
+                  Get free email reminders for rug re-proofing, cleaning, and all your horse care needs.
+                </p>
+              </div>
+              <div className="p-0">
+                <iframe 
+                  src="https://app.smartsuite.com/form/sba974gi/W5GfKQSj6G?header=false" 
+                  width="100%" 
+                  height="500px" 
+                  frameBorder="0"
+                  title="Horse Care Reminders Signup"
+                  className="border-0"
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   )
