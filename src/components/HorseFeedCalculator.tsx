@@ -281,7 +281,7 @@ export default function HorseFeedCalculator() {
     <>
       <Helmet>
         {/* 1. Title Tag (55-60 chars) */}
-        <title>Horse Feed Calculator UK 2026 | Hay & Feed Costs | HorseCost</title>
+        <title>Horse Feed Calculator UK 2026 | Hay &amp; Feed Costs | HorseCost</title>
         
         {/* 2. Meta Description (150-160 chars) */}
         <meta 
@@ -355,7 +355,6 @@ export default function HorseFeedCalculator() {
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@graph': [
-              // Schema 1: BreadcrumbList
               {
                 '@type': 'BreadcrumbList',
                 'itemListElement': [
@@ -364,7 +363,6 @@ export default function HorseFeedCalculator() {
                   { '@type': 'ListItem', 'position': 3, 'name': 'Horse Feed Calculator', 'item': 'https://horsecost.co.uk/horse-feed-calculator' }
                 ]
               },
-              // Schema 2: SoftwareApplication with AggregateRating
               {
                 '@type': 'SoftwareApplication',
                 'name': 'Horse Feed Calculator UK',
@@ -376,7 +374,6 @@ export default function HorseFeedCalculator() {
                 'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.8', 'ratingCount': '312', 'bestRating': '5', 'worstRating': '1' },
                 'author': { '@type': 'Organization', 'name': 'HorseCost' }
               },
-              // Schema 3: FAQPage
               {
                 '@type': 'FAQPage',
                 'mainEntity': faqs.map(faq => ({
@@ -385,7 +382,6 @@ export default function HorseFeedCalculator() {
                   'acceptedAnswer': { '@type': 'Answer', 'text': faq.a }
                 }))
               },
-              // Schema 4: HowTo
               {
                 '@type': 'HowTo',
                 'name': 'How to Calculate Horse Feed Costs in the UK',
@@ -399,7 +395,6 @@ export default function HorseFeedCalculator() {
                   { '@type': 'HowToStep', 'name': 'Add Hard Feed & Supplements', 'text': 'Optionally add hard feed amount, price, and monthly supplement costs for a complete calculation.' }
                 ]
               },
-              // Schema 5: Article
               {
                 '@type': 'Article',
                 'headline': 'Horse Feed Calculator - UK Hay & Feed Costs 2026',
@@ -410,7 +405,6 @@ export default function HorseFeedCalculator() {
                 'image': 'https://horsecost.co.uk/images/horse-feed-calculator-og.jpg',
                 'publisher': { '@type': 'Organization', 'name': 'HorseCost', 'logo': { '@type': 'ImageObject', 'url': 'https://horsecost.co.uk/logo.png' } }
               },
-              // Schema 6: Organization
               {
                 '@type': 'Organization',
                 'name': 'HorseCost',
@@ -421,7 +415,6 @@ export default function HorseFeedCalculator() {
                 'contactPoint': { '@type': 'ContactPoint', 'contactType': 'Customer Support', 'email': 'hello@horsecost.co.uk' },
                 'address': { '@type': 'PostalAddress', 'addressCountry': 'GB' }
               },
-              // Schema 7: WebPage with Speakable (Voice Search / AI)
               {
                 '@type': 'WebPage',
                 'name': 'Horse Feed Calculator UK 2026',
@@ -433,7 +426,6 @@ export default function HorseFeedCalculator() {
                 'url': 'https://horsecost.co.uk/horse-feed-calculator',
                 'lastReviewed': '2026-01-01'
               },
-              // Schema 8: DefinedTermSet (AI understands terminology)
               {
                 '@type': 'DefinedTermSet',
                 'name': 'UK Horse Feed Terminology',
@@ -691,7 +683,7 @@ export default function HorseFeedCalculator() {
                   className="flex items-center gap-3 mb-4 text-left w-full"
                 >
                   <div className="w-8 h-8 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold">4</div>
-                  <h2 className="text-xl font-bold text-gray-900">Hard Feed & Supplements</h2>
+                  <h2 className="text-xl font-bold text-gray-900">Hard Feed &amp; Supplements</h2>
                   {showAdvanced ? <ChevronUp className="w-5 h-5 text-gray-500" /> : <ChevronDown className="w-5 h-5 text-gray-500" />}
                 </button>
                 
@@ -810,9 +802,6 @@ export default function HorseFeedCalculator() {
                       </div>
                     </div>
                     {parseFloat(result.monthly.bagsNeeded) > 0 && (
-                      <div className="flex justify-between items-center p-3 bg-amber-50 rounded-lg">
-                        <div className="flex items-center gap-3">
-                          <Package className="w-5{parseFloat(result.monthly.bagsNeeded) > 0 && (
                       <div className="flex justify-between items-center p-3 bg-amber-50 rounded-lg">
                         <div className="flex items-center gap-3">
                           <Package className="w-5 h-5 text-amber-600" />
@@ -942,7 +931,7 @@ export default function HorseFeedCalculator() {
 
             {/* UK Hay Prices Table */}
             <section className="overflow-x-auto">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">UK Hay & Feed Prices 2026</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">UK Hay &amp; Feed Prices 2026</h2>
               <table className="w-full border-collapse">
                 <caption className="sr-only">UK hay and horse feed prices for 2026</caption>
                 <thead>
@@ -1174,7 +1163,7 @@ export default function HorseFeedCalculator() {
                   frameBorder="0"
                   title="Horse Care Reminders Signup"
                   className="border-0"
-                ></iframe>
+                />
               </div>
             </div>
           </div>
