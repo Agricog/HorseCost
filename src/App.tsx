@@ -31,56 +31,42 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
 
-          {/* Dental Calculator */}
-<Route path="/dental-cost-calculator" element={<DentalCostCalculatorPage />} />
-<Route path="/horse-dental-calculator" element={<DentalCostCalculatorPage />} />
-<Route path="/teeth-cost-calculator" element={<DentalCostCalculatorPage />} />
+          {/* Horse Livery Calculator */}
+          <Route path="/horse-livery-calculator" element={<HorseLiveryCalculatorPage />} />
+          <Route path="/calculators/horse-livery" element={<HorseLiveryCalculatorPage />} />
+          <Route path="/horse-livery" element={<HorseLiveryCalculatorPage />} />
+          <Route path="/livery-calculator" element={<HorseLiveryCalculatorPage />} />
 
-{/* Rug Calculator */}
-<Route path="/rug-cost-calculator" element={<RugCostCalculatorPage />} />
-<Route path="/horse-rug-calculator" element={<RugCostCalculatorPage />} />
-<Route path="/blanket-calculator" element={<RugCostCalculatorPage />} />
+          {/* Annual Horse Cost Calculator */}
+          <Route path="/annual-horse-cost-calculator" element={<AnnualHorseCostCalculatorPage />} />
+          <Route path="/horse-cost-calculator" element={<AnnualHorseCostCalculatorPage />} />
+          <Route path="/yearly-horse-cost-calculator" element={<AnnualHorseCostCalculatorPage />} />
 
-{/* Retirement Calculator */}
-<Route path="/retirement-cost-calculator" element={<RetirementCostCalculatorPage />} />
-<Route path="/veteran-horse-calculator" element={<RetirementCostCalculatorPage />} />
-<Route path="/retired-horse-calculator" element={<RetirementCostCalculatorPage />} />
+          {/* Horse Feed Calculator */}
+          <Route path="/horse-feed-calculator" element={<HorseFeedCalculatorPage />} />
+          <Route path="/feed-calculator" element={<HorseFeedCalculatorPage />} />
+          <Route path="/calculators/feed-budget" element={<HorseFeedCalculatorPage />} />
 
-          {/* Clipping Calculator */}
-<Route path="/clipping-cost-calculator" element={<ClippingCostCalculatorPage />} />
-<Route path="/clipping-calculator" element={<ClippingCostCalculatorPage />} />
-<Route path="/horse-clipping-calculator" element={<ClippingCostCalculatorPage />} />
+          {/* Farrier Cost Calculator */}
+          <Route path="/farrier-cost-calculator" element={<FarrierCostCalculatorPage />} />
+          <Route path="/farrier-calculator" element={<FarrierCostCalculatorPage />} />
+          <Route path="/calculators/farrier-cost" element={<FarrierCostCalculatorPage />} />
 
-{/* Worming Calculator */}
-<Route path="/worming-cost-calculator" element={<WormingCostCalculatorPage />} />
-<Route path="/worming-calculator" element={<WormingCostCalculatorPage />} />
-<Route path="/horse-worming-calculator" element={<WormingCostCalculatorPage />} />
+          {/* Horse Weight Calculator */}
+          <Route path="/horse-weight-calculator" element={<HorseWeightCalculatorPage />} />
+          <Route path="/weight-calculator" element={<HorseWeightCalculatorPage />} />
+          <Route path="/calculators/weight-calculator" element={<HorseWeightCalculatorPage />} />
 
-{/* Transport Calculator */}
-<Route path="/horse-transport-calculator" element={<HorseTransportCalculatorPage />} />
-<Route path="/transport-calculator" element={<HorseTransportCalculatorPage />} />
-<Route path="/horse-moving-calculator" element={<HorseTransportCalculatorPage />} />
+          {/* Competition Budget Calculator */}
+          <Route path="/competition-budget-calculator" element={<CompetitionBudgetCalculatorPage />} />
+          <Route path="/competition-calculator" element={<CompetitionBudgetCalculatorPage />} />
+          <Route path="/calculators/competition-budget" element={<CompetitionBudgetCalculatorPage />} />
 
-{/* Field Rent Calculator */}
-<Route path="/field-rent-calculator" element={<FieldRentCalculatorPage />} />
-<Route path="/grazing-calculator" element={<FieldRentCalculatorPage />} />
-<Route path="/paddock-rent-calculator" element={<FieldRentCalculatorPage />} />
+          {/* Horse Care Challenge Game */}
+          <Route path="/horse-care-challenge" element={<GamePage />} />
+          <Route path="/quiz" element={<GamePage />} />
+          <Route path="/game" element={<GamePage />} />
 
-          {/* Tack & Equipment Calculator */}
-<Route path="/tack-equipment-calculator" element={<TackEquipmentCalculatorPage />} />
-<Route path="/tack-calculator" element={<TackEquipmentCalculatorPage />} />
-<Route path="/equipment-calculator" element={<TackEquipmentCalculatorPage />} />
-
-{/* Horse Loan Calculator */}
-<Route path="/horse-loan-calculator" element={<HorseLoanCalculatorPage />} />
-<Route path="/loan-calculator" element={<HorseLoanCalculatorPage />} />
-<Route path="/loan-vs-buy" element={<HorseLoanCalculatorPage />} />
-
-{/* Bedding Cost Calculator */}
-<Route path="/bedding-cost-calculator" element={<BeddingCostCalculatorPage />} />
-<Route path="/bedding-calculator" element={<BeddingCostCalculatorPage />} />
-<Route path="/stable-bedding-calculator" element={<BeddingCostCalculatorPage />} />
-          
           {/* Horse Insurance Calculator */}
           <Route path="/horse-insurance-calculator" element={<HorseInsuranceCalculatorPage />} />
           <Route path="/insurance-calculator" element={<HorseInsuranceCalculatorPage />} />
@@ -90,55 +76,71 @@ function App() {
           <Route path="/vet-cost-estimator" element={<VetCostEstimatorPage />} />
           <Route path="/vet-calculator" element={<VetCostEstimatorPage />} />
           <Route path="/calculators/vet-costs" element={<VetCostEstimatorPage />} />
-          
-          {/* Horse Livery Calculator */}
-          <Route path="/calculators/horse-livery" element={<HorseLiveryCalculatorPage />} />
-          <Route path="/horse-livery" element={<HorseLiveryCalculatorPage />} />
-          
-          {/* Annual Horse Cost Calculator */}
-          <Route path="/annual-horse-cost-calculator" element={<AnnualHorseCostCalculatorPage />} />
-          <Route path="/horse-cost-calculator" element={<AnnualHorseCostCalculatorPage />} />
-          <Route path="/yearly-horse-cost-calculator" element={<AnnualHorseCostCalculatorPage />} />
-          
-          {/* Horse Feed Calculator */}
-          <Route path="/horse-feed-calculator" element={<HorseFeedCalculatorPage />} />
-          <Route path="/feed-calculator" element={<HorseFeedCalculatorPage />} />
-          <Route path="/calculators/feed-budget" element={<HorseFeedCalculatorPage />} />
-          
-          {/* Farrier Cost Calculator */}
-          <Route path="/farrier-cost-calculator" element={<FarrierCostCalculatorPage />} />
-          <Route path="/farrier-calculator" element={<FarrierCostCalculatorPage />} />
-          <Route path="/calculators/farrier-cost" element={<FarrierCostCalculatorPage />} />
-          
-          {/* Horse Weight Calculator */}
-          <Route path="/horse-weight-calculator" element={<HorseWeightCalculatorPage />} />
-          <Route path="/weight-calculator" element={<HorseWeightCalculatorPage />} />
-          <Route path="/calculators/weight-calculator" element={<HorseWeightCalculatorPage />} />
-          
-          {/* Competition Budget Calculator */}
-          <Route path="/competition-budget-calculator" element={<CompetitionBudgetCalculatorPage />} />
-          <Route path="/competition-calculator" element={<CompetitionBudgetCalculatorPage />} />
-          <Route path="/calculators/competition-budget" element={<CompetitionBudgetCalculatorPage />} />
-          
-          {/* Horse Care Challenge Game */}
-          <Route path="/horse-care-challenge" element={<GamePage />} />
-          <Route path="/quiz" element={<GamePage />} />
-          <Route path="/game" element={<GamePage />} />
 
           {/* Trailer Running Cost Calculator */}
-<Route path="/trailer-cost-calculator" element={<TrailerCostCalculatorPage />} />
-<Route path="/horsebox-cost-calculator" element={<TrailerCostCalculatorPage />} />
-<Route path="/calculators/trailer-costs" element={<TrailerCostCalculatorPage />} />
+          <Route path="/trailer-cost-calculator" element={<TrailerCostCalculatorPage />} />
+          <Route path="/horsebox-cost-calculator" element={<TrailerCostCalculatorPage />} />
+          <Route path="/calculators/trailer-costs" element={<TrailerCostCalculatorPage />} />
 
-{/* Riding Lesson Calculator */}
-<Route path="/riding-lesson-calculator" element={<RidingLessonCalculatorPage />} />
-<Route path="/lesson-cost-calculator" element={<RidingLessonCalculatorPage />} />
-<Route path="/calculators/lessons" element={<RidingLessonCalculatorPage />} />
+          {/* Riding Lesson Calculator */}
+          <Route path="/riding-lesson-calculator" element={<RidingLessonCalculatorPage />} />
+          <Route path="/lesson-cost-calculator" element={<RidingLessonCalculatorPage />} />
+          <Route path="/calculators/lessons" element={<RidingLessonCalculatorPage />} />
 
-{/* First Horse Calculator */}
-<Route path="/first-horse-calculator" element={<FirstHorseCalculatorPage />} />
-<Route path="/buying-first-horse" element={<FirstHorseCalculatorPage />} />
-<Route path="/calculators/first-horse" element={<FirstHorseCalculatorPage />} />
+          {/* First Horse Calculator */}
+          <Route path="/first-horse-calculator" element={<FirstHorseCalculatorPage />} />
+          <Route path="/buying-first-horse" element={<FirstHorseCalculatorPage />} />
+          <Route path="/calculators/first-horse" element={<FirstHorseCalculatorPage />} />
+
+          {/* Tack & Equipment Calculator */}
+          <Route path="/tack-equipment-calculator" element={<TackEquipmentCalculatorPage />} />
+          <Route path="/tack-calculator" element={<TackEquipmentCalculatorPage />} />
+          <Route path="/equipment-calculator" element={<TackEquipmentCalculatorPage />} />
+
+          {/* Horse Loan Calculator */}
+          <Route path="/horse-loan-calculator" element={<HorseLoanCalculatorPage />} />
+          <Route path="/loan-calculator" element={<HorseLoanCalculatorPage />} />
+          <Route path="/loan-vs-buy" element={<HorseLoanCalculatorPage />} />
+
+          {/* Bedding Cost Calculator */}
+          <Route path="/bedding-cost-calculator" element={<BeddingCostCalculatorPage />} />
+          <Route path="/bedding-calculator" element={<BeddingCostCalculatorPage />} />
+          <Route path="/stable-bedding-calculator" element={<BeddingCostCalculatorPage />} />
+
+          {/* Clipping Calculator */}
+          <Route path="/clipping-cost-calculator" element={<ClippingCostCalculatorPage />} />
+          <Route path="/clipping-calculator" element={<ClippingCostCalculatorPage />} />
+          <Route path="/horse-clipping-calculator" element={<ClippingCostCalculatorPage />} />
+
+          {/* Worming Calculator */}
+          <Route path="/worming-cost-calculator" element={<WormingCostCalculatorPage />} />
+          <Route path="/worming-calculator" element={<WormingCostCalculatorPage />} />
+          <Route path="/horse-worming-calculator" element={<WormingCostCalculatorPage />} />
+
+          {/* Transport Calculator */}
+          <Route path="/horse-transport-calculator" element={<HorseTransportCalculatorPage />} />
+          <Route path="/transport-calculator" element={<HorseTransportCalculatorPage />} />
+          <Route path="/horse-moving-calculator" element={<HorseTransportCalculatorPage />} />
+
+          {/* Field Rent Calculator */}
+          <Route path="/field-rent-calculator" element={<FieldRentCalculatorPage />} />
+          <Route path="/grazing-calculator" element={<FieldRentCalculatorPage />} />
+          <Route path="/paddock-rent-calculator" element={<FieldRentCalculatorPage />} />
+
+          {/* Dental Cost Calculator */}
+          <Route path="/dental-cost-calculator" element={<DentalCostCalculatorPage />} />
+          <Route path="/horse-dental-calculator" element={<DentalCostCalculatorPage />} />
+          <Route path="/teeth-cost-calculator" element={<DentalCostCalculatorPage />} />
+
+          {/* Rug Calculator */}
+          <Route path="/rug-cost-calculator" element={<RugCostCalculatorPage />} />
+          <Route path="/horse-rug-calculator" element={<RugCostCalculatorPage />} />
+          <Route path="/blanket-calculator" element={<RugCostCalculatorPage />} />
+
+          {/* Retirement Calculator */}
+          <Route path="/retirement-cost-calculator" element={<RetirementCostCalculatorPage />} />
+          <Route path="/veteran-horse-calculator" element={<RetirementCostCalculatorPage />} />
+          <Route path="/retired-horse-calculator" element={<RetirementCostCalculatorPage />} />
         </Routes>
       </Router>
     </HelmetProvider>
