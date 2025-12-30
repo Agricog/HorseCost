@@ -4,7 +4,6 @@ import {
   Heart,
   Calculator,
   AlertCircle,
-  ChevronDown,
   PoundSterling,
   CheckCircle2,
   Star,
