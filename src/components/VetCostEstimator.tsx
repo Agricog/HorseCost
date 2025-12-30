@@ -10,7 +10,6 @@ import {
   Heart,
   Syringe,
   Pill,
-  Calendar,
   Shield,
   Activity,
   Bell,
