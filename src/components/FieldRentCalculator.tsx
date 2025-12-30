@@ -7,8 +7,6 @@ import {
   ChevronDown,
   ChevronUp,
   CheckCircle2,
-  Calendar,
-  Star,
   Fence,
   Bell,
   ArrowRight,
