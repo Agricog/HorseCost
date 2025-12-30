@@ -9,7 +9,6 @@ import {
   PoundSterling,
   CheckCircle2,
   Star,
-  Calendar,
   Target,
   Bell,
   ArrowRight,
@@ -18,9 +17,7 @@ import {
   Users,
   HelpCircle,
   Home,
-  Wheat,
   Scissors,
-  Stethoscope,
   Shield
 } from 'lucide-react'
 
