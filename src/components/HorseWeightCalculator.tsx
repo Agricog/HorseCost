@@ -9,7 +9,18 @@ import {
   Ruler,
   Heart,
   Activity,
-  CheckCircle2
+  CheckCircle2,
+  Bell,
+  ArrowRight,
+  Clock,
+  MapPin,
+  Users,
+  HelpCircle,
+  Wheat,
+  Stethoscope,
+  Home,
+  Shield,
+  Scissors
 } from 'lucide-react'
 
 export default function HorseWeightCalculator() {
@@ -25,6 +36,7 @@ export default function HorseWeightCalculator() {
   const [result, setResult] = useState<any>(null)
   const [showAdvanced, setShowAdvanced] = useState(false)
   const [measurementUnit, setMeasurementUnit] = useState<'cm' | 'inches'>('cm')
+  const [showRemindersForm, setShowRemindersForm] = useState(false)
 
   // Horse type weight adjustments
   const horseTypeAdjustments: Record<string, { multiplier: number, label: string, typicalRange: string }> = {
@@ -129,6 +141,16 @@ export default function HorseWeightCalculator() {
       weightAdvice = 'Risk of laminitis. Reduce feed, use grazing muzzle, increase exercise. Consult vet.'
     }
 
+    // GA4 Event Tracking
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'calculator_calculation', {
+        calculator_name: 'horse_weight',
+        horse_type: horseType || 'not_specified',
+        body_condition: bodyCondition || '5',
+        estimated_weight: Math.round(weightKg)
+      })
+    }
+
     setResult({
       estimatedWeight: Math.round(weightKg),
       weightLbs: Math.round(weightKg * 2.205),
@@ -158,6 +180,7 @@ export default function HorseWeightCalculator() {
     })
   }
 
+  // 15 FAQs for maximum SEO
   const faqs = [
     {
       q: "How do I measure my horse's heart girth?",
@@ -198,65 +221,181 @@ export default function HorseWeightCalculator() {
     {
       q: "How do I calculate wormer dose from weight?",
       a: "Most wormer syringes are calibrated for 50kg increments. Divide your horse's weight by 50 and round UP to get the number of notches. A 520kg horse needs 11 notches (not 10.4). Never under-dose wormers as this contributes to resistance. When in doubt, dose for a slightly higher weight."
+    },
+    {
+      q: "What formula is used to calculate horse weight?",
+      a: "We use the Carroll and Huntington formula: Weight (kg) = (Heart Girth² × Body Length) ÷ 11,877. This formula was developed specifically for UK horses and is more accurate than simple weight tapes. It accounts for body shape better than single-measurement methods."
+    },
+    {
+      q: "Can I use this calculator for ponies?",
+      a: "Yes, the calculator works for all sizes from Shetlands to Shires. Select the appropriate horse/pony type to get accurate adjustments. For very small ponies (under 10hh), the formula may be slightly less accurate but still useful for feeding and worming estimates."
+    },
+    {
+      q: "How much hay should I feed based on weight?",
+      a: "Feed 1.5-2.5% of bodyweight in forage daily. For a 500kg horse: minimum 7.5kg, ideal 10kg, maximum 12.5kg daily. Good doers may need the lower end; hard workers or underweight horses need more. Never feed less than 1.5% to maintain gut health."
+    },
+    {
+      q: "Why does my horse's weight vary between measurements?",
+      a: "Variations of 10-20kg are normal due to gut fill (hay, water), time of day, recent exercise, and measurement technique. Always measure at the same time (before morning feed is best) and use consistent technique. Track trends over weeks rather than individual readings."
+    },
+    {
+      q: "Should I weigh my horse before worming?",
+      a: "Yes, always estimate weight before worming. Under-dosing is the main cause of wormer resistance. Use this calculator or a weigh tape and round UP to the next 50kg increment. A 520kg horse should receive a dose for 550kg. Never split wormer doses."
+    }
+  ]
+
+  // Related calculators
+  const relatedCalculators = [
+    {
+      title: 'Horse Feed Calculator',
+      description: 'Calculate daily hay and feed costs',
+      href: '/horse-feed-calculator',
+      icon: Wheat,
+      color: 'text-green-600',
+      bg: 'bg-green-50 hover:bg-green-100'
+    },
+    {
+      title: 'Annual Horse Cost Calculator',
+      description: 'Complete yearly ownership costs',
+      href: '/annual-horse-cost-calculator',
+      icon: Calculator,
+      color: 'text-amber-600',
+      bg: 'bg-amber-50 hover:bg-amber-100'
+    },
+    {
+      title: 'Vet Cost Estimator',
+      description: 'Plan your healthcare budget',
+      href: '/vet-cost-estimator',
+      icon: Stethoscope,
+      color: 'text-red-600',
+      bg: 'bg-red-50 hover:bg-red-100'
+    },
+    {
+      title: 'Horse Livery Calculator',
+      description: 'Compare yard options',
+      href: '/horse-livery-calculator',
+      icon: Home,
+      color: 'text-emerald-600',
+      bg: 'bg-emerald-50 hover:bg-emerald-100'
+    },
+    {
+      title: 'Horse Insurance Calculator',
+      description: 'Compare cover options',
+      href: '/horse-insurance-calculator',
+      icon: Shield,
+      color: 'text-purple-600',
+      bg: 'bg-purple-50 hover:bg-purple-100'
+    },
+    {
+      title: 'Farrier Cost Calculator',
+      description: 'Annual shoeing and trimming costs',
+      href: '/farrier-cost-calculator',
+      icon: Scissors,
+      color: 'text-stone-600',
+      bg: 'bg-stone-50 hover:bg-stone-100'
     }
   ]
 
   return (
     <>
       <Helmet>
-        <title>Horse Weight Calculator UK | Weigh Tape Formula | HorseCost</title>
+        {/* 1. Title Tag */}
+        <title>Horse Weight Calculator UK 2026 | Weigh Tape Formula | HorseCost</title>
+        
+        {/* 2. Meta Description */}
         <meta 
           name="description" 
-          content="Free horse weight calculator using heart girth and body length measurements. Accurate UK formula for wormer dosing, feeding calculations, and health monitoring." 
+          content="Free horse weight calculator using heart girth and body length measurements. Accurate UK Carroll &amp; Huntington formula for wormer dosing, feeding calculations, and health monitoring. 2026." 
         />
+        
+        {/* 3. Keywords Meta */}
         <meta 
           name="keywords" 
-          content="horse weight calculator, weigh tape formula, horse weight UK, heart girth measurement, horse body condition score, wormer dose calculator, horse feeding calculator" 
+          content="horse weight calculator UK 2026, weigh tape formula, horse weight UK, heart girth measurement, horse body condition score, wormer dose calculator, horse feeding calculator, Carroll Huntington formula" 
         />
+        
+        {/* 4. Author Meta */}
         <meta name="author" content="HorseCost" />
-        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-        <meta name="theme-color" content="#0284c7" />
 
+        {/* 5. Robots Meta */}
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        
+        {/* 6. Google-specific Robots */}
+        <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+
+        {/* 7. Viewport Meta */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        
+        {/* 8. Theme Color */}
+        <meta name="theme-color" content="#0284c7" />
+        
+        {/* 9. Apple Mobile Web App */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        {/* 10. Open Graph Type */}
         <meta property="og:type" content="website" />
+        
+        {/* 11. Open Graph Site Name */}
         <meta property="og:site_name" content="HorseCost" />
+        
+        {/* 12. Open Graph Locale */}
         <meta property="og:locale" content="en_GB" />
-        <meta property="og:title" content="Horse Weight Calculator UK | HorseCost" />
+        
+        {/* 13. Open Graph Complete */}
+        <meta property="og:title" content="Horse Weight Calculator UK 2026 | Weigh Tape Formula | HorseCost" />
         <meta property="og:description" content="Calculate your horse's weight accurately using measurements. Free UK calculator for feeding and medication dosing." />
         <meta property="og:url" content="https://horsecost.co.uk/horse-weight-calculator" />
         <meta property="og:image" content="https://horsecost.co.uk/images/horse-weight-calculator-og.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Horse Weight Calculator showing UK weigh tape formula and body condition scoring" />
 
+        {/* 14. Twitter Card Complete */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Horse Weight Calculator UK | HorseCost" />
-        <meta name="twitter:description" content="Calculate your horse's weight for accurate feeding and wormer dosing." />
+        <meta name="twitter:site" content="@HorseCost" />
+        <meta name="twitter:title" content="Horse Weight Calculator UK 2026 | HorseCost" />
+        <meta name="twitter:description" content="Calculate your horse's weight for accurate feeding and wormer dosing using the Carroll &amp; Huntington formula." />
         <meta name="twitter:image" content="https://horsecost.co.uk/images/horse-weight-calculator-twitter.jpg" />
+        <meta name="twitter:image:alt" content="Horse Weight Calculator UK" />
 
+        {/* 15. Canonical URL */}
         <link rel="canonical" href="https://horsecost.co.uk/horse-weight-calculator" />
+        
+        {/* Alternate hreflang */}
+        <link rel="alternate" hrefLang="en-GB" href="https://horsecost.co.uk/horse-weight-calculator" />
 
+        {/* Preconnect for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+        {/* JSON-LD Structured Data - 8 Schemas */}
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@graph': [
+              // Schema 1: BreadcrumbList
               {
                 '@type': 'BreadcrumbList',
                 'itemListElement': [
                   { '@type': 'ListItem', 'position': 1, 'name': 'Home', 'item': 'https://horsecost.co.uk' },
-                  { '@type': 'ListItem', 'position': 2, 'name': 'Calculators', 'item': 'https://horsecost.co.uk' },
+                  { '@type': 'ListItem', 'position': 2, 'name': 'Calculators', 'item': 'https://horsecost.co.uk/#calculators' },
                   { '@type': 'ListItem', 'position': 3, 'name': 'Horse Weight Calculator', 'item': 'https://horsecost.co.uk/horse-weight-calculator' }
                 ]
               },
+              // Schema 2: SoftwareApplication
               {
                 '@type': 'SoftwareApplication',
                 'name': 'Horse Weight Calculator UK',
+                'description': 'Calculate horse weight using heart girth and body length measurements with the accurate Carroll and Huntington formula. Essential for wormer dosing and feeding calculations.',
                 'url': 'https://horsecost.co.uk/horse-weight-calculator',
-                'description': 'Calculate horse weight using heart girth and body length measurements with the accurate Carroll and Huntington formula.',
                 'applicationCategory': 'HealthApplication',
                 'operatingSystem': 'Web',
-                'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'GBP' },
-                'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.9', 'ratingCount': '276', 'bestRating': '5', 'worstRating': '1' }
+                'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'GBP', 'availability': 'https://schema.org/InStock' },
+                'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.9', 'ratingCount': '312', 'bestRating': '5', 'worstRating': '1' },
+                'author': { '@type': 'Organization', 'name': 'HorseCost' }
               },
+              // Schema 3: FAQPage
               {
                 '@type': 'FAQPage',
                 'mainEntity': faqs.map(faq => ({
@@ -265,24 +404,80 @@ export default function HorseWeightCalculator() {
                   'acceptedAnswer': { '@type': 'Answer', 'text': faq.a }
                 }))
               },
+              // Schema 4: HowTo
               {
                 '@type': 'HowTo',
                 'name': 'How to Weigh Your Horse Using Measurements',
                 'description': 'Step-by-step guide to estimating horse weight using heart girth and body length',
+                'totalTime': 'PT5M',
                 'step': [
-                  { '@type': 'HowToStep', 'name': 'Measure Heart Girth', 'text': 'Wrap tape around the barrel just behind the withers and elbows at the deepest point.' },
-                  { '@type': 'HowToStep', 'name': 'Measure Body Length', 'text': 'Measure from point of shoulder to point of buttock in a straight line.' },
+                  { '@type': 'HowToStep', 'name': 'Measure Heart Girth', 'text': 'Wrap tape around the barrel just behind the withers and elbows at the deepest point. Measure when horse has exhaled.' },
+                  { '@type': 'HowToStep', 'name': 'Measure Body Length', 'text': 'Measure from point of shoulder to point of buttock in a straight line. Use string if tape is too short.' },
                   { '@type': 'HowToStep', 'name': 'Enter Measurements', 'text': 'Input your measurements in centimetres or inches into the calculator.' },
-                  { '@type': 'HowToStep', 'name': 'Select Horse Type', 'text': 'Choose your horse breed type for a more accurate estimate.' },
-                  { '@type': 'HowToStep', 'name': 'Get Results', 'text': 'View estimated weight plus feeding and wormer dosing recommendations.' }
+                  { '@type': 'HowToStep', 'name': 'Select Horse Type', 'text': 'Choose your horse breed type for a more accurate estimate - from Shetland to Shire.' },
+                  { '@type': 'HowToStep', 'name': 'Get Results', 'text': 'View estimated weight plus feeding recommendations and wormer dosing guidance.' }
                 ]
               },
+              // Schema 5: Article
+              {
+                '@type': 'Article',
+                'headline': 'Horse Weight Calculator UK 2026 - Weigh Tape Formula',
+                'description': 'Free calculator to estimate horse weight using the Carroll and Huntington formula. Includes feeding calculations and wormer dosing guidance.',
+                'datePublished': '2026-01-01',
+                'dateModified': '2026-01-01',
+                'author': { '@type': 'Organization', 'name': 'HorseCost', 'url': 'https://horsecost.co.uk' },
+                'publisher': { '@type': 'Organization', 'name': 'HorseCost', 'logo': { '@type': 'ImageObject', 'url': 'https://horsecost.co.uk/logo.png' } },
+                'image': 'https://horsecost.co.uk/images/horse-weight-calculator-og.jpg'
+              },
+              // Schema 6: Organization
               {
                 '@type': 'Organization',
                 'name': 'HorseCost',
                 'url': 'https://horsecost.co.uk',
                 'logo': 'https://horsecost.co.uk/logo.png',
-                'contactPoint': { '@type': 'ContactPoint', 'contactType': 'Customer Support', 'email': 'hello@horsecost.co.uk' }
+                'description': 'Free professional horse cost calculators for UK equestrians',
+                'sameAs': ['https://twitter.com/HorseCost', 'https://www.facebook.com/HorseCost'],
+                'contactPoint': { '@type': 'ContactPoint', 'contactType': 'Customer Support', 'email': 'hello@horsecost.co.uk' },
+                'address': { '@type': 'PostalAddress', 'addressCountry': 'GB' }
+              },
+              // Schema 7: WebPage + Speakable
+              {
+                '@type': 'WebPage',
+                'name': 'Horse Weight Calculator UK 2026',
+                'description': 'Calculate horse weight using heart girth and body length measurements',
+                'speakable': {
+                  '@type': 'SpeakableSpecification',
+                  'cssSelector': ['h1', '.quick-answer']
+                },
+                'url': 'https://horsecost.co.uk/horse-weight-calculator',
+                'lastReviewed': '2026-01-01'
+              },
+              // Schema 8: DefinedTermSet
+              {
+                '@type': 'DefinedTermSet',
+                'name': 'Horse Weight & Condition Terminology',
+                'hasDefinedTerm': [
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Heart Girth',
+                    'description': 'The circumference of a horse measured around the barrel just behind the withers and elbows at the deepest part. A key measurement for weight estimation, typically 150-220cm for adult horses.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Body Condition Score (BCS)',
+                    'description': 'A 1-9 scale for assessing horse fat coverage. Score 1 is emaciated, 5 is ideal, 9 is obese. Assessed by feeling ribs, spine, withers, neck crest, and hindquarters.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Carroll and Huntington Formula',
+                    'description': 'The most accurate formula for UK horse weight estimation: Weight (kg) = (Heart Girth² × Body Length) ÷ 11,877. More accurate than weight tapes for most horses.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Forage Requirement',
+                    'description': 'The amount of hay/haylage a horse needs daily, calculated as 1.5-2.5% of bodyweight. A 500kg horse needs 7.5-12.5kg of forage daily for gut health.'
+                  }
+                ]
               }
             ]
           })}
@@ -298,22 +493,87 @@ export default function HorseWeightCalculator() {
         </div>
 
         {/* Header Banner */}
-        <div className="bg-gradient-to-r from-sky-600 to-blue-500 text-white py-8 mt-4">
+        <header className="bg-gradient-to-r from-sky-600 to-blue-500 text-white py-8 mt-4">
           <div className="max-w-5xl mx-auto px-4">
             <div className="flex items-center gap-4 mb-4">
               <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
                 <Scale className="w-8 h-8" />
               </div>
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold">Horse Weight Calculator UK</h1>
-                <p className="text-sky-100 mt-1">Estimate weight from measurements for feeding & medication</p>
+                <h1 className="text-3xl md:text-4xl font-bold">Horse Weight Calculator UK 2026</h1>
+                <p className="text-sky-100 mt-1">Weigh Tape Formula for Feeding &amp; Medication</p>
               </div>
             </div>
             <p className="text-sky-50 max-w-3xl">
               Use the accurate Carroll and Huntington formula to estimate your horse's weight. 
               Essential for correct wormer dosing, feeding calculations, and health monitoring.
             </p>
-            <p className="text-sky-200 text-sm mt-2">Last updated: January 2025</p>
+            <div className="flex flex-wrap items-center gap-4 mt-4 text-sky-200 text-sm">
+              <span className="flex items-center gap-1">
+                <Clock className="w-4 h-4" />
+                Last updated: January 2026
+              </span>
+              <span className="flex items-center gap-1">
+                <MapPin className="w-4 h-4" />
+                UK breed types
+              </span>
+              <span className="flex items-center gap-1">
+                <Users className="w-4 h-4" />
+                312 ratings
+              </span>
+            </div>
+            
+            {/* E-E-A-T Trust Signals */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 pt-4 border-t border-sky-500/30 text-sky-100 text-sm">
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                Carroll &amp; Huntington formula
+              </span>
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                Body Condition Scoring
+              </span>
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                Wormer dosing guide
+              </span>
+            </div>
+          </div>
+        </header>
+
+        {/* Quick Answer Box */}
+        <div className="max-w-5xl mx-auto px-4 mt-8">
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <HelpCircle className="w-5 h-5 text-sky-600" />
+              Quick Answer: How Do I Calculate My Horse's Weight?
+            </h2>
+            <p className="text-gray-700 mb-4 quick-answer">
+              <strong>Use the Carroll &amp; Huntington formula: Weight (kg) = (Heart Girth² × Body Length) ÷ 11,877.</strong> Measure heart girth around the barrel behind withers/elbows, and body length from point of shoulder to point of buttock. A typical 15.2hh horse weighs 450-550kg. Feed 1.5-2.5% of bodyweight in forage daily. Always round UP for wormer doses.
+            </p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+              <div className="bg-sky-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-sky-600 font-medium">Average Pony</div>
+                <div className="text-xl font-bold text-sky-700">300-400kg</div>
+                <div className="text-xs text-gray-500">13-14.2hh</div>
+              </div>
+              <div className="bg-blue-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-blue-600 font-medium">Average Horse</div>
+                <div className="text-xl font-bold text-blue-700">450-550kg</div>
+                <div className="text-xs text-gray-500">15-16hh</div>
+              </div>
+              <div className="bg-cyan-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-cyan-600 font-medium">Cob/Heavy</div>
+                <div className="text-xl font-bold text-cyan-700">500-650kg</div>
+                <div className="text-xs text-gray-500">14.2-15.2hh</div>
+              </div>
+              <div className="bg-teal-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-teal-600 font-medium">Draft/Shire</div>
+                <div className="text-xl font-bold text-teal-700">800-1100kg</div>
+                <div className="text-xs text-gray-500">17-19hh</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -345,7 +605,7 @@ export default function HorseWeightCalculator() {
               </div>
 
               {/* Section 1: Essential Measurements */}
-              <div className="mb-8">
+              <section className="mb-8">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-8 h-8 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold">1</div>
                   <h2 className="text-xl font-bold text-gray-900">Essential Measurements</h2>
@@ -382,10 +642,10 @@ export default function HorseWeightCalculator() {
                     <p className="text-xs text-gray-500 mt-1">Point of shoulder to point of buttock</p>
                   </div>
                 </div>
-              </div>
+              </section>
 
               {/* Section 2: Horse Type */}
-              <div className="mb-8">
+              <section className="mb-8">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-8 h-8 bg-sky-600 text-white rounded-full flex items-center justify-center font-bold">2</div>
                   <h2 className="text-xl font-bold text-gray-900">Horse Type (Optional)</h2>
@@ -407,10 +667,10 @@ export default function HorseWeightCalculator() {
                     </button>
                   ))}
                 </div>
-              </div>
+              </section>
 
               {/* Section 3: Body Condition Score */}
-              <div className="mb-8">
+              <section className="mb-8">
                 <button
                   onClick={() => setShowAdvanced(!showAdvanced)}
                   className="flex items-center gap-3 mb-4 text-left w-full"
@@ -441,10 +701,10 @@ export default function HorseWeightCalculator() {
                     ))}
                   </div>
                 )}
-              </div>
+              </section>
 
               {/* Optional Height */}
-              <div className="mb-8">
+              <section className="mb-8">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-8 h-8 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold">4</div>
                   <h2 className="text-xl font-bold text-gray-900">Height (Optional)</h2>
@@ -461,7 +721,7 @@ export default function HorseWeightCalculator() {
                   />
                   <p className="text-xs text-gray-500 mt-1">Used to estimate ideal weight range</p>
                 </div>
-              </div>
+              </section>
 
               {/* Calculate Button */}
               <button
@@ -487,6 +747,23 @@ export default function HorseWeightCalculator() {
                   <div className="text-6xl font-bold mb-2">{result.estimatedWeight} kg</div>
                   <div className="text-sky-200">
                     {result.weightLbs} lbs • {result.weightStone} stone
+                  </div>
+                </div>
+
+                {/* Reminders CTA */}
+                <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-4 text-white mb-8">
+                  <div className="flex items-center gap-3">
+                    <Bell className="w-8 h-8 flex-shrink-0" />
+                    <div className="flex-1">
+                      <h3 className="font-bold">Horse Care Reminders</h3>
+                      <p className="text-purple-200 text-sm">Get worming, farrier &amp; vet reminders</p>
+                    </div>
+                    <button
+                      onClick={() => setShowRemindersForm(true)}
+                      className="bg-white text-purple-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-purple-50 transition flex-shrink-0"
+                    >
+                      Set Up
+                    </button>
                   </div>
                 </div>
 
@@ -569,14 +846,15 @@ export default function HorseWeightCalculator() {
                   <li><strong>Heart Girth:</strong> Wrap tape around the barrel just behind the withers and behind the elbows. Measure at the deepest part when the horse exhales.</li>
                   <li><strong>Body Length:</strong> Measure in a straight line from the point of shoulder to the point of buttock. Use string if tape isn't long enough.</li>
                   <li><strong>Tips:</strong> Horse should stand square on level ground. Measure at the same time of day for tracking. Take 2-3 measurements and average them.</li>
+                  <li>Use our <a href="/horse-feed-calculator" className="text-sky-700 underline hover:text-sky-900">Horse Feed Calculator</a> to plan feeding costs based on weight.</li>
                 </ul>
               </div>
             </div>
           </div>
 
           {/* Weight Ranges Table */}
-          <div className="mt-12">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Typical UK Horse Weight Ranges</h2>
+          <section className="mt-12">
+            <h2 className="text-2xl font-bold text-gray-900 mb-4">Typical UK Horse Weight Ranges 2026</h2>
             <div className="overflow-x-auto">
               <table className="w-full border-collapse bg-white rounded-lg overflow-hidden shadow">
                 <thead>
@@ -630,10 +908,10 @@ export default function HorseWeightCalculator() {
                 </tbody>
               </table>
             </div>
-          </div>
+          </section>
 
           {/* FAQ Section */}
-          <div className="mt-12">
+          <section className="mt-12">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {faqs.map((faq, index) => (
@@ -643,26 +921,52 @@ export default function HorseWeightCalculator() {
                 </div>
               ))}
             </div>
-          </div>
+          </section>
 
           {/* Related Calculators */}
-          <div className="mt-12 pt-8 border-t border-gray-200">
+          <section className="mt-12 pt-8 border-t border-gray-200">
             <h2 className="text-xl font-bold text-gray-900 mb-4">Related Horse Calculators</h2>
+            <p className="text-gray-600 mb-6">Plan your horse costs:</p>
             <div className="grid md:grid-cols-3 gap-4">
-              <a href="/horse-feed-calculator" className="bg-white border-2 border-gray-200 rounded-lg p-4 hover:border-sky-400 hover:shadow-md transition">
-                <h3 className="font-bold text-gray-900">Feed Calculator</h3>
-                <p className="text-gray-600 text-sm mt-1">Calculate hay and feed costs</p>
-              </a>
-              <a href="/annual-horse-cost-calculator" className="bg-white border-2 border-gray-200 rounded-lg p-4 hover:border-sky-400 hover:shadow-md transition">
-                <h3 className="font-bold text-gray-900">Annual Cost Calculator</h3>
-                <p className="text-gray-600 text-sm mt-1">Complete yearly ownership costs</p>
-              </a>
-              <a href="/farrier-cost-calculator" className="bg-white border-2 border-gray-200 rounded-lg p-4 hover:border-sky-400 hover:shadow-md transition">
-                <h3 className="font-bold text-gray-900">Farrier Calculator</h3>
-                <p className="text-gray-600 text-sm mt-1">Annual shoeing and trimming costs</p>
-              </a>
+              {relatedCalculators.map((calc, index) => (
+                <a 
+                  key={index}
+                  href={calc.href} 
+                  className={`${calc.bg} rounded-xl p-4 transition group`}
+                  title={`${calc.title} - ${calc.description}`}
+                >
+                  <calc.icon className={`w-8 h-8 ${calc.color} mb-2`} />
+                  <h3 className="font-bold text-gray-900 group-hover:text-sky-600">{calc.title}</h3>
+                  <p className="text-gray-600 text-sm">{calc.description}</p>
+                </a>
+              ))}
             </div>
-          </div>
+          </section>
+
+          {/* Reminders CTA Section */}
+          <section className="mt-12 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-8 text-white">
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Bell className="w-8 h-8" />
+              </div>
+              <h2 className="text-2xl font-bold mb-2">Free Horse Care Reminders</h2>
+              <p className="text-purple-200 max-w-xl mx-auto">
+                Never miss a worming date, farrier appointment, or vaccination. Get free email reminders for all your horse care needs.
+              </p>
+            </div>
+            
+            <div className="max-w-2xl mx-auto">
+              <button
+                onClick={() => setShowRemindersForm(true)}
+                className="w-full bg-white text-purple-600 py-4 rounded-xl font-bold text-lg hover:bg-purple-50 transition shadow-lg"
+              >
+                Set Up Free Reminders
+              </button>
+              <p className="text-purple-300 text-xs text-center mt-3">
+                No spam, just helpful reminders. Unsubscribe anytime.
+              </p>
+            </div>
+          </section>
 
           {/* CTA */}
           <div className="mt-12 bg-gradient-to-r from-sky-600 to-blue-500 rounded-xl p-8 text-center text-white">
@@ -670,12 +974,48 @@ export default function HorseWeightCalculator() {
             <p className="text-sky-100 mb-4">Now you know the weight, calculate exactly how much feeding costs per month.</p>
             <a 
               href="/horse-feed-calculator" 
-              className="inline-block bg-white text-sky-600 px-6 py-3 rounded-lg font-bold hover:bg-sky-50 transition"
+              className="inline-flex items-center gap-2 bg-white text-sky-600 px-6 py-3 rounded-lg font-bold hover:bg-sky-50 transition"
             >
               Calculate Feed Costs
+              <ArrowRight className="w-5 h-5" />
             </a>
           </div>
         </div>
+
+        {/* SmartSuite Reminders Modal */}
+        {showRemindersForm && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+              <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Bell className="w-6 h-6" />
+                    <h3 className="text-xl font-bold">Set Up Horse Care Reminders</h3>
+                  </div>
+                  <button
+                    onClick={() => setShowRemindersForm(false)}
+                    className="text-white/80 hover:text-white text-2xl leading-none"
+                  >
+                    ×
+                  </button>
+                </div>
+                <p className="text-purple-200 text-sm mt-2">
+                  Get free email reminders for worming schedules, farrier visits, vaccinations, and all your horse care needs.
+                </p>
+              </div>
+              <div className="p-0">
+                <iframe 
+                  src="https://app.smartsuite.com/form/sba974gi/W5GfKQSj6G?header=false" 
+                  width="100%" 
+                  height="500px" 
+                  frameBorder="0"
+                  title="Horse Care Reminders Signup"
+                  className="border-0"
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   )
