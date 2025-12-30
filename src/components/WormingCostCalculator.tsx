@@ -5,8 +5,6 @@ import {
   Calculator,
   ChevronDown,
   ChevronUp,
-  Calendar,
-  Star,
   Shield,
   FlaskConical,
   Bell,
@@ -19,8 +17,7 @@ import {
   Home,
   Wheat,
   Scissors,
-  Stethoscope,
-  Package
+  Stethoscope
 } from 'lucide-react'
 
 export default function WormingCostCalculator() {
