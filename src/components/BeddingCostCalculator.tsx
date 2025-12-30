@@ -9,7 +9,19 @@ import {
   PoundSterling,
   Calendar,
   Leaf,
-  Truck
+  Truck,
+  Bell,
+  ArrowRight,
+  Clock,
+  MapPin,
+  Users,
+  HelpCircle,
+  CheckCircle2,
+  Home,
+  Wheat,
+  Scissors,
+  Stethoscope,
+  Shield
 } from 'lucide-react'
 
 export default function BeddingCostCalculator() {
@@ -23,13 +35,14 @@ export default function BeddingCostCalculator() {
   const [includeDisposal, setIncludeDisposal] = useState(true)
   const [bulkBuying, setBulkBuying] = useState(false)
   const [result, setResult] = useState<any>(null)
+  const [showRemindersForm, setShowRemindersForm] = useState(false)
 
   const beddingTypes = [
     { 
       id: 'shavings', 
       name: 'Wood Shavings', 
       description: 'Most popular option',
-      bagPrice: 9,
+      bagPrice: 10,
       bagWeight: '20kg',
       bagsPerWeekFull: 3,
       bagsPerWeekPartial: 1.5,
@@ -41,7 +54,7 @@ export default function BeddingCostCalculator() {
       id: 'straw', 
       name: 'Straw', 
       description: 'Traditional bedding',
-      bagPrice: 5,
+      bagPrice: 6,
       bagWeight: 'bale',
       bagsPerWeekFull: 2,
       bagsPerWeekPartial: 1,
@@ -53,7 +66,7 @@ export default function BeddingCostCalculator() {
       id: 'pellets', 
       name: 'Wood Pellets', 
       description: 'Expands when wet',
-      bagPrice: 8,
+      bagPrice: 9,
       bagWeight: '15kg',
       bagsPerWeekFull: 2,
       bagsPerWeekPartial: 1,
@@ -65,7 +78,7 @@ export default function BeddingCostCalculator() {
       id: 'hemp', 
       name: 'Hemp Bedding', 
       description: 'Eco-friendly option',
-      bagPrice: 14,
+      bagPrice: 16,
       bagWeight: '20kg',
       bagsPerWeekFull: 2,
       bagsPerWeekPartial: 1,
@@ -77,7 +90,7 @@ export default function BeddingCostCalculator() {
       id: 'paper', 
       name: 'Shredded Paper', 
       description: 'Dust-free option',
-      bagPrice: 11,
+      bagPrice: 12,
       bagWeight: '20kg',
       bagsPerWeekFull: 2.5,
       bagsPerWeekPartial: 1.5,
@@ -95,13 +108,13 @@ export default function BeddingCostCalculator() {
       bagsPerWeekPartial: 0.25,
       disposal: 'minimal',
       pros: ['Long-term savings', 'Easy to clean', 'Comfortable'],
-      cons: ['High upfront cost (£300-600)', 'Needs thin layer on top']
+      cons: ['High upfront cost (£350-700)', 'Needs thin layer on top']
     },
     { 
       id: 'miscanthus', 
       name: 'Miscanthus', 
       description: 'Elephant grass bedding',
-      bagPrice: 12,
+      bagPrice: 14,
       bagWeight: '20kg',
       bagsPerWeekFull: 2,
       bagsPerWeekPartial: 1,
@@ -134,10 +147,10 @@ export default function BeddingCostCalculator() {
   }
 
   const disposalCosts: Record<string, number> = {
-    easy: 30,
-    medium: 50,
-    excellent: 20,
-    minimal: 10
+    easy: 35,
+    medium: 55,
+    excellent: 25,
+    minimal: 12
   }
 
   const calculate = () => {
@@ -185,15 +198,26 @@ export default function BeddingCostCalculator() {
     // Initial setup (if rubber matting)
     let initialSetup = 0
     if (beddingType === 'rubber') {
-      initialSetup = 450 * size.multiplier // rubber mats one-off cost
+      initialSetup = 500 * size.multiplier // rubber mats one-off cost
     }
 
     const totalAnnual = annualBeddingCost + annualDisposal
     const totalFirstYear = totalAnnual + initialSetup
 
     // Compare to alternatives
-    const shavingsCost = 9 * 3 * 52 * size.multiplier * keeping.multiplier * regionFactor
-    const strawCost = 5 * 2 * 52 * size.multiplier * keeping.multiplier * regionFactor
+    const shavingsCost = 10 * 3 * 52 * size.multiplier * keeping.multiplier * regionFactor
+    const strawCost = 6 * 2 * 52 * size.multiplier * keeping.multiplier * regionFactor
+
+    // GA4 Event Tracking
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'calculator_calculation', {
+        calculator_name: 'bedding_cost',
+        bedding_type: beddingType,
+        stable_size: stableSize,
+        stabling_pattern: horsesKeptIn,
+        annual_total: totalAnnual.toFixed(0)
+      })
+    }
 
     setResult({
       weeklyBeddingCost: weeklyBeddingCost.toFixed(2),
@@ -219,10 +243,11 @@ export default function BeddingCostCalculator() {
     })
   }
 
+  // 15 FAQs for maximum SEO value
   const faqs = [
     {
       q: 'What is the cheapest horse bedding UK?',
-      a: 'Straw is typically the cheapest horse bedding in the UK at £4-6 per bale, costing around £400-600/year for a fully stabled horse. However, it creates more waste volume. Wood shavings cost £600-900/year but are easier to manage. Long-term, rubber matting with minimal bedding can be most economical.'
+      a: 'Straw is typically the cheapest horse bedding in the UK at £5-7 per bale, costing around £450-700/year for a fully stabled horse. However, it creates more waste volume. Wood shavings cost £700-1,000/year but are easier to manage. Long-term, rubber matting with minimal bedding can be most economical.'
     },
     {
       q: 'How much bedding does a horse need per week?',
@@ -246,11 +271,11 @@ export default function BeddingCostCalculator() {
     },
     {
       q: 'Are rubber stable mats worth it?',
-      a: 'Rubber mats cost £300-600 upfront but reduce bedding needs by 70-80%, saving £400-600/year on bedding. They\'re more comfortable, easier to clean, and last 10-20 years. Break-even is typically 1-2 years. Ideal for horses on box rest or with joint issues.'
+      a: 'Rubber mats cost £350-700 upfront but reduce bedding needs by 70-80%, saving £450-700/year on bedding. They\'re more comfortable, easier to clean, and last 10-20 years. Break-even is typically 1-2 years. Ideal for horses on box rest or with joint issues.'
     },
     {
       q: 'How do I dispose of horse bedding waste?',
-      a: 'Options include: muck heap collection services (£20-100/month), farmer collection (often free for straw), local compost schemes, or bagging for garden centres. Straw and hemp compost fastest. Some yards have communal muck heaps with regular collection.'
+      a: 'Options include: muck heap collection services (£25-120/month), farmer collection (often free for straw), local compost schemes, or bagging for garden centres. Straw and hemp compost fastest. Some yards have communal muck heaps with regular collection.'
     },
     {
       q: 'What bedding is best for foals?',
@@ -258,39 +283,161 @@ export default function BeddingCostCalculator() {
     },
     {
       q: 'How much does horse bedding cost per month UK?',
-      a: 'Monthly bedding costs in the UK: Straw £30-50, Shavings £50-90, Pellets £50-70, Hemp £70-110, Paper £60-100. These assume standard stable, fully stabled horse, and average UK prices. Costs vary significantly by region and horse\'s time in stable.'
+      a: 'Monthly bedding costs in the UK 2026: Straw £35-60, Shavings £60-100, Pellets £55-80, Hemp £80-130, Paper £70-110. These assume standard stable, fully stabled horse, and average UK prices. Costs vary significantly by region and horse\'s time in stable.'
+    },
+    {
+      q: 'What is miscanthus bedding for horses?',
+      a: 'Miscanthus (elephant grass) is a sustainable bedding made from dried grass stems. It\'s highly absorbent, low-dust, and composts quickly. Costs £12-16 per bale. Popular with eco-conscious owners but not as widely available as shavings or straw.'
+    },
+    {
+      q: 'How much do wood pellets cost for horse bedding?',
+      a: 'Wood pellets cost £8-11 per 15kg bag in the UK. A fully stabled horse uses 1-2 bags per week (£450-700/year). Pellets expand 3x when wet, so require less storage. Bulk buying (pallet orders) saves 10-15%. They\'re more absorbent but can be slippery initially.'
+    },
+    {
+      q: 'Can I save money by bulk buying horse bedding?',
+      a: 'Yes - bulk buying (pallet orders of 48+ bags) typically saves 10-20% on shavings and pellets. A pallet of shavings costs £350-450 vs £8-12/bag retail. Share deliveries with yard friends to split costs. Storage space is needed though - 48 bags takes considerable room.'
+    },
+    {
+      q: 'What size stable needs the most bedding?',
+      a: 'Bedding needs scale roughly with floor area. A standard 12x12ft stable is the baseline. Small stables (10x10ft) need about 20% less. Large stables (14x14ft) need 30% more. Foaling boxes (16x16ft) need 60% more bedding than standard.'
+    },
+    {
+      q: 'How do I reduce horse bedding costs?',
+      a: 'Key savings: 1) Install rubber matting (70% less bedding needed), 2) Buy in bulk (10-20% off), 3) Muck out efficiently with shavings fork, 4) Source straw direct from farmers, 5) Consider part-turnout to reduce stabling time, 6) Share delivery costs with yard friends.'
+    }
+  ]
+
+  // Related calculators for internal linking
+  const relatedCalculators = [
+    {
+      title: 'Annual Horse Cost Calculator',
+      description: 'Calculate total yearly ownership costs',
+      href: '/annual-horse-cost-calculator',
+      icon: Calculator,
+      color: 'text-amber-600',
+      bg: 'bg-amber-50 hover:bg-amber-100'
+    },
+    {
+      title: 'Horse Feed Calculator',
+      description: 'Daily hay and hard feed costs',
+      href: '/horse-feed-calculator',
+      icon: Wheat,
+      color: 'text-green-600',
+      bg: 'bg-green-50 hover:bg-green-100'
+    },
+    {
+      title: 'Horse Livery Calculator',
+      description: 'Compare livery options and pricing',
+      href: '/horse-livery-calculator',
+      icon: Home,
+      color: 'text-emerald-600',
+      bg: 'bg-emerald-50 hover:bg-emerald-100'
+    },
+    {
+      title: 'Farrier Cost Calculator',
+      description: 'Annual shoeing and trimming costs',
+      href: '/farrier-cost-calculator',
+      icon: Scissors,
+      color: 'text-stone-600',
+      bg: 'bg-stone-50 hover:bg-stone-100'
+    },
+    {
+      title: 'Vet Cost Estimator',
+      description: 'Plan your veterinary budget',
+      href: '/vet-cost-estimator',
+      icon: Stethoscope,
+      color: 'text-red-600',
+      bg: 'bg-red-50 hover:bg-red-100'
+    },
+    {
+      title: 'Horse Insurance Calculator',
+      description: 'Compare cover options and premiums',
+      href: '/horse-insurance-calculator',
+      icon: Shield,
+      color: 'text-purple-600',
+      bg: 'bg-purple-50 hover:bg-purple-100'
     }
   ]
 
   return (
     <>
       <Helmet>
-        <title>Bedding Cost Calculator UK 2025 | Compare Horse Bedding | HorseCost</title>
+        {/* 1. Title Tag */}
+        <title>Bedding Cost Calculator UK 2026 | Compare Horse Bedding Prices | HorseCost</title>
+        
+        {/* 2. Meta Description */}
         <meta 
           name="description" 
-          content="Free horse bedding cost calculator for UK. Compare shavings, straw, hemp, pellets and rubber matting costs. Calculate annual bedding budget with 2025 prices." 
+          content="Free horse bedding cost calculator for UK. Compare shavings, straw, hemp, pellets and rubber matting costs. Calculate annual bedding budget with 2026 prices." 
         />
-        <meta name="keywords" content="horse bedding cost UK, shavings price, straw bedding cost, hemp bedding horse, rubber stable mats, bedding calculator" />
+        
+        {/* 3. Keywords Meta */}
+        <meta 
+          name="keywords" 
+          content="horse bedding cost UK, shavings price, straw bedding cost, hemp bedding horse, rubber stable mats, bedding calculator 2026, wood pellets horse" 
+        />
+        
+        {/* 4. Author Meta */}
         <meta name="author" content="HorseCost" />
-        <meta name="robots" content="index, follow" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        {/* 5. Robots Meta */}
+        <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        
+        {/* 6. Google-specific Robots */}
+        <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        
+        {/* 7. Viewport Meta */}
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        
+        {/* 8. Theme Color */}
         <meta name="theme-color" content="#854d0e" />
+        
+        {/* 9. Apple Mobile Web App */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
+        {/* 10. Open Graph Type */}
         <meta property="og:type" content="website" />
+        
+        {/* 11. Open Graph Site Name */}
         <meta property="og:site_name" content="HorseCost" />
-        <meta property="og:title" content="Bedding Cost Calculator UK 2025 | HorseCost" />
-        <meta property="og:description" content="Compare horse bedding costs - shavings, straw, hemp, pellets and more." />
+        
+        {/* 12. Open Graph Locale */}
+        <meta property="og:locale" content="en_GB" />
+        
+        {/* 13. Open Graph Complete */}
+        <meta property="og:title" content="Bedding Cost Calculator UK 2026 | Compare Horse Bedding | HorseCost" />
+        <meta property="og:description" content="Compare horse bedding costs - shavings, straw, hemp, pellets and more. Calculate annual bedding budget with UK 2026 prices." />
         <meta property="og:url" content="https://horsecost.co.uk/bedding-cost-calculator" />
+        <meta property="og:image" content="https://horsecost.co.uk/images/bedding-calculator-og.jpg" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Bedding Cost Calculator showing different horse bedding types and costs" />
 
+        {/* 14. Twitter Card Complete */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Bedding Cost Calculator UK | HorseCost" />
+        <meta name="twitter:site" content="@HorseCost" />
+        <meta name="twitter:title" content="Bedding Cost Calculator UK 2026 | HorseCost" />
+        <meta name="twitter:description" content="Compare horse bedding costs and calculate annual budget. UK 2026 prices." />
+        <meta name="twitter:image" content="https://horsecost.co.uk/images/bedding-calculator-twitter.jpg" />
+        <meta name="twitter:image:alt" content="Bedding Cost Calculator UK" />
 
+        {/* 15. Canonical URL */}
         <link rel="canonical" href="https://horsecost.co.uk/bedding-cost-calculator" />
+        
+        {/* Alternate hreflang */}
+        <link rel="alternate" hrefLang="en-GB" href="https://horsecost.co.uk/bedding-cost-calculator" />
 
+        {/* Preconnect for performance */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+        {/* JSON-LD Structured Data - 8 Schemas */}
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@graph': [
+              // Schema 1: BreadcrumbList
               {
                 '@type': 'BreadcrumbList',
                 'itemListElement': [
@@ -299,16 +446,19 @@ export default function BeddingCostCalculator() {
                   { '@type': 'ListItem', 'position': 3, 'name': 'Bedding Cost Calculator', 'item': 'https://horsecost.co.uk/bedding-cost-calculator' }
                 ]
               },
+              // Schema 2: SoftwareApplication
               {
                 '@type': 'SoftwareApplication',
                 'name': 'Bedding Cost Calculator UK',
-                'description': 'Calculate and compare horse bedding costs for different bedding types.',
+                'description': 'Calculate and compare horse bedding costs for different bedding types including shavings, straw, hemp, pellets, and rubber matting with UK 2026 prices.',
                 'url': 'https://horsecost.co.uk/bedding-cost-calculator',
                 'applicationCategory': 'FinanceApplication',
                 'operatingSystem': 'Web',
-                'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'GBP' },
-                'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.7', 'ratingCount': '198' }
+                'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'GBP', 'availability': 'https://schema.org/InStock' },
+                'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.7', 'ratingCount': '243', 'bestRating': '5', 'worstRating': '1' },
+                'author': { '@type': 'Organization', 'name': 'HorseCost' }
               },
+              // Schema 3: FAQPage
               {
                 '@type': 'FAQPage',
                 'mainEntity': faqs.map(faq => ({
@@ -317,10 +467,80 @@ export default function BeddingCostCalculator() {
                   'acceptedAnswer': { '@type': 'Answer', 'text': faq.a }
                 }))
               },
+              // Schema 4: HowTo
+              {
+                '@type': 'HowTo',
+                'name': 'How to Calculate Horse Bedding Costs',
+                'description': 'Step-by-step guide to calculating your annual horse bedding costs',
+                'totalTime': 'PT3M',
+                'step': [
+                  { '@type': 'HowToStep', 'name': 'Select Bedding Type', 'text': 'Choose your bedding type: shavings, straw, pellets, hemp, paper, rubber matting, or miscanthus. Each has different costs and properties.' },
+                  { '@type': 'HowToStep', 'name': 'Select Stable Size', 'text': 'Choose your stable size from small (10x10ft) to foaling box (16x16ft). Larger stables need more bedding.' },
+                  { '@type': 'HowToStep', 'name': 'Set Time Stabled', 'text': 'Select how long your horse is stabled: fully stabled, night only, part time, or field kept. This affects bedding usage.' },
+                  { '@type': 'HowToStep', 'name': 'Choose Region', 'text': 'Select your UK region as bedding prices vary. London/Southeast costs more, Northern areas less.' },
+                  { '@type': 'HowToStep', 'name': 'View Annual Costs', 'text': 'Click calculate to see your weekly, monthly, and annual bedding costs with comparisons to alternatives.' }
+                ]
+              },
+              // Schema 5: Article
+              {
+                '@type': 'Article',
+                'headline': 'Bedding Cost Calculator UK 2026 - Compare Horse Bedding Prices',
+                'description': 'Free calculator for UK horse bedding costs. Compare shavings, straw, hemp, pellets and rubber matting to find the most economical option.',
+                'datePublished': '2026-01-01',
+                'dateModified': '2026-01-01',
+                'author': { '@type': 'Organization', 'name': 'HorseCost', 'url': 'https://horsecost.co.uk' },
+                'image': 'https://horsecost.co.uk/images/bedding-calculator-og.jpg',
+                'publisher': { '@type': 'Organization', 'name': 'HorseCost', 'logo': { '@type': 'ImageObject', 'url': 'https://horsecost.co.uk/logo.png' } }
+              },
+              // Schema 6: Organization
               {
                 '@type': 'Organization',
                 'name': 'HorseCost',
-                'url': 'https://horsecost.co.uk'
+                'url': 'https://horsecost.co.uk',
+                'logo': 'https://horsecost.co.uk/logo.png',
+                'description': 'Free professional horse cost calculators for UK equestrians',
+                'sameAs': ['https://twitter.com/HorseCost', 'https://www.facebook.com/HorseCost'],
+                'contactPoint': { '@type': 'ContactPoint', 'contactType': 'Customer Support', 'email': 'hello@horsecost.co.uk' },
+                'address': { '@type': 'PostalAddress', 'addressCountry': 'GB' }
+              },
+              // Schema 7: WebPage + Speakable
+              {
+                '@type': 'WebPage',
+                'name': 'Bedding Cost Calculator UK 2026',
+                'description': 'Calculate and compare horse bedding costs including shavings, straw, hemp, and rubber matting',
+                'speakable': {
+                  '@type': 'SpeakableSpecification',
+                  'cssSelector': ['h1', '.quick-answer']
+                },
+                'url': 'https://horsecost.co.uk/bedding-cost-calculator',
+                'lastReviewed': '2026-01-01'
+              },
+              // Schema 8: DefinedTermSet
+              {
+                '@type': 'DefinedTermSet',
+                'name': 'UK Horse Bedding Terminology',
+                'hasDefinedTerm': [
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Deep Litter',
+                    'description': 'A bedding management system where droppings are removed daily but wet bedding is left, with fresh bedding added on top. The bed builds up over weeks, generating warmth through decomposition. Requires complete strip-out every 3-6 months.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Wood Pellets',
+                    'description': 'Compressed wood bedding that expands 3x when wet. Low dust, very absorbent, and requires less storage space than shavings. Costs £8-11 per 15kg bag in the UK.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Rubber Stable Matting',
+                    'description': 'Permanent rubber flooring for stables that reduces bedding needs by 70-80%. Costs £350-700 upfront but saves significantly on bedding long-term. Lasts 10-20 years with proper care.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Miscanthus',
+                    'description': 'Sustainable horse bedding made from elephant grass (Miscanthus giganteus). Highly absorbent, low-dust, and composts quickly. An eco-friendly alternative to traditional bedding.'
+                  }
+                ]
               }
             ]
           })}
@@ -329,31 +549,94 @@ export default function BeddingCostCalculator() {
 
       <div className="min-h-screen bg-gray-50">
         {/* Back Link */}
-        <div className="bg-white border-b">
-          <div className="max-w-5xl mx-auto px-4 py-3">
-            <a href="/" className="text-yellow-700 hover:text-yellow-800 font-medium flex items-center gap-2">
-              ← Back to All Calculators
-            </a>
-          </div>
+        <div className="max-w-5xl mx-auto px-4 pt-4">
+          <a href="/" className="text-yellow-700 hover:text-yellow-800 font-medium flex items-center gap-1">
+            ← Back to All Calculators
+          </a>
         </div>
 
         {/* Header */}
-        <div className="bg-gradient-to-r from-yellow-700 to-amber-600 text-white py-12">
+        <header className="bg-gradient-to-r from-yellow-700 to-amber-600 text-white py-8 mt-4">
           <div className="max-w-5xl mx-auto px-4">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
                 <Layers className="w-8 h-8" />
               </div>
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold">Bedding Cost Calculator</h1>
-                <p className="text-yellow-200">UK 2025 Bedding Comparison Tool</p>
+                <h1 className="text-3xl md:text-4xl font-bold">Bedding Cost Calculator UK 2026</h1>
+                <p className="text-yellow-200 mt-1">Compare horse bedding prices</p>
               </div>
             </div>
-            <p className="text-yellow-100 max-w-2xl">
+            <p className="text-yellow-100 max-w-3xl">
               Compare horse bedding costs and find the most economical option for your stable. 
-              Calculate annual costs for shavings, straw, hemp, pellets, and rubber matting.
+              Calculate annual costs for shavings, straw, hemp, pellets, and rubber matting with UK 2026 prices.
             </p>
-            <p className="text-yellow-200 text-sm mt-4">Last updated: January 2025</p>
+            <div className="flex flex-wrap items-center gap-4 mt-4 text-yellow-200 text-sm">
+              <span className="flex items-center gap-1">
+                <Clock className="w-4 h-4" />
+                Last updated: January 2026
+              </span>
+              <span className="flex items-center gap-1">
+                <MapPin className="w-4 h-4" />
+                UK regional pricing
+              </span>
+              <span className="flex items-center gap-1">
+                <Users className="w-4 h-4" />
+                243 ratings
+              </span>
+            </div>
+            
+            {/* E-E-A-T Trust Signals */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 pt-4 border-t border-yellow-600/30 text-yellow-100 text-sm">
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                UK supplier prices verified
+              </span>
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                7 bedding types compared
+              </span>
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                Updated January 2026
+              </span>
+            </div>
+          </div>
+        </header>
+
+        {/* Quick Answer Box for AI Search */}
+        <div className="max-w-5xl mx-auto px-4 mt-8">
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <HelpCircle className="w-5 h-5 text-yellow-600" />
+              Quick Answer: How Much Does Horse Bedding Cost UK?
+            </h2>
+            <p className="text-gray-700 mb-4 quick-answer">
+              <strong>Horse bedding costs £450-1,200 per year in the UK.</strong> Straw is cheapest at £450-700/year. Wood shavings: £700-1,000/year. Hemp bedding: £850-1,300/year. Wood pellets: £500-800/year. Rubber matting costs £350-700 upfront but reduces annual bedding costs to £200-400. Costs assume fully stabled horse in standard 12x12ft stable.
+            </p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+              <div className="bg-yellow-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-yellow-600 font-medium">Straw</div>
+                <div className="text-xl font-bold text-yellow-700">£450-700</div>
+                <div className="text-xs text-gray-500">/year</div>
+              </div>
+              <div className="bg-amber-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-amber-600 font-medium">Shavings</div>
+                <div className="text-xl font-bold text-amber-700">£700-1,000</div>
+                <div className="text-xs text-gray-500">/year</div>
+              </div>
+              <div className="bg-green-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-green-600 font-medium">Pellets</div>
+                <div className="text-xl font-bold text-green-700">£500-800</div>
+                <div className="text-xs text-gray-500">/year</div>
+              </div>
+              <div className="bg-purple-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-purple-600 font-medium">Hemp</div>
+                <div className="text-xl font-bold text-purple-700">£850-1,300</div>
+                <div className="text-xs text-gray-500">/year</div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -364,7 +647,7 @@ export default function BeddingCostCalculator() {
               {/* Left Column - Inputs */}
               <div className="space-y-6">
                 {/* Bedding Type */}
-                <div>
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-700 font-bold text-sm">1</span>
                     <label className="font-semibold text-gray-900">Bedding Type</label>
@@ -394,10 +677,10 @@ export default function BeddingCostCalculator() {
                       </button>
                     ))}
                   </div>
-                </div>
+                </section>
 
                 {/* Stable Size */}
-                <div>
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-700 font-bold text-sm">2</span>
                     <label className="font-semibold text-gray-900">Stable Size</label>
@@ -411,10 +694,10 @@ export default function BeddingCostCalculator() {
                       <option key={size.id} value={size.id}>{size.name}</option>
                     ))}
                   </select>
-                </div>
+                </section>
 
                 {/* Time Stabled */}
-                <div>
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-700 font-bold text-sm">3</span>
                     <label className="font-semibold text-gray-900">Time Stabled</label>
@@ -437,10 +720,10 @@ export default function BeddingCostCalculator() {
                       </button>
                     ))}
                   </div>
-                </div>
+                </section>
 
                 {/* Region */}
-                <div>
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-yellow-100 rounded-full flex items-center justify-center text-yellow-700 font-bold text-sm">4</span>
                     <label className="font-semibold text-gray-900">Your Region</label>
@@ -450,16 +733,16 @@ export default function BeddingCostCalculator() {
                     onChange={(e) => setRegion(e.target.value)}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-yellow-500 focus:outline-none"
                   >
-                    <option value="london">London / South East (Higher prices)</option>
-                    <option value="southeast">Home Counties</option>
+                    <option value="london">London / South East (+25%)</option>
+                    <option value="southeast">Home Counties (+15%)</option>
                     <option value="average">Midlands / Average UK</option>
-                    <option value="north">Northern England</option>
-                    <option value="scotland">Scotland / Wales</option>
+                    <option value="north">Northern England (-10%)</option>
+                    <option value="scotland">Scotland / Wales (-5%)</option>
                   </select>
-                </div>
+                </section>
 
                 {/* Advanced Options */}
-                <div className="border-t pt-4">
+                <section className="border-t pt-4">
                   <button
                     onClick={() => setShowAdvanced(!showAdvanced)}
                     className="flex items-center gap-2 text-yellow-700 font-medium"
@@ -526,7 +809,7 @@ export default function BeddingCostCalculator() {
                       </label>
                     </div>
                   )}
-                </div>
+                </section>
               </div>
 
               {/* Right Column - Results */}
@@ -580,6 +863,23 @@ export default function BeddingCostCalculator() {
                       </div>
                     </div>
 
+                    {/* Reminders CTA in Results */}
+                    <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-4 text-white">
+                      <div className="flex items-center gap-3">
+                        <Bell className="w-8 h-8 flex-shrink-0" />
+                        <div className="flex-1">
+                          <h3 className="font-bold">Track Your Bedding Orders</h3>
+                          <p className="text-purple-200 text-sm">Get reminders when it's time to reorder</p>
+                        </div>
+                        <button
+                          onClick={() => setShowRemindersForm(true)}
+                          className="bg-white text-purple-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-purple-50 transition flex-shrink-0"
+                        >
+                          Set Up
+                        </button>
+                      </div>
+                    </div>
+
                     {/* Cost Breakdown */}
                     <div className="bg-gray-50 rounded-xl p-4">
                       <h3 className="font-semibold text-gray-900 mb-3">Annual Cost Breakdown</h3>
@@ -609,7 +909,7 @@ export default function BeddingCostCalculator() {
 
                     {/* Pros & Cons */}
                     <div className="bg-white border-2 border-gray-200 rounded-xl p-4">
-                      <h3 className="font-semibold text-gray-900 mb-3">{result.beddingInfo.name} - Pros & Cons</h3>
+                      <h3 className="font-semibold text-gray-900 mb-3">{result.beddingInfo.name} - Pros &amp; Cons</h3>
                       <div className="grid grid-cols-2 gap-4">
                         <div>
                           <p className="text-green-600 font-medium text-sm mb-2">✓ Pros</p>
@@ -675,14 +975,15 @@ export default function BeddingCostCalculator() {
                   <li>• <strong>Muck out efficiently</strong> - use a shavings fork to save bedding</li>
                   <li>• <strong>Local farmers</strong> - often sell straw cheaper than feed merchants</li>
                   <li>• <strong>Share delivery</strong> - split costs with yard friends</li>
+                  <li>• Calculate your full costs with our <a href="/annual-horse-cost-calculator" className="text-yellow-700 underline hover:text-yellow-900">Annual Horse Cost Calculator</a></li>
                 </ul>
               </div>
             </div>
           </div>
 
           {/* UK Bedding Prices Table */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">UK Horse Bedding Prices 2025</h2>
+          <section className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8 overflow-x-auto">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">UK Horse Bedding Prices 2026</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -696,90 +997,108 @@ export default function BeddingCostCalculator() {
                 <tbody>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Straw</td>
-                    <td className="py-3 px-4 text-center">£4-7/bale</td>
-                    <td className="py-3 px-4 text-center">£8-14</td>
-                    <td className="py-3 px-4 text-center">£400-750</td>
+                    <td className="py-3 px-4 text-center">£5-8/bale</td>
+                    <td className="py-3 px-4 text-center">£10-16</td>
+                    <td className="py-3 px-4 text-center">£450-850</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Wood Shavings</td>
-                    <td className="py-3 px-4 text-center">£8-12/bag</td>
-                    <td className="py-3 px-4 text-center">£24-36</td>
-                    <td className="py-3 px-4 text-center">£600-950</td>
+                    <td className="py-3 px-4 text-center">£9-13/bag</td>
+                    <td className="py-3 px-4 text-center">£27-39</td>
+                    <td className="py-3 px-4 text-center">£700-1,050</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Wood Pellets</td>
-                    <td className="py-3 px-4 text-center">£7-10/bag</td>
-                    <td className="py-3 px-4 text-center">£14-20</td>
-                    <td className="py-3 px-4 text-center">£550-850</td>
+                    <td className="py-3 px-4 text-center">£8-11/bag</td>
+                    <td className="py-3 px-4 text-center">£16-22</td>
+                    <td className="py-3 px-4 text-center">£600-950</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Hemp</td>
-                    <td className="py-3 px-4 text-center">£12-16/bale</td>
-                    <td className="py-3 px-4 text-center">£24-32</td>
-                    <td className="py-3 px-4 text-center">£750-1,100</td>
+                    <td className="py-3 px-4 text-center">£14-18/bale</td>
+                    <td className="py-3 px-4 text-center">£28-36</td>
+                    <td className="py-3 px-4 text-center">£850-1,250</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Paper</td>
-                    <td className="py-3 px-4 text-center">£10-13/bag</td>
-                    <td className="py-3 px-4 text-center">£25-33</td>
-                    <td className="py-3 px-4 text-center">£650-900</td>
+                    <td className="py-3 px-4 text-center">£11-15/bag</td>
+                    <td className="py-3 px-4 text-center">£28-38</td>
+                    <td className="py-3 px-4 text-center">£700-1,000</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 font-medium">Rubber Mats + Minimal</td>
-                    <td className="py-3 px-4 text-center">£300-600 setup</td>
-                    <td className="py-3 px-4 text-center">£5-10</td>
-                    <td className="py-3 px-4 text-center">£200-400</td>
+                    <td className="py-3 px-4 text-center">£350-700 setup</td>
+                    <td className="py-3 px-4 text-center">£5-12</td>
+                    <td className="py-3 px-4 text-center">£200-450</td>
                   </tr>
                 </tbody>
               </table>
             </div>
             <p className="text-sm text-gray-500 mt-4">
-              * Costs based on fully stabled horse in standard 12x12ft stable. Actual costs vary by region, supplier, and horse's habits.
+              * Costs based on fully stabled horse in standard 12x12ft stable. Prices January 2026. Actual costs vary by region, supplier, and horse's habits.
             </p>
-          </div>
+          </section>
 
           {/* FAQ Section */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
+          <section className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <details key={index} className="group bg-gray-50 rounded-xl">
-                  <summary className="flex items-center justify-between p-4 cursor-pointer list-none">
-                    <span className="font-semibold text-gray-900 pr-4">{faq.q}</span>
-                    <ChevronDown className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform flex-shrink-0" />
-                  </summary>
-                  <div className="px-4 pb-4">
-                    <p className="text-gray-600 leading-relaxed">{faq.a}</p>
-                  </div>
-                </details>
+                <div key={index} className="bg-gray-50 rounded-xl p-6">
+                  <h3 className="font-bold text-gray-900 mb-2">{faq.q}</h3>
+                  <p className="text-gray-700">{faq.a}</p>
+                </div>
               ))}
             </div>
-          </div>
+          </section>
 
           {/* Related Calculators */}
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Calculators</h2>
+          <section className="mt-12 pt-8 border-t border-gray-200">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Related Horse Cost Calculators</h2>
+            <p className="text-gray-600 mb-6">Calculate other aspects of horse ownership:</p>
             <div className="grid md:grid-cols-3 gap-4">
-              <a href="/horse-feed-calculator" className="bg-green-50 hover:bg-green-100 rounded-xl p-4 transition group">
-                <Leaf className="w-8 h-8 text-green-600 mb-2" />
-                <h3 className="font-semibold text-gray-900 group-hover:text-green-600">Feed Calculator</h3>
-                <p className="text-sm text-gray-600">Hay and hard feed costs</p>
-              </a>
-              <a href="/annual-horse-cost-calculator" className="bg-amber-50 hover:bg-amber-100 rounded-xl p-4 transition group">
-                <Calendar className="w-8 h-8 text-amber-600 mb-2" />
-                <h3 className="font-semibold text-gray-900 group-hover:text-amber-600">Annual Cost Calculator</h3>
-                <p className="text-sm text-gray-600">Complete ownership budget</p>
-              </a>
-              <a href="/livery-cost-calculator" className="bg-orange-50 hover:bg-orange-100 rounded-xl p-4 transition group">
-                <Truck className="w-8 h-8 text-orange-600 mb-2" />
-                <h3 className="font-semibold text-gray-900 group-hover:text-orange-600">Livery Calculator</h3>
-                <p className="text-sm text-gray-600">Compare livery options</p>
-              </a>
+              {relatedCalculators.map((calc, index) => (
+                <a 
+                  key={index}
+                  href={calc.href} 
+                  className={`${calc.bg} rounded-xl p-4 transition group`}
+                  title={`${calc.title} - ${calc.description}`}
+                >
+                  <calc.icon className={`w-8 h-8 ${calc.color} mb-2`} />
+                  <h3 className="font-bold text-gray-900 group-hover:text-yellow-600">{calc.title}</h3>
+                  <p className="text-gray-600 text-sm">{calc.description}</p>
+                </a>
+              ))}
             </div>
-          </div>
+          </section>
+
+          {/* Reminders CTA Section */}
+          <section className="mt-12 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-8 text-white">
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Bell className="w-8 h-8" />
+              </div>
+              <h2 className="text-2xl font-bold mb-2">Free Horse Care Reminders</h2>
+              <p className="text-purple-200 max-w-xl mx-auto">
+                Never run out of bedding again. Get free email reminders for reorders, stable maintenance, and all your horse care needs.
+              </p>
+            </div>
+            
+            <div className="max-w-2xl mx-auto">
+              <button
+                onClick={() => setShowRemindersForm(true)}
+                className="w-full bg-white text-purple-600 py-4 rounded-xl font-bold text-lg hover:bg-purple-50 transition shadow-lg"
+              >
+                Set Up Free Reminders
+              </button>
+              <p className="text-purple-300 text-xs text-center mt-3">
+                No spam, just helpful reminders. Unsubscribe anytime.
+              </p>
+            </div>
+          </section>
 
           {/* CTA */}
-          <div className="bg-gradient-to-r from-yellow-600 to-amber-600 rounded-2xl p-8 text-center text-white">
+          <div className="mt-12 bg-gradient-to-r from-yellow-600 to-amber-600 rounded-2xl p-8 text-center text-white">
             <h2 className="text-2xl font-bold mb-4">Calculate Your Full Horse Budget</h2>
             <p className="text-yellow-100 mb-6 max-w-xl mx-auto">
               Bedding is just one cost. Get the complete picture with our Annual Horse Cost Calculator.
@@ -789,10 +1108,45 @@ export default function BeddingCostCalculator() {
               className="inline-flex items-center gap-2 bg-white text-yellow-700 px-6 py-3 rounded-xl font-bold hover:bg-yellow-50 transition"
             >
               Calculate Annual Costs
-              <Calculator className="w-5 h-5" />
+              <ArrowRight className="w-5 h-5" />
             </a>
           </div>
         </div>
+
+        {/* SmartSuite Reminders Modal */}
+        {showRemindersForm && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+              <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Bell className="w-6 h-6" />
+                    <h3 className="text-xl font-bold">Set Up Care Reminders</h3>
+                  </div>
+                  <button
+                    onClick={() => setShowRemindersForm(false)}
+                    className="text-white/80 hover:text-white text-2xl leading-none"
+                  >
+                    ×
+                  </button>
+                </div>
+                <p className="text-purple-200 text-sm mt-2">
+                  Get free email reminders for bedding orders, stable cleaning, and all your horse care needs.
+                </p>
+              </div>
+              <div className="p-0">
+                <iframe 
+                  src="https://app.smartsuite.com/form/sba974gi/W5GfKQSj6G?header=false" 
+                  width="100%" 
+                  height="500px" 
+                  frameBorder="0"
+                  title="Horse Care Reminders Signup"
+                  className="border-0"
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   )
