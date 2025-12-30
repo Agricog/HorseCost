@@ -19,7 +19,6 @@ import {
   HelpCircle,
   CheckCircle2,
   Home,
-  Wheat,
   Scissors,
   Stethoscope,
   Shield,
