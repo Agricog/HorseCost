@@ -252,16 +252,16 @@ Calculate yours: https://horsecost.co.uk/horse-livery-calculator`
       a: "A 10-15% profit margin is typical for UK livery yards. This covers empty stables, unexpected repairs, and price inflation. Premium facilities in high-demand areas (South East, near cities) can charge 20%+ margins. Lower margins suit competitive rural areas."
     },
     {
-      q: "How much should I charge for DIY livery UK 2025?",
-      a: "UK DIY livery prices in 2025 range from £100-250/month depending on location and facilities. South East England averages £150-200, while rural areas charge £100-150. Include stable, field access, use of facilities (arena, wash bay), and water/electricity in your price."
+      q: "How much should I charge for DIY livery UK 2026?",
+      a: "UK DIY livery prices in 2026 range from £100-250/month depending on location and facilities. South East England averages £150-200, while rural areas charge £100-150. Include stable, field access, use of facilities (arena, wash bay), and water/electricity in your price."
     },
     {
       q: "How much should Part livery cost UK?",
       a: "Part livery in the UK typically costs £250-500/month. This includes DIY facilities plus some services (usually morning or evening duties). Calculate based on DIY price plus 30-60 minutes extra daily labour. Urban/premium yards charge £400-500+."
     },
     {
-      q: "How much should Full livery cost UK 2025?",
-      a: "Full livery in the UK ranges from £400-800+/month in 2025. This covers complete care: feeding, mucking out, turnout, rug changes, and basic exercise. Premium yards with excellent facilities charge £700-1,000+. Calculate as DIY price plus 1-3 hours daily labour."
+      q: "How much should Full livery cost UK 2026?",
+      a: "Full livery in the UK ranges from £400-800+/month in 2026. This covers complete care: feeding, mucking out, turnout, rug changes, and basic exercise. Premium yards with excellent facilities charge £700-1,000+. Calculate as DIY price plus 1-3 hours daily labour."
     },
     {
       q: "What is break-even occupancy for a livery yard?",
@@ -351,12 +351,12 @@ Calculate yours: https://horsecost.co.uk/horse-livery-calculator`
     <>
       <Helmet>
         {/* 1. Title Tag */}
-        <title>Horse Livery Calculator UK 2025 | Calculate DIY, Part & Full Livery Prices | HorseCost</title>
+        <title>Horse Livery Calculator UK 2026 | Calculate DIY, Part & Full Livery Prices | HorseCost</title>
         
         {/* 2. Meta Description */}
         <meta 
           name="description" 
-          content="Free livery pricing calculator for UK yard owners. Calculate sustainable DIY, Part & Full livery prices with all costs included. Break-even analysis & profit margins. 2025 UK pricing." 
+          content="Free livery pricing calculator for UK yard owners. Calculate sustainable DIY, Part & Full livery prices with all costs included. Break-even analysis & profit margins. 2026 UK pricing." 
         />
         
         {/* 3. Keywords */}
@@ -391,7 +391,7 @@ Calculate yours: https://horsecost.co.uk/horse-livery-calculator`
         <meta property="og:locale" content="en_GB" />
         
         {/* 13. OG Complete */}
-        <meta property="og:title" content="Horse Livery Calculator UK 2025 | HorseCost" />
+        <meta property="og:title" content="Horse Livery Calculator UK 2026 | HorseCost" />
         <meta property="og:description" content="Calculate sustainable livery prices for your UK yard. DIY, Part & Full livery pricing with break-even analysis." />
         <meta property="og:url" content="https://horsecost.co.uk/horse-livery-calculator" />
         <meta property="og:image" content="https://horsecost.co.uk/images/horse-livery-calculator-og.jpg" />
@@ -402,7 +402,7 @@ Calculate yours: https://horsecost.co.uk/horse-livery-calculator`
         {/* 14. Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@HorseCost" />
-        <meta name="twitter:title" content="Horse Livery Calculator UK 2025 | HorseCost" />
+        <meta name="twitter:title" content="Horse Livery Calculator UK 2026 | HorseCost" />
         <meta name="twitter:description" content="Calculate sustainable livery pricing for your UK yard. Free calculator with break-even analysis." />
         <meta name="twitter:image" content="https://horsecost.co.uk/images/horse-livery-calculator-twitter.jpg" />
         <meta name="twitter:image:alt" content="Horse Livery Calculator" />
@@ -471,8 +471,8 @@ Calculate yours: https://horsecost.co.uk/horse-livery-calculator`
                 '@type': 'Article',
                 'headline': 'Horse Livery Calculator - UK Yard Pricing Guide 2025',
                 'description': 'Calculate sustainable livery prices for UK yards with our free calculator.',
-                'datePublished': '2025-01-01',
-                'dateModified': '2025-01-01',
+                'datePublished': '2026-01-01',
+                'dateModified': '2026-01-01',
                 'author': { '@type': 'Organization', 'name': 'HorseCost', 'url': 'https://horsecost.co.uk' },
                 'image': 'https://horsecost.co.uk/images/horse-livery-calculator-og.jpg',
                 'publisher': { '@type': 'Organization', 'name': 'HorseCost', 'logo': { '@type': 'ImageObject', 'url': 'https://horsecost.co.uk/logo.png' } }
@@ -491,14 +491,14 @@ Calculate yours: https://horsecost.co.uk/horse-livery-calculator`
               // Schema 7: WebPage with Speakable
               {
                 '@type': 'WebPage',
-                'name': 'Horse Livery Calculator UK 2025',
+                'name': 'Horse Livery Calculator UK 2026',
                 'description': 'Calculate livery pricing for UK yards',
                 'speakable': {
                   '@type': 'SpeakableSpecification',
                   'cssSelector': ['h1', '.quick-answer']
                 },
                 'url': 'https://horsecost.co.uk/horse-livery-calculator',
-                'lastReviewed': '2025-01-01'
+                'lastReviewed': '2026-01-01'
               },
               // Schema 8: DefinedTermSet
               {
@@ -569,14 +569,14 @@ Calculate yours: https://horsecost.co.uk/horse-livery-calculator`
               </span>
               <span className="flex items-center gap-1">
                 <CheckCircle2 className="w-4 h-4" />
-                Updated January 2025
+                Updated January 2026
               </span>
             </div>
             
             <div className="flex flex-wrap items-center gap-4 mt-4 text-emerald-200 text-sm">
               <span className="flex items-center gap-1">
                 <Clock className="w-4 h-4" />
-                Last updated: January 2025
+                Last updated: January 2026
               </span>
               <span className="flex items-center gap-1">
                 <MapPin className="w-4 h-4" />
@@ -598,7 +598,7 @@ Calculate yours: https://horsecost.co.uk/horse-livery-calculator`
               Quick Answer: How Much Should I Charge for Livery UK?
             </h2>
             <p className="text-gray-700 quick-answer">
-              <strong>Average UK livery prices in 2025: DIY £100-250/month, Part £250-500/month, Full £400-800/month.</strong> Prices vary significantly by location (South East is 30-50% higher) and facilities. Calculate your specific pricing by entering all costs below and adding a 10-15% profit margin to cover empty stables and unexpected expenses.
+              <strong>Average UK livery prices in 2026: DIY £100-250/month, Part £250-500/month, Full £400-800/month.</strong> Prices vary significantly by location (South East is 30-50% higher) and facilities. Calculate your specific pricing by entering all costs below and adding a 10-15% profit margin to cover empty stables and unexpected expenses.
             </p>
             
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
