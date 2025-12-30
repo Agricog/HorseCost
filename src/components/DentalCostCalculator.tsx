@@ -6,7 +6,6 @@ import {
   AlertCircle,
   ChevronDown,
   ChevronUp,
-  Calendar,
   Star,
   Shield,
   Bell,
@@ -18,9 +17,7 @@ import {
   CheckCircle2,
   Home,
   Wheat,
-  Scissors,
-  Stethoscope,
-  ShoppingBag
+  Stethoscope
 } from 'lucide-react'
 
 export default function DentalCostCalculator() {
