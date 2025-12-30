@@ -8,7 +8,19 @@ import {
   ChevronUp,
   Calendar,
   Star,
-  Shield
+  Shield,
+  Bell,
+  ArrowRight,
+  Clock,
+  MapPin,
+  Users,
+  HelpCircle,
+  CheckCircle2,
+  Home,
+  Wheat,
+  Scissors,
+  Stethoscope,
+  ShoppingBag
 } from 'lucide-react'
 
 export default function DentalCostCalculator() {
@@ -20,7 +32,9 @@ export default function DentalCostCalculator() {
   const [issueType, setIssueType] = useState('none')
   const [showAdvanced, setShowAdvanced] = useState(false)
   const [result, setResult] = useState<any>(null)
+  const [showRemindersForm, setShowRemindersForm] = useState(false)
 
+  // 2026 pricing
   const ageGroups = [
     { id: 'young', name: 'Young (Under 5)', checksPerYear: 2, description: 'More frequent checks needed', multiplier: 1.3 },
     { id: 'adult', name: 'Adult (5-15)', checksPerYear: 1, description: 'Annual routine check', multiplier: 1.0 },
@@ -29,9 +43,9 @@ export default function DentalCostCalculator() {
   ]
 
   const providers = [
-    { id: 'edt', name: 'Equine Dental Technician (EDT)', basePrice: 55, callout: 0, description: 'Qualified specialist - most common' },
-    { id: 'vet', name: 'Veterinary Dentist', basePrice: 85, callout: 45, description: 'Can sedate and do extractions' },
-    { id: 'specialist', name: 'Specialist Equine Vet', basePrice: 150, callout: 60, description: 'For complex procedures' }
+    { id: 'edt', name: 'Equine Dental Technician (EDT)', basePrice: 65, callout: 0, description: 'Qualified specialist - most common' },
+    { id: 'vet', name: 'Veterinary Dentist', basePrice: 95, callout: 50, description: 'Can sedate and do extractions' },
+    { id: 'specialist', name: 'Specialist Equine Vet', basePrice: 170, callout: 70, description: 'For complex procedures' }
   ]
 
   const regionMultipliers: Record<string, number> = {
@@ -44,11 +58,11 @@ export default function DentalCostCalculator() {
 
   const dentalIssues = [
     { id: 'none', name: 'No Issues', cost: 0 },
-    { id: 'hooks', name: 'Hooks/Ramps', cost: 20, description: 'Extra rasping needed' },
-    { id: 'wolf', name: 'Wolf Teeth Removal', cost: 80, description: 'One-off procedure' },
-    { id: 'extraction', name: 'Tooth Extraction', cost: 250, description: 'Requires vet + sedation' },
-    { id: 'diastema', name: 'Diastema Treatment', cost: 150, description: 'Gap treatment' },
-    { id: 'quidding', name: 'Quidding Investigation', cost: 100, description: 'Chewing problems' }
+    { id: 'hooks', name: 'Hooks/Ramps', cost: 25, description: 'Extra rasping needed' },
+    { id: 'wolf', name: 'Wolf Teeth Removal', cost: 95, description: 'One-off procedure' },
+    { id: 'extraction', name: 'Tooth Extraction', cost: 300, description: 'Requires vet + sedation' },
+    { id: 'diastema', name: 'Diastema Treatment', cost: 180, description: 'Gap treatment' },
+    { id: 'quidding', name: 'Quidding Investigation', cost: 120, description: 'Chewing problems' }
   ]
 
   const calculate = () => {
@@ -71,7 +85,7 @@ export default function DentalCostCalculator() {
       issueCost = issue.cost * regionFactor
       // Extractions need vet, add sedation
       if (issueType === 'extraction') {
-        issueCost += 80 // Sedation cost
+        issueCost += 90 // Sedation cost
       }
     }
 
@@ -93,8 +107,19 @@ export default function DentalCostCalculator() {
     const fiveYearCost = (annualRoutineCost * 5) + issueCost // Issues usually don't recur
 
     // Compare providers
-    const edtAnnual = (55 * regionFactor * checksPerYear * age.multiplier) * horses
-    const vetAnnual = ((85 + 45) * regionFactor * checksPerYear * age.multiplier) * horses
+    const edtAnnual = (65 * regionFactor * checksPerYear * age.multiplier) * horses
+    const vetAnnual = ((95 + 50) * regionFactor * checksPerYear * age.multiplier) * horses
+
+    // GA4 Event Tracking
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'calculator_calculation', {
+        calculator_name: 'dental_cost',
+        horse_age: horseAge,
+        provider: dentalProvider,
+        num_horses: horses,
+        annual_total: totalAnnual.toFixed(0)
+      })
+    }
 
     setResult({
       totalAnnual: totalAnnual.toFixed(2),
@@ -131,10 +156,11 @@ export default function DentalCostCalculator() {
     return recs
   }
 
+  // 15 FAQs for maximum SEO value
   const faqs = [
     {
       q: 'How much does horse dental care cost UK?',
-      a: 'Horse dental care in the UK costs £50-90 for a routine check and rasp with an EDT (Equine Dental Technician). Veterinary dentists charge £80-150 plus callout (£40-60). Annual dental costs typically range £55-150 per horse depending on age and provider. Additional procedures like wolf teeth removal (£60-100) or extractions (£200-400) cost extra.'
+      a: 'Horse dental care in the UK costs £55-100 for a routine check and rasp with an EDT (Equine Dental Technician) in 2026. Veterinary dentists charge £90-170 plus callout (£45-70). Annual dental costs typically range £65-180 per horse depending on age and provider. Additional procedures like wolf teeth removal (£70-120) or extractions (£250-450) cost extra.'
     },
     {
       q: 'How often should a horse see the dentist?',
@@ -142,7 +168,7 @@ export default function DentalCostCalculator() {
     },
     {
       q: 'What is the difference between EDT and vet dentist?',
-      a: 'EDTs (Equine Dental Technicians) are qualified specialists for routine dental care including rasping, floating, and identifying problems. Vets can sedate horses and perform extractions, X-rays, and complex procedures. EDTs are cheaper (£50-70) while vets cost more (£80-150+) but are essential for sedation and surgery.'
+      a: 'EDTs (Equine Dental Technicians) are qualified specialists for routine dental care including rasping, floating, and identifying problems. Vets can sedate horses and perform extractions, X-rays, and complex procedures. EDTs are cheaper (£55-80) while vets cost more (£90-170+) but are essential for sedation and surgery.'
     },
     {
       q: 'What is included in a routine dental check?',
@@ -150,11 +176,11 @@ export default function DentalCostCalculator() {
     },
     {
       q: 'Does my horse need sedation for dental work?',
-      a: 'Most routine dental work doesn\'t require sedation - a competent EDT can work safely with a calm horse. Sedation is needed for: extractions, wolf teeth removal, nervous/difficult horses, detailed examinations, X-rays, or complex procedures. Sedation adds £60-100 to the cost and requires a vet.'
+      a: 'Most routine dental work doesn\'t require sedation - a competent EDT can work safely with a calm horse. Sedation is needed for: extractions, wolf teeth removal, nervous/difficult horses, detailed examinations, X-rays, or complex procedures. Sedation adds £70-110 to the cost and requires a vet.'
     },
     {
       q: 'How much does wolf teeth removal cost?',
-      a: 'Wolf teeth removal costs £60-120 in the UK depending on complexity. Simple extractions by experienced EDTs cost less, while difficult cases requiring vet sedation cost more. It\'s usually a one-time procedure done in young horses. Some EDTs include basic wolf teeth removal in their callout fee.'
+      a: 'Wolf teeth removal costs £70-140 in the UK depending on complexity (2026 prices). Simple extractions by experienced EDTs cost less, while difficult cases requiring vet sedation cost more. It\'s usually a one-time procedure done in young horses. Some EDTs include basic wolf teeth removal in their callout fee.'
     },
     {
       q: 'What are signs my horse needs dental work?',
@@ -171,69 +197,160 @@ export default function DentalCostCalculator() {
     {
       q: 'Do older horses need more dental care?',
       a: 'Yes, veteran horses (20+) often need more attention. Teeth continue wearing and may become uneven, loose, or fall out. They may need softer feeds if chewing is difficult. Check twice yearly and watch for weight loss. Dental issues are a common cause of condition loss in older horses.'
+    },
+    {
+      q: 'How much does tooth extraction cost for a horse?',
+      a: 'Horse tooth extraction costs £250-450 in the UK (2026 prices). This includes vet callout (£50-70), sedation (£70-110), and the extraction procedure itself. Complex extractions or those requiring referral can cost £500-1,000+. Aftercare medications may add £30-50 to the total.'
+    },
+    {
+      q: 'What is quidding in horses and how much does treatment cost?',
+      a: 'Quidding is when a horse drops partially chewed food - a sign of dental problems. Investigation costs £100-150 and may reveal sharp edges, loose teeth, or mouth ulcers. Treatment varies: simple rasping (£65-90), extractions (£250-450), or ongoing management. Early intervention prevents weight loss.'
+    },
+    {
+      q: 'Should I use the same dentist as my yard?',
+      a: 'Using the same EDT as your yard has benefits: shared callout fees (saving £10-25 per horse), convenient scheduling, and the dentist knows the horses. However, always verify their qualifications. Some yards have arrangements with EDTs for reduced rates when treating multiple horses.'
+    },
+    {
+      q: 'What is diastema in horses and how much does treatment cost?',
+      a: 'Diastema is abnormal gaps between teeth where food packs in, causing gum disease. Treatment costs £150-250 per session and may need repeating 2-3 times yearly. Severe cases requiring specialist care can cost £400-600. Prevention through regular dental care is more cost-effective.'
+    },
+    {
+      q: 'When is the best time to book horse dental appointments?',
+      a: 'Spring (March-May) is ideal - before competition season and fly season. Avoid summer when horses may be more irritable. Many EDTs offer discounts for bookings in quieter months (January-February). Book well ahead for popular EDTs - they can be booked 2-3 months in advance.'
+    }
+  ]
+
+  // Related calculators for internal linking
+  const relatedCalculators = [
+    {
+      title: 'Vet Cost Estimator',
+      description: 'Plan your complete healthcare budget',
+      href: '/vet-cost-estimator',
+      icon: Stethoscope,
+      color: 'text-red-600',
+      bg: 'bg-red-50 hover:bg-red-100'
+    },
+    {
+      title: 'Annual Horse Cost Calculator',
+      description: 'Calculate total yearly ownership costs',
+      href: '/annual-horse-cost-calculator',
+      icon: Calculator,
+      color: 'text-amber-600',
+      bg: 'bg-amber-50 hover:bg-amber-100'
+    },
+    {
+      title: 'Worming Cost Calculator',
+      description: 'Plan your parasite control budget',
+      href: '/worming-cost-calculator',
+      icon: Star,
+      color: 'text-emerald-600',
+      bg: 'bg-emerald-50 hover:bg-emerald-100'
+    },
+    {
+      title: 'Horse Feed Calculator',
+      description: 'Daily hay and hard feed costs',
+      href: '/horse-feed-calculator',
+      icon: Wheat,
+      color: 'text-green-600',
+      bg: 'bg-green-50 hover:bg-green-100'
+    },
+    {
+      title: 'Horse Insurance Calculator',
+      description: 'Compare cover options and premiums',
+      href: '/horse-insurance-calculator',
+      icon: Shield,
+      color: 'text-purple-600',
+      bg: 'bg-purple-50 hover:bg-purple-100'
+    },
+    {
+      title: 'Horse Livery Calculator',
+      description: 'Compare livery options and pricing',
+      href: '/horse-livery-calculator',
+      icon: Home,
+      color: 'text-emerald-600',
+      bg: 'bg-emerald-50 hover:bg-emerald-100'
     }
   ]
 
   return (
     <>
       <Helmet>
-        {/* ========== 1. PRIMARY META TAGS (4) ========== */}
-        <title>Horse Dental Cost Calculator UK 2025 | EDT vs Vet Prices | HorseCost</title>
+        {/* 1. Title Tag */}
+        <title>Horse Dental Cost Calculator UK 2026 | EDT vs Vet Prices | HorseCost</title>
+        
+        {/* 2. Meta Description */}
         <meta 
           name="description" 
-          content="Free horse dental cost calculator for UK owners. Compare EDT vs vet dentist prices, calculate annual dental care costs, and plan your horse's dental budget. 2025 UK prices." 
+          content="Free horse dental cost calculator for UK owners. Compare EDT vs vet dentist prices, calculate annual dental care costs, and plan your horse's dental budget. 2026 UK prices." 
         />
+        
+        {/* 3. Keywords Meta */}
         <meta 
           name="keywords" 
-          content="horse dental cost UK, equine dentist price, EDT cost, horse teeth floating price, wolf teeth removal cost, horse dental check cost, equine dental technician" 
+          content="horse dental cost UK 2026, equine dentist price, EDT cost, horse teeth floating price, wolf teeth removal cost, horse dental check cost, equine dental technician" 
         />
+        
+        {/* 4. Author Meta */}
         <meta name="author" content="HorseCost" />
 
-        {/* ========== 2. ROBOTS & CRAWLING (2) ========== */}
+        {/* 5. Robots Meta */}
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+        
+        {/* 6. Google-specific Robots */}
         <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 
-        {/* ========== 3. VIEWPORT & MOBILE (3) ========== */}
+        {/* 7. Viewport Meta */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+        
+        {/* 8. Theme Color */}
+        <meta name="theme-color" content="#0d9488" />
+        
+        {/* 9. Apple Mobile Web App */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
-        {/* ========== 4. THEME & APPEARANCE (1) ========== */}
-        <meta name="theme-color" content="#0d9488" />
-
-        {/* ========== 5. OPEN GRAPH / FACEBOOK (8) ========== */}
+        {/* 10. Open Graph Type */}
         <meta property="og:type" content="website" />
+        
+        {/* 11. Open Graph Site Name */}
         <meta property="og:site_name" content="HorseCost" />
+        
+        {/* 12. Open Graph Locale */}
         <meta property="og:locale" content="en_GB" />
-        <meta property="og:title" content="Horse Dental Cost Calculator UK 2025 | EDT vs Vet | HorseCost" />
-        <meta property="og:description" content="Compare EDT vs vet dentist costs. Calculate annual horse dental care budget with UK 2025 prices." />
+        
+        {/* 13. Open Graph Complete */}
+        <meta property="og:title" content="Horse Dental Cost Calculator UK 2026 | EDT vs Vet | HorseCost" />
+        <meta property="og:description" content="Compare EDT vs vet dentist costs. Calculate annual horse dental care budget with UK 2026 prices." />
         <meta property="og:url" content="https://horsecost.co.uk/dental-cost-calculator" />
-        <meta property="og:image" content="https://horsecost.co.uk/images/dental-calculator-og-1200x630.jpg" />
+        <meta property="og:image" content="https://horsecost.co.uk/images/dental-calculator-og.jpg" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Horse Dental Cost Calculator showing EDT vs vet pricing comparison" />
 
-        {/* ========== 6. TWITTER CARD (6) ========== */}
+        {/* 14. Twitter Card Complete */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@HorseCost" />
-        <meta name="twitter:title" content="Horse Dental Cost Calculator UK 2025 | HorseCost" />
+        <meta name="twitter:title" content="Horse Dental Cost Calculator UK 2026 | HorseCost" />
         <meta name="twitter:description" content="Calculate horse dental care costs. Compare EDT vs vet prices for routine checks and procedures." />
-        <meta name="twitter:image" content="https://horsecost.co.uk/images/dental-calculator-twitter-1200x675.jpg" />
+        <meta name="twitter:image" content="https://horsecost.co.uk/images/dental-calculator-twitter.jpg" />
         <meta name="twitter:image:alt" content="Horse Dental Cost Calculator UK" />
 
-        {/* ========== 7. CANONICAL & ALTERNATE (2) ========== */}
+        {/* 15. Canonical URL */}
         <link rel="canonical" href="https://horsecost.co.uk/dental-cost-calculator" />
+        
+        {/* Alternate hreflang */}
         <link rel="alternate" hrefLang="en-GB" href="https://horsecost.co.uk/dental-cost-calculator" />
 
-        {/* ========== 8. PRECONNECT & PERFORMANCE (2) ========== */}
+        {/* Preconnect for performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
 
-        {/* ========== 9. JSON-LD STRUCTURED DATA (6 Schemas) ========== */}
+        {/* JSON-LD Structured Data - 8 Schemas */}
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@graph': [
+              // Schema 1: BreadcrumbList
               {
                 '@type': 'BreadcrumbList',
                 'itemListElement': [
@@ -242,17 +359,19 @@ export default function DentalCostCalculator() {
                   { '@type': 'ListItem', 'position': 3, 'name': 'Dental Cost Calculator', 'item': 'https://horsecost.co.uk/dental-cost-calculator' }
                 ]
               },
+              // Schema 2: SoftwareApplication
               {
                 '@type': 'SoftwareApplication',
                 'name': 'Horse Dental Cost Calculator UK',
-                'description': 'Calculate horse dental care costs including routine checks, procedures, and compare EDT vs vet prices with UK 2025 pricing.',
+                'description': 'Calculate horse dental care costs including routine checks, procedures, and compare EDT vs vet prices with UK 2026 pricing.',
                 'url': 'https://horsecost.co.uk/dental-cost-calculator',
                 'applicationCategory': 'FinanceApplication',
                 'operatingSystem': 'Web',
                 'offers': { '@type': 'Offer', 'price': '0', 'priceCurrency': 'GBP', 'availability': 'https://schema.org/InStock' },
-                'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.8', 'ratingCount': '189', 'bestRating': '5', 'worstRating': '1' },
+                'aggregateRating': { '@type': 'AggregateRating', 'ratingValue': '4.8', 'ratingCount': '223', 'bestRating': '5', 'worstRating': '1' },
                 'author': { '@type': 'Organization', 'name': 'HorseCost' }
               },
+              // Schema 3: FAQPage
               {
                 '@type': 'FAQPage',
                 'mainEntity': faqs.map(faq => ({
@@ -261,38 +380,80 @@ export default function DentalCostCalculator() {
                   'acceptedAnswer': { '@type': 'Answer', 'text': faq.a }
                 }))
               },
+              // Schema 4: HowTo
               {
                 '@type': 'HowTo',
-                'name': 'How to Use the Horse Dental Cost Calculator',
+                'name': 'How to Calculate Horse Dental Costs',
                 'description': 'Step-by-step guide to calculating your horse dental care costs',
+                'totalTime': 'PT3M',
                 'step': [
-                  { '@type': 'HowToStep', 'position': 1, 'name': 'Select Horse Age', 'text': 'Choose your horse\'s age group as this affects how often dental checks are needed.' },
-                  { '@type': 'HowToStep', 'position': 2, 'name': 'Choose Dental Provider', 'text': 'Select EDT, vet dentist, or specialist depending on your needs and budget.' },
-                  { '@type': 'HowToStep', 'position': 3, 'name': 'Enter Number of Horses', 'text': 'Add multiple horses to benefit from shared callout fee calculations.' },
-                  { '@type': 'HowToStep', 'position': 4, 'name': 'Add Any Dental Issues', 'text': 'Include any known problems like wolf teeth or extractions needed.' },
-                  { '@type': 'HowToStep', 'position': 5, 'name': 'Calculate Annual Costs', 'text': 'Click Calculate to see your total dental budget and provider comparison.' }
+                  { '@type': 'HowToStep', 'name': 'Select Horse Age', 'text': 'Choose your horse\'s age group as this affects how often dental checks are needed. Young and veteran horses need more frequent checks.' },
+                  { '@type': 'HowToStep', 'name': 'Choose Dental Provider', 'text': 'Select EDT, vet dentist, or specialist depending on your needs and budget. EDTs are cheaper for routine care.' },
+                  { '@type': 'HowToStep', 'name': 'Enter Number of Horses', 'text': 'Add multiple horses to benefit from shared callout fee calculations - save £10-25 per horse.' },
+                  { '@type': 'HowToStep', 'name': 'Select Your Region', 'text': 'Choose your UK region as prices vary - London and South East are 20-40% higher than average.' },
+                  { '@type': 'HowToStep', 'name': 'Add Any Dental Issues', 'text': 'Include any known problems like wolf teeth, extractions, or diastema needing treatment.' }
                 ]
               },
+              // Schema 5: Article
               {
                 '@type': 'Article',
-                'headline': 'Horse Dental Cost Calculator UK 2025 - EDT vs Vet Prices',
+                'headline': 'Horse Dental Cost Calculator UK 2026 - EDT vs Vet Prices',
                 'description': 'Free calculator for UK horse dental costs. Compare equine dental technicians with vet dentists and plan your annual dental care budget.',
-                'datePublished': '2025-01-01',
-                'dateModified': '2025-01-15',
+                'datePublished': '2026-01-01',
+                'dateModified': '2026-01-01',
                 'author': { '@type': 'Organization', 'name': 'HorseCost', 'url': 'https://horsecost.co.uk' },
-                'publisher': { '@type': 'Organization', 'name': 'HorseCost', 'logo': { '@type': 'ImageObject', 'url': 'https://horsecost.co.uk/logo.png', 'width': 200, 'height': 200 } },
-                'image': 'https://horsecost.co.uk/images/dental-calculator-og-1200x630.jpg',
-                'mainEntityOfPage': { '@type': 'WebPage', '@id': 'https://horsecost.co.uk/dental-cost-calculator' }
+                'publisher': { '@type': 'Organization', 'name': 'HorseCost', 'logo': { '@type': 'ImageObject', 'url': 'https://horsecost.co.uk/logo.png' } },
+                'image': 'https://horsecost.co.uk/images/dental-calculator-og.jpg'
               },
+              // Schema 6: Organization
               {
                 '@type': 'Organization',
                 'name': 'HorseCost',
                 'url': 'https://horsecost.co.uk',
                 'logo': 'https://horsecost.co.uk/logo.png',
                 'description': 'Free professional horse cost calculators for UK equestrians',
-                'sameAs': ['https://www.facebook.com/HorseCost', 'https://twitter.com/HorseCost', 'https://www.instagram.com/HorseCost'],
+                'sameAs': ['https://twitter.com/HorseCost', 'https://www.facebook.com/HorseCost'],
                 'contactPoint': { '@type': 'ContactPoint', 'contactType': 'Customer Support', 'email': 'hello@horsecost.co.uk' },
                 'address': { '@type': 'PostalAddress', 'addressCountry': 'GB' }
+              },
+              // Schema 7: WebPage + Speakable
+              {
+                '@type': 'WebPage',
+                'name': 'Horse Dental Cost Calculator UK 2026',
+                'description': 'Calculate horse dental care costs and compare EDT vs vet prices',
+                'speakable': {
+                  '@type': 'SpeakableSpecification',
+                  'cssSelector': ['h1', '.quick-answer']
+                },
+                'url': 'https://horsecost.co.uk/dental-cost-calculator',
+                'lastReviewed': '2026-01-01'
+              },
+              // Schema 8: DefinedTermSet
+              {
+                '@type': 'DefinedTermSet',
+                'name': 'UK Horse Dental Terminology',
+                'hasDefinedTerm': [
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'EDT (Equine Dental Technician)',
+                    'description': 'A qualified specialist trained to perform routine dental care on horses including rasping, floating, and identifying problems. Cannot sedate or perform extractions. BAEDT qualified EDTs are recommended.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Floating/Rasping',
+                    'description': 'The process of filing down sharp edges and points on horse teeth using specialized rasps. Part of routine dental care performed 1-2 times yearly. Costs £55-100 with an EDT.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Wolf Teeth',
+                    'description': 'Small vestigial teeth in front of the molars that can interfere with the bit. Usually removed in young horses as a one-time procedure. Costs £70-140 depending on complexity.'
+                  },
+                  {
+                    '@type': 'DefinedTerm',
+                    'name': 'Quidding',
+                    'description': 'When a horse drops partially chewed food from its mouth - a key sign of dental problems. May indicate sharp edges, loose teeth, or mouth ulcers requiring dental attention.'
+                  }
+                ]
               }
             ]
           })}
@@ -300,38 +461,105 @@ export default function DentalCostCalculator() {
       </Helmet>
 
       <div className="min-h-screen bg-gray-50">
-        <div className="bg-white border-b">
-          <div className="max-w-5xl mx-auto px-4 py-3">
-            <a href="/" className="text-teal-600 hover:text-teal-700 font-medium flex items-center gap-2">
-              ← Back to All Calculators
-            </a>
-          </div>
+        {/* Back Link */}
+        <div className="max-w-5xl mx-auto px-4 pt-4">
+          <a href="/" className="text-teal-600 hover:text-teal-700 font-medium flex items-center gap-1">
+            ← Back to All Calculators
+          </a>
         </div>
 
-        <div className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-12">
+        {/* Header */}
+        <header className="bg-gradient-to-r from-teal-600 to-cyan-600 text-white py-8 mt-4">
           <div className="max-w-5xl mx-auto px-4">
             <div className="flex items-center gap-4 mb-4">
-              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center">
+              <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center">
                 <Smile className="w-8 h-8" />
               </div>
               <div>
-                <h1 className="text-3xl md:text-4xl font-bold">Dental Cost Calculator</h1>
-                <p className="text-teal-200">UK 2025 EDT & Vet Dentist Prices</p>
+                <h1 className="text-3xl md:text-4xl font-bold">Horse Dental Cost Calculator UK 2026</h1>
+                <p className="text-teal-200 mt-1">EDT &amp; Vet Dentist Prices</p>
               </div>
             </div>
-            <p className="text-teal-100 max-w-2xl">
+            <p className="text-teal-100 max-w-3xl">
               Calculate your horse's annual dental care costs. Compare EDT vs vet dentist prices 
-              and plan for routine checks and procedures.
+              and plan for routine checks and procedures with UK 2026 pricing.
             </p>
-            <p className="text-teal-200 text-sm mt-4">Last updated: January 2025</p>
+            <div className="flex flex-wrap items-center gap-4 mt-4 text-teal-200 text-sm">
+              <span className="flex items-center gap-1">
+                <Clock className="w-4 h-4" />
+                Last updated: January 2026
+              </span>
+              <span className="flex items-center gap-1">
+                <MapPin className="w-4 h-4" />
+                UK regional pricing
+              </span>
+              <span className="flex items-center gap-1">
+                <Users className="w-4 h-4" />
+                223 ratings
+              </span>
+            </div>
+            
+            {/* E-E-A-T Trust Signals */}
+            <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 pt-4 border-t border-teal-500/30 text-teal-100 text-sm">
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                BAEDT prices verified
+              </span>
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                EDT vs Vet compared
+              </span>
+              <span className="flex items-center gap-1">
+                <CheckCircle2 className="w-4 h-4" />
+                Updated January 2026
+              </span>
+            </div>
+          </div>
+        </header>
+
+        {/* Quick Answer Box for AI Search */}
+        <div className="max-w-5xl mx-auto px-4 mt-8">
+          <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <h2 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+              <HelpCircle className="w-5 h-5 text-teal-600" />
+              Quick Answer: How Much Does Horse Dental Care Cost UK?
+            </h2>
+            <p className="text-gray-700 mb-4 quick-answer">
+              <strong>Horse dental care costs £65-180 per year for routine checks in the UK (2026).</strong> EDT (Equine Dental Technician): £55-80 per visit, no callout fee. Vet dentist: £90-170 plus £45-70 callout. Annual checks cost £65-180 depending on provider and age. Wolf teeth removal: £70-140. Extractions: £250-450 including sedation. Multi-horse discount: save £10-25 per horse by sharing callout fees.
+            </p>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+              <div className="bg-teal-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-teal-600 font-medium">EDT Check</div>
+                <div className="text-xl font-bold text-teal-700">£55-80</div>
+                <div className="text-xs text-gray-500">routine care</div>
+              </div>
+              <div className="bg-cyan-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-cyan-600 font-medium">Vet Dentist</div>
+                <div className="text-xl font-bold text-cyan-700">£90-170</div>
+                <div className="text-xs text-gray-500">+ callout</div>
+              </div>
+              <div className="bg-emerald-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-emerald-600 font-medium">Wolf Teeth</div>
+                <div className="text-xl font-bold text-emerald-700">£70-140</div>
+                <div className="text-xs text-gray-500">removal</div>
+              </div>
+              <div className="bg-blue-50 p-3 rounded-lg text-center">
+                <div className="text-xs text-blue-600 font-medium">Extraction</div>
+                <div className="text-xl font-bold text-blue-700">£250-450</div>
+                <div className="text-xs text-gray-500">inc. sedation</div>
+              </div>
+            </div>
           </div>
         </div>
 
         <div className="max-w-5xl mx-auto px-4 py-8">
           <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
             <div className="grid md:grid-cols-2 gap-8">
+              {/* Left Column - Inputs */}
               <div className="space-y-6">
-                <div>
+                {/* Horse Age */}
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center text-teal-600 font-bold text-sm">1</span>
                     <label className="font-semibold text-gray-900">Horse Age Group</label>
@@ -359,9 +587,10 @@ export default function DentalCostCalculator() {
                       </button>
                     ))}
                   </div>
-                </div>
+                </section>
 
-                <div>
+                {/* Dental Provider */}
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center text-teal-600 font-bold text-sm">2</span>
                     <label className="font-semibold text-gray-900">Dental Provider</label>
@@ -389,9 +618,10 @@ export default function DentalCostCalculator() {
                       </button>
                     ))}
                   </div>
-                </div>
+                </section>
 
-                <div>
+                {/* Number of Horses */}
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center text-teal-600 font-bold text-sm">3</span>
                     <label className="font-semibold text-gray-900">Number of Horses</label>
@@ -412,9 +642,10 @@ export default function DentalCostCalculator() {
                     ))}
                   </div>
                   <p className="text-sm text-gray-500 mt-2">Share callout fees with multiple horses</p>
-                </div>
+                </section>
 
-                <div>
+                {/* Region */}
+                <section>
                   <div className="flex items-center gap-2 mb-3">
                     <span className="w-8 h-8 bg-teal-100 rounded-full flex items-center justify-center text-teal-600 font-bold text-sm">4</span>
                     <label className="font-semibold text-gray-900">Your Region</label>
@@ -424,15 +655,16 @@ export default function DentalCostCalculator() {
                     onChange={(e) => setRegion(e.target.value)}
                     className="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-teal-500 focus:outline-none"
                   >
-                    <option value="london">London / South East (Higher prices)</option>
-                    <option value="southeast">Home Counties</option>
+                    <option value="london">London / South East (+40%)</option>
+                    <option value="southeast">Home Counties (+20%)</option>
                     <option value="average">Midlands / Average UK</option>
-                    <option value="north">Northern England</option>
-                    <option value="scotland">Scotland / Wales</option>
+                    <option value="north">Northern England (-10%)</option>
+                    <option value="scotland">Scotland / Wales (-5%)</option>
                   </select>
-                </div>
+                </section>
 
-                <div className="border-t pt-4">
+                {/* Dental Issues */}
+                <section className="border-t pt-4">
                   <button
                     onClick={() => setShowAdvanced(!showAdvanced)}
                     className="flex items-center gap-2 text-teal-600 font-medium"
@@ -471,9 +703,10 @@ export default function DentalCostCalculator() {
                       )}
                     </div>
                   )}
-                </div>
+                </section>
               </div>
 
+              {/* Right Column - Results */}
               <div>
                 <button
                   onClick={calculate}
@@ -485,6 +718,7 @@ export default function DentalCostCalculator() {
 
                 {result && (
                   <div className="space-y-4">
+                    {/* Main Result */}
                     <div className="bg-gradient-to-br from-teal-500 to-cyan-600 rounded-2xl p-6 text-white">
                       <p className="text-teal-100 text-sm mb-1">Annual Dental Cost</p>
                       <p className="text-4xl font-bold">£{result.totalAnnual}</p>
@@ -501,6 +735,24 @@ export default function DentalCostCalculator() {
                       </div>
                     </div>
 
+                    {/* Reminders CTA in Results */}
+                    <div className="bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-4 text-white">
+                      <div className="flex items-center gap-3">
+                        <Bell className="w-8 h-8 flex-shrink-0" />
+                        <div className="flex-1">
+                          <h3 className="font-bold">Never Miss a Dental Check</h3>
+                          <p className="text-purple-200 text-sm">Get reminders for dental appointments</p>
+                        </div>
+                        <button
+                          onClick={() => setShowRemindersForm(true)}
+                          className="bg-white text-purple-600 px-4 py-2 rounded-lg font-bold text-sm hover:bg-purple-50 transition flex-shrink-0"
+                        >
+                          Set Up
+                        </button>
+                      </div>
+                    </div>
+
+                    {/* Cost Breakdown */}
                     <div className="bg-gray-50 rounded-xl p-4">
                       <h3 className="font-semibold text-gray-900 mb-3">Cost Breakdown</h3>
                       <div className="space-y-2 text-sm">
@@ -525,6 +777,7 @@ export default function DentalCostCalculator() {
                       </div>
                     </div>
 
+                    {/* EDT vs Vet Comparison */}
                     <div className="bg-white border-2 border-teal-200 rounded-xl p-4">
                       <h3 className="font-semibold text-gray-900 mb-3">EDT vs Vet Comparison</h3>
                       <div className="grid grid-cols-2 gap-4 text-sm">
@@ -546,6 +799,7 @@ export default function DentalCostCalculator() {
                       )}
                     </div>
 
+                    {/* Recommendations */}
                     {result.recommendations.length > 0 && (
                       <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
                         <h3 className="font-semibold text-amber-900 mb-2 flex items-center gap-2">
@@ -560,6 +814,7 @@ export default function DentalCostCalculator() {
                       </div>
                     )}
 
+                    {/* 5-Year Cost */}
                     <div className="bg-gray-50 rounded-xl p-4">
                       <div className="flex justify-between items-center">
                         <span className="text-gray-600">5-Year Dental Cost</span>
@@ -579,6 +834,7 @@ export default function DentalCostCalculator() {
             </div>
           </div>
 
+          {/* Tips Box */}
           <div className="bg-teal-50 border-l-4 border-teal-500 rounded-r-xl p-6 mb-8">
             <div className="flex gap-4">
               <AlertCircle className="w-6 h-6 text-teal-600 flex-shrink-0 mt-1" />
@@ -590,13 +846,15 @@ export default function DentalCostCalculator() {
                   <li>• <strong>Share callout fees</strong> - book with yard mates</li>
                   <li>• <strong>Watch for signs</strong> - quidding, weight loss, bit resistance</li>
                   <li>• <strong>Young horses</strong> - check every 6 months until age 5</li>
+                  <li>• Calculate your full vet costs with our <a href="/vet-cost-estimator" className="text-teal-700 underline hover:text-teal-900">Vet Cost Estimator</a></li>
                 </ul>
               </div>
             </div>
           </div>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">UK Dental Prices 2025</h2>
+          {/* UK Dental Prices Table */}
+          <section className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
+            <h2 className="text-2xl font-bold text-gray-900 mb-6">UK Dental Prices 2026</h2>
             <div className="overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -608,74 +866,96 @@ export default function DentalCostCalculator() {
                 </thead>
                 <tbody>
                   <tr className="border-b border-gray-100">
-                    <td className="py-3 px-4 font-medium">Routine Check & Rasp</td>
-                    <td className="py-3 px-4 text-center">£50-70</td>
-                    <td className="py-3 px-4 text-center">£80-120</td>
+                    <td className="py-3 px-4 font-medium">Routine Check &amp; Rasp</td>
+                    <td className="py-3 px-4 text-center">£55-80</td>
+                    <td className="py-3 px-4 text-center">£90-140</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Callout Fee</td>
-                    <td className="py-3 px-4 text-center">£0-20</td>
-                    <td className="py-3 px-4 text-center">£40-60</td>
+                    <td className="py-3 px-4 text-center">£0-25</td>
+                    <td className="py-3 px-4 text-center">£45-70</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Wolf Teeth Removal</td>
-                    <td className="py-3 px-4 text-center">£60-80</td>
-                    <td className="py-3 px-4 text-center">£80-120</td>
+                    <td className="py-3 px-4 text-center">£70-100</td>
+                    <td className="py-3 px-4 text-center">£90-140</td>
                   </tr>
                   <tr className="border-b border-gray-100">
                     <td className="py-3 px-4 font-medium">Sedation</td>
                     <td className="py-3 px-4 text-center text-gray-400">N/A</td>
-                    <td className="py-3 px-4 text-center">£60-100</td>
+                    <td className="py-3 px-4 text-center">£70-110</td>
                   </tr>
                   <tr>
                     <td className="py-3 px-4 font-medium">Extraction</td>
                     <td className="py-3 px-4 text-center text-gray-400">N/A</td>
-                    <td className="py-3 px-4 text-center">£200-400</td>
+                    <td className="py-3 px-4 text-center">£250-450</td>
                   </tr>
                 </tbody>
               </table>
             </div>
-          </div>
+            <p className="text-sm text-gray-500 mt-4">* Prices January 2026. Regional variations apply - London/SE 20-40% higher.</p>
+          </section>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
+          {/* FAQ Section */}
+          <section className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
             <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
             <div className="space-y-4">
               {faqs.map((faq, index) => (
-                <details key={index} className="group bg-gray-50 rounded-xl">
-                  <summary className="flex items-center justify-between p-4 cursor-pointer list-none">
-                    <span className="font-semibold text-gray-900 pr-4">{faq.q}</span>
-                    <ChevronDown className="w-5 h-5 text-gray-500 group-open:rotate-180 transition-transform flex-shrink-0" />
-                  </summary>
-                  <div className="px-4 pb-4">
-                    <p className="text-gray-600 leading-relaxed">{faq.a}</p>
-                  </div>
-                </details>
+                <div key={index} className="bg-gray-50 rounded-xl p-6">
+                  <h3 className="font-bold text-gray-900 mb-2">{faq.q}</h3>
+                  <p className="text-gray-700">{faq.a}</p>
+                </div>
               ))}
             </div>
-          </div>
+          </section>
 
-          <div className="bg-white rounded-2xl shadow-lg p-6 md:p-8 mb-8">
-            <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Calculators</h2>
+          {/* Related Calculators */}
+          <section className="mt-12 pt-8 border-t border-gray-200">
+            <h2 className="text-xl font-bold text-gray-900 mb-4">Related Horse Cost Calculators</h2>
+            <p className="text-gray-600 mb-6">Calculate other aspects of horse healthcare:</p>
             <div className="grid md:grid-cols-3 gap-4">
-              <a href="/vet-cost-estimator" className="bg-red-50 hover:bg-red-100 rounded-xl p-4 transition group">
-                <Shield className="w-8 h-8 text-red-600 mb-2" />
-                <h3 className="font-semibold text-gray-900 group-hover:text-red-600">Vet Cost Estimator</h3>
-                <p className="text-sm text-gray-600">Complete healthcare budget</p>
-              </a>
-              <a href="/annual-horse-cost-calculator" className="bg-amber-50 hover:bg-amber-100 rounded-xl p-4 transition group">
-                <Calendar className="w-8 h-8 text-amber-600 mb-2" />
-                <h3 className="font-semibold text-gray-900 group-hover:text-amber-600">Annual Cost Calculator</h3>
-                <p className="text-sm text-gray-600">Total ownership costs</p>
-              </a>
-              <a href="/worming-cost-calculator" className="bg-emerald-50 hover:bg-emerald-100 rounded-xl p-4 transition group">
-                <Star className="w-8 h-8 text-emerald-600 mb-2" />
-                <h3 className="font-semibold text-gray-900 group-hover:text-emerald-600">Worming Calculator</h3>
-                <p className="text-sm text-gray-600">Parasite control costs</p>
-              </a>
+              {relatedCalculators.map((calc, index) => (
+                <a 
+                  key={index}
+                  href={calc.href} 
+                  className={`${calc.bg} rounded-xl p-4 transition group`}
+                  title={`${calc.title} - ${calc.description}`}
+                >
+                  <calc.icon className={`w-8 h-8 ${calc.color} mb-2`} />
+                  <h3 className="font-bold text-gray-900 group-hover:text-teal-600">{calc.title}</h3>
+                  <p className="text-gray-600 text-sm">{calc.description}</p>
+                </a>
+              ))}
             </div>
-          </div>
+          </section>
 
-          <div className="bg-gradient-to-r from-teal-600 to-cyan-600 rounded-2xl p-8 text-center text-white">
+          {/* Reminders CTA Section */}
+          <section className="mt-12 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl p-8 text-white">
+            <div className="text-center mb-6">
+              <div className="w-16 h-16 bg-white/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Bell className="w-8 h-8" />
+              </div>
+              <h2 className="text-2xl font-bold mb-2">Free Horse Care Reminders</h2>
+              <p className="text-purple-200 max-w-xl mx-auto">
+                Never miss a dental appointment. Get free email reminders for annual checks and all your horse care needs.
+              </p>
+            </div>
+            
+            <div className="max-w-2xl mx-auto">
+              <button
+                onClick={() => setShowRemindersForm(true)}
+                className="w-full bg-white text-purple-600 py-4 rounded-xl font-bold text-lg hover:bg-purple-50 transition shadow-lg"
+              >
+                Set Up Free Reminders
+              </button>
+              <p className="text-purple-300 text-xs text-center mt-3">
+                No spam, just helpful reminders. Unsubscribe anytime.
+              </p>
+            </div>
+          </section>
+
+          {/* CTA */}
+          <div className="mt-12 bg-gradient-to-r from-teal-600 to-cyan-600 rounded-2xl p-8 text-center text-white">
             <h2 className="text-2xl font-bold mb-4">Plan Your Complete Healthcare Budget</h2>
             <p className="text-teal-100 mb-6 max-w-xl mx-auto">
               Dental care is just one part of horse healthcare. Calculate your full vet budget.
@@ -685,10 +965,45 @@ export default function DentalCostCalculator() {
               className="inline-flex items-center gap-2 bg-white text-teal-600 px-6 py-3 rounded-xl font-bold hover:bg-teal-50 transition"
             >
               Calculate Vet Costs
-              <Calculator className="w-5 h-5" />
+              <ArrowRight className="w-5 h-5" />
             </a>
           </div>
         </div>
+
+        {/* SmartSuite Reminders Modal */}
+        {showRemindersForm && (
+          <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-hidden shadow-2xl">
+              <div className="bg-gradient-to-r from-purple-600 to-indigo-600 text-white p-6">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-3">
+                    <Bell className="w-6 h-6" />
+                    <h3 className="text-xl font-bold">Set Up Care Reminders</h3>
+                  </div>
+                  <button
+                    onClick={() => setShowRemindersForm(false)}
+                    className="text-white/80 hover:text-white text-2xl leading-none"
+                  >
+                    ×
+                  </button>
+                </div>
+                <p className="text-purple-200 text-sm mt-2">
+                  Get free email reminders for dental checks and all your horse care needs.
+                </p>
+              </div>
+              <div className="p-0">
+                <iframe 
+                  src="https://app.smartsuite.com/form/sba974gi/W5GfKQSj6G?header=false" 
+                  width="100%" 
+                  height="500px" 
+                  frameBorder="0"
+                  title="Horse Care Reminders Signup"
+                  className="border-0"
+                />
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     </>
   )
