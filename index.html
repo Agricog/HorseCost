@@ -4,15 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-QNL80SPKND"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-QNL80SPKND');
-    </script>
-    
     <title>HorseCost | Professional Horse Business Calculators UK</title>
     <meta name="title" content="HorseCost | Professional Horse Business Calculators UK" />
     <meta name="description" content="Free professional horse calculators for UK equestrians. Calculate livery costs, farrier expenses, feed budgets, competition costs and more. Plan your equestrian finances with confidence." />
@@ -26,6 +17,7 @@
     <meta name="theme-color" content="#b45309" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://horsecost.co.uk/" />
     <meta property="og:title" content="HorseCost | Professional Horse Business Calculators UK" />
@@ -36,18 +28,22 @@
     <meta property="og:locale" content="en_GB" />
     <meta property="og:site_name" content="HorseCost" />
     
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://horsecost.co.uk/" />
     <meta name="twitter:title" content="HorseCost | Professional Horse Business Calculators UK" />
     <meta name="twitter:description" content="Free professional horse calculators for UK equestrians. Calculate livery costs, farrier expenses, feed budgets and more." />
     <meta name="twitter:image" content="https://horsecost.co.uk/og-image.jpg" />
     
-    <!-- Performance -->
-    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <!-- Performance: preconnect to critical origins -->
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin />
+    <link rel="preconnect" href="https://www.google-analytics.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="dns-prefetch" href="https://www.google-analytics.com" />
     
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -106,5 +102,20 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    
+    <!-- Google Analytics 4 - deferred to after page load for performance -->
+    <script>
+      window.addEventListener('load', function() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-QNL80SPKND';
+        document.head.appendChild(s);
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        window.gtag = gtag;
+        gtag('js', new Date());
+        gtag('config', 'G-QNL80SPKND');
+      });
+    </script>
   </body>
 </html>
