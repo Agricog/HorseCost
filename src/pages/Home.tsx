@@ -298,47 +298,22 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        {/* 1. Title Tag */}
         <title>HorseCost | Free Horse Cost Calculators UK 2025 | Annual Costs, Livery & More</title>
-        
-        {/* 2. Meta Description */}
         <meta 
           name="description" 
           content="Free professional horse cost calculators for UK owners. Calculate annual ownership costs, livery, feed, farrier & vet expenses. 21 calculators with accurate 2025 UK pricing." 
         />
-        
-        {/* 3. Keywords */}
         <meta name="keywords" content="horse cost calculator UK, annual horse costs, livery calculator, horse ownership costs, equestrian budget, farrier costs UK, horse feed calculator, vet costs horses UK, how much does a horse cost" />
-        
-        {/* 4. Author */}
         <meta name="author" content="HorseCost" />
-        
-        {/* 5. Robots */}
         <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        
-        {/* 6. Googlebot */}
         <meta name="googlebot" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-        
-        {/* 7. Viewport */}
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-        
-        {/* 8. Theme Color */}
         <meta name="theme-color" content="#b45309" />
-        
-        {/* 9. Apple Mobile */}
         <meta name="apple-mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-
-        {/* 10. OG Type */}
         <meta property="og:type" content="website" />
-        
-        {/* 11. OG Site Name */}
         <meta property="og:site_name" content="HorseCost" />
-        
-        {/* 12. OG Locale */}
         <meta property="og:locale" content="en_GB" />
-        
-        {/* 13. OG Complete */}
         <meta property="og:title" content="HorseCost | Free Horse Cost Calculators UK 2025" />
         <meta property="og:description" content="Free professional horse cost calculators for UK owners. Calculate annual costs, livery, feed & more. 21 calculators with 2025 pricing." />
         <meta property="og:url" content="https://horsecost.co.uk" />
@@ -346,38 +321,26 @@ export default function HomePage() {
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="HorseCost - Free UK Horse Cost Calculators" />
-
-        {/* 14. Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:site" content="@HorseCost" />
         <meta name="twitter:title" content="HorseCost | Free Horse Cost Calculators UK 2025" />
         <meta name="twitter:description" content="Calculate your horse ownership costs with 21 free UK calculators. Accurate 2025 pricing." />
         <meta name="twitter:image" content="https://horsecost.co.uk/images/horsecost-og.jpg" />
         <meta name="twitter:image:alt" content="HorseCost UK Horse Calculators" />
-
-        {/* 15. Canonical */}
         <link rel="canonical" href="https://horsecost.co.uk" />
-        
-        {/* Hreflang */}
         <link rel="alternate" hrefLang="en-GB" href="https://horsecost.co.uk" />
-
-        {/* Preconnect */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-
-        {/* JSON-LD Schemas (6) */}
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
             '@graph': [
-              // Schema 1: WebSite
               {
                 '@type': 'WebSite',
                 'name': 'HorseCost',
                 'url': 'https://horsecost.co.uk',
                 'description': 'Free professional horse cost calculators for UK equestrians. 21 calculators with accurate 2025 UK pricing.'
               },
-              // Schema 2: Organization
               {
                 '@type': 'Organization',
                 'name': 'HorseCost',
@@ -396,7 +359,6 @@ export default function HomePage() {
                   'https://www.facebook.com/HorseCost'
                 ]
               },
-              // Schema 3: BreadcrumbList
               {
                 '@type': 'BreadcrumbList',
                 'itemListElement': [
@@ -408,7 +370,6 @@ export default function HomePage() {
                   }
                 ]
               },
-              // Schema 4: FAQPage
               {
                 '@type': 'FAQPage',
                 'mainEntity': faqs.map(faq => ({
@@ -420,7 +381,6 @@ export default function HomePage() {
                   }
                 }))
               },
-              // Schema 5: ItemList (Calculator Collection)
               {
                 '@type': 'ItemList',
                 'name': 'Horse Cost Calculators',
@@ -439,7 +399,6 @@ export default function HomePage() {
                   { '@type': 'ListItem', 'position': 10, 'name': 'Bedding Cost Calculator', 'url': 'https://horsecost.co.uk/bedding-cost-calculator' }
                 ]
               },
-              // Schema 6: WebPage with Speakable
               {
                 '@type': 'WebPage',
                 'name': 'HorseCost - Free UK Horse Cost Calculators',
@@ -468,9 +427,9 @@ export default function HomePage() {
                 <span className="text-xl font-bold text-gray-900">HorseCost</span>
               </a>
               <div className="hidden md:flex items-center gap-6">
-                <a href="#calculators" className="text-gray-600 hover:text-amber-600 transition font-medium">Calculators</a>
-                <a href="/horse-care-challenge" className="text-gray-600 hover:text-purple-600 transition font-medium">Quiz Game</a>
-                <a href="#reviews" className="text-gray-600 hover:text-amber-600 transition font-medium">Reviews</a>
+                <a href="#calculators" className="text-gray-700 hover:text-amber-700 transition font-medium">Calculators</a>
+                <a href="/horse-care-challenge" className="text-gray-700 hover:text-purple-700 transition font-medium">Quiz Game</a>
+                <a href="#reviews" className="text-gray-700 hover:text-amber-700 transition font-medium">Reviews</a>
               </div>
               <a 
                 href="/annual-horse-cost-calculator" 
@@ -487,17 +446,17 @@ export default function HomePage() {
           <section className="bg-gradient-to-br from-amber-50 via-orange-50 to-yellow-50 pt-12 pb-20 px-4">
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
-                <span className="inline-flex items-center gap-2 px-4 py-2 bg-amber-100 text-amber-800 rounded-full text-sm font-semibold mb-6">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-amber-100 text-amber-900 rounded-full text-sm font-semibold mb-6">
                   <CheckCircle2 className="w-4 h-4" />
                   100% Free UK Horse Calculators
                 </span>
                 
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
                   Know Your
-                  <span className="bg-gradient-to-r from-amber-600 to-orange-500 bg-clip-text text-transparent"> Horse Costs</span>
+                  <span className="bg-gradient-to-r from-amber-700 to-orange-600 bg-clip-text text-transparent"> Horse Costs</span>
                 </h1>
                 
-                <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto mb-8">
+                <p className="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto mb-8">
                   Professional calculators for UK horse owners. Work out annual costs, livery fees, 
                   feed budgets and more. Plus a fun quiz game for young equestrians!
                 </p>
@@ -522,16 +481,16 @@ export default function HomePage() {
 
               {/* Stats Bar */}
               <div className="flex flex-wrap items-center justify-center gap-8 pt-8 border-t border-amber-200">
-                <div className="flex items-center gap-2 text-gray-600">
-                  <Users className="w-5 h-5 text-amber-600" />
+                <div className="flex items-center gap-2 text-gray-700">
+                  <Users className="w-5 h-5 text-amber-700" />
                   <span className="font-semibold">2,500+ Users</span>
                 </div>
-                <div className="flex items-center gap-2 text-gray-600">
-                  <Calculator className="w-5 h-5 text-amber-600" />
+                <div className="flex items-center gap-2 text-gray-700">
+                  <Calculator className="w-5 h-5 text-amber-700" />
                   <span className="font-semibold">21 Calculators</span>
                 </div>
-                <div className="flex items-center gap-2 text-gray-600">
-                  <Star className="w-5 h-5 text-amber-500 fill-amber-500" />
+                <div className="flex items-center gap-2 text-gray-700">
+                  <Star className="w-5 h-5 text-amber-600 fill-amber-500" />
                   <span className="font-semibold">4.9/5 Rating</span>
                 </div>
               </div>
@@ -539,32 +498,33 @@ export default function HomePage() {
               {/* Quick Answer Box - AI Search Optimized */}
               <div className="max-w-4xl mx-auto mt-8 bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
                 <h2 className="text-lg font-bold text-gray-900 mb-3 flex items-center gap-2">
-                  <HelpCircle className="w-5 h-5 text-amber-600" />
+                  <HelpCircle className="w-5 h-5 text-amber-700" />
                   How Much Does a Horse Cost Per Year UK?
                 </h2>
                 <p className="text-gray-700 quick-answer">
                   <strong>The average annual cost of keeping a horse in the UK is £8,500.</strong> Costs range from £5,000 for DIY livery with basic care to £15,000+ for full livery with competition. The main expenses are livery (£1,800-£7,200/year), feed (£1,000-£2,400/year), farrier (£400-£1,500/year), and veterinary care (£400-£1,500/year). Use our free calculators below to get an accurate budget for your specific situation.
                 </p>
+
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
                   <div className="bg-green-50 p-3 rounded-lg text-center">
-                    <div className="text-xs text-green-600 font-medium">Budget</div>
-                    <div className="text-xl font-bold text-green-700">£5,000</div>
-                    <div className="text-xs text-gray-500">DIY Livery</div>
+                    <div className="text-xs text-green-800 font-semibold">Budget</div>
+                    <div className="text-xl font-bold text-green-800">£5,000</div>
+                    <div className="text-xs text-gray-700">DIY Livery</div>
                   </div>
                   <div className="bg-blue-50 p-3 rounded-lg text-center">
-                    <div className="text-xs text-blue-600 font-medium">Average</div>
-                    <div className="text-xl font-bold text-blue-700">£8,500</div>
-                    <div className="text-xs text-gray-500">Part Livery</div>
+                    <div className="text-xs text-blue-800 font-semibold">Average</div>
+                    <div className="text-xl font-bold text-blue-800">£8,500</div>
+                    <div className="text-xs text-gray-700">Part Livery</div>
                   </div>
                   <div className="bg-amber-50 p-3 rounded-lg text-center">
-                    <div className="text-xs text-amber-600 font-medium">Premium</div>
-                    <div className="text-xl font-bold text-amber-700">£12,000</div>
-                    <div className="text-xs text-gray-500">Full Livery</div>
+                    <div className="text-xs text-amber-800 font-semibold">Premium</div>
+                    <div className="text-xl font-bold text-amber-800">£12,000</div>
+                    <div className="text-xs text-gray-700">Full Livery</div>
                   </div>
                   <div className="bg-purple-50 p-3 rounded-lg text-center">
-                    <div className="text-xs text-purple-600 font-medium">Competition</div>
-                    <div className="text-xl font-bold text-purple-700">£15,000+</div>
-                    <div className="text-xs text-gray-500">Full + Shows</div>
+                    <div className="text-xs text-purple-800 font-semibold">Competition</div>
+                    <div className="text-xl font-bold text-purple-800">£15,000+</div>
+                    <div className="text-xs text-gray-700">Full + Shows</div>
                   </div>
                 </div>
               </div>
@@ -576,7 +536,7 @@ export default function HomePage() {
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Horse Cost Calculators</h2>
-                <p className="text-gray-600 max-w-2xl mx-auto">
+                <p className="text-gray-700 max-w-2xl mx-auto">
                   Professional calculators for every aspect of UK horse ownership. Free, fast, and accurate.
                 </p>
               </div>
@@ -599,23 +559,23 @@ export default function HomePage() {
                       </div>
                       <span className={`text-xs font-bold px-3 py-1 rounded-full ${
                         calc.available 
-                          ? 'bg-green-100 text-green-700' 
-                          : 'bg-gray-100 text-gray-500'
+                          ? 'bg-green-100 text-green-800' 
+                          : 'bg-gray-100 text-gray-600'
                       }`}>
                         {calc.tag}
                       </span>
                     </div>
                     
-                    <h3 className={`text-lg font-bold mb-2 ${calc.available ? 'text-gray-900 group-hover:text-amber-600' : 'text-gray-500'}`}>
+                    <h3 className={`text-lg font-bold mb-2 ${calc.available ? 'text-gray-900 group-hover:text-amber-700' : 'text-gray-600'}`}>
                       {calc.title}
                     </h3>
                     
-                    <p className="text-gray-600 text-sm mb-4">
+                    <p className="text-gray-700 text-sm mb-4">
                       {calc.description}
                     </p>
                     
                     {calc.available && (
-                      <div className="flex items-center text-amber-600 font-semibold text-sm">
+                      <div className="flex items-center text-amber-700 font-semibold text-sm">
                         Try Now
                         <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                       </div>
@@ -630,7 +590,6 @@ export default function HomePage() {
           <section className="py-12 px-4 bg-gradient-to-br from-purple-50 via-indigo-50 to-violet-50">
             <div className="max-w-6xl mx-auto">
               <div className="bg-gradient-to-r from-purple-600 via-indigo-600 to-violet-600 rounded-3xl p-8 md:p-12 shadow-2xl relative overflow-hidden">
-                {/* Decorative sparkles */}
                 <Sparkles className="absolute top-8 right-8 w-8 h-8 text-yellow-300 animate-pulse" />
                 <Sparkles className="absolute bottom-12 left-12 w-6 h-6 text-pink-300 animate-pulse" />
                 
@@ -639,7 +598,7 @@ export default function HomePage() {
                     <div className="text-center text-white">
                       <Gamepad2 className="w-16 h-16 md:w-24 md:h-24 mx-auto mb-2" />
                       <p className="font-bold text-lg">Quiz</p>
-                      <p className="text-purple-200">Game</p>
+                      <p className="text-purple-100">Game</p>
                     </div>
                   </div>
 
@@ -677,7 +636,7 @@ export default function HomePage() {
 
                     <a 
                       href="/horse-care-challenge"
-                      className="inline-flex items-center gap-2 bg-white text-purple-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-50 transition shadow-lg"
+                      className="inline-flex items-center gap-2 bg-white text-purple-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-purple-50 transition shadow-lg"
                     >
                       Play Now - It's Free!
                       <ArrowRight className="w-5 h-5" />
@@ -693,17 +652,17 @@ export default function HomePage() {
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Why Horse Owners Trust Us</h2>
-                <p className="text-gray-600">Built by UK equestrians, for UK equestrians.</p>
+                <p className="text-gray-700">Built by UK equestrians, for UK equestrians.</p>
               </div>
 
               <div className="grid md:grid-cols-3 gap-8">
                 {features.map((feature) => (
                   <div key={feature.title} className="bg-gray-50 rounded-2xl p-8 shadow-sm border border-gray-100 text-center">
                     <div className="w-16 h-16 bg-amber-100 rounded-2xl flex items-center justify-center mx-auto mb-6">
-                      <feature.icon className="w-8 h-8 text-amber-600" />
+                      <feature.icon className="w-8 h-8 text-amber-700" />
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                    <p className="text-gray-600">{feature.description}</p>
+                    <p className="text-gray-700">{feature.description}</p>
                   </div>
                 ))}
               </div>
@@ -715,7 +674,7 @@ export default function HomePage() {
             <div className="max-w-6xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">What Horse Owners Say</h2>
-                <p className="text-gray-600">Join thousands of UK equestrians using HorseCost.</p>
+                <p className="text-gray-700">Join thousands of UK equestrians using HorseCost.</p>
               </div>
 
               <div className="grid md:grid-cols-3 gap-8">
@@ -723,19 +682,19 @@ export default function HomePage() {
                   <div key={index} className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
                     <div className="flex gap-1 mb-4">
                       {[...Array(testimonial.rating)].map((_, i) => (
-                        <Star key={i} className="w-5 h-5 text-amber-500 fill-amber-500" />
+                        <Star key={i} className="w-5 h-5 text-amber-600 fill-amber-500" />
                       ))}
                     </div>
                     <blockquote className="text-gray-700 mb-6 italic">
                       "{testimonial.quote}"
                     </blockquote>
                     <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-amber-200 rounded-full flex items-center justify-center text-amber-700 font-bold">
+                      <div className="w-10 h-10 bg-amber-200 rounded-full flex items-center justify-center text-amber-800 font-bold">
                         {testimonial.author.charAt(0)}
                       </div>
                       <div>
                         <p className="font-semibold text-gray-900">{testimonial.author}</p>
-                        <p className="text-sm text-gray-500">{testimonial.location}</p>
+                        <p className="text-sm text-gray-700">{testimonial.location}</p>
                       </div>
                     </div>
                   </div>
@@ -749,7 +708,7 @@ export default function HomePage() {
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-                <p className="text-gray-600">Find answers to common questions about our calculators.</p>
+                <p className="text-gray-700">Find answers to common questions about our calculators.</p>
               </div>
 
               <div className="grid gap-6">
@@ -757,9 +716,9 @@ export default function HomePage() {
                   <details key={index} className="bg-gray-50 rounded-xl p-6 border border-gray-200 cursor-pointer group">
                     <summary className="font-bold text-gray-900 flex items-center justify-between list-none">
                       {faq.q}
-                      <span className="ml-4 text-amber-600 group-open:rotate-45 transition-transform">+</span>
+                      <span className="ml-4 text-amber-700 group-open:rotate-45 transition-transform">+</span>
                     </summary>
-                    <p className="text-gray-600 mt-4 leading-relaxed">{faq.a}</p>
+                    <p className="text-gray-700 mt-4 leading-relaxed">{faq.a}</p>
                   </details>
                 ))}
               </div>
@@ -772,13 +731,13 @@ export default function HomePage() {
               <h2 className="text-3xl md:text-4xl font-bold mb-6">
                 Ready to Know Your Horse Costs?
               </h2>
-              <p className="text-amber-100 text-lg mb-10 max-w-2xl mx-auto">
+              <p className="text-amber-50 text-lg mb-10 max-w-2xl mx-auto">
                 Start planning your equestrian budget today. Free, instant, accurate results for UK horse owners.
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
                 <a 
                   href="/annual-horse-cost-calculator" 
-                  className="w-full sm:w-auto bg-white text-amber-600 px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-50 transition shadow-lg"
+                  className="w-full sm:w-auto bg-white text-amber-700 px-8 py-4 rounded-xl font-bold text-lg hover:bg-amber-50 transition shadow-lg"
                 >
                   Calculate Annual Costs
                 </a>
@@ -794,7 +753,7 @@ export default function HomePage() {
         </main>
 
         {/* Footer */}
-        <footer className="bg-gray-900 text-gray-400 py-12 px-4">
+        <footer className="bg-gray-900 text-gray-300 py-12 px-4">
           <div className="max-w-6xl mx-auto">
             <div className="grid md:grid-cols-4 gap-8 mb-8">
               <div className="md:col-span-2">
@@ -811,7 +770,7 @@ export default function HomePage() {
               </div>
               
               <div>
-                <h4 className="font-semibold text-white mb-4">Calculators</h4>
+                <h3 className="font-semibold text-white mb-4">Calculators</h3>
                 <ul className="space-y-2 text-sm">
                   <li><a href="/annual-horse-cost-calculator" className="hover:text-white transition">Annual Cost Calculator</a></li>
                   <li><a href="/horse-feed-calculator" className="hover:text-white transition">Feed Calculator</a></li>
@@ -823,7 +782,7 @@ export default function HomePage() {
               </div>
               
               <div>
-                <h4 className="font-semibold text-white mb-4">Legal</h4>
+                <h3 className="font-semibold text-white mb-4">Legal</h3>
                 <ul className="space-y-2 text-sm">
                   <li><a href="/privacy-policy" className="hover:text-white transition">Privacy Policy</a></li>
                   <li><a href="/terms-of-service" className="hover:text-white transition">Terms of Service</a></li>
